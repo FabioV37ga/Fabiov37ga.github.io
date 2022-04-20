@@ -9,8 +9,17 @@ body {
     text-transform: uppercase;
     cursor: pointer;
     font-family: computer;
-    font-size: 20px
+    font-size: 20px;
 }
 .nav__botao:hover{
     background: rgb(44, 219, 0);
+}
+.pointer{
+    color:rgb(51, 255, 0);
+    font-family: computer;
+}
+.iniciar{
+    overflow: hidden;
+    padding: 10px 50px;
+    border-radius: 2px
 }

@@ -8,3 +8,25 @@
 .break{
     flex-basis:100%
 }
+.open{
+    animation: iniciaBotao 0.4s;    
+}
+.close{
+    animation: finalizaBotao 0.5s;
+}
+@keyframes iniciaBotao{
+    0%{
+       padding: 0
+    }
+    100%{
+        padding:10px 50px
+    }
+}
+@keyframes finalizaBotao{
+    100%{
+       padding: 0
+    }
+    0%{
+        padding:10px 50px
+    }
+}

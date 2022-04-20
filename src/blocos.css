@@ -34,3 +34,7 @@
     margin-top: 0px;
     
 }
+.bloco__nav{
+    display: flex;
+    justify-content: space-between;
+}

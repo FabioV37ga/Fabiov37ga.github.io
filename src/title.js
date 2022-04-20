@@ -1,3 +1,11 @@
+var initState = 0;
+function init(){
+    if (initState == 0){
+        showButton();
+        initState = 1
+    }
+}
+
 function blink(){
     const slider = document.querySelector(".slider")
     var intervalId = setInterval(function() {
@@ -25,9 +33,11 @@ function typeText(text){
         titulo.textContent = finalString
         i++;
         if (i == usingSplit.length){
-            clearInterval(intervalo)      
+            clearInterval(intervalo)
+            init()      
         }
     }, 50)
+    
 }
 
 blink();
@@ -56,3 +66,9 @@ function eraseText(text){
 
     }, 25)
 }
+
+const button = document.querySelector(".iniciar")
+button.addEventListener("click", function(){
+    eraseText("Day Cycle Discord")
+    hideButton()
+})
