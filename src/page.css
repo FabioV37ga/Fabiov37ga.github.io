@@ -2,3 +2,15 @@ body {
     background: rgb(6, 6, 6);
     margin: 0;
 }
+.nav__botao{
+    background: rgb(51, 255, 0);
+    border: none;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: computer;
+    font-size: 20px
+}
+.nav__botao:hover{
+    background: rgb(44, 219, 0);
+}

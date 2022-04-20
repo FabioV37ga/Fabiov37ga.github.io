@@ -5,3 +5,6 @@
 .hidden {
     opacity: 0;
 }
+.break{
+    flex-basis:100%
+}
