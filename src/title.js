@@ -2,12 +2,10 @@ function blink(){
     const slider = document.querySelector(".slider")
     var intervalId = setInterval(function() {
         
-        if (slider.classList.contains("show")){
-            slider.classList.remove("show")
-            slider.classList.add("hidden")
+        if (slider.style.opacity == 100){
+            slider.style.opacity = 0
         }else{
-            slider.classList.remove("hidden")
-            slider.classList.add("show")
+            slider.style.opacity = 100
 
         }
       }, 630);
@@ -35,13 +33,11 @@ function typeText(text){
 blink();
 
 function eraseText(text){
-    
     const titulo = document.querySelector(".titulo")
     var currentText = titulo.textContent
     const usingSplit = currentText.split('');
 
     var tamanho = usingSplit.length
-
     var intervalo = setInterval(function(){ 
         var anterior = ""
         var texto = ""
