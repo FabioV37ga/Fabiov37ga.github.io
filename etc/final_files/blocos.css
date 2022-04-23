@@ -1,0 +1,54 @@
+.bloco {
+    width: 735px;
+    height: 100px;
+    margin: 150px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bloco__titulo {
+    font-size: 26px;
+    width: 400px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo {
+    margin-top: 0px;
+    font-size: 26px;
+    color: rgb(51, 255, 0)
+}
+
+.slider {
+    color: rgb(51, 255, 0);
+    height: 100px;
+    width: 10px;
+    font-size: 30px;
+    margin-top: 0px;
+
+}
+
+.bloco__nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloco__conteudo {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.window{
+    width: 50%;
+    height: inherit;
+    background: rgba(51, 255, 0, 1);
+    
+}
+.windowbox{
+    height: inherit;
+    display: flex;
+}

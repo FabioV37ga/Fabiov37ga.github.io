@@ -1,9 +1,5 @@
-@font-face {
-    font-family: "computer";
-    src: url("VCR_OSD_MONO_1.001.ttf");
-}
 .bloco {
-    width: 500px;
+    width: 735px;
     height: 100px;
     margin: 150px auto;
     display: flex;
@@ -13,7 +9,6 @@
 
 .bloco__titulo {
     font-size: 26px;
-    font-family: computer;
     width: 400px;
     height: 37px;
     display: flex;
@@ -32,9 +27,27 @@
     width: 10px;
     font-size: 30px;
     margin-top: 0px;
-    
+
 }
-.bloco__nav{
+
+.bloco__nav {
     display: flex;
     justify-content: space-between;
+}
+
+.bloco__conteudo {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.windowbox{
+    height: inherit;
+    display: flex;
+}
+.window{
+    width: 50%;
+    height: inherit;
+    background: rgba(51, 255, 0, 1);
+    
 }

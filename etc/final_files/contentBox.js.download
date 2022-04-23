@@ -1,0 +1,45 @@
+function createBlock(){
+    //sect.bloco__conteudo
+    var blocoConteudo = $("<section>", {class: "bloco__conteudo boxOpen"}).appendTo(".bloco")
+      addAnimationEnd()
+        //["<"]
+        var back = $("<div>", {class: "browse"}).appendTo(".bloco__conteudo")
+
+        //div.conteudo
+        var conteudo = $("<div>", {class: "conteudo"}).appendTo(".bloco__conteudo")
+    
+        //["<"]
+        var forward = $("<div>", {class: "browse"}).appendTo(".bloco__conteudo");
+    
+}
+
+function animateBlock(){
+    removeAnimationEnd()
+    console.log("animateblock()")
+    var conteudo = document.querySelector(".conteudo")
+    conteudo.classList.add("openHeight")
+    conteudo.addEventListener("animationend", () => {
+        conteudo.style.height = '500px'
+        conteudo.classList.remove("openHeight")
+        conteudo.classList.remove("boxOen")
+    })
+   
+}
+
+function addAnimationEnd(){
+    var conteudoElement = document.querySelector(".bloco__conteudo")
+    conteudoElement.addEventListener("animationend", () => {
+        animateBlock();
+        showBrowse();
+    })
+}
+
+function removeAnimationEnd(){
+    var conteudoElement = document.querySelector(".bloco__conteudo")
+    conteudoElement.removeEventListener("animationend", animateBlock)
+}
+
+function showBrowse(){
+    
+    
+}

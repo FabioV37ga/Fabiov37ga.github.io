@@ -2,14 +2,11 @@ function showButton(){
     const button = document.querySelector(".iniciar")
     const pointers = document.querySelectorAll(".pointer")
 
-
     button.addEventListener("animationend", function(){
         button.textContent = "INICIAR"
         button.style.padding = "10px 8.15px";
         button.style.marginLeft = "4px"
     })
-
-
 
     var i = 1
     var intervalo = setInterval(function(){
@@ -31,7 +28,7 @@ function showButton(){
     },250);
 }
 
-window.posicao = 1
+window.page = 1
 function hideButton(){
     const button = document.querySelector(".iniciar")
     button.textContent = ""
@@ -39,6 +36,7 @@ function hideButton(){
     button.classList.add("close")
     button.addEventListener("animationend", ()=>{
         button.remove()
-        createElement(window.posicao);
+        createBlock();
+        
     })
 }
