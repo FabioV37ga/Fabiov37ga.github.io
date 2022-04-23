@@ -35,10 +35,10 @@ function animateBlock(){
 
 function openWindow(){
     var windows = document.querySelectorAll(".window")
+    windows[1].classList.remove("goSide")
     windows[1].classList.add("goSide")
     windows[1].addEventListener("animationend", () => {
-        windows[0].remove()
-        windows[1].remove()
+        windows[1].style.marginLeft = "582px"
     })
 }
 
