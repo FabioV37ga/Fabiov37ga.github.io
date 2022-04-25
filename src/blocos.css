@@ -39,7 +39,7 @@
     margin-top: 55px;
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 800px;
     position: absolute;
 }
 .windowbox{
@@ -49,6 +49,5 @@
 .window{
     width: 50%;
     height: inherit;
-    background: rgba(51, 255, 0, 1);
-    
+    background: rgba(51, 255, 0, 1); 
 }

@@ -32,10 +32,10 @@ var execucoes = 0
 function animateBlock(){
     if (execucoes == 0){
         var conteudo = document.querySelector(".conteudo")
-        
+
         conteudo.classList.add("openHeight")
         conteudo.addEventListener("animationend", () => {
-            conteudo.style.height = '500px'
+            conteudo.style.height = '650px'
             conteudo.classList.remove("openHeight")
             openWindow()
         })
@@ -49,7 +49,7 @@ function openWindow(){
     windows[1].classList.remove("goSide")
     windows[1].classList.add("goSide")
     windows[1].addEventListener("animationend", () => {
-        windows[1].style.marginLeft = "582px"
+        windows[1].style.marginLeft = "642px"
     })
 }
 
