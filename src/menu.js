@@ -2,6 +2,14 @@ function showButton(){
     const button = document.querySelector(".iniciar")
     const pointers = document.querySelectorAll(".pointer")
 
+    button.addEventListener("click", () =>{
+        createBlock();
+        for (let i = 0; i <= pointers.length-1; i++){
+            pointers[i].remove() //!!!!!!!!!! isso vai mudar.
+        }
+        console.log("button.click")
+    })
+
     button.addEventListener("animationend", function(){
         button.textContent = "INICIAR"
         button.style.padding = "10px 8.15px";
@@ -35,8 +43,7 @@ function hideButton(){
     button.classList.remove("open")
     button.classList.add("close")
     button.addEventListener("animationend", ()=>{
+        boxOpen();
         button.remove()
-        createBlock();
-        
     })
 }

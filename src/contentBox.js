@@ -1,7 +1,7 @@
 function createBlock(){
     //sect.bloco__conteudo
-    var blocoConteudo = $("<section>", {class: "bloco__conteudo boxOpen"}).appendTo(".bloco")
-      addAnimationEnd()
+    var blocoConteudo = $("<section>", {class: "bloco__conteudo hidden"}).appendTo(".bloco")
+
 //      ["<"]
         var back = $("<div>", {class: "browse"}).appendTo(".bloco__conteudo")
 
@@ -14,27 +14,38 @@ function createBlock(){
         //
 //      ["<"]
         var forward = $("<div>", {class: "browse"}).appendTo(".bloco__conteudo");
-    
+  
 }
-var i = 0
-function animateBlock(){
 
-    console.log("animateblock()")
-    var conteudo = document.querySelector(".conteudo")
-    conteudo.classList.add("openHeight")
-    conteudo.addEventListener("animationend", () => {
-        conteudo.style.height = '500px'
-        conteudo.classList.remove("openHeight")
-        conteudo.classList.remove("boxOen")
-        if (i % 2 == 1 && i != 0){
-            openWindow()
-        }
+function boxOpen(){
+    var blocoConteudo = document.querySelector(".bloco__conteudo")
+
+    blocoConteudo.classList.remove("hidden")
+    blocoConteudo.classList.add("boxOpen")
+    blocoConteudo.addEventListener("animationend", ()=>{
+        animateBlock()
+        blocoConteudo.classList.remove("boxOpen")
     })
-    i++
+}
+
+var execucoes = 0
+function animateBlock(){
+    if (execucoes == 0){
+        var conteudo = document.querySelector(".conteudo")
+        
+        conteudo.classList.add("openHeight")
+        conteudo.addEventListener("animationend", () => {
+            conteudo.style.height = '500px'
+            conteudo.classList.remove("openHeight")
+            openWindow()
+        })
+        execucoes++
+    }
 }
 
 function openWindow(){
     var windows = document.querySelectorAll(".window")
+
     windows[1].classList.remove("goSide")
     windows[1].classList.add("goSide")
     windows[1].addEventListener("animationend", () => {
@@ -42,14 +53,15 @@ function openWindow(){
     })
 }
 
-function addAnimationEnd(){
+/*function addAnimationEnd(){
+    
     var conteudoElement = document.querySelector(".bloco__conteudo")
     conteudoElement.addEventListener("animationend", () => {
         animateBlock();
         showBrowse();
     })
 }
-
+*/
 
 function showBrowse(){
     

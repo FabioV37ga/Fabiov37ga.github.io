@@ -36,10 +36,11 @@
 }
 
 .bloco__conteudo {
-    margin-top: 40px;
+    margin-top: 55px;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 50%;
+    position: absolute;
 }
 .windowbox{
     height: inherit;
