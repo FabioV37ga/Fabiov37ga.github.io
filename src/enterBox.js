@@ -12,24 +12,24 @@ function createBlock(){
                 var window2 = $("<div>", {class: "window"}).appendTo(".windowbox")
             //
         //
-//      ["<"]
+//      ["<"]   
         var forward = $("<div>", {class: "browse"}).appendTo(".bloco__conteudo");
   
 }
 
-function boxOpen(){
+function openWidth(){
     var blocoConteudo = document.querySelector(".bloco__conteudo")
 
     blocoConteudo.classList.remove("hidden")
-    blocoConteudo.classList.add("boxOpen")
+    blocoConteudo.classList.add("openWidth")
     blocoConteudo.addEventListener("animationend", ()=>{
-        animateBlock()
-        blocoConteudo.classList.remove("boxOpen")
+        openHeight()
+        blocoConteudo.classList.remove("openWidth")
     })
 }
 
 var execucoes = 0
-function animateBlock(){
+function openHeight(){
     if (execucoes == 0){
         var conteudo = document.querySelector(".conteudo")
 
@@ -50,20 +50,22 @@ function openWindow(){
     windows[1].classList.add("goSide")
     windows[1].addEventListener("animationend", () => {
         windows[1].style.marginLeft = "642px"
+        showBrowse()
     })
 }
-
-/*function addAnimationEnd(){
-    
-    var conteudoElement = document.querySelector(".bloco__conteudo")
-    conteudoElement.addEventListener("animationend", () => {
-        animateBlock();
-        showBrowse();
-    })
-}
-*/
 
 function showBrowse(){
-    
-    
+    console.log("page: "+ window.page)
+    const browses = document.querySelectorAll(".browse");
+
+    var cBrowse1 = $("<a>", {class: "fadein", text: "<"}).appendTo(browses[0])
+    var cBrowse1 = $("<a>", {class: "fadein", text: ">"}).appendTo(browses[1])
+
+    browses[0].addEventListener("click", ()=>{
+        execucoes = 0;
+        window.page--;
+        console.log("(<.click) page: "+ window.page)
+
+    })
+
 }

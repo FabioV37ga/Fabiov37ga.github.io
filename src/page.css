@@ -45,14 +45,19 @@ body {
 .browse {
     width: 10%;
     text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .browse a {
     font-size: 30px;
     text-decoration: none;
     color: rgb(51, 255, 0);
+    padding: 20px;
 }
 .browse a:hover{
     cursor: pointer;
-    color: rgb(44, 219, 0)
+    color: rgb(44, 219, 0);
+    font-size: 35px;
+    transition: .3s
 }

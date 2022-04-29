@@ -11,21 +11,9 @@
     height: 1px;
 }
 
+/**/
 .open {
     animation: iniciaBotao 0.4s;
-}
-
-.close {
-    animation: finalizaBotao 0.5s;
-}
-.boxOpen{
-    animation: openContent 0.5s ease-in;
-}
-.openHeight{
-    animation: openHeight 0.5s linear;
-}
-.goSide{
-    animation: marginLeft 0.5s linear;
 }
 
 @keyframes iniciaBotao {
@@ -38,6 +26,11 @@
     }
 }
 
+/**/
+.close {
+    animation: finalizaBotao 0.5s;
+}
+
 @keyframes finalizaBotao {
     100% {
         padding: 0
@@ -47,29 +40,61 @@
         padding: 10px 50px
     }
 }
-@keyframes openContent{
-    0%{
+
+/**/
+.openWidth{
+    animation: openWidth 0.5s ease-in;
+}
+
+@keyframes openWidth {
+    0% {
         width: 0px;
     }
-    100%{
-        
+
+    100% {
+
         width: 680px;
     }
 }
+
+/**/
+.openHeight {
+    animation: openHeight 0.5s linear;
+}
+
 @keyframes openHeight {
-    0%{
+    0% {
         height: 0px;
     }
-    100%{
+
+    100% {
         height: 650px;
     }
 }
 
-@keyframes marginLeft{
-    0%{
+/**/
+.goSide {
+    animation: marginLeft 0.5s linear;
+}
+
+@keyframes marginLeft {
+    0% {
         margin-left: 0px;
     }
-    100%{
+
+    100% {
         margin-left: 642px;
+    }
+}
+
+.fadein{
+    animation: fadeIn 0.5s linear;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
     }
 }

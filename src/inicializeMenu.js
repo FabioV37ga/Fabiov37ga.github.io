@@ -47,7 +47,7 @@ function hideButton() {
     button.classList.remove("open")
     button.classList.add("close")
     button.addEventListener("animationend", () => {
-        boxOpen();
+        openWidth();
         button.remove()
     })
 }
