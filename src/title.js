@@ -1,3 +1,4 @@
+console.log("page: 1 'home'")
 var initState = 0;
 function init() {
     if (initState == 0) {

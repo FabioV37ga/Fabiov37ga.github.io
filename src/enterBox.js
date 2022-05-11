@@ -1,5 +1,5 @@
 function createBlock(){
-    console.log("creating block...")
+    
     //sect.bloco__conteudo
     var blocoConteudo = $("<section>", {class: "bloco__conteudo hidden"}).appendTo(".bloco")
 

@@ -21,16 +21,17 @@ function showButton(e) {
         for (let i = 0; i <= pointers.length - 1; i++) {
             pointers[i].remove()
         }
-        console.log("button.click")
+        
         if (e == 1){
             hideButton();
         }
+        console.log("page: 2 'dcd'")
     })
 
     button.addEventListener("animationend", function () {
         button.textContent = "INICIAR"
         button.style.padding = "10px 8.15px";
-        console.log("teste!!")
+        
     })
 
     var i = 1
