@@ -80,7 +80,7 @@ function closeBox(e){
                     x++;
                     if (x % 2 == 0){
                         blocoConteudo.style.width = "0px"
-                        blocoConteudo.remove()
+                        //blocoConteudo.remove()
                         x = 0;
                         //showButton(1)
                     }

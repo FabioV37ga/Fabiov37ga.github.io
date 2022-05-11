@@ -43,9 +43,10 @@ function typeText(text) {
 blink();
 
 function eraseText(text) {
-    const titulo = document.querySelector(".titulo")
+    var titulo = document.querySelector(".titulo")
     var currentText = titulo.textContent
-    const tituloSplit = currentText.split('');
+    var tituloSplit = currentText.split('');
+    
 
     var tamanho = tituloSplit.length
     var intervalo = setInterval(function () {
@@ -57,8 +58,11 @@ function eraseText(text) {
             titulo.textContent = tituloSplit[i]
             texto = anterior + tituloSplit[i]
             anterior = texto
+            
         }
+        titulo = document.querySelector(".titulo")
         titulo.textContent = anterior
+
         if (tamanho == 0) {
             clearInterval(intervalo)
             typeText(text)
