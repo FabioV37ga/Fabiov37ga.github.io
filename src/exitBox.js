@@ -9,6 +9,8 @@ function closeBox(e){
     windows[1].classList.remove("goSide");
     browses[0].children[0].classList.remove("fadein");
     browses[1].children[0].classList.remove("fadein");
+
+    //resolver repeticao: 
     
     switch(e){
         case 1:
@@ -81,9 +83,12 @@ function closeBox(e){
                     if (x % 2 == 0){
                         blocoConteudo.style.width = "0px"
                         //blocoConteudo.remove()
-                        x = 0;
-                        //showButton(1)
+                    }else if (x == 3){
+                        blocoConteudo.remove()
+                        x=0;
+                        showButton(1);
                     }
+                    
                 })
             }     
         break;
