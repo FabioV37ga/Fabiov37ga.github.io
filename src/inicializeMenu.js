@@ -2,7 +2,11 @@ window.page = 1
 // 1 = menu
 // 2 = daycyclediscord
 // 3 = laptopcraft
-function showButton() {
+function showButton(e) {
+    if (e == 1){
+        const cButton = $("<button>", {class: "nav__botao iniciar", style: "opacity: 0"}).appendTo(".btn_ph")
+    }
+    
     const button = document.querySelector(".iniciar")
     const pointers = document.querySelectorAll(".pointer")
 
@@ -18,7 +22,7 @@ function showButton() {
     button.addEventListener("animationend", function () {
         button.textContent = "INICIAR"
         button.style.padding = "10px 8.15px";
-        button.style.marginLeft = "4px"
+        
     })
 
     var i = 1

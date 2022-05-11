@@ -49,23 +49,10 @@ function openWindow(){
     windows[1].classList.remove("goSide")
     windows[1].classList.add("goSide")
     windows[1].addEventListener("animationend", () => {
-        windows[1].style.marginLeft = "642px"
+        windows[1].style.marginLeft = "628px"
         showBrowse()
     })
 }
-
-function showBrowse(){
-    console.log("page: "+ window.page)
-    const browses = document.querySelectorAll(".browse");
-
-    var cBrowse1 = $("<a>", {class: "fadein", text: "<"}).appendTo(browses[0])
-    var cBrowse1 = $("<a>", {class: "fadein", text: ">"}).appendTo(browses[1])
-
-    browses[0].addEventListener("click", ()=>{
-        execucoes = 0;
-        window.page--;
-        console.log("(<.click) page: "+ window.page)
-
-    })
-
-}
+//conteudo, .conteudo
+//blocoConteudo, .bloco__conteudo
+//windows[1], .window (direita)
