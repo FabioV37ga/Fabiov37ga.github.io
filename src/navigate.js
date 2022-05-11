@@ -1,5 +1,5 @@
 function showBrowse() {
-
+    
     const browses = document.querySelectorAll(".browse");
 
 
@@ -25,12 +25,12 @@ function reloadPage() {
             closeBox(1);
             break
         case 2:
-            console.log("2 - DCD");
-            repo(2);
+            console.log("page: 2 'dcd'");
+            repo(1);
             break;
         case 3:
-            console.log("3 - LPC");
-            repo(3);
+            console.log("page: 3 'lpc'");
+            repo(2);
             break;
     }
 }

@@ -26,6 +26,7 @@ function showButton(e) {
             hideButton();
         }
         console.log("page: 2 'dcd'")
+        eraseText("Day Cycle Discord")
     })
 
     button.addEventListener("animationend", function () {

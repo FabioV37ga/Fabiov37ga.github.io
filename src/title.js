@@ -6,22 +6,28 @@ function init() {
         initState = 1
     }
 }
+var slider = document.querySelector(".slider")
+function blink(e) {
 
-function blink() {
-    const slider = document.querySelector(".slider")
-    var intervalId = setInterval(function () {
+    if (e == 2){
+        slider.replaceWith(slider.cloneNode(true));
+        slider = document.querySelector(".slider")
+        
+    }else{
+        var intervalId = setInterval(function () {
 
-        if (slider.style.opacity == 100) {
-            slider.style.opacity = 0
-        } else {
-            slider.style.opacity = 100
-
-        }
-    }, 630);
+            if (slider.style.opacity == 100) {
+                slider.style.opacity = 0
+            } else {
+                slider.style.opacity = 100
+            }
+        }, 630);
+    }
 }
 
 typeText("v37ga's repository")
 function typeText(text) {
+    blink(2)
     textUpper = text.toUpperCase();
     const titulo = document.querySelector(".titulo")
     const string = "> " + textUpper;
@@ -74,6 +80,5 @@ function eraseText(text) {
 
 const button = document.querySelector(".iniciar")
 button.addEventListener("click", function () {
-    eraseText("Day Cycle Discord")
     hideButton()
 })
