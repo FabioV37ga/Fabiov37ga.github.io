@@ -26,11 +26,16 @@ function reloadPage() {
             break
         case 2:
             console.log("page: 2 'dcd'");
+            eraseText("Day Cycle Discord");
             repo(1);
             break;
         case 3:
             console.log("page: 3 'lpc'");
+            eraseText("LapTop Craft");
             repo(2);
             break;
+        case 4:
+            window.page = 3;
+            break
     }
 }
