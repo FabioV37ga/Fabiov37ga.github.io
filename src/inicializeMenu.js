@@ -3,16 +3,16 @@ window.page = 1
 // 2 = daycyclediscord
 // 3 = laptopcraft
 function showButton(e) {
-    if (e == 1){
-        const cButton = $("<button>", {class: "nav__botao iniciar", style: "opacity: 0"}).appendTo(".btn_ph")
-        const cPointerA = $("<span>", {class: "pointer r", style: "opacity: 0", text: ">"}).prependTo(".bloco__nav")
-        const cPointerB = $("<span>", {class: "pointer r", style: "opacity: 0", text: "<"}).appendTo(".bloco__nav")
+    if (e == 1) {
+        const cButton = $("<button>", { class: "nav__botao iniciar", style: "opacity: 0" }).appendTo(".btn_ph")
+        const cPointerA = $("<span>", { class: "pointer r", style: "opacity: 0", text: ">" }).prependTo(".bloco__nav")
+        const cPointerB = $("<span>", { class: "pointer r", style: "opacity: 0", text: "<" }).appendTo(".bloco__nav")
     }
-    
+
     const button = document.querySelector(".iniciar")
     const pointers = document.querySelectorAll(".pointer")
-    
-    if (e == 1){
+
+    if (e == 1) {
         button.style.height = "41px"
     }
     button.addEventListener("click", () => {
@@ -21,18 +21,19 @@ function showButton(e) {
         for (let i = 0; i <= pointers.length - 1; i++) {
             pointers[i].remove()
         }
-        
-        if (e == 1){
+
+        if (e == 1) {
             hideButton();
         }
-        console.log("page: 2 'dcd'")
-        eraseText("Day Cycle Discord")
+
+
+        reloadPage()
     })
 
     button.addEventListener("animationend", function () {
         button.textContent = "INICIAR"
         button.style.padding = "10px 8.15px";
-        
+
     })
 
     var i = 1

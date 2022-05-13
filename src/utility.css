@@ -1,4 +1,4 @@
-.r{
+.r {
     margin: 15px;
 }
 
@@ -66,10 +66,11 @@
 }
 
 @keyframes closeWidth {
-    0%{
+    0% {
         width: 800px;
     }
-    100%{
+
+    100% {
         width: 0px;
     }
 }

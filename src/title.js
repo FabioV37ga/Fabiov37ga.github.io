@@ -5,15 +5,16 @@ function init() {
         showButton();
         initState = 1
     }
+    releaseBrowse(0)
 }
 var slider = document.querySelector(".slider")
 function blink(e) {
 
-    if (e == 2){
+    if (e == 2) {
         slider.replaceWith(slider.cloneNode(true));
         slider = document.querySelector(".slider")
-        
-    }else{
+
+    } else {
         var intervalId = setInterval(function () {
 
             if (slider.style.opacity == 100) {
@@ -53,7 +54,7 @@ function eraseText(text) {
     var titulo = document.querySelector(".titulo")
     var currentText = titulo.textContent
     var tituloSplit = currentText.split('');
-    
+
 
     var tamanho = tituloSplit.length
     var intervalo = setInterval(function () {
@@ -65,7 +66,7 @@ function eraseText(text) {
             titulo.textContent = tituloSplit[i]
             texto = anterior + tituloSplit[i]
             anterior = texto
-            
+
         }
         titulo = document.querySelector(".titulo")
         titulo.textContent = anterior
