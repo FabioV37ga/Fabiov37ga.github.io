@@ -53,6 +53,10 @@ body {
     justify-content: center;
 }
 
+.pointer{
+    text-align: center;
+}
+
 .nav__botao,
 .nav__botao_on {
     background: var(--green);   

@@ -17,6 +17,7 @@
             2.1.3 Atributo 'botao' (elemento)
         2.2 Métodos
             2.2.1 Método 'aparece()' (Mostra o botão inciar com uma animação)
+            2.2.2 Método 'pisca()' (Pisca '>' e "<" 3 vezes)
 
 */
 
@@ -141,16 +142,36 @@ class Iniciar {
                     this.botao.classList.remove("nav__botao")
                     this.botao.classList.add("nav__botao_on")
                     // Chama a função pisca()
-                    // this.pisca()
+                    Iniciar.pisca()
                     // por fim, para o loop.
                     clearInterval(intervalo)
                 }
             }
         }, 1);
     }
-
     // Método pisca(): Faz os caracteres '>' e '<' piscarem 3 vezes.
     static pisca() {
-        
+        // Conta o número de execuções do loop.
+        var execucoes = 0;
+        // Loop com intervalo, responsável por piscar os caracteres.
+        var intervalo = setInterval(() => {
+            // Alterna a opacidade dos caracteres entre '0' e '100' a cada execução
+            if (this.pointers[0].style.opacity == 0) {
+                // 100
+                this.pointers[0].style.opacity = 100
+                this.pointers[1].style.opacity = 100
+            } else {
+                // 0
+                this.pointers[0].style.opacity = 0
+                this.pointers[1].style.opacity = 0
+            }
+            // Incrementa execucoes;
+            execucoes++
+            // Quando piscar 3 vezes (6 execuções):
+            if (execucoes == 6) {
+                // Para o loop
+                clearInterval(intervalo)
+            }
+        }, 280);
     }
 }
