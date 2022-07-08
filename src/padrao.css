@@ -1,0 +1,16 @@
+/*
+    'padrao.css'
+    Esse arquivo é responsável pela padronização de algumas estilizações.
+*/
+
+
+
+:root {
+    --green: #33FF00;
+    --darkgreen: #2de000;
+}
+
+@font-face {
+    font-family: "computer";
+    src: url("VCR_OSD_MONO_1.001.ttf");
+}

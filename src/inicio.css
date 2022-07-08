@@ -1,0 +1,64 @@
+/*
+    Esse arquivo controla a estilização geral da parte inicial do site.
+*/
+
+body {
+    background: black;
+    font-family: computer !important;
+}
+
+/* Bloco geral */
+.bloco {
+    width: 735px;
+    margin: 150px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.break {
+    flex-basis: 100;
+}
+
+/* Sessão titulo */
+.bloco__titulo {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: var(--green);
+    font-size: 26px;
+}
+
+.slider {
+    margin: 1px 4px
+}
+
+
+/* Sessão nav */
+
+.bloco__nav {
+    color: var(--green);
+    width: 100%;
+    height: 45px;
+    margin-top: 15px
+}
+
+.bloco__nav nav {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__botao {
+    background: var(--green);   
+    border-radius: 4px;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: computer;
+}
+
+.nav__botao:hover {
+    background: var(--darkgreen)
+}

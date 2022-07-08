@@ -6,50 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[v37ga]</title>
-    <link rel="stylesheet" href="src/page.css">
-    <link rel="stylesheet" href="src/blocos.css">
-    <link rel="stylesheet" href="src/utility.css">
-    <link rel="stylesheet" href="src/repo.css">
+    <link rel="stylesheet" href="src/reset.css">
+    <link rel="stylesheet" href="src/padrao.css">
+    <link rel="stylesheet" href="src/inicio.css">
+    <link rel="stylesheet" href="src/animacoes.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
     <main>
+        <!-- Bloco geral -->
         <section class="bloco">
+
+            <!-- Bloco título -->
             <section class="bloco__titulo">
-                <p class="titulo"></p>
+                <!-- Título -->
+                <p class="titulo">></p>
+                <!-- Slider | -->
                 <div class="slider" style="opacity: 100">
                     |
                 </div>
             </section>
 
+            <!-- break -->
             <div class="break"></div>
 
+            <!-- Bloco navegação -->
             <section class="bloco__nav">
                 <nav>
+                    <!-- Pointer 1 '>' -->
                     <span class="pointer" style="opacity:0;">> </span>
-                    <span class="btn_ph"><a class="nav__botao iniciar" style="opacity:0"></a></span>
+                    <!-- Placeholder para botão iniciar -->
+                    <span class="btn_ph"><button class="iniciar nav__botao" style="opacity:0"></button></span>
+                    <!-- Pointer 2 '<' -->
                     <span class="pointer" style="opacity:0;"> <</span>
                 </nav>
             </section>
 
+            <!-- break -->
             <div class="break"></div>
 
         </section>
     </main>
 
-    <script src="src/navigate.js"></script>
-    <script src="src/inicializeMenu.js"></script>
-    <script src="src/title.js"></script>
-    <script src="src/enterBox.js"></script>
-    <script src="src/exitBox.js"></script>  <!---->
-    <script src="src/repositories.js"></script>
+    <script src="src/Inicio.js"></script>
+    <script src="src/main.js"></script>
 </body>
 
 </html>
-<!--
-BUGS: 
-    1. Não é possivel clicar no botão do repositorio, isso acontece pq a windowbox está na frente.
-       P/ resolver: após abertura do windowbox, apagar windowbox.
-                    se for necessario voltar ou avançar criar novamente p/ fechar
--->
