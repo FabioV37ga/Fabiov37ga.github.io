@@ -19,6 +19,8 @@ body {
     flex-basis: 100;
 }
 
+
+
 /* Sessão titulo */
 .bloco__titulo {
     width: 400px;
@@ -32,6 +34,7 @@ body {
 .slider {
     margin: 1px 4px
 }
+
 
 
 /* Sessão nav */
@@ -50,13 +53,19 @@ body {
     justify-content: center;
 }
 
-.nav__botao {
+.nav__botao,
+.nav__botao_on {
     background: var(--green);   
     border-radius: 4px;
     color: black;
     font-size: 20px;
     cursor: pointer;
     font-family: computer;
+}
+
+.nav__botao_on{
+    width: 103px;
+    height: 41px;
 }
 
 .nav__botao:hover {

@@ -12,7 +12,12 @@
             1.2.3 Método 'pisca()' (Pisca o slider, para efeito de digitação)
     2. Classe Iniciar
         2.1 Atributos
-            2.1.1 
+            2.1.1 Atributo 'Pointers' (elemento)
+            2.1.2 Atributo 'botao_placeholder' (elemento)
+            2.1.3 Atributo 'botao' (elemento)
+        2.2 Métodos
+            2.2.1 Método 'aparece()' (Mostra o botão inciar com uma animação)
+
 */
 
 class Titulo {
@@ -42,10 +47,9 @@ class Titulo {
                 clearInterval(intervalo);
                 // Permite que uma nova digitação comece
                 window.block = 0;
-                console.log("1")
-                if (estado == 0){
-                    console.log("2")
+                if (estado == 0) {
                     Iniciar.aparece()
+                    Titulo.pisca()
                 }
             }
         }, 50);
@@ -95,41 +99,58 @@ class Titulo {
     }
 }
 
-class Iniciar{
+class Iniciar {
     // Atributos (elementos)
     static pointers = document.querySelectorAll(".pointer");
     static botao_placeholder = document.querySelector("btn_ph");
     static botao = document.querySelector(".iniciar");
 
+    static cria() {
+
+    }
+
     // Método aparece(): Faz o botão aparecer, com uma animação de abrir.
-    static aparece(){
+    static aparece() {
         // Altura e largura do botão:
-        var largura = 0;
-        var altura = 0;
+        var largura = 0; // até 103
+        var altura = 0; // até 41
         // Loop com intervalo, responsável pela animação de abrir.
         var intervalo = setInterval(() => {
             // Define a altura e a largura atual do loop a cada execução.
             this.botao.style.width = `${largura}px`;
             this.botao.style.height = `${altura}px`;
             // Sessão responsável por incrementar os valores da largura e altura e finalizar o loop
-            if(altura < 41){
+            if (altura < 41) {
                 // Incrementa altura até 41px
                 altura++
                 // if responsável por mostrar o botão somente no incio do animação, evita um bug no display do botão.
-                if (altura == 2){
+                if (altura == 2) {
                     this.botao.style.opacity = 100
                 }
-            }else{
-                if (largura < 103){
+            } else {
+                if (largura < 103) {
                     // Incrementa largura até 103px
                     largura++;
-                }else{
-                    // Quando chegar em 103, mostra o texto "INICIAR"
-                    this.botao.textContent ="INICIAR"
-                    // também para o loop.
+                } else {
+                    // Quando animação terminar executa:
+                    // Mostra o texto "INICIAR"
+                    this.botao.textContent = "INICIAR"
+                    // Reseta o estilo
+                    this.botao.style = ""
+                    // Troca a classe para ativo
+                    this.botao.classList.remove("nav__botao")
+                    this.botao.classList.add("nav__botao_on")
+                    // Chama a função pisca()
+                    // this.pisca()
+                    // por fim, para o loop.
                     clearInterval(intervalo)
                 }
             }
         }, 1);
+    }
+
+    // Método pisca(): Faz os caracteres '>' e '<' piscarem 3 vezes.
+    static pisca() {
+        
     }
 }
