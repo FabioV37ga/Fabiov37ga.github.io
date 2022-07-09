@@ -18,6 +18,7 @@
         2.2 Métodos
             2.2.1 Método 'aparece()' (Mostra o botão inciar com uma animação)
             2.2.2 Método 'pisca()' (Pisca '>' e "<" 3 vezes)
+            2.2.3 Método 'some()' (Esconde o botão iniciar com uma animação)
 
 */
 
@@ -86,7 +87,7 @@ class Titulo {
     }
 
     // Método pisca(): pisca o caractere '|', para dar efeito de digitação.
-    static pisca(status) {
+    static pisca() {
         // Intervalo 600ms
         var intervalo = setInterval(function () {
             // Troca a opacidade entre os valores '0' e '100' a cada execução.
@@ -96,9 +97,9 @@ class Titulo {
                 Titulo.slider.style.opacity = 100;
             }
         }, 600);
-
     }
 }
+
 
 class Iniciar {
     // Atributos (elementos)
@@ -106,9 +107,11 @@ class Iniciar {
     static botao_placeholder = document.querySelector("btn_ph");
     static botao = document.querySelector(".iniciar");
 
-    static cria() {
-
-    }
+    // static cria() {
+    //     var botao = $("<button>", { class: "iniciar nav__botao", style: "opacity: 0" }).appendTo(".btn_ph")
+    //     var pointer_r = $("<span>", { class: "pointer r", style: "opacity: 0", text: ">" }).prependTo(".btn_ph")
+    //     var pointer_l = $("<span>", { class: "pointer l", style: "opacity: 0" }).appendTo(".btn_ph")
+    // }
 
     // Método aparece(): Faz o botão aparecer, com uma animação de abrir.
     static aparece() {
@@ -149,6 +152,7 @@ class Iniciar {
             }
         }, 1);
     }
+
     // Método pisca(): Faz os caracteres '>' e '<' piscarem 3 vezes.
     static pisca() {
         // Conta o número de execuções do loop.
@@ -174,4 +178,39 @@ class Iniciar {
             }
         }, 280);
     }
+
+    // Método some(): Faz o botão desaparecer com uma animação.
+    static some() {
+        // Cancela animação dos pointers
+        this.pointers[0].remove()
+        this.pointers[1].remove()
+        // Altura e largura do botão:
+        var largura = 103;
+        var altura = 41;
+        // Loop com intervalo, responsável por animar o fechamento do botão
+        var intervalo = setInterval(() => {
+            // Define a altura e a largura atual do loop a cada execução.
+            this.botao.style.width = `${largura}px`;
+            this.botao.style.height = `${altura}px`;
+            if (largura > 0) {
+                // Largura 103 -> 0
+                largura--;
+            } else {
+                // Quando largura = 0:
+                // Remove texto do botão
+                this.botao.textContent = "";
+                if (altura > 0) {
+                    // Altura 41 -> 0
+                    altura--;
+                } else {
+                    // Quando altura = 0:
+                    // Remove o botão
+                    this.botao.remove()
+                    // Para o loop
+                    clearInterval(intervalo)
+                }
+            }
+        }, 1);
+    }
+
 }

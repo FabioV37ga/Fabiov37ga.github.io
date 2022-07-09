@@ -72,6 +72,7 @@ body {
     height: 41px;
 }
 
-.nav__botao:hover {
+.nav__botao:hover,
+.nav__botao_on:hover {
     background: var(--darkgreen)
 }

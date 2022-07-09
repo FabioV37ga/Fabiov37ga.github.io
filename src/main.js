@@ -14,7 +14,9 @@ window.block = 0;
 // Troca o titulo quando o botão 'iniciar' for pressionado
 document.querySelector(".iniciar").addEventListener("click", () => {
     if (window.block == 0) {
-        Titulo.apaga("1. Day Cycle Discord")
         window.block = 1;
+        Titulo.apaga("1. Day Cycle Discord");
+        Iniciar.some();
     }
 })
+
