@@ -106,19 +106,30 @@ class Iniciar {
     // Atributos (elementos)
     static pointers;
     static botao;
-    static botao_placeholder = document.querySelector("btn_ph");
+    static botao_placeholder = ".btn_ph";
 
     // Método cria(): Utilizando jquery, cria os elementos que serão manipulados. Ponto de partida.
     static cria() {
         // Cria elementos:
-        const botao = $("<button>", { class: "iniciar nav__botao", style: "opacity: 0" }).appendTo(".btn_ph")
-        const pointer_l = $("<span>", { class: "pointer", style: "opacity: 0", text: "> " }).insertBefore(".btn_ph")
-        const pointer_r = $("<span>", { class: "pointer", style: "opacity: 0", text: " <" }).insertAfter(".btn_ph")
+        const botao = $("<button>", { class: "iniciar nav__botao", style: "opacity: 0" }).appendTo(this.botao_placeholder)
+        const pointer_l = $("<span>", { class: "pointer", style: "opacity: 0", text: "> " }).insertBefore(this.botao_placeholder)
+        const pointer_r = $("<span>", { class: "pointer", style: "opacity: 0", text: " <" }).insertAfter(this.botao_placeholder)
         // Métodos setter
         this.pointers = document.querySelectorAll(".pointer");
         this.botao = document.querySelector(".iniciar");
         // Chama função aparece(), para mostrar os elementos criados com uma animação.
         this.aparece()
+        // Quando o botão criado for clicado, executa:
+        this.botao.addEventListener("click", () => {
+            // Se não houver uma animação de digitação ocorrendo...
+            if (window.block == 0) {
+                window.block = 1;
+                // Chama função Titulo.apaga()
+                Titulo.apaga("1. Day Cycle Discord");
+                // Chama função Iniciar.some()
+                Iniciar.some();
+            }
+        })
     }
 
     // Método aparece(): Faz o botão aparecer, com uma animação de abrir.
@@ -215,6 +226,7 @@ class Iniciar {
                     // Remove o botão
                     this.botao.remove()
                     // Para o loop
+                    this.cria()
                     clearInterval(intervalo)
                 }
             }

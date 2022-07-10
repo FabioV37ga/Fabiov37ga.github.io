@@ -15,10 +15,8 @@
 
     // Sessão responsável por impedir 2 execuções simultâneas da função digita/apaga.
     window.block = 0;
-    // Troca o titulo quando o botão 'iniciar' for pressionado
     
-
-    console.log("Botao")
+    Janela.cria()
 })()
 
 
