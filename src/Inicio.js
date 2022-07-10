@@ -7,9 +7,10 @@
             1.1.2 Atributo 'titulo' (elemento)
             1.1.3 Atributo 'slider' (elemento)
         1.2 Métodos
-            1.2.1 Método 'digita()' (Digita um texto no campo titulo.)
-            1.2.2 Método 'apaga()' (Apaga um texto no campo titulo.)
-            1.2.3 Método 'pisca()' (Pisca o slider, para efeito de digitação)
+            1.2.1 Método 'cria()' (Cria elementos com jquery)
+            1.2.2 Método 'digita()' (Digita um texto no campo titulo.)
+            1.2.3 Método 'apaga()' (Apaga um texto no campo titulo.)
+            1.2.4 Método 'pisca()' (Pisca o slider, para efeito de digitação)
     2. Classe Iniciar
         2.1 Atributos
             2.1.1 Atributo 'Pointers' (elemento)
@@ -50,7 +51,7 @@ class Titulo {
                 // Permite que uma nova digitação comece
                 window.block = 0;
                 if (estado == 0) {
-                    Iniciar.aparece()
+                    Iniciar.cria()
                     Titulo.pisca()
                 }
             }
@@ -103,15 +104,22 @@ class Titulo {
 
 class Iniciar {
     // Atributos (elementos)
-    static pointers = document.querySelectorAll(".pointer");
+    static pointers;
+    static botao;
     static botao_placeholder = document.querySelector("btn_ph");
-    static botao = document.querySelector(".iniciar");
 
-    // static cria() {
-    //     var botao = $("<button>", { class: "iniciar nav__botao", style: "opacity: 0" }).appendTo(".btn_ph")
-    //     var pointer_r = $("<span>", { class: "pointer r", style: "opacity: 0", text: ">" }).prependTo(".btn_ph")
-    //     var pointer_l = $("<span>", { class: "pointer l", style: "opacity: 0" }).appendTo(".btn_ph")
-    // }
+    // Método cria(): Utilizando jquery, cria os elementos que serão manipulados. Ponto de partida.
+    static cria() {
+        // Cria elementos:
+        const botao = $("<button>", { class: "iniciar nav__botao", style: "opacity: 0" }).appendTo(".btn_ph")
+        const pointer_l = $("<span>", { class: "pointer", style: "opacity: 0", text: "> " }).insertBefore(".btn_ph")
+        const pointer_r = $("<span>", { class: "pointer", style: "opacity: 0", text: " <" }).insertAfter(".btn_ph")
+        // Métodos setter
+        this.pointers = document.querySelectorAll(".pointer");
+        this.botao = document.querySelector(".iniciar");
+        // Chama função aparece(), para mostrar os elementos criados com uma animação.
+        this.aparece()
+    }
 
     // Método aparece(): Faz o botão aparecer, com uma animação de abrir.
     static aparece() {
