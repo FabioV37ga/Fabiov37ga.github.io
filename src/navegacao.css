@@ -1,6 +1,6 @@
 /*
-    Esse arquivo é responsável pela estilização da janela e
-    também do repositório.
+Esse arquivo é responsável pela estilização da janela e
+também do repositório.
 
 */
 
@@ -11,7 +11,14 @@
 
 }
 
+.bloco__janela .off>* {
+    display: none !important;
+    height: 0;
+    width: 0;
+}
+
 .browse {
+    opacity: 0;
     width: 50px;
     display: flex;
     justify-content: center;
@@ -19,7 +26,7 @@
     font-size: 35px;
 }
 
-.browse a:hover{
+.browse a:hover {
     cursor: pointer;
     color: var(--darkgreen);
     font-size: 39px;
@@ -30,7 +37,7 @@
     display: flex;
     width: inherit;
     height: inherit;
-    position: absolute
+    position: absolute;
 }
 
 .porta {
@@ -48,6 +55,36 @@
     border-radius: 4px;
 }
 
-.bloco__janela .off>* {
-    display: none !important;
+.conteudo{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.repositorio__imagem{
+    width: 500px;
+    height: 350px;
+    background: magenta;
+
+}
+
+.repositorio__descricao{
+    width: 500px;
+    height: 185px;
+    background-color: magenta;
+}
+
+.repositorio button{
+    background: var(--green);   
+    border-radius: 4px;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: computer;
+    width: 160px;
+    height: 50px;
 }

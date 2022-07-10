@@ -1,0 +1,16 @@
+.bloco__janela .browse{
+    opacity: 0 !important;
+}
+
+.bloco__janela .browse .on{
+    animation: 0.4s fade-in linear;
+}
+
+@keyframes fade-in{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
