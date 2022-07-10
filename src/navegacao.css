@@ -1,0 +1,53 @@
+/*
+    Esse arquivo é responsável pela estilização da janela e
+    também do repositório.
+
+*/
+
+.bloco__janela {
+    margin: 0 auto;
+    color: var(--green);
+    display: flex;
+
+}
+
+.browse {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.browse a:hover{
+    cursor: pointer;
+    color: var(--darkgreen);
+    font-size: 39px;
+    transition: .5s;
+}
+
+.portas {
+    display: flex;
+    width: inherit;
+    height: inherit;
+    position: absolute
+}
+
+.porta {
+    width: 50%;
+    height: 100%;
+    background: var(--green);
+}
+
+.repositorio {
+    /* width: 636px;
+    height: 658px; */
+    height: 0px;
+    width: 0px;
+    border: 3px solid var(--green);
+    border-radius: 4px;
+}
+
+.bloco__janela .off>* {
+    display: none !important;
+}

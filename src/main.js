@@ -16,7 +16,7 @@
     // Sessão responsável por impedir 2 execuções simultâneas da função digita/apaga.
     window.block = 0;
     
-    Janela.cria()
+    
 })()
 
 

@@ -104,6 +104,7 @@ class Titulo {
 
 class Iniciar {
     // Atributos (elementos)
+    static bloco_nav = document.querySelector(".bloco__nav");
     static pointers;
     static botao;
     static botao_placeholder = ".btn_ph";
@@ -225,12 +226,14 @@ class Iniciar {
                     // Quando altura = 0:
                     // Remove o botão
                     this.botao.remove()
+                    // Remove a altura do bloco, dá espaço para a janela do repositorio.
+                    this.bloco_nav.style.height = 0;
+                    // Cria a janela para o repositório.
+                    Janela.cria()
                     // Para o loop
-                    this.cria()
                     clearInterval(intervalo)
                 }
             }
         }, 1);
     }
-
 }

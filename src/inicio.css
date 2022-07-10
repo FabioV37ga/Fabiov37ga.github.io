@@ -10,7 +10,7 @@ body {
 /* Bloco geral */
 .bloco {
     width: 735px;
-    margin: 150px auto;
+    margin: 125px auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -18,8 +18,6 @@ body {
 .break {
     flex-basis: 100;
 }
-
-
 
 /* Sessão titulo */
 .bloco__titulo {
