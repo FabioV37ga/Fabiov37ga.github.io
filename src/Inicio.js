@@ -181,6 +181,8 @@ class Iniciar {
 
     // Método some(): Faz o botão desaparecer com uma animação.
     static some() {
+        // Remove texto do botão
+        this.botao.textContent = "";
         // Cancela animação dos pointers
         this.pointers[0].remove()
         this.pointers[1].remove()
@@ -197,8 +199,6 @@ class Iniciar {
                 largura--;
             } else {
                 // Quando largura = 0:
-                // Remove texto do botão
-                this.botao.textContent = "";
                 if (altura > 0) {
                     // Altura 41 -> 0
                     altura--;
