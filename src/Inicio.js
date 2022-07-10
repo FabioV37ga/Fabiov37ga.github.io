@@ -51,8 +51,11 @@ class Titulo {
                 // Permite que uma nova digitação comece
                 window.block = 0;
                 if (estado == 0) {
+                    // Cria botão iniciar
                     Iniciar.cria()
+                    // Pisca o caractere '|'
                     Titulo.pisca()
+                    estado = 1;
                 }
             }
         }, 50);
@@ -97,7 +100,7 @@ class Titulo {
             } else {
                 Titulo.slider.style.opacity = 100;
             }
-        }, 600);
+        }, 650);
     }
 }
 
