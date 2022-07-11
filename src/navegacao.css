@@ -5,7 +5,7 @@ também do repositório.
 */
 
 .bloco__janela {
-    margin: 0 auto;
+    margin: 20px auto;
     color: var(--green);
     display: flex;
 
@@ -67,14 +67,18 @@ também do repositório.
 
 .repositorio__imagem{
     width: 500px;
-    height: 350px;
+    height: 300px;
     background: magenta;
+    border: 4px solid var(--green);
+    border-radius: 3px;
 
 }
 
 .repositorio__descricao{
     width: 500px;
     height: 185px;
+    border: 4px solid var(--green);
+    border-radius: 3px;
     background-color: magenta;
 }
 

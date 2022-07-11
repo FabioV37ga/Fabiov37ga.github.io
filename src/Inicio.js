@@ -233,6 +233,7 @@ class Iniciar {
                     this.bloco_nav.style.height = 0;
                     // Cria a janela para o repositório.
                     Janela.cria()
+                    Navega.set(1)
                     // Para o loop
                     clearInterval(intervalo)
                 }

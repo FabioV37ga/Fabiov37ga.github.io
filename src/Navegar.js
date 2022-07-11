@@ -113,6 +113,9 @@ class Janela {
                     // Aplica o espaçamento na janela, abrindo-a.
                     Janela.portas[1].style.marginLeft = `${abertura}%`;
                     // console.log(Janela.portas)
+                    if (abertura == 0.5) {
+                        document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
+                    }
                 } else {
                     // ao fim da animação, remove o elemento.
                     document.querySelector(".portas").remove()
@@ -125,4 +128,27 @@ class Janela {
             }
         }, 1);
     }
+}
+
+class Navega {
+    // Atributos
+    static pointers; // (Elemento)
+    static pagina_atual = 0; // Marcador da página atual
+
+    // Método set(inicia): Define os atributos e coloca função nos botões de navegação.
+    static set(inicia) {
+        // Define o atributo 
+        this.pointers = document.querySelectorAll(".browse");
+        // Adiciona 'click = navegar()'
+        // volta()
+        this.pointers[0].children[0].addEventListener("click", () => { this.navegar('<') })
+        // vai()
+        this.pointers[1].children[0].addEventListener("click", () => { this.navegar('>') })
+        // Se o argumento inicia for igual a 1, incrementa página em 1
+        if (inicia == 1) {
+            this.pagina_atual++;
+        }
+    }
+
+    
 }
