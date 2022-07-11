@@ -26,6 +26,6 @@
 <br>
 <i> Projeto conclusivo para o 1º semestre da faculdade.</i>
 <br>
-<i> Sistema de Ecommerce hospedado em website.</i>
+<i> Sistema de Ecommerce em website.</i>
 ![imagem git](https://user-images.githubusercontent.com/71238693/177415235-3598b0b2-1c77-4798-9f36-945f6ea5f4bc.png)
 
