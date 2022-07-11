@@ -116,6 +116,7 @@ class Janela {
                 } else {
                     // ao fim da animação, remove o elemento.
                     document.querySelector(".portas").remove()
+                    // Chama navegacao.aparece()
                     Janela.pointers[0].style.opacity = "100%"
                     Janela.pointers[1].style.opacity = "100%"
                     // termina o loop
