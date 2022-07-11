@@ -39,8 +39,8 @@ class Janela {
             {
                 const portas = $("<div>", { class: "portas" }).appendTo(".repositorio");
                 {
-                    const porta_l = $("<div>", { class: "porta" }).appendTo(".portas");
-                    const porta_r = $("<div>", { class: "porta" }).appendTo(".portas");
+                    var porta_l = $("<div>", { class: "porta" }).appendTo(".portas");
+                    var porta_r = $("<div>", { class: "porta" }).appendTo(".portas");
                 }
                 const conteudo = $("<div>", { class: "conteudo" }).insertAfter(".portas");
                 {
@@ -70,10 +70,10 @@ class Janela {
         this.botoes = document.querySelectorAll(".repositorio__botao");
         this.pointers = document.querySelectorAll(".browse");
 
-        this.abre()
+        this.abre(0)
     }
 
-    static abre() {
+    static abre(posicao) {
         // Largura da janela
         var largura_atual = 0;
         var largura_final = 630;
@@ -84,25 +84,32 @@ class Janela {
         var abertura = 0;
         // Loop com intervalo:
         var intervalo = setInterval(() => {
-            if (largura_atual < largura_final) {
-                // Incrementa largura_atual + 5 a cada execução até 630
-                largura_atual += 5
-                // Aplica a nova largura a cada execução, animando a largura.
-                this.repositorio.style.width = `${largura_atual}px`
-            } else {
-                // Quando a animação de largura termina, executa:
-                // Marca o repositorio como ligado
-                Janela.repositorio.classList.remove("off")
-                if (altura_atual < altura_final) {
-                    // Incrementa + 4 na altura atual a cada execução até 652
-                    altura_atual += 4
-                    // Aplica a nova altura a cada execução, animando altura.
-                    this.repositorio.style.height = `${altura_atual}px`
+            if (posicao == 0) {
+                if (largura_atual < largura_final) {
+                    // Incrementa largura_atual + 5 a cada execução até 630
+                    largura_atual += 5
+                    // Aplica a nova largura a cada execução, animando a largura.
+                    this.repositorio.style.width = `${largura_atual}px`
                 } else {
-                    // Quando terminar de animar altura chama abre_portas()
-                    abre_portas()
+                    // Quando a animação de largura termina, executa:
+                    // Marca o repositorio como ligado
+                    Janela.repositorio.classList.remove("off")
+                    if (altura_atual < altura_final) {
+                        // Incrementa + 4 na altura atual a cada execução até 652
+                        altura_atual += 4
+                        // Aplica a nova altura a cada execução, animando altura.
+                        this.repositorio.style.height = `${altura_atual}px`
+                    } else {
+                        // Quando terminar de animar altura chama abre_portas()
+                        abre_portas()
+                    }
                 }
             }
+
+            if (posicao == 1) {
+                abre_portas()
+            }
+
             // Essa função serve para animar as portas, revelando o conteudo abaixo delas.
             function abre_portas() {
 
@@ -112,7 +119,7 @@ class Janela {
                     abertura += 0.5;
                     // Aplica o espaçamento na janela, abrindo-a.
                     Janela.portas[1].style.marginLeft = `${abertura}%`;
-                    // console.log(Janela.portas)
+                
                     if (abertura == 0.5) {
                         document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
                     }
@@ -128,6 +135,94 @@ class Janela {
             }
         }, 1);
     }
+
+    // Método fecha(): Responsável por fechar portas e a janela.
+    static fecha(proximo) {
+
+        // Cria portas para serem fechadas:
+        const portas = $("<div>", { class: "portas" }).insertBefore(".conteudo");
+        {
+            var porta_l = $("<div>", { class: "porta" }).appendTo(".portas");
+            var porta_r = $("<div>", { class: "porta" }).appendTo(".portas");
+        }
+
+        // 
+        fecha_portas(proximo)
+
+        // Essa função anima o fechamento das portas.
+        function fecha_portas(proximo) {
+            // Seleciona a porta criada anteriormente
+            Janela.portas = document.querySelectorAll(".porta");
+            // Define ela como já aberta
+            var abertura = 100
+            // Loop com intervalo 1ms
+            var intervalo = setInterval(() => {
+                // Enquanto a porta não estiver completamente fechada
+                if (abertura > 0) {
+                    // Diminua a % da abertura por 1 por execução
+                    abertura--
+                    // Atribua esse valor no espaçamento das portas:
+                    Janela.portas[1].style.marginLeft = `${abertura}%`
+                }
+                else {
+                    // Quando a porta terminar de fechar, execute:
+                    // Escolhe se a janela vai abrir novamente, ou fechar por inteiro
+                    switch (proximo){
+                        case 0:
+                            // Fecha tudo
+                            fecha_geral()
+                            break;
+                        case 1:
+                            // Fecha e abre novamente
+                            Janela.abre(1)
+                            break;
+                    }
+                    // Para o loop
+                    clearInterval(intervalo)
+                }
+            }, 1);
+        }
+
+        function fecha_geral() {
+            // Remove os botões de navegação '<' e '>'
+            Janela.pointers[0].remove()
+            Janela.pointers[1].remove()
+            // Define dimensão atual da janela
+            var largura_atual = 658;
+            var altura_atual = 636;
+            // Loop com intervalo 1ms.
+            var intervalo = setInterval(() => {
+                // Enquanto a altura for maior que 0...
+                if (altura_atual > 0) {
+                    // Diminui 4 por execução
+                    altura_atual -= 4
+                    // Aplica nova altura ao display
+                    Janela.repositorio.style.height = `${altura_atual}px`
+                } else {
+                    // Quando a altura atingir 0, execute:
+                    // Enquanto a largura for maior que 0...
+                    if (largura_atual > 0) {
+                        // Diminui 4 por execução
+                        largura_atual -= 4;
+                        // Aplica nova largura ao display
+                        Janela.repositorio.style.width = `${largura_atual}px`
+                    } else {
+                        // Quando a largura atingir 0, execute:
+                        // Remove a janela
+                        Janela.bloco_janela.remove()
+                        // Define a altura do INICIAR de volta para 45px
+                        Iniciar.bloco_nav.style.height = '45px';
+                        // Cria botão INICIAR
+                        Iniciar.cria()
+                        // Para o loop
+                        clearInterval(intervalo);
+                    }
+                }
+            }, 1);
+        }
+    }
+
+
 }
 
 class Navega {
@@ -135,8 +230,8 @@ class Navega {
     static pointers; // (Elemento)
     static pagina_atual = 0; // Marcador da página atual
 
-    // Método set(inicia): Define os atributos e coloca função nos botões de navegação.
-    static set(inicia) {
+    // Método set(): Define os atributos e coloca função nos botões de navegação.
+    static set() {
         // Define o atributo 
         this.pointers = document.querySelectorAll(".browse");
         // Adiciona 'click = navegar()'
@@ -144,11 +239,40 @@ class Navega {
         this.pointers[0].children[0].addEventListener("click", () => { this.navegar('<') })
         // vai()
         this.pointers[1].children[0].addEventListener("click", () => { this.navegar('>') })
-        // Se o argumento inicia for igual a 1, incrementa página em 1
-        if (inicia == 1) {
-            this.pagina_atual++;
-        }
     }
 
-    
+    // Método navegar(): Decide a direção em que o usuário está navegando e redireciona para a página
+    static navegar(direcao) {
+        switch (direcao) {
+            // Click no botão '<' volta...
+            case '<':
+                volta()
+                break;
+            // Click no botão '>' vai...
+            case '>':
+                vai()
+                break
+        }
+        // Função volta()
+        function volta() {
+            // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
+            if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
+            // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
+            else Janela.fecha(1);
+            // Diminui o contador de paginas em 1
+            Navega.pagina_atual--
+            // Imprime a página atual no console
+            console.log("Página: " + Navega.pagina_atual)
+        }
+
+        function vai() {
+            // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
+            Janela.fecha(1);
+            // Se não há mais repositórios a frente, não faz nada.
+            // Incrementa o contador de paginas em 1
+            Navega.pagina_atual++;
+            // Imprime a página atual no console
+            console.log("Página: " + Navega.pagina_atual)
+        }
+    }
 }
