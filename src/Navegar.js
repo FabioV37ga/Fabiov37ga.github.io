@@ -10,6 +10,14 @@
         1.2 Métodos
             1.2.1 Método 'cria()' (Cria os elementos da janela)
             1.2.2 Método 'abre()' (Anima os elementos criados pelo cria())
+            1.2.3 Método 'fecha()' (Anima fechamento da janela e das portas)
+
+    2. Classe Navega
+        2.2 Métodos
+            2.2.1 Método 'set()' (Seleciona os botões e coloca função no click)
+            2.2.2 Método 'navegar()' (Click nos botões trocam de página)
+                2.2.2.1 Função 'volta()' (Retrocede uma página)
+                2.2.2.2 Função 'vai()' (Avança uma página)
             
 */
 class Janela {
@@ -119,7 +127,7 @@ class Janela {
                     abertura += 0.5;
                     // Aplica o espaçamento na janela, abrindo-a.
                     Janela.portas[1].style.marginLeft = `${abertura}%`;
-                
+
                     if (abertura == 0.5) {
                         document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
                     }
@@ -130,6 +138,7 @@ class Janela {
                     Janela.pointers[0].style.opacity = "100%"
                     Janela.pointers[1].style.opacity = "100%"
                     // termina o loop
+                    window.nav_block = 0;
                     clearInterval(intervalo)
                 }
             }
@@ -167,7 +176,7 @@ class Janela {
                 else {
                     // Quando a porta terminar de fechar, execute:
                     // Escolhe se a janela vai abrir novamente, ou fechar por inteiro
-                    switch (proximo){
+                    switch (proximo) {
                         case 0:
                             // Fecha tudo
                             fecha_geral()
@@ -184,6 +193,7 @@ class Janela {
         }
 
         function fecha_geral() {
+            window.nav_block = 0
             // Remove os botões de navegação '<' e '>'
             Janela.pointers[0].remove()
             Janela.pointers[1].remove()
@@ -255,24 +265,30 @@ class Navega {
         }
         // Função volta()
         function volta() {
-            // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
-            if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
-            // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
-            else Janela.fecha(1);
-            // Diminui o contador de paginas em 1
-            Navega.pagina_atual--
-            // Imprime a página atual no console
-            console.log("Página: " + Navega.pagina_atual)
+            if (window.nav_block == 0) {
+                window.nav_block = 1
+                // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
+                if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
+                // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
+                else Janela.fecha(1);
+                // Diminui o contador de paginas em 1
+                Navega.pagina_atual--
+                // Imprime a página atual no console
+                console.log("Página: " + Navega.pagina_atual)
+            }
         }
 
         function vai() {
-            // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
-            Janela.fecha(1);
-            // Se não há mais repositórios a frente, não faz nada.
-            // Incrementa o contador de paginas em 1
-            Navega.pagina_atual++;
-            // Imprime a página atual no console
-            console.log("Página: " + Navega.pagina_atual)
+            if (window.nav_block == 0) {
+                window.nav_block = 1
+                // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
+                Janela.fecha(1);
+                // Se não há mais repositórios a frente, não faz nada.
+                // Incrementa o contador de paginas em 1
+                Navega.pagina_atual++;
+                // Imprime a página atual no console
+                console.log("Página: " + Navega.pagina_atual)
+            }
         }
     }
 }
