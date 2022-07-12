@@ -68,10 +68,8 @@ também do repositório.
 .repositorio__imagem{
     width: 500px;
     height: 300px;
-    background: magenta;
     border: 4px solid var(--green);
     border-radius: 3px;
-
 }
 
 .repositorio__descricao{
@@ -79,7 +77,14 @@ também do repositório.
     height: 185px;
     border: 4px solid var(--green);
     border-radius: 3px;
-    background-color: magenta;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.repositorio__descricao p{
+    width: 95%
 }
 
 .repositorio button{

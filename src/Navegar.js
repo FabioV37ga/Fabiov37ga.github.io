@@ -54,6 +54,9 @@ class Janela {
                 {
                     const imagem = $("<img>", { class: "repositorio__imagem" }).appendTo(".conteudo");
                     const descricao = $("<div>", { class: "repositorio__descricao" }).insertAfter(".repositorio__imagem")
+                    {
+                        const p = $("<p>").appendTo(".repositorio__descricao")
+                    }
                     const botoes = $("<div>", { class: "repositorio__botoes" }).insertAfter(".repositorio__descricao")
                     {
                         const botao_l = $("<button>", { class: "repositorio__botao", text: "DOWNLOAD" }).appendTo(".repositorio__botoes")
@@ -74,7 +77,7 @@ class Janela {
         this.portas = document.querySelectorAll(".porta");
 
         this.imagem = document.querySelector(".repositorio__imagem");
-        this.descricao = document.querySelector(".repositorio__descricao");
+        this.descricao = document.querySelector(".repositorio__descricao").children[0];
         this.botoes = document.querySelectorAll(".repositorio__botao");
         this.pointers = document.querySelectorAll(".browse");
 
@@ -91,8 +94,8 @@ class Janela {
         // Abertura da janela
         var abertura = 0;
         // Loop com intervalo:
-        var intervalo = setInterval(() => {
-            if (posicao == 0) {
+        if (posicao == 0) {
+            var intervalo_1 = setInterval(() => {
                 if (largura_atual < largura_final) {
                     // Incrementa largura_atual + 5 a cada execução até 630
                     largura_atual += 5
@@ -110,16 +113,18 @@ class Janela {
                     } else {
                         // Quando terminar de animar altura chama abre_portas()
                         abre_portas()
+                        clearInterval(intervalo_1)
                     }
                 }
-            }
+            }, 1);
+        } else {
+            abre_portas()
+        }
 
-            if (posicao == 1) {
-                abre_portas()
-            }
-
-            // Essa função serve para animar as portas, revelando o conteudo abaixo delas.
-            function abre_portas() {
+        // Essa função serve para animar as portas, revelando o conteudo abaixo delas.
+        function abre_portas() {
+            Janela.carrega_repo()
+            var intervalo_2 = setInterval(() => {
 
                 // Enquanto não estiver aberto 100%...
                 if (abertura < 100) {
@@ -127,10 +132,6 @@ class Janela {
                     abertura += 0.5;
                     // Aplica o espaçamento na janela, abrindo-a.
                     Janela.portas[1].style.marginLeft = `${abertura}%`;
-
-                    if (abertura == 0.5) {
-                        document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
-                    }
                 } else {
                     // ao fim da animação, remove o elemento.
                     document.querySelector(".portas").remove()
@@ -139,10 +140,10 @@ class Janela {
                     Janela.pointers[1].style.opacity = "100%"
                     // termina o loop
                     window.nav_block = 0;
-                    clearInterval(intervalo)
+                    clearInterval(intervalo_2)
                 }
-            }
-        }, 1);
+            }, 1);
+        }
     }
 
     // Método fecha(): Responsável por fechar portas e a janela.
@@ -232,7 +233,21 @@ class Janela {
         }
     }
 
+    static carrega_repo() {
+       
+        var repositorios = [day_cycle_discord, lap_top_craft, wear_sell]
 
+        // document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
+        for (let i = 0; i <= repositorios.length - 1; i++) {
+            if (Navega.pagina_atual == repositorios[i].pagina) {
+                this.imagem.src = repositorios[i].imagem
+                this.descricao.textContent = repositorios[i].descricao
+                Titulo.apaga(repositorios[i].titulo)
+
+            }
+
+        }
+    }
 }
 
 class Navega {
@@ -279,7 +294,7 @@ class Navega {
         }
 
         function vai() {
-            if (window.nav_block == 0) {
+            if (window.nav_block == 0 && Navega.pagina_atual < 3) {
                 window.nav_block = 1
                 // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
                 Janela.fecha(1);

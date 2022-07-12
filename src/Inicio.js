@@ -131,7 +131,7 @@ class Iniciar {
                 // Chama função Titulo.apaga()
                 Navega.pagina_atual++
                 console.log("Página: " + Navega.pagina_atual)
-                Titulo.apaga("1. Day Cycle Discord");
+                // Titulo.apaga("1. Day Cycle Discord");
                 // Chama função Iniciar.some()
                 Iniciar.some();
             }
