@@ -31,6 +31,9 @@ class Janela {
     static imagem;
     static descricao;
     static botoes;
+    // Display
+    static repositorio_atual;
+
 
 
 
@@ -82,6 +85,7 @@ class Janela {
         this.pointers = document.querySelectorAll(".browse");
 
         this.abre(0)
+        this.carrega_repo()
     }
 
     static abre(posicao) {
@@ -123,7 +127,7 @@ class Janela {
 
         // Essa função serve para animar as portas, revelando o conteudo abaixo delas.
         function abre_portas() {
-            Janela.carrega_repo()
+            Janela.mostra_repo()
             var intervalo_2 = setInterval(() => {
 
                 // Enquanto não estiver aberto 100%...
@@ -234,22 +238,26 @@ class Janela {
     }
 
     static carrega_repo() {
-
         var repositorios = [day_cycle_discord, lap_top_craft, wear_sell]
 
-        // document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
         for (let i = 0; i <= repositorios.length - 1; i++) {
-            if (Navega.pagina_atual == repositorios[i].pagina) {
-                this.imagem.src = repositorios[i].imagem
-                this.descricao.textContent = repositorios[i].descricao
-                Titulo.apaga(repositorios[i].titulo)
-                document.querySelector(".bloco__titulo")
-                    .parentElement.parentElement.parentElement
-                    .style.backgroundImage = `url(${repositorios[i].imagem})`;
-            }
-
+            if (Navega.pagina_atual == repositorios[i].pagina)
+                Janela.repositorio_atual = repositorios[i]
+            Titulo.apaga(Janela.repositorio_atual.titulo)
+            break;
         }
     }
+
+    static mostra_repo() {
+
+        this.imagem.src = Janela.repositorio_atual.imagem
+        this.descricao.textContent = Janela.repositorio_atual.descricao
+        // body
+        // Chama Repositorio.fundo_aparece
+        // Repositorio.fundo_aparece()
+
+    }
+
 }
 
 class Navega {
@@ -287,7 +295,7 @@ class Navega {
                 // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
                 if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
                 // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
-                else Janela.fecha(1);
+                else Janela.carrega_repo(), Janela.fecha(1);
                 // Diminui o contador de paginas em 1
                 Navega.pagina_atual--
                 // Imprime a página atual no console
@@ -299,6 +307,7 @@ class Navega {
             if (window.nav_block == 0 && Navega.pagina_atual < 3) {
                 window.nav_block = 1
                 // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
+                Janela.carrega_repo();
                 Janela.fecha(1);
                 // Se não há mais repositórios a frente, não faz nada.
                 // Incrementa o contador de paginas em 1

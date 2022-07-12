@@ -5,6 +5,8 @@ class Repositorio {
     botoes;
     titulo;
 
+    // static body = document.querySelector(".bloco__titulo").parentElement.parentElement.parentElement;
+
     definir(pagina, imagem, descricao, botoes, titulo) {
         this.pagina = pagina;
         this.imagem = imagem;
@@ -12,6 +14,16 @@ class Repositorio {
         this.botoes = botoes;
         this.titulo = titulo;
     }
+
+    // static fundo_some(){
+    // }
+    
+    // static fundo_aparece() {
+    //     console.log("t")
+    //     this.body.style.setProperty('--body-color','rgba(0,0,0,0.5)')
+    //     this.body.style.backgroundImage = `url(${Janela.repositorio_atual.imagem})`;
+
+    // }
 }
 
 
