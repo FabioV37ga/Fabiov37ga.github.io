@@ -292,12 +292,13 @@ class Navega {
         function volta() {
             if (window.nav_block == 0) {
                 window.nav_block = 1
+                Repositorio.fundo_some();
                 // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
-                if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
+                
+                if (Navega.pagina_atual == 1) Navega.pagina_atual--, Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
                 // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
                 // Diminui o contador de paginas em 1
-                else Janela.carrega_repo(), Janela.fecha(1);
-                Navega.pagina_atual--
+                else Navega.pagina_atual--, Janela.carrega_repo(), Janela.fecha(1);
                 // Imprime a página atual no console
                 console.log("Página: " + Navega.pagina_atual)
             }
