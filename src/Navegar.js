@@ -294,7 +294,7 @@ class Navega {
                 if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
                 // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
                 // Diminui o contador de paginas em 1
-                else Navega.pagina_atual--, Janela.carrega_repo(), Janela.fecha(1);
+                else Janela.carrega_repo(), Janela.fecha(1);
                 Navega.pagina_atual--
                 // Imprime a página atual no console
                 console.log("Página: " + Navega.pagina_atual)
