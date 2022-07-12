@@ -238,11 +238,13 @@ class Janela {
     }
 
     static carrega_repo() {
-        var repositorios = [day_cycle_discord, lap_top_craft, wear_sell]
+        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft]
         for (let i = 0; i <= repositorios.length - 1; i++) {
-            if (Navega.pagina_atual == repositorios[i].pagina)
-            Janela.repositorio_atual = repositorios[i]
-            Titulo.apaga(Janela.repositorio_atual.titulo)
+            if (repositorios[i].pagina == Navega.pagina_atual) {
+                Janela.repositorio_atual = repositorios[i]
+                Titulo.apaga(Janela.repositorio_atual.titulo.toUpperCase())
+                break
+            }
         }
     }
 

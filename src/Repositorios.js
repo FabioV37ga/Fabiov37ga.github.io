@@ -58,7 +58,7 @@ day_cycle_discord.definir(1,
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "",
-    "1. Day Cycle Discord")
+    "1. Day Cycle Discord","","")
 
 var wear_sell = new Repositorio()
 wear_sell.definir(2, "src/img/wrs.png",
@@ -66,7 +66,7 @@ wear_sell.definir(2, "src/img/wrs.png",
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "",
-    "2. WearSell")
+    "2. WearSell","","")
 
 var lap_top_craft = new Repositorio()
 lap_top_craft.definir(3,
@@ -75,4 +75,4 @@ lap_top_craft.definir(3,
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
     "",
-    "3. LapTop Craft")
+    "3. LapTop Craft","","")
