@@ -87,7 +87,7 @@ class Janela {
     static abre(posicao) {
         // Largura da janela
         var largura_atual = 0;
-        var largura_final = 630;
+        var largura_final = 592;
         // Altura da janela
         var altura_atual = 0;
         var altura_final = 652;
@@ -199,7 +199,7 @@ class Janela {
             Janela.pointers[0].remove()
             Janela.pointers[1].remove()
             // Define dimensão atual da janela
-            var largura_atual = 658;
+            var largura_atual = 592;
             var altura_atual = 636;
             // Loop com intervalo 1ms.
             var intervalo = setInterval(() => {
