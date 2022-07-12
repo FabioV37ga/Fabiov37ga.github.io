@@ -239,12 +239,10 @@ class Janela {
 
     static carrega_repo() {
         var repositorios = [day_cycle_discord, lap_top_craft, wear_sell]
-
         for (let i = 0; i <= repositorios.length - 1; i++) {
             if (Navega.pagina_atual == repositorios[i].pagina)
-                Janela.repositorio_atual = repositorios[i]
+            Janela.repositorio_atual = repositorios[i]
             Titulo.apaga(Janela.repositorio_atual.titulo)
-            break;
         }
     }
 
@@ -254,7 +252,7 @@ class Janela {
         this.descricao.textContent = Janela.repositorio_atual.descricao
         // body
         // Chama Repositorio.fundo_aparece
-        // Repositorio.fundo_aparece()
+        Repositorio.fundo_aparece()
 
     }
 
@@ -295,8 +293,8 @@ class Navega {
                 // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
                 if (Navega.pagina_atual == 1) Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
                 // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
-                else Janela.carrega_repo(), Janela.fecha(1);
                 // Diminui o contador de paginas em 1
+                else Navega.pagina_atual--, Janela.carrega_repo(), Janela.fecha(1);
                 Navega.pagina_atual--
                 // Imprime a página atual no console
                 console.log("Página: " + Navega.pagina_atual)
@@ -306,14 +304,15 @@ class Navega {
         function vai() {
             if (window.nav_block == 0 && Navega.pagina_atual < 3) {
                 window.nav_block = 1
+                Repositorio.fundo_some();
                 // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
-                Janela.carrega_repo();
                 Janela.fecha(1);
                 // Se não há mais repositórios a frente, não faz nada.
                 // Incrementa o contador de paginas em 1
                 Navega.pagina_atual++;
-                // Imprime a página atual no console
                 console.log("Página: " + Navega.pagina_atual)
+                Janela.carrega_repo();
+                // Imprime a página atual no console
             }
         }
     }

@@ -5,7 +5,8 @@ class Repositorio {
     botoes;
     titulo;
 
-    // static body = document.querySelector(".bloco__titulo").parentElement.parentElement.parentElement;
+    static body = document.querySelector(".bloco__titulo").parentElement.parentElement.parentElement;
+    static background = document.getElementsByTagName("main")[0];
 
     definir(pagina, imagem, descricao, botoes, titulo) {
         this.pagina = pagina;
@@ -15,13 +16,36 @@ class Repositorio {
         this.titulo = titulo;
     }
 
-    // static fundo_some(){
-    // }
-    
+    static fundo_some() { 
+        var opacidade = 800
+        var intervalo = setInterval(() => {
+            if (opacidade < 1000) {
+                Repositorio.background.style.backgroundColor = `rgba(0,0,0,0.${opacidade})`
+                opacidade +=2
+            } else {
+                clearInterval(intervalo)
+            }
+
+        }, 1);
+    }
+
+    static fundo_aparece() {
+        this.body.style.backgroundImage = `url(${Janela.repositorio_atual.imagem})`;
+        var opacidade = 999
+        var intervalo = setInterval(() => {
+            if (opacidade > 800) {
+                Repositorio.background.style.backgroundColor = `rgba(0,0,0,0.${opacidade})`
+                opacidade-=2
+            } else {
+                clearInterval(intervalo)
+            }
+
+        }, 1);
+    }
+
     // static fundo_aparece() {
     //     console.log("t")
     //     this.body.style.setProperty('--body-color','rgba(0,0,0,0.5)')
-    //     this.body.style.backgroundImage = `url(${Janela.repositorio_atual.imagem})`;
 
     // }
 }
