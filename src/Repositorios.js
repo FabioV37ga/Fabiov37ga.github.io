@@ -30,7 +30,7 @@ wear_sell.definir(2, "src/img/wrs.png",
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "",
-    "3. WearSell")
+    "2. WearSell")
 
 var lap_top_craft = new Repositorio()
 lap_top_craft.definir(3,
@@ -39,4 +39,4 @@ lap_top_craft.definir(3,
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
     "",
-    "2. LapTop Craft")
+    "3. LapTop Craft")
