@@ -63,6 +63,7 @@ também do repositório.
     align-items: center;
     flex-wrap: wrap;
     overflow: hidden;
+    background:black
 }
 
 .repositorio__imagem{

@@ -1,10 +1,32 @@
 /*
     Esse arquivo controla a estilização geral da parte inicial do site.
 */
+html {
+    height: 100% !important;
+    position: relative;
+}
+
+html::before {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
 
 body {
+    height: 100%;
     background: black;
     font-family: computer !important;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-size: cover;
+    ;
 }
 
 /* Bloco geral */
@@ -51,13 +73,13 @@ body {
     justify-content: center;
 }
 
-.pointer{
+.pointer {
     text-align: center;
 }
 
 .nav__botao,
 .nav__botao_on {
-    background: var(--green);   
+    background: var(--green);
     border-radius: 4px;
     color: black;
     font-size: 20px;
@@ -65,7 +87,7 @@ body {
     font-family: computer;
 }
 
-.nav__botao_on{
+.nav__botao_on {
     width: 103px;
     height: 41px;
 }

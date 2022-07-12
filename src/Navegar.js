@@ -142,7 +142,7 @@ class Janela {
                     window.nav_block = 0;
                     clearInterval(intervalo_2)
                 }
-            }, 1);
+            }, 2);
         }
     }
 
@@ -153,7 +153,7 @@ class Janela {
         const portas = $("<div>", { class: "portas" }).insertBefore(".conteudo");
         {
             var porta_l = $("<div>", { class: "porta" }).appendTo(".portas");
-            var porta_r = $("<div>", { class: "porta" }).appendTo(".portas");
+            var porta_r = $("<div>", { class: "porta", style: "margin-left: 100%" }).appendTo(".portas");
         }
 
         // 
@@ -234,7 +234,7 @@ class Janela {
     }
 
     static carrega_repo() {
-       
+
         var repositorios = [day_cycle_discord, lap_top_craft, wear_sell]
 
         // document.querySelector(".repositorio__imagem").src = "src/img/dcd.png"
@@ -243,7 +243,9 @@ class Janela {
                 this.imagem.src = repositorios[i].imagem
                 this.descricao.textContent = repositorios[i].descricao
                 Titulo.apaga(repositorios[i].titulo)
-
+                document.querySelector(".bloco__titulo")
+                    .parentElement.parentElement.parentElement
+                    .style.backgroundImage = `url(${repositorios[i].imagem})`;
             }
 
         }
