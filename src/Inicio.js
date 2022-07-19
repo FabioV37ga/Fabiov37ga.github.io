@@ -11,6 +11,7 @@
             1.2.2 Método 'digita()' (Digita um texto no campo titulo.)
             1.2.3 Método 'apaga()' (Apaga um texto no campo titulo.)
             1.2.4 Método 'pisca()' (Pisca o slider, para efeito de digitação)
+            
     2. Classe Iniciar
         2.1 Atributos
             2.1.1 Atributo 'Pointers' (elemento)

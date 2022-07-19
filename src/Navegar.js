@@ -34,9 +34,6 @@ class Janela {
     // Display
     static repositorio_atual;
 
-
-
-
     // Método cria(): Constroi a janela, elemento por elemento, também inicializa os atributos.
     static cria() {
         // Elementos:
@@ -187,8 +184,11 @@ class Janela {
                             fecha_geral()
                             break;
                         case 1:
-                            // Fecha e abre novamente
-                            Janela.abre(1)
+                            // com um delay de 300ms, executa:
+                            setTimeout(() => {
+                                // Abrir novamente
+                                Janela.abre(1)
+                            }, 300);
                             break;
                     }
                     // Para o loop
@@ -252,8 +252,18 @@ class Janela {
 
         this.imagem.src = Janela.repositorio_atual.imagem
         this.descricao.textContent = Janela.repositorio_atual.descricao
-        // body
-        // Chama Repositorio.fundo_aparece
+        // this.botoes = document.querySelectorAll(".repositorio__botao")[0].addEventListener("click", () => {setBotoes(0)});
+        // this.botoes = document.querySelectorAll(".repositorio__botao")[1].addEventListener("click",() => {setBotoes(1)});
+
+        // function setBotoes(lr){
+        //     console.log("123")
+        //     if (lr == 0){
+        //         window.open(Janela.repositorio_atual.botoes.split("&")[0], '_blank').focus()
+        //     }else{
+        //         window.open(Janela.repositorio_atual.botoes.split("&")[1], '_blank').focus()
+        //     }
+        // }
+
         Repositorio.fundo_aparece()
 
     }
@@ -294,7 +304,7 @@ class Navega {
                 window.nav_block = 1
                 Repositorio.fundo_some();
                 // Se voltar fará o usuário cair na página 0, feche a janela por vez e digite o título home.
-                
+
                 if (Navega.pagina_atual == 1) Navega.pagina_atual--, Janela.fecha(0), Titulo.apaga("V37GA'S REPOSITORY");
                 // Se voltar faz o usuário cair em um repositório, fecha a janela e torna a abri-la.
                 // Diminui o contador de paginas em 1

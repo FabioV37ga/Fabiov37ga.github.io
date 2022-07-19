@@ -57,16 +57,16 @@ day_cycle_discord.definir(1,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
-    "",
-    "1. Day Cycle Discord","","")
+    "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord%201.3.0.rar&https://github.com/FabioV37ga/DayCycleDiscord",
+    "1. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
 wear_sell.definir(2, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
-    "",
-    "2. WearSell","","")
+    "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
+    "2. WearSell")
 
 var lap_top_craft = new Repositorio()
 lap_top_craft.definir(3,
@@ -74,5 +74,5 @@ lap_top_craft.definir(3,
     `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
-    "",
-    "3. LapTop Craft","","")
+    "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
+    "3. LapTop Craft")
