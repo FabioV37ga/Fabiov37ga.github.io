@@ -83,6 +83,7 @@ class Janela {
 
         this.abre(0)
         this.carrega_repo()
+        this.mostra_repo()
     }
 
     static abre(posicao) {
@@ -124,9 +125,7 @@ class Janela {
 
         // Essa função serve para animar as portas, revelando o conteudo abaixo delas.
         function abre_portas() {
-            Janela.mostra_repo()
             var intervalo_2 = setInterval(() => {
-
                 // Enquanto não estiver aberto 100%...
                 if (abertura < 100) {
                     // Adiciona 0.5 por execução
@@ -187,6 +186,7 @@ class Janela {
                             // com um delay de 300ms, executa:
                             setTimeout(() => {
                                 // Abrir novamente
+                                Janela.mostra_repo()
                                 Janela.abre(1)
                             }, 300);
                             break;
