@@ -184,9 +184,9 @@ class Janela {
                             break;
                         case 1:
                             // com um delay de 300ms, executa:
+                            Janela.mostra_repo()
                             setTimeout(() => {
                                 // Abrir novamente
-                                Janela.mostra_repo()
                                 Janela.abre(1)
                             }, 300);
                             break;
