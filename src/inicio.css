@@ -1,6 +1,17 @@
 /*
     Esse arquivo controla a estilização geral da parte inicial do site.
 */
+
+@media (max-width: 735px){
+    main{
+        width: auto !important;
+        height: 1000vh !important;
+    }
+    body{
+        zoom: 50% !important
+    }
+}
+
 html {
     height: 100% !important;
     position: relative;
@@ -14,12 +25,7 @@ main {
     width: 100%;
 }
 
-@media (max-width: 735px){
-    main{
-        width: auto;
-        height: 1000vh;
-    }
-}
+
 
 body {
     background: black;
