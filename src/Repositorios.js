@@ -57,7 +57,7 @@ day_cycle_discord.definir(1,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
-    "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord%201.3.0.rar&https://github.com/FabioV37ga/DayCycleDiscord",
+    "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
     "1. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
@@ -76,3 +76,10 @@ lap_top_craft.definir(3,
     \n Website personalizado.`,
     "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
     "3. LapTop Craft")
+
+var sistema_solar = new Repositorio()
+sistema_solar.definir(4,
+    "img",
+    "descricao",
+    "link&link",
+    "4. Sistema solar")

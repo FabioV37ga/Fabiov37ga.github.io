@@ -59,8 +59,8 @@ class Janela {
                     }
                     const botoes = $("<div>", { class: "repositorio__botoes" }).insertAfter(".repositorio__descricao")
                     {
-                        const botao_l = $("<button>", { class: "repositorio__botao", text: "DOWNLOAD" }).appendTo(".repositorio__botoes")
-                        const botao_r = $("<button>", { class: "repositorio__botao", text: "GITHUB" }).appendTo(".repositorio__botoes")
+                        const botao_l = $("<a>", { class: "repositorio__botao", text: "DOWNLOAD", target: "_blank" }).appendTo(".repositorio__botoes")
+                        const botao_r = $("<a>", { class: "repositorio__botao", text: "GITHUB", target: "_blank" }).appendTo(".repositorio__botoes")
                     }
                 }
             }
@@ -238,7 +238,7 @@ class Janela {
     }
 
     static carrega_repo() {
-        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft]
+        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft, sistema_solar]
         for (let i = 0; i <= repositorios.length - 1; i++) {
             if (repositorios[i].pagina == Navega.pagina_atual) {
                 Janela.repositorio_atual = repositorios[i]
@@ -252,9 +252,10 @@ class Janela {
 
         this.imagem.src = Janela.repositorio_atual.imagem
         this.descricao.textContent = Janela.repositorio_atual.descricao
-        // this.botoes = document.querySelectorAll(".repositorio__botao")[0].addEventListener("click", () => {setBotoes(0)});
-        // this.botoes = document.querySelectorAll(".repositorio__botao")[1].addEventListener("click",() => {setBotoes(1)});
+        this.botoes = document.querySelectorAll(".repositorio__botao")
 
+        this.botoes[0].href = Janela.repositorio_atual.botoes.split("&")[0]
+        this.botoes[1].href = Janela.repositorio_atual.botoes.split("&")[1]
         // function setBotoes(lr){
         //     console.log("123")
         //     if (lr == 0){
@@ -315,7 +316,7 @@ class Navega {
         }
 
         function vai() {
-            if (window.nav_block == 0 && Navega.pagina_atual < 3) {
+            if (window.nav_block == 0 && Navega.pagina_atual < 4) {
                 window.nav_block = 1
                 Repositorio.fundo_some();
                 // Se ainda há repositorios a frente, fecha a janela e torna a abri-la
