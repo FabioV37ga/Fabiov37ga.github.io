@@ -71,18 +71,20 @@ class Janela {
         }
 
         // Armazena o elementos criados nos atributos da classe:
-
         this.bloco_janela = document.querySelector(".bloco__janela");
         this.repositorio = document.querySelector(".repositorio");
         this.portas = document.querySelectorAll(".porta");
-
         this.imagem = document.querySelector(".repositorio__imagem");
         this.descricao = document.querySelector(".repositorio__descricao").children[0];
         this.botoes = document.querySelectorAll(".repositorio__botao");
         this.pointers = document.querySelectorAll(".browse");
 
+        // Assim que os elementos forem criados, executa:
+        // Inicia animação de abrir
         this.abre(0)
+        // Carrega repositório
         this.carrega_repo()
+        // Mostra repositório
         this.mostra_repo()
     }
 
@@ -185,6 +187,7 @@ class Janela {
                         case 1:
                             // com um delay de 300ms, executa:
                             Janela.mostra_repo()
+                            // Mostra o repositório
                             setTimeout(() => {
                                 // Abrir novamente
                                 Janela.abre(1)
@@ -237,38 +240,38 @@ class Janela {
         }
     }
 
+    // Decide o repositório atual através da página fornecida pela classe navega
     static carrega_repo() {
+        // Lista dos repositórios
         var repositorios = [day_cycle_discord, wear_sell, lap_top_craft, sistema_solar]
+        // Loop p/ verificar ID do repositório com Numero da página
         for (let i = 0; i <= repositorios.length - 1; i++) {
+            // Se for igual
             if (repositorios[i].pagina == Navega.pagina_atual) {
+                // Define.
                 Janela.repositorio_atual = repositorios[i]
+                // Troca o titulo
                 Titulo.apaga(Janela.repositorio_atual.titulo.toUpperCase())
+                // Sai do loop
                 break
             }
         }
     }
 
+    // Mostra o repositório atual
     static mostra_repo() {
-
+        // Define o conteúdo dos elementos de acordo com o repositório atual
+        // Imagem
         this.imagem.src = Janela.repositorio_atual.imagem
+        // Descrição
         this.descricao.textContent = Janela.repositorio_atual.descricao
+        // Botões
         this.botoes = document.querySelectorAll(".repositorio__botao")
-
         this.botoes[0].href = Janela.repositorio_atual.botoes.split("&")[0]
         this.botoes[1].href = Janela.repositorio_atual.botoes.split("&")[1]
-        // function setBotoes(lr){
-        //     console.log("123")
-        //     if (lr == 0){
-        //         window.open(Janela.repositorio_atual.botoes.split("&")[0], '_blank').focus()
-        //     }else{
-        //         window.open(Janela.repositorio_atual.botoes.split("&")[1], '_blank').focus()
-        //     }
-        // }
-
+        // Fade-in do background
         Repositorio.fundo_aparece()
-
     }
-
 }
 
 class Navega {

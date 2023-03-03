@@ -1,13 +1,34 @@
+/*
+    Esse documento é reponsável por controlar o conteúdo dos repositórios, separados em instâncias.
+
+    1. Classe Repositorio
+        1.1 Atributos
+            1.1.1 Atributo 'pagina'
+            1.1.2 Atributo 'imagem'
+            1.1.3 Atributo 'descricao'
+            1.1.4 Atributo 'botoes'
+            1.1.5 Atributo 'titulo'
+            1.1.6 Atributo 'body' (elemento)
+            1.1.7 Atributo 'background' (elemento)
+        1.2 Métodos
+            1.2.1 Método 'definir()' (Define os atributos de uma instância)
+            1.2.2 Método 'fundo_some()' (Faz o background escurecer)
+            1.2.3 Método 'fundo_aparece()' (Faz o background aparecer)
+
+*/
+
 class Repositorio {
+    // Atributos (conteúdo)
     pagina;
     imagem;
     descricao;
     botoes;
     titulo;
-
+    // Atributos (elementos)
     static body = document.querySelector(".bloco__titulo").parentElement.parentElement.parentElement;
     static background = document.getElementsByTagName("main")[0];
 
+    // Método definir(): É chamado para definir os atributos de uma instância
     definir(pagina, imagem, descricao, botoes, titulo) {
         this.pagina = pagina;
         this.imagem = imagem;
@@ -16,6 +37,7 @@ class Repositorio {
         this.titulo = titulo;
     }
 
+    // Método fundo_some(): 
     static fundo_some() { 
         var opacidade = 800
         var intervalo = setInterval(() => {
@@ -42,12 +64,6 @@ class Repositorio {
 
         }, 1);
     }
-
-    // static fundo_aparece() {
-    //     console.log("t")
-    //     this.body.style.setProperty('--body-color','rgba(0,0,0,0.5)')
-
-    // }
 }
 
 
@@ -79,7 +95,8 @@ lap_top_craft.definir(3,
 
 var sistema_solar = new Repositorio()
 sistema_solar.definir(4,
-    "img",
-    "descricao",
-    "link&link",
+    "src/img/sis.png",
+    `Sistema Solar: Jogo educativo sobre o sistema solar. \n
+    \n Possui Inimigos, fases e informações sobre os planetas.`,
+    "https://github.com/FabioV37ga/Sistema-Solar&https://github.com/FabioV37ga/Sistema-Solar",
     "4. Sistema solar")
