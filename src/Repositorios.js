@@ -72,7 +72,7 @@ sistema_solar.definir(1,
     "src/img/sis.png",
     `Sistema Solar: Jogo educativo sobre o sistema solar. \n
     \n Possui Inimigos, fases e informações sobre os planetas.`,
-    "https://github.com/FabioV37ga/Sistema-Solar&https://github.com/FabioV37ga/Sistema-Solar",
+    "https://fabiov37ga.github.io/Sistema-Solar/&https://github.com/FabioV37ga/Sistema-Solar",
     "1. Sistema solar")
 
 var day_cycle_discord = new Repositorio()
