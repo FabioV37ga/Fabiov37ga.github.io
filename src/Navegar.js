@@ -243,7 +243,7 @@ class Janela {
     // Decide o repositório atual através da página fornecida pela classe navega
     static carrega_repo() {
         // Lista dos repositórios
-        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft, sistema_solar]
+        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft, sistema_solar, bird_game]
         // Loop p/ verificar ID do repositório com Numero da página
         for (let i = 0; i <= repositorios.length - 1; i++) {
             // Se for igual
@@ -319,7 +319,7 @@ class Navega {
         }
 
         function vai() {
-            if (window.nav_block == 0 && Navega.pagina_atual < 4) {
+            if (window.nav_block == 0 && Navega.pagina_atual < 5) {
                 window.nav_block = 1
                 Repositorio.fundo_some();
                 // Se ainda há repositorios a frente, fecha a janela e torna a abri-la

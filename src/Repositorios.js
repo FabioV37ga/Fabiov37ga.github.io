@@ -38,12 +38,12 @@ class Repositorio {
     }
 
     // Método fundo_some(): 
-    static fundo_some() { 
+    static fundo_some() {
         var opacidade = 800
         var intervalo = setInterval(() => {
             if (opacidade < 1000) {
                 Repositorio.background.style.backgroundColor = `rgba(0,0,0,0.${opacidade})`
-                opacidade +=2
+                opacidade += 2
             } else {
                 clearInterval(intervalo)
             }
@@ -57,7 +57,7 @@ class Repositorio {
         var intervalo = setInterval(() => {
             if (opacidade > 800) {
                 Repositorio.background.style.backgroundColor = `rgba(0,0,0,0.${opacidade})`
-                opacidade-=2
+                opacidade -= 2
             } else {
                 clearInterval(intervalo)
             }
@@ -67,36 +67,44 @@ class Repositorio {
 }
 
 
+var sistema_solar = new Repositorio()
+sistema_solar.definir(1,
+    "src/img/sis.png",
+    `Sistema Solar: Jogo educativo sobre o sistema solar. \n
+    \n Possui Inimigos, fases e informações sobre os planetas.`,
+    "https://github.com/FabioV37ga/Sistema-Solar&https://github.com/FabioV37ga/Sistema-Solar",
+    "1. Sistema solar")
 
 var day_cycle_discord = new Repositorio()
-day_cycle_discord.definir(1,
+day_cycle_discord.definir(2,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
-    "1. Day Cycle Discord")
+    "2. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
-wear_sell.definir(2, "src/img/wrs.png",
+wear_sell.definir(3, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
-    "2. WearSell")
+    "3. WearSell")
 
 var lap_top_craft = new Repositorio()
-lap_top_craft.definir(3,
+lap_top_craft.definir(4,
     "src/img/lpc.png",
     `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
     "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
-    "3. LapTop Craft")
+    "4. LapTop Craft")
 
-var sistema_solar = new Repositorio()
-sistema_solar.definir(4,
-    "src/img/sis.png",
-    `Sistema Solar: Jogo educativo sobre o sistema solar. \n
-    \n Possui Inimigos, fases e informações sobre os planetas.`,
-    "https://github.com/FabioV37ga/Sistema-Solar&https://github.com/FabioV37ga/Sistema-Solar",
-    "4. Sistema solar")
+var bird_game = new Repositorio()
+bird_game.definir(5,
+    "#",
+    `Bird Game: -\n
+    \n -
+    \n -`,
+    "#&#",
+    "5. Bird Game")
