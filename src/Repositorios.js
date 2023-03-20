@@ -75,8 +75,16 @@ sistema_solar.definir(1,
     "https://fabiov37ga.github.io/Sistema-Solar/&https://github.com/FabioV37ga/Sistema-Solar",
     "1. Sistema solar")
 
+var nutryo = new Repositorio()
+nutryo.definir(2,
+    "src/img/nut.png",
+    `nuTryo: Sistema de contagem de nutrientes.
+        \n Permite o usuário acompanhar os valores de sua dieta.`,
+    "https://fabiov37ga.github.io/nuTryo/&https://fabiov37ga.github.io/nuTryo/",
+    "2. nuTryo")
+
 var day_cycle_discord = new Repositorio()
-day_cycle_discord.definir(2,
+day_cycle_discord.definir(3,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
@@ -84,7 +92,7 @@ day_cycle_discord.definir(2,
     "2. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
-wear_sell.definir(3, "src/img/wrs.png",
+wear_sell.definir(4, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
@@ -92,7 +100,7 @@ wear_sell.definir(3, "src/img/wrs.png",
     "3. WearSell")
 
 var lap_top_craft = new Repositorio()
-lap_top_craft.definir(4,
+lap_top_craft.definir(5,
     "src/img/lpc.png",
     `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
     \n Modpack voltado para maquinaria, engenharia e programação.
@@ -101,7 +109,7 @@ lap_top_craft.definir(4,
     "4. LapTop Craft")
 
 var bird_game = new Repositorio()
-bird_game.definir(5,
+bird_game.definir(6,
     "#",
     `Bird Game: -\n
     \n -
