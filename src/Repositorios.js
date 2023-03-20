@@ -89,7 +89,7 @@ day_cycle_discord.definir(3,
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
-    "2. Day Cycle Discord")
+    "3. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
 wear_sell.definir(4, "src/img/wrs.png",
