@@ -59,7 +59,7 @@ class Janela {
                     }
                     const botoes = $("<div>", { class: "repositorio__botoes" }).insertAfter(".repositorio__descricao")
                     {
-                        const botao_l = $("<a>", { class: "repositorio__botao", text: "DOWNLOAD", target: "_blank" }).appendTo(".repositorio__botoes")
+                        const botao_l = $("<a>", { class: "repositorio__botao", text: "ACESSAR", target: "_blank" }).appendTo(".repositorio__botoes")
                         const botao_r = $("<a>", { class: "repositorio__botao", text: "GITHUB", target: "_blank" }).appendTo(".repositorio__botoes")
                     }
                 }
