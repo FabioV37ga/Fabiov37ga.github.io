@@ -97,7 +97,7 @@ wear_sell.definir(4, "src/img/wrs.png",
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
-    "3. WearSell")
+    "4. WearSell")
 
 var lap_top_craft = new Repositorio()
 lap_top_craft.definir(5,
@@ -106,7 +106,7 @@ lap_top_craft.definir(5,
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
     "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
-    "4. LapTop Craft")
+    "5. LapTop Craft")
 
 var bird_game = new Repositorio()
 bird_game.definir(6,
@@ -115,4 +115,4 @@ bird_game.definir(6,
     \n -
     \n -`,
     "#&#",
-    "5. Bird Game")
+    "6. Bird Game")
