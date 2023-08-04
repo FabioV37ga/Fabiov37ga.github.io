@@ -81,38 +81,38 @@ nutryo.definir(2,
     `nuTryo: Sistema de contagem de nutrientes.
         \n Permite o usuário acompanhar os valores de sua dieta.`,
     "https://fabiov37ga.github.io/nuTryo/&https://fabiov37ga.github.io/nuTryo/",
-    "2. nuTryo")
+    "2. nuTryo (WIP)")
 
 var day_cycle_discord = new Repositorio()
-day_cycle_discord.definir(3,
+day_cycle_discord.definir(5,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
-    "3. Day Cycle Discord")
+    "5. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
-wear_sell.definir(4, "src/img/wrs.png",
+wear_sell.definir(3, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
-    "4. WearSell")
+    "3. WearSell")
+
+var drive_guide = new Repositorio()
+drive_guide.definir(4,
+    "src/img/dvg.png",
+    `Drive guide: Guia educacional de cloud utilizando Google Drive.
+        \nExplicação do conceito de nuvem.
+        \nPasso a passo para fazer upload e download de arquivos`,
+    "https://fabiov37ga.github.io/DriveGuide/&https://github.com/FabioV37ga/DriveGuide",
+    "4. Drive guide")
 
 var lap_top_craft = new Repositorio()
-lap_top_craft.definir(5,
+lap_top_craft.definir(6,
     "src/img/lpc.png",
     `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
     \n Modpack voltado para maquinaria, engenharia e programação.
     \n Website personalizado.`,
     "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
-    "5. LapTop Craft")
-
-var bird_game = new Repositorio()
-bird_game.definir(6,
-    "#",
-    `Bird Game: -\n
-    \n -
-    \n -`,
-    "#&#",
-    "6. Bird Game")
+    "6. LapTop Craft")
