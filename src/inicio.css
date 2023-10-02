@@ -4,11 +4,17 @@
 
 @media (max-width: 735px){
     main{
-        width: auto !important;
+        /* width: auto !important; */
         height: 1000vh !important;
     }
     body{
         zoom: 50% !important
+    }
+}
+
+@media (max-height: 1200px){
+    .bloco{
+        zoom: 80% !important;
     }
 }
 
