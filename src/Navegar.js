@@ -243,7 +243,7 @@ class Janela {
     // Decide o repositório atual através da página fornecida pela classe navega
     static carrega_repo() {
         // Lista dos repositórios
-        var repositorios = [day_cycle_discord, wear_sell, lap_top_craft, sistema_solar, drive_guide, nutryo]
+        var repositorios = [day_cycle_discord, wear_sell, birdGame, sistema_solar, drive_guide, nutryo]
         // Loop p/ verificar ID do repositório com Numero da página
         for (let i = 0; i <= repositorios.length - 1; i++) {
             // Se for igual

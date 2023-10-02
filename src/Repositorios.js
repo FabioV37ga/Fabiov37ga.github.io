@@ -83,36 +83,43 @@ nutryo.definir(2,
     "https://fabiov37ga.github.io/nuTryo/&https://fabiov37ga.github.io/nuTryo/",
     "2. nuTryo (WIP)")
 
+var birdGame = new Repositorio()
+birdGame.definir(3,
+    "src/img/brg.png",
+    `birdGame: Clone de flappy bird utilizando HTML, CSS e JS.`, 
+    "https://fabiov37ga.github.io/birdGame/&https://github.com/FabioV37ga/birdGame",
+    "3. birdGame")
+
 var day_cycle_discord = new Repositorio()
-day_cycle_discord.definir(5,
+day_cycle_discord.definir(6,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
-    "5. Day Cycle Discord")
+    "6. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
-wear_sell.definir(3, "src/img/wrs.png",
+wear_sell.definir(4, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
-    "3. WearSell")
+    "4. WearSell")
 
 var drive_guide = new Repositorio()
-drive_guide.definir(4,
+drive_guide.definir(5,
     "src/img/dvg.png",
     `Drive guide: Guia educacional de cloud utilizando Google Drive.
         \nExplicação do conceito de nuvem.
         \nPasso a passo para fazer upload e download de arquivos`,
     "https://fabiov37ga.github.io/DriveGuide/&https://github.com/FabioV37ga/DriveGuide",
-    "4. Drive guide")
+    "5. Drive guide")
 
-var lap_top_craft = new Repositorio()
-lap_top_craft.definir(6,
-    "src/img/lpc.png",
-    `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
-    \n Modpack voltado para maquinaria, engenharia e programação.
-    \n Website personalizado.`,
-    "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
-    "6. LapTop Craft")
+// var lap_top_craft = new Repositorio()
+// lap_top_craft.definir(6,
+//     "src/img/lpc.png",
+//     `LapTopCraft: Pacote de Mods para Minecraft / Website.\n
+//     \n Modpack voltado para maquinaria, engenharia e programação.
+//     \n Website personalizado.`,
+//     "https://v37ga.github.io/37/laptopcraft/&https://github.com/v37ga/LapTopCraft",
+//     "6. LapTop Craft")
