@@ -86,34 +86,41 @@ nutryo.definir(2,
 var birdGame = new Repositorio()
 birdGame.definir(3,
     "src/img/brg.png",
-    `birdGame: Clone de flappy bird utilizando HTML, CSS e JS.`, 
+    `birdGame: Clone de flappy bird utilizando HTML, CSS e JS.`,
     "https://fabiov37ga.github.io/birdGame/&https://github.com/FabioV37ga/birdGame",
     "3. birdGame")
 
+var bounce = new Repositorio()
+bounce.definir(4,
+    "src/img/bounce.png",
+    `Bounce: estudo sobre coordenadas em gráfico, um pouco de física.`,
+    "https://fabiov37ga.github.io/bounce/&https://github.com/FabioV37ga/bounce",
+    "4. Bounce")
+
 var day_cycle_discord = new Repositorio()
-day_cycle_discord.definir(6,
+day_cycle_discord.definir(7,
     "src/img/dcd.png",
     `DayCycleDiscord: Tema/Plugin para BetterDiscord.
     \n Troca o wallpaper do aplicativo baseado no horário.`,
     "https://github.com/Fabiov37ga/DayCycleDiscord/raw/main/download/Day%20Cycle%20Discord.rar&https://github.com/FabioV37ga/DayCycleDiscord",
-    "6. Day Cycle Discord")
+    "7. Day Cycle Discord")
 
 var wear_sell = new Repositorio()
-wear_sell.definir(4, "src/img/wrs.png",
+wear_sell.definir(5, "src/img/wrs.png",
     `Projeto final do primeiro semestre de Ciência da Computação.
         \nSistema de E-commerce em website.
         \nWebsite responsivo.`,
     "https://github.com/FabioV37ga/wearSellA3&https://github.com/FabioV37ga/wearSellA3",
-    "4. WearSell")
+    "5. WearSell")
 
 var drive_guide = new Repositorio()
-drive_guide.definir(5,
+drive_guide.definir(6,
     "src/img/dvg.png",
     `Drive guide: Guia educacional de cloud utilizando Google Drive.
         \nExplicação do conceito de nuvem.
         \nPasso a passo para fazer upload e download de arquivos`,
     "https://fabiov37ga.github.io/DriveGuide/&https://github.com/FabioV37ga/DriveGuide",
-    "5. Drive guide")
+    "6. Drive guide")
 
 // var lap_top_craft = new Repositorio()
 // lap_top_craft.definir(6,
