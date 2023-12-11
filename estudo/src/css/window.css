@@ -1,0 +1,17 @@
+.window {
+    background-image: url('../img/bezel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: -150px;
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    user-select: none;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0px;
+    height: 0px;
+}

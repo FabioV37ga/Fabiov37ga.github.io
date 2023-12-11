@@ -1,0 +1,9 @@
+.content{
+    margin: 0 auto;
+    width: inherit;
+    height: inherit;
+    background-image: url('../img/scanlines.png');
+    background-repeat: no-repeat;
+    background-size: 265%;
+    z-index: -1;
+}

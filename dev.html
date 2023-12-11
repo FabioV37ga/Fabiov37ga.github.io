@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio • Fábio Veiga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/ferramentas.css">
+    <link rel="stylesheet" href="src/css/conteudo.css">
+    <link rel="stylesheet" href="src/css/page.css">
+    <link rel="stylesheet" href="src/css/inicio.css">
+    <link rel="stylesheet" href="src/css/visor.css">
+</head>
+
+<body>
+    <main>
+
+
+
+        <section class="visor" style="display: flex; background: var(--terminalGreen);">
+            <section class="visor_conteudo" style="display: flex;">
+                <!-- class conteudo  -->
+                <div class="repositorio">
+                    <div class="repositorio_header">
+                        <h1 class="repositorio_header-titulo">
+                            <!-- Repositorio.titulo -->
+                            OpenStreet Map
+                        </h1>
+                        <div class="repositorio_header-tools">
+                            <!-- Repositorio.tools -->
+                            html + css + js + api
+                        </div>
+                        <div class="repositorio_header-links">
+                            <!-- href = Repositorio.playLink -->
+                            <a href="#" class="link_play">
+                                <i class="fa fa-play-circle" aria-hidden="true"></i>
+                            </a>
+                            <!-- href = Repositorio.gitLink -->
+                            <a href="#" class="link_git">
+                                <i class="fa fa-github" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="repositorio_image">
+                        <div class="image_filter"></div>
+                        <!-- src = Repositorio.image -->
+                        <img src="src/img/brg.png" alt="" srcset="">
+                    </div>
+                    <div class="repositorio_description">
+                        <span class="divisor">---------</span>
+                        <p class="description-text">
+                            <!-- Repositorio.description -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec molestie ex. Donec
+                            convallis risus condimentum tincidunt luctus. Mauris imperdiet.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <div class="visor_filtros">
+                <img src="src/img/bezel.png" class="bezel">
+                <img src="src/img/scanlines.png" class="scanlines">
+            </div>
+
+        </section>
+    </main>
+
+    <script src="src/js/repositorio.js"></script>
+    <script src="src/js/preload.js"></script>
+    <script src="src/js/conteudo.js"></script>
+    <script src="src/js/visor.js"></script>
+    <script src="src/js/inicio.js"></script>
+    <script src="src/js/main.js"></script>
+
+</body>
+
+</html>

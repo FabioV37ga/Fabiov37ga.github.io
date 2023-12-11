@@ -1,0 +1,52 @@
+:root {
+    --terminalGreen: rgb(2, 158, 2);
+    --terminalHoverGreen: rgb(0, 119, 0);
+    --terminalText: rgb(129 247 5 / 90%);
+}
+
+.fadeIn {
+    animation: fadeIn 1.725s steps(24)
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+.fadeOut{
+    animation: fadeOut 3.45s linear;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 100%
+    }
+
+    30% {
+        opacity: 100%
+    }
+
+    70% {
+        opacity: 0%
+    }
+
+    100% {
+        opacity: 0%
+    }
+}
+
+.fadeOut2{
+    animation: fadeOut_2 1s steps(10);
+}
+@keyframes fadeOut_2{
+    0%{
+        opacity: 100%
+    }
+    100%{
+        opacity: 0%;
+    }
+}

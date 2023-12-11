@@ -1,0 +1,43 @@
+        <!-- <section class="window">
+            <img src="src/img/scanlines.png" alt="" srcset="">
+
+        </section> -->
+
+        <!-- <script>
+            var clickable = true
+            document.querySelector(".window").parentElement.parentElement.parentElement.addEventListener("click", function (event) {
+
+                if (clickable == true) {
+                    clickable = false
+                    var elemento = document.querySelector(".window");
+
+                    var r = 255;
+                    var g = 255;
+                    var b = 255;
+
+                    var width = 0;
+                    var height = 0;
+
+                    var intervalo = setInterval(() => {
+
+                        r - 2 >= 0 ? r -= 2 : null;
+                        g - 1 >= 128 ? g -= 1 : null;
+                        b - 2 >= 0 ? b -= 2 : null;
+                        elemento.style.backgroundColor = `rgb(${r},${g},${b})`
+
+                        width + 7.5 <= 900 ? width += 7.5 : clear();
+                        height + 4.575 <= 550 ? height += 4.575 : null;
+
+                        elemento.style.height = height + 'px'
+                        elemento.style.width = width + 'px'
+
+                        function clear() {
+                            clearInterval(intervalo);
+                            height = 550;
+                            width = 900;
+                            clickable = true;
+                        }
+                    }, 1);
+                }
+            })
+        </script> -->
