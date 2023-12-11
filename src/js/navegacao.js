@@ -16,20 +16,22 @@ class Navegacao {
 
     static inicializar() {
         Navegacao.pagina = 1;
+        Conteudo.repPrincipal.classList.add("rightToCenter");
+        Conteudo.defineRepositorio();
 
         Navegacao.elemento_nav.style = 'display: flex;';
-        Navegacao.elemento_nav.classList.add("intro")
+        Navegacao.elemento_nav.classList.add("intro");
 
         Navegacao.elementoVai.addEventListener("click", () => {
             if (Navegacao.coolDown == false && Navegacao.pagina < Repositorio.repositorios.length) {
                 Navegacao.coolDown = true;
-                Navegacao.avancar()
+                Navegacao.avancar();
             }
         })
 
         Navegacao.elementoVolta.addEventListener("click", () => {
             if (Navegacao.coolDown == false && Navegacao.pagina > 1) {
-                Navegacao.recuar()
+                Navegacao.recuar();
                 Navegacao.coolDown = true;
             }
         })
@@ -38,12 +40,21 @@ class Navegacao {
             Navegacao.elemento_nav.children[i].addEventListener("click", function (event) {
                 if (event.target.textContent != '...') {
                     if (Navegacao.coolDown == false && parseInt(event.target.textContent) != Navegacao.pagina) {
-                        Navegacao.pularPara(event.target)
+                        Navegacao.pularPara(event.target);
                         Navegacao.coolDown = true;
                     }
                 }
             })
         }
+
+        Visor.elemento_audio.addEventListener("click", ()=>{
+            Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
+            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
+            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
+        })
+
+        Visor.elemento_audio.classList.add("visor_audio-active");
+        Visor.elemento_audio.classList.add("intro");
     }
 
     static avancar() {
@@ -52,12 +63,12 @@ class Navegacao {
             Navegacao.pagina++
             console.log(Navegacao.pagina)
             if (Navegacao.pagina < 4) {
-                Navegacao.selecionar('direita')
+                Navegacao.selecionar('direita');
             } else {
                 if (Navegacao.pagina + 2 <= Repositorio.repositorios.length)
-                    Navegacao.mover("direita")
+                    Navegacao.mover("direita");
                 else {
-                    Navegacao.selecionar('direita')
+                    Navegacao.selecionar('direita');
                 }
             }
         }
@@ -70,12 +81,12 @@ class Navegacao {
             Navegacao.pagina--;
             console.log(Navegacao.pagina)
             if (Navegacao.pagina > (Repositorio.repositorios.length - 3)) {
-                Navegacao.selecionar('esquerda')
+                Navegacao.selecionar('esquerda');
             } else {
                 if (Navegacao.pagina - 2 >= 1)
-                    Navegacao.mover("esquerda")
+                    Navegacao.mover("esquerda");
                 else {
-                    Navegacao.selecionar('esquerda')
+                    Navegacao.selecionar('esquerda');
                 }
             }
         }
@@ -85,31 +96,31 @@ class Navegacao {
     static pularPara(pagina) {
         var paginaNumero = parseInt(pagina.textContent)
         if (paginaNumero <= Repositorio.repositorios.length) {
-            var paginaAnterior = Navegacao.pagina
-            Navegacao.pagina = paginaNumero
+            var paginaAnterior = Navegacao.pagina;
+            Navegacao.pagina = paginaNumero;
             if (Navegacao.pagina > 3 && Navegacao.pagina < (Repositorio.repositorios.length - 1)) {
                 if (paginaAnterior < Navegacao.pagina) {
-                    Navegacao.mover('direita')
+                    Navegacao.mover('direita');
                 }
             }
             if (Navegacao.pagina >= 3 && Navegacao.pagina < (Repositorio.repositorios.length - 2)) {
                 if (paginaAnterior > Navegacao.pagina) {
-                    Navegacao.mover('esquerda')
+                    Navegacao.mover('esquerda');
                 }
             }
-            Navegacao.selecionar()
-            paginaAnterior != Navegacao.pagina ? Conteudo.defineRepositorio() : null
-            console.log(Navegacao.pagina)
+            Navegacao.selecionar();
+            paginaAnterior != Navegacao.pagina ? Conteudo.defineRepositorio() : null;
+            console.log(Navegacao.pagina);
         }
     }
 
     static selecionar(target) {
         for (let i = 0; i <= 5; i++) {
-            Navegacao.elemento_nav.children[i].classList.remove("item-selecionado")
+            Navegacao.elemento_nav.children[i].classList.remove("item-selecionado");
         }
         for (let i = 0; i <= 5; i++) {
             if (parseInt(Navegacao.elemento_nav.children[i].textContent) == Navegacao.pagina) {
-                Navegacao.elemento_nav.children[i].classList.add("item-selecionado")
+                Navegacao.elemento_nav.children[i].classList.add("item-selecionado");
             }
         }
     }
@@ -117,12 +128,12 @@ class Navegacao {
     static mover(sentido) {
         switch (sentido) {
             case "direita":
-                Navegacao.elemento_nav.children[1].textContent = '...'
+                Navegacao.elemento_nav.children[1].textContent = '...';
                 for (let i = 2; i < 5; i++) {
                     Navegacao.elemento_nav.children[i].textContent =
-                        parseInt(Navegacao.elemento_nav.children[i].textContent) + 1
+                        parseInt(Navegacao.elemento_nav.children[i].textContent) + 1;
                     if (parseInt(Navegacao.elemento_nav.children[4].textContent) + 1 == Repositorio.repositorios.length) {
-                        Navegacao.elemento_nav.children[5].textContent = Repositorio.repositorios.length
+                        Navegacao.elemento_nav.children[5].textContent = Repositorio.repositorios.length;
                     }
                 }
                 break;
@@ -130,15 +141,11 @@ class Navegacao {
                 Navegacao.elemento_nav.children[5].textContent = '...'
                 for (let i = 2; i < 5; i++) {
                     Navegacao.elemento_nav.children[i].textContent =
-                        parseInt(Navegacao.elemento_nav.children[i].textContent) - 1
+                        parseInt(Navegacao.elemento_nav.children[i].textContent) - 1;
                     if (parseInt(Navegacao.elemento_nav.children[2].textContent) == 2) {
-                        Navegacao.elemento_nav.children[1].textContent = 1
+                        Navegacao.elemento_nav.children[1].textContent = 1;
                     }
                 }
         }
-    }
-
-    static defineRepositorio() {
-        console.log("carregar repositorio!")
     }
 }

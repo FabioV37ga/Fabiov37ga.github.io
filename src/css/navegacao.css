@@ -44,20 +44,42 @@
     color: rgb(8 125 8);
 }
 
-.item-selecionado{
+.item-selecionado {
     background: rgb(129 247 5 / 97%);
 }
 
-.intro{
+.intro {
     animation: .5s intro steps(5);
     display: flex;
 }
 
 @keyframes intro {
-    0%{
+    0% {
         opacity: 0%;
     }
-    100%{
+
+    100% {
         opacity: 65%;
     }
+}
+
+.visor_audio {
+    display: none;
+    bottom: -28px;
+    font-size: 40px;
+    position: absolute;
+    left: -35px;
+    text-decoration: none;
+}
+
+.visor_audio a {
+    width: 40px;
+}
+
+.visor_audio i {
+    color: var(--terminalText);
+}
+
+.visor_audio-active {
+    display: flex !important
 }

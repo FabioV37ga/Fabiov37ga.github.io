@@ -20,9 +20,10 @@ class Visor {
     static elemento = document.querySelector(".visor");
     static elemento_animacao = document.querySelector(".visor_animacao-ligar");
     static elemento_apresentacao = document.querySelector(".conteudo_titulo");
+    static elemento_audio = document.querySelector(".visor_audio");
+    static audio = new Audio('src/audio/boot.wav');
 
     static ligar() {
-
         // Adiciona classes para mostrar os elementos do visor e anima-los.
         Visor.elemento.style.display = 'flex';
         Visor.elemento_animacao.children[0].classList.add('open');
@@ -45,10 +46,12 @@ class Visor {
         // Ao fim da animação de desaparecer, apaga os elementos de apresentação.
         Visor.elemento_apresentacao.addEventListener("animationend", () => {
             Visor.elemento_apresentacao.remove();
-            Conteudo.repPrincipal.classList.add("rightToCenter");
-            Navegacao.inicializar();
-            Conteudo.defineRepositorio();
+            Navegacao.inicializar();     
         })
+    }
+
+    static toggleAudio(){
+        
     }
 
 

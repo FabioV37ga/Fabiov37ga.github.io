@@ -20,8 +20,7 @@ class Inicio {
     // Referência do elemento html
     static elemento = document.querySelector(".iniciar");
     static elemento_clickHere = document.querySelector(".clickhere")
-    // Audio de inicio
-    static audio = new Audio('src/audio/boot.wav');
+    
 
     // #1 Método inicializar()
     static inicializar() {
@@ -58,13 +57,13 @@ class Inicio {
 
     static iniciar() {
         // Da play no som de boot
-        Inicio.audio.currentTime = 0.38
-        Inicio.audio.play();
+        Visor.audio.currentTime = 0.38
+        Visor.audio.play();
 
         // Intervalo para manter o loop do som
         setInterval(() => {
-            if (Inicio.audio.currentTime >= 15) {
-                Inicio.audio.currentTime = 11
+            if (Visor.audio.currentTime >= 15) {
+                Visor.audio.currentTime = 11
             }
         }, 1000);
 
