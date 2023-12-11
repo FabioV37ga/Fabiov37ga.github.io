@@ -115,7 +115,7 @@ var wearSell =
         "https://fabiov37ga.github.io/wearSellA3/",
         "https://github.com/FabioV37ga/wearSellA3",
         "Projeto final do primeiro semestre de ciência da computação. Front-end de uma loja virtual de roupas. Website responsivo (desktop / mobile), lógica de consistência de campos.",
-        "src/img/repositorios/wearsell.png"
+        "src/img/repositorios/wearSell.png"
     )
 
 var driveGuide =
@@ -130,7 +130,7 @@ var driveGuide =
 
 var dayCycleDiscord =
     new Repositorio(
-        "dayCycleDiscord",
+        "dayCycle Discord",
         "js + betterDiscord api",
         "https://github.com/FabioV37ga/DayCycleDiscord",
         "https://github.com/FabioV37ga/DayCycleDiscord",
