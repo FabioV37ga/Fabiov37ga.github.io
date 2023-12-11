@@ -1,17 +1,26 @@
+.inicio {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    position: absolute;
+}
+
+
 .clickhere {
     position: absolute;
-    margin-left: -323px;
+    margin-left: -290px;
+    margin-bottom: 200px;
     user-select: none;
-    margin-top: 274px;
     width: 194px;
 }
 
 .iniciar {
-    margin-top: 440px;
     width: 80px;
     height: 80px;
     border-radius: 100%;
     font-size: 50px;
+    margin-top: 160px;
     user-select: none;
     display: flex;
     justify-content: center;

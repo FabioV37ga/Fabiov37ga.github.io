@@ -1,9 +1,9 @@
-*{
+* {
     -webkit-user-drag: none;
     user-select: none;
 }
 
-body{
+body {
     margin: 0;
     height: fit-content;
     overflow: hidden;
@@ -15,4 +15,31 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@media (min-width: 1130px) {
+    .visor {
+        zoom: 150%;
+        margin-top: 5% !important;
+    }
+
+    .inicio {
+        zoom: 150%;
+    }
+}
+
+@media (max-width: 800px) and (min-width: 601px) {
+    .visor {
+        zoom: 75%;
+    }
+
+    .inicio {
+        zoom: 75%;
+    }
+}
+
+@media (max-width: 600px){
+    .visor {
+        zoom: 50%;
+    }
 }

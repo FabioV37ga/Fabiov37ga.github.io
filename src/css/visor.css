@@ -34,6 +34,9 @@
     width: 100%;
 }
 
+.visor_filtros .scanlines{
+    opacity: 70%;
+}
 
 .ball {
     background: var(--terminalGreen);
