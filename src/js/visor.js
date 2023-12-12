@@ -2,7 +2,7 @@
  *
  *  visor.js → Controla o funcionamento do visor
  *             (Janela física onde o conteúdo é mostrado)
- *  Visor
+ *  class Visor
  *  Índice
  *      Atributos
  *          1. elemento → Referência do elemento html ".visor" .

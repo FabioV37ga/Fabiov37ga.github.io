@@ -1,10 +1,28 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  *
- *  conteudo.js →
+ *  conteudo.js → Controla o funcionamento do conteúdo. Adiciona função aos inputs de navegação, 
+ *                controle lógico das 2 janelas de repositorio, animações de avanço e recuo
+ *                e define elementos dos repositórios
  *  
- *                   
+ *  class Conteudo
+ *  índice
+ *      atributos
+ *          1. elemento → Referência do elemento html ".visor_conteudo" 
+ *          2. elemento_repositorio →  Referência do elemento html ".repositorio"
+ *          3. repPrincipal →  Referência do elemento html "#a"
+ *          4. repAuxiliar →  Referência do elemento html "#a"
+ *      métodos
+ *          1. inicializar() → Inicializa conteúdo. Mostra elementos relacionados e adiciona
+ *                             função nos botões de navegação.
+ *          2. trocarElemento() → Alterna os IDS de repPrincipal e repAuxiliar entre '#a' de '#b'
+ *          3. limparClasses() → Limpa classes relacionadas a animação
+ *          4. avancar() → Avança visualmente a página, adiciona classes de animação.
+ *          4. recuar() → Recua visualmente a página, adiciona classes de animação.
+ *          5. defineRepositorio() → Define o valor dos elementos do repositório (repPrincipal) 
+ *                                   a partir da página atual, que seleciona o repositório em
+ *                                   Repositorio.repositorios
  * 
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
 class Conteudo {
@@ -13,27 +31,37 @@ class Conteudo {
     static repPrincipal = document.querySelector("#a");
     static repAuxiliar = document.querySelector("#b");
 
+
     static inicializar() {
+        // Mostra elemento do visor
         Conteudo.elemento.style.display = 'flex'
 
+        // Botão navegar [ → ]
         Navegacao.elementoVai.addEventListener("click", () => {
             if (Navegacao.coolDown == false) {
                 Conteudo.avancar();
             }
         })
 
+        // Botão navegar [ ← ]
         Navegacao.elementoVolta.addEventListener("click", () => {
             if (Navegacao.coolDown == false) {
                 Conteudo.recuar();
             }
         })
 
+        // Botões numéricos de navegação
         for (let i = 1; i <= Navegacao.elemento_nav.children.length - 1; i++) {
             Navegacao.elemento_nav.children[i].addEventListener("click", function (event) {
                 if (Navegacao.coolDown == false) {
+                    // Quando a página selecionada no click for maior que a página atual
                     if (parseInt(event.target.textContent) > Navegacao.pagina) {
+                        // Avança
                         Conteudo.avancar()
-                    } else if (parseInt(event.target.textContent) < Navegacao.pagina) {
+                    }
+                    // Quando a página selecionada no click for menor que a página atual
+                    else if (parseInt(event.target.textContent) < Navegacao.pagina) {
+                        // Recua
                         Conteudo.recuar()
                     }
 

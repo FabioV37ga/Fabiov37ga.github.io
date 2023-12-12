@@ -1,9 +1,26 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  *
- *  repositorio.js →
- *  
- *                   
+ *  repositorio.js → Classe modelo dos repositorios, aceita entrada referente a
+ *                   titulo, links, descricao, imagem, etc...
+ *                   Também lista cada instância de repositório no objeto do0
+ *                   atributo estático 'Repositorio.repositorios'.
  * 
+ * class Repositorio
+ * Índice 
+ *      Atributos
+ *          1. static repositorios → Atributo que armazena as instâncias de repositório em objeto
+ *          2. objeto → Armazena um objeto criado a partir dos valores a seguir ↓
+ *          3...8  → Atributos que armazenam as informações do repositorio
+ *      Métodos
+ *          1. listar() → Utiliza os valores passados como parâmetro na criação da instância
+ *                        para criar um objeto, em seguida faz um push em Repositorio.repositorios()
+ * Instâncias
+ * Índice
+ *      ... → Abaixo da classe repositorio estão suas instâncias, cada uma se refere a um repositório,
+ *            precisam ser inseridos manualmente, basta criar uma instância da classe Repositorio
+ *                                                ex → 'var meuRepositorio = new Repositorio(PARÂMETROS)'
+ *            passando os parâmetros de titulo, tools, links, descrição e imagem.
+ *      
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
