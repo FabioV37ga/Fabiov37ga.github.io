@@ -2,8 +2,10 @@
  *
  *  repositorio.js → Classe modelo dos repositorios, aceita entrada referente a
  *                   titulo, links, descricao, imagem, etc...
- *                   Também lista cada instância de repositório no objeto do0
+ *                   Também lista cada instância de repositório no objeto do
  *                   atributo estático 'Repositorio.repositorios'.
+ * 
+ *                 → Também possui variaveis das instâncias abaixo da classe
  * 
  * class Repositorio
  * Índice 

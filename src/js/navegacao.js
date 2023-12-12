@@ -1,8 +1,20 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  *
  *  navegacao.js →
- *  
- *                   
+ *  Índice
+ *      Atributos
+ *          1. elemento_nav → Referência do elemento html '.navagacao' 
+ *          2. elementoVolta → Referência do elemento html '.navegacao_retroceder'
+ *          3. elementoVai → Referência do elemento html 'navegacao_prosseguir'
+ *          4. pagina → Atributo que guarda o valor da página atual
+ *          5. coolDown → Atributo lógico, não permite execução dupla dos métodos
+ *      Métodos
+ *          1. inicializar() →      
+ *          2. avancar() →      
+ *          3. recuar() →      
+ *          4. pularPara() →      
+ *          5. selecionar() →      
+ *          6. mover() →      
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -47,7 +59,7 @@ class Navegacao {
             })
         }
 
-        Visor.elemento_audio.addEventListener("click", ()=>{
+        Visor.elemento_audio.addEventListener("click", () => {
             Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
