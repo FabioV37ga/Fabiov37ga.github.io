@@ -52,17 +52,22 @@ class Visor {
 
     static toggleAudio(state) {
         // Caso não tenha argumentos, simplesmente alterna entre volume 0,1 e classes on,off.
-        if (!state) {
+        if (!state || state == 0) {
             Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
         }
-        // Caso tenha argumento, aplica, baseado nele, o volume (entre 0 e 1). Não alterna classes.
+        // Caso tenha argumento, aplica, baseado nele, o volume (entre 0 e 1). Manipula classes necessárias
         else {
-            if (state == 0) {
+            if (state == 1) {
                 Visor.audio.volume = 0;
-            } else {
+                Visor.elemento_audio.children[0].children[0].classList.remove("fa-volume-up")
+                Visor.elemento_audio.children[0].children[0].classList.add("fa-volume-off")
+            }
+            else if (state == 2) {
                 Visor.audio.volume = 1;
+                Visor.elemento_audio.children[0].children[0].classList.add("fa-volume-up")
+                Visor.elemento_audio.children[0].children[0].classList.remove("fa-volume-off")
             }
         }
     }

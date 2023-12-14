@@ -62,7 +62,7 @@ class Inicio {
 
         // Quando o usuário sai da página o som é mutado
         document.addEventListener("visibilitychange", () => {
-            document.visibilityState == "visible" ? Visor.toggleAudio(1) : Visor.toggleAudio(0)
+            document.visibilityState == "visible" ? Visor.toggleAudio(2) : Visor.toggleAudio(1)
         })
 
         // Intervalo para manter o loop do som
