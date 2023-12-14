@@ -20,7 +20,7 @@ class Inicio {
     // Referência do elemento html
     static elemento = document.querySelector(".iniciar");
     static elemento_clickHere = document.querySelector(".clickhere")
-    
+
 
     // #1 Método inicializar()
     static inicializar() {
@@ -59,6 +59,11 @@ class Inicio {
         // Da play no som de boot
         Visor.audio.currentTime = 0.38
         Visor.audio.play();
+
+        // Quando o usuário sai da página o som é mutado
+        document.addEventListener("visibilitychange", () => {
+            document.visibilityState == "visible" ? Visor.toggleAudio(1) : Visor.toggleAudio(0)
+        })
 
         // Intervalo para manter o loop do som
         setInterval(() => {

@@ -59,14 +59,12 @@ class Navegacao {
             })
         }
 
-        Visor.elemento_audio.addEventListener("click", () => {
-            Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
-            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
-            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
-        })
-
         Visor.elemento_audio.classList.add("visor_audio-active");
         Visor.elemento_audio.classList.add("intro");
+        Visor.elemento_audio.addEventListener("click", () => {
+            Visor.toggleAudio()
+        })
+
     }
 
     static avancar() {

@@ -46,13 +46,21 @@ class Visor {
         // Ao fim da animação de desaparecer, apaga os elementos de apresentação.
         Visor.elemento_apresentacao.addEventListener("animationend", () => {
             Visor.elemento_apresentacao.remove();
-            Navegacao.inicializar();     
+            Navegacao.inicializar();
         })
     }
 
-    static toggleAudio(){
-        
+    static toggleAudio(state) {
+        if (!state) {
+            Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
+            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
+            Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
+        } else {
+            if (state == 0) {
+                Visor.audio.volume = 0;
+            } else {
+                Visor.audio.volume = 1;
+            }
+        }
     }
-
-
 }
