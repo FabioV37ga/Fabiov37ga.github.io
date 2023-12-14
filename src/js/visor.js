@@ -11,7 +11,7 @@
  *          1. ligar() → Imita uma sequencia de boot de um terminal, inicialmente
  *                       faz uma animação de ligar, mostra o título 
  *                       "Portfólio • Fábio Veiga" e por fim trás os repositórios
- *                    
+ *          2. toggleAudio() → Função que controla o som de fundo da página (mute/unmute)
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -51,11 +51,14 @@ class Visor {
     }
 
     static toggleAudio(state) {
+        // Caso não tenha argumentos, simplesmente alterna entre volume 0,1 e classes on,off.
         if (!state) {
             Visor.audio.volume = Visor.audio.volume == 1 ? 0 : 1;
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-up")
             Visor.elemento_audio.children[0].children[0].classList.toggle("fa-volume-off")
-        } else {
+        }
+        // Caso tenha argumento, aplica, baseado nele, o volume (entre 0 e 1). Não alterna classes.
+        else {
             if (state == 0) {
                 Visor.audio.volume = 0;
             } else {
