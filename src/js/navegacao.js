@@ -36,13 +36,15 @@ class Navegacao {
 
         Navegacao.elementoVai.addEventListener("click", () => {
             if (Navegacao.coolDown == false && Navegacao.pagina < Repositorio.repositorios.length) {
-                Navegacao.coolDown = true;
+                Conteudo.avancar();
                 Navegacao.avancar();
+                Navegacao.coolDown = true;
             }
         })
 
         Navegacao.elementoVolta.addEventListener("click", () => {
             if (Navegacao.coolDown == false && Navegacao.pagina > 1) {
+                Conteudo.recuar();
                 Navegacao.recuar();
                 Navegacao.coolDown = true;
             }
@@ -52,6 +54,14 @@ class Navegacao {
             Navegacao.elemento_nav.children[i].addEventListener("click", function (event) {
                 if (event.target.textContent != '...') {
                     if (Navegacao.coolDown == false && parseInt(event.target.textContent) != Navegacao.pagina) {
+                        if (parseInt(event.target.textContent) > Navegacao.pagina) {
+                            // Avança
+                            Conteudo.avancar()
+                        }
+                        else if (parseInt(event.target.textContent) < Navegacao.pagina) {
+                            // Recua
+                            Conteudo.recuar()
+                        }
                         Navegacao.pularPara(event.target);
                         Navegacao.coolDown = true;
                     }

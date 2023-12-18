@@ -12,8 +12,7 @@
  *          3. repPrincipal →  Referência do elemento html "#a"
  *          4. repAuxiliar →  Referência do elemento html "#a"
  *      métodos
- *          1. inicializar() → Inicializa conteúdo. Mostra elementos relacionados e adiciona
- *                             função nos botões de navegação.
+ *          1. inicializar() → Inicializa conteúdo. Mostra elementos relacionados
  *          2. trocarElemento() → Alterna os IDS de repPrincipal e repAuxiliar entre '#a' de '#b'
  *          3. limparClasses() → Limpa classes relacionadas a animação
  *          4. avancar() → Avança visualmente a página, adiciona classes de animação.
@@ -35,39 +34,6 @@ class Conteudo {
     static inicializar() {
         // Mostra elemento do visor
         Conteudo.elemento.style.display = 'flex'
-
-        // Botão navegar [ → ]
-        Navegacao.elementoVai.addEventListener("click", () => {
-            if (Navegacao.coolDown == false) {
-                Conteudo.avancar();
-            }
-        })
-
-        // Botão navegar [ ← ]
-        Navegacao.elementoVolta.addEventListener("click", () => {
-            if (Navegacao.coolDown == false) {
-                Conteudo.recuar();
-            }
-        })
-
-        // Botões numéricos de navegação
-        for (let i = 1; i <= Navegacao.elemento_nav.children.length - 1; i++) {
-            Navegacao.elemento_nav.children[i].addEventListener("click", function (event) {
-                if (Navegacao.coolDown == false) {
-                    // Quando a página selecionada no click for maior que a página atual
-                    if (parseInt(event.target.textContent) > Navegacao.pagina) {
-                        // Avança
-                        Conteudo.avancar()
-                    }
-                    // Quando a página selecionada no click for menor que a página atual
-                    else if (parseInt(event.target.textContent) < Navegacao.pagina) {
-                        // Recua
-                        Conteudo.recuar()
-                    }
-
-                }
-            })
-        }
     }
 
     static trocarElemento() {
