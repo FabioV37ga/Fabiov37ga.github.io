@@ -41,6 +41,6 @@ main {
 
 @media (max-width: 600px){
     .visor, .inicio {
-        zoom: 60%;
+        zoom: 53%;
     }
 }
