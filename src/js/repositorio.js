@@ -15,7 +15,7 @@
  *          3...8  → Atributos que armazenam as informações do repositorio
  *      Métodos
  *          1. listar() → Utiliza os valores passados como parâmetro na criação da instância
- *                        para criar um objeto, em seguida faz um push em Repositorio.repositorios()
+ *                        para criar um objeto, em seguida faz um push em Repositorio.repositorios
  * Instâncias
  * Índice
  *      ... → Abaixo da classe repositorio estão suas instâncias, cada uma se refere a um repositório,
@@ -85,6 +85,16 @@ var sistemaSolar =
         "https://github.com/FabioV37ga/Sistema-Solar",
         "Jogo educativo sobre o sistema solar com sistema de fases, inimigos que atiram e curiosidades sobre os planetas.",
         "src/img/repositorios/sistemaSolar.png"
+    )
+
+var JSbridge = 
+    new Repositorio(
+        "JSBridge",
+        "html + css + js",
+        "https://fabiov37ga.github.io/compiladorA3",
+        "https://github.com/FabioV37ga/compiladorA3",
+        "Projeto final de Teoria da Computação e Compiladores. Compilador funcional utilizando js.",
+        "src/img/jsbridge.png"
     )
 
 var openStreetMap =
