@@ -94,7 +94,17 @@ var JSbridge =
         "https://fabiov37ga.github.io/compiladorA3",
         "https://github.com/FabioV37ga/compiladorA3",
         "Projeto final de Teoria da Computação e Compiladores. Compilador funcional utilizando js.",
-        "src/img/jsbridge.png"
+        "src/img/repositorios/jsbridge.png"
+    )
+
+var conviteAugusto =
+    new Repositorio(
+        "convite Augusto",
+        "html + css + js + api's...",
+        "https://fabiov37ga.github.io/conviteAugusto/",
+        "https://github.com/FabioV37ga/conviteAugusto",
+        "Website responsivo de um convite de festa de aniversário infantil, com informações gerais do evento e formulário de presença integrado com Google Sheets.",
+        "src/img/repositorios/conviteAugusto.png"
     )
 
 var openStreetMap =
