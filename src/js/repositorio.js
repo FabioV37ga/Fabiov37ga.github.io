@@ -87,7 +87,7 @@ var sistemaSolar =
         "src/img/repositorios/sistemaSolar.png"
     )
 
-var JSbridge = 
+var JSbridge =
     new Repositorio(
         "JSBridge",
         "html + css + js",
@@ -105,6 +105,16 @@ var conviteAugusto =
         "https://github.com/FabioV37ga/conviteAugusto",
         "Website responsivo de um convite de festa de aniversário infantil, com informações gerais do evento e formulário de presença integrado com Google Sheets.",
         "src/img/repositorios/conviteAugusto.png"
+    )
+
+var conviteAlessandra =
+    new Repositorio(
+        "convite Alessandra",
+        "html + css + js + api's...",
+        "https://fabiov37ga.github.io/conviteAlessandra/",
+        "https://github.com/FabioV37ga/conviteAlessandra",
+        "Website responsivo de um convite de festa de aniversário com tema anos 70, com informações gerais do evento e formulário de presença integrado com Google Sheets.",
+        "src/img/repositorios/conviteAlessandra.png"
     )
 
 var openStreetMap =
