@@ -97,6 +97,16 @@ var JSbridge =
         "src/img/repositorios/jsbridge.png"
     )
 
+var TypeTap =
+    new Repositorio(
+        "TypeTap",
+        "html + css + js",
+        "https://fabiov37ga.github.io/TypeTap",
+        "https://github.com/FabioV37ga/TypeTap",
+        "Jogo de digitação em ambiente web.",
+        "src/img/repositorios/typetap.png"
+    )
+
 var conviteAugusto =
     new Repositorio(
         "convite Augusto",
