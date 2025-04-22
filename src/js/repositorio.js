@@ -104,7 +104,7 @@ var TypeTap =
         "https://fabiov37ga.github.io/TypeTap",
         "https://github.com/FabioV37ga/TypeTap",
         "Jogo de digitação em ambiente web.",
-        "src/img/repositorios/typetap.png"
+        "src/img/repositorios/typeTap.png"
     )
 
 var conviteAugusto =
