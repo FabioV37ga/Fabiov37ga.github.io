@@ -29,7 +29,7 @@ main {
     position: absolute;
     bottom: 154px;
     font-size: 23px;
-    font-family: cursive;
+    font-family: sans-serif;
     left: 209px;
     cursor: pointer;
 }
@@ -100,7 +100,7 @@ main {
     display: block;
     background: #1e1e1e99;
     border-radius: 5px;
-    font-family: cursive;
+    font-family: sans-serif;
     color: whitesmoke;
     cursor: pointer
 }
