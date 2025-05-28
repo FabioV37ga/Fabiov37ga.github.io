@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    background: rgb(10, 10, 10)
+}
+
+main {
+    margin: 15px auto;
+    width: 450px;
+    height: 650px;
+    background-image: url('img/catbkg.png');
+    border-radius: 20px;
+    position: relative;
+    background-size: cover;
+}
+
+.start {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url('img/bkg-start.png');
+}
+
+.startbtn {
+    position: absolute;
+    bottom: 154px;
+    font-size: 23px;
+    font-family: cursive;
+    left: 209px;
+    cursor: pointer;
+}
+
+.talking {
+    height: 70%;
+    width: 100%;
+    /* border: yellow 1px solid; */
+    position: relative;
+}
+
+.answers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 100%;
+    /* background: gold; */
+    border-radius: 0 0 20px 20px;
+    background: rgba(0, 0, 0, 0.6)
+}
+
+.char {
+    display: none;
+    position: absolute;
+    width: 200px;
+    bottom: 0px;
+    left: 100px;
+}
+
+.char img {
+    width: 100%
+}
+
+.chat {
+    animation-delay: .8s;
+    display: none;
+    position: absolute;
+    top: 10px;
+}
+
+.chat img {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.textbox {
+    align-items: center;
+    font-size: 18px;
+    /* background: blue; */
+    position: absolute;
+    left: 35px;
+    width: 379px;
+    top: 22px;
+    height: 182px;
+    justify-content: center;
+    display: flex;
+}
+
+.botoesAnswer {
+    width: 90%
+}
+
+.botoesAnswer * {
+    width: 100%;
+    padding: 8px;
+    display: block;
+    background: #1e1e1e99;
+    border-radius: 5px;
+    font-family: cursive;
+    color: whitesmoke;
+    cursor: pointer
+}
+
+.buttonA{
+    display: none;
+    animation: fadeIn .5s linear forwards
+}
+
+.buttonB {
+    margin-top: 8px;
+    display: none;
+    animation: fadeIn .5s linear forwards
+}
+.buttonC {
+    display: none;
+    animation: fadeIn .5s linear forwards
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}

@@ -1,0 +1,45 @@
+.fadeout{
+    animation: fadeout .3s linear forwards
+}
+
+@keyframes fadeout{
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}
+
+.popin{
+    display: initial !important;
+    animation: popin .1s linear forwards
+}
+
+@keyframes popin{
+    0%{
+        opacity: 0%;
+        transform: translateY(-15px);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0px)
+    }
+}
+
+.popinreverse{
+    opacity: 0%;
+    display: initial !important;
+    animation: popinreverse .2s linear forwards
+}
+
+@keyframes popinreverse{
+    0%{
+        opacity: 0%;
+        transform: translateY(20px)
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0px);
+    }
+}
