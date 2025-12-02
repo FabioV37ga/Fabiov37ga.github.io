@@ -11,4 +11,8 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
+  preview: {
+    // Allow Render's host so `vite preview` accepts requests to that hostname
+    allowedHosts: ['fabioveiga.onrender.com', 'localhost'],
+  },
 });
