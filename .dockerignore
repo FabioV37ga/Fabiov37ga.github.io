@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+.env
+.DS_Store
+.git
+.github
+Dockerfile
+.dockerignore
+npm-debug.log
+pnpm-lock.yaml
+yarn.lock
