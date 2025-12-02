@@ -11,6 +11,11 @@ RUN npm ci --silent
 COPY . .
 RUN npm run build
 
+# Ensure `xdg-open` is available so Vite's preview doesn't fail when trying
+# to open a browser in environments without a desktop (fixes ENOENT).
+RUN apk add --no-cache xdg-utils
+
 EXPOSE 5173
+# Use the `preview` script and pass through Vite args. Fixed prior typo.
 CMD ["npm","run","preview","--","--port","5173","--host","0.0.0.0"]
 
