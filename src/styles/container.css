@@ -1,0 +1,26 @@
+.main-container{
+    border: 1px solid var(--gray);
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    animation: fadeIn .5s ease-in-out forwards;
+    animation-delay: 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.main-container .content{
+    width: calc(100% - var(--padding-main) * 2);
+    height: calc(100% - var(--padding-main) * 2);
+    /* background: pink */
+}

@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("../assets/NeueMontreal-Light.otf");
+}
+
+@font-face {
+    font-family: "Neue Montreal medium";
+    src: url("../assets/NeueMontreal-Medium.otf");
+}
+
+:root{
+    --page-padding: 20px;
+    --background: #0C0C0C;
+    --gray: #808080;
+    --padding-main: 50px;
+}
+
+body{
+    height: 100vh;
+    background: var(--background);
+    overflow: hidden;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+body, main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

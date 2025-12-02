@@ -1,0 +1,102 @@
+.background {
+    width: 2500px;
+    height: 2500px;
+    /* background: red; */
+    filter: grayscale(1);
+    opacity: 0.5;
+    position: absolute;
+    left: -1000px;
+    top: -100px;
+    transform: scaleX(-1) scale(1.5);
+    mask-image: url(../images/background/blur.webp);
+    mask-size: 115%;
+    mask-position: center;
+    z-index: -1;
+}
+
+/* .background::before, */
+.particles.z::before,
+.particles.a::before,
+.particles.b::before,
+.particles.c::before,
+.particles.d::before,
+.particles.e::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: none;
+    user-select: none;
+    pointer-events: none;
+    background-size: 2500px;
+}
+
+.particles.z::before,
+.particles.a::before,
+.particles.b::before,
+.particles.d::before,
+.particles.e::before {
+    background: url("../../images/background/grain.webp");
+    mask-image: url("../../images/background/blur.webp");
+}
+
+.particles.c::before {
+    background: url("../../images/background/shadow.avif");
+    mask-image: url("../../images/background/blur.webp");
+}
+
+.particles.z::before {
+    filter: brightness(0.48);
+    mix-blend-mode: luminosity;
+    animation: moveParticles 75s linear infinite;
+}
+
+.particles.a::before {
+    filter: brightness(0.31);
+    mix-blend-mode: soft-light;
+    animation: moveParticles 70s linear infinite;
+}
+
+.particles.b::before {
+    filter: brightness(0.55);
+    mix-blend-mode: color;
+    animation: moveParticles 65s linear infinite;
+}
+
+.particles.c::before {
+    filter: brightness(0.35);
+    mix-blend-mode: exclusion;
+    animation: moveParticles 60s linear infinite;
+}
+
+.particles.d::before {
+    filter: brightness(0.33);
+    mix-blend-mode: saturation;
+    animation: moveParticles 55s linear infinite;
+}
+
+.particles.e::before {
+    filter: brightness(0.42);
+    mix-blend-mode: difference;
+    animation: moveParticles 50s linear infinite;
+}
+
+
+@keyframes moveParticles {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(180deg) translate(-150px, -180px);
+    }
+
+
+    100% {
+        transform: rotate(360deg) translate(0, 0);
+    }
+}

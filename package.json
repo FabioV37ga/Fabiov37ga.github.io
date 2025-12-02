@@ -1,0 +1,25 @@
+{
+  "name": "fabioveiga-portfolio",
+  "version": "3.0.0",
+  "description": "3rd version of my portfolio",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"\""
+  },
+  "author": "FabioV37ga",
+  "license": "ISC",
+  "dependencies": {
+    "nanohtml": "^1.10.0",
+    "umbrellajs": "^3.3.3"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}

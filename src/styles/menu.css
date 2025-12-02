@@ -1,0 +1,36 @@
+.menu {
+    color: white;
+    font-family: "Neue Montreal", sans-serif;
+    width: fit-content;
+}
+
+.menu h1 {
+    font-size: 64px;
+    margin-bottom: 10px
+}
+
+.menu h2 {
+    font-size: 16px;
+}
+
+.presentation {
+    margin-bottom: 60px;
+}
+
+.menu nav,
+.menu nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95px;
+}
+
+.navigation-item a {
+    font-family: "neue montreal medium", sans-serif;
+    cursor: pointer;
+    transition: color .3s ease-in-out;
+}
+
+.navigation-item a:hover {
+    color: var(--gray);
+}

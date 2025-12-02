@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/document.css">
+    <link rel="stylesheet" href="styles/welcome.css">
+    <link rel="stylesheet" href="styles/container.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/projectList.css">
+    <link rel="stylesheet" href="styles/background.css">
+    <title>Fábio Veiga - Portfolio</title>
+</head>
+
+<body>
+    <main>
+        <!-- Sessão Welcome (Nome/Portfolio) -->
+        <section class="welcome">
+            <div class="welcome-text">
+                <div class="name">Fábio Veiga</div>
+                <!-- <span class="divisor">|</span> -->
+                <div class="title">Portfolio</div>
+            </div>
+        </section>
+
+        <!-- Container principal -->
+        <section class="main-container">
+
+            <!-- Container de conteúdo -->
+            <div class="content">
+
+                <!-- Menu à esquerda -->
+                <div class="menu">
+                    <div class="presentation">
+                        <h1>Fábio Veiga</h1>
+                        <h2>Full Stack Developer</h2>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li class="navigation-item" selected>
+                                <a>Projects •</a>
+                            </li>
+                            <li class="navigation-item">
+                                <a>About</a>
+                            </li>
+                            <li class="navigation-item">
+                                <a>Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Conteúdo: Projetos -->
+                <div class="projects-container">
+                    <ul class="projects-list">
+                        <!-- Itens de projeto são dinamicamente criados -->
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <!-- Background -->
+            <div class="background">
+                <div class="particles z"></div>
+                <div class="particles a"></div>
+                <div class="particles b"></div>
+                <div class="particles c"></div>
+                <div class="particles d"></div>
+                <div class="particles e"></div>
+            </div>
+
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
