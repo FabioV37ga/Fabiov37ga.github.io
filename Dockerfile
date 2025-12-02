@@ -1,5 +1,5 @@
 # Multi-stage Dockerfile for building a Vite app and serving with nginx
-FROM node:20-alpine AS build
+FROM node:24.3-alpine
 
 WORKDIR /app
 
@@ -23,4 +23,4 @@ RUN npm ci --silent
 COPY --from=build /app/dist ./dist
 
 EXPOSE 5173
-CMD ["npm", "run", "start"]
+CMD ["npm","run","preview","--","--port","5173","--host","0.0.0.0"]
