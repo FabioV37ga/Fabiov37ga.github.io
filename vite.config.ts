@@ -12,7 +12,7 @@ export default defineConfig({
     open: true,
   },
   preview: {
-    // Allow Render's host so `vite preview` accepts requests to that hostname
+    // Allow Render's host so `vite preview` accepts requests to that hostname, also, localhost for local testing
     allowedHosts: ['fabioveiga.onrender.com', 'localhost'],
   },
 });
