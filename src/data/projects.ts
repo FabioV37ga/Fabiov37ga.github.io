@@ -69,11 +69,11 @@ const Projects: Project[] = [
     bounce,
     wearSell,
     driveGuide,
-    a,
-    b,
-    c,
-    d,
-    e
+    // a,
+    // b,
+    // c,
+    // d,
+    // e
 ];
 
 export { Projects, Project };

@@ -6,28 +6,12 @@
     /* background: red; */
     position: absolute;
     height: 100%;
-    right: 80px;
+    width: 800px;
+    right: 50px;
     top: 40px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
-
-.projects-container-hide {
-    animation: projectsContainerSlideOut ease-in-out forwards;
-}
-
-@keyframes projectsContainerSlideOut {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-}
-
 
 .projects-container::-webkit-scrollbar {
     width: 1.5px;
@@ -49,7 +33,7 @@
     font-family: "Neue Montreal";
     text-transform: uppercase;
     font-size: 65px;
-    padding: 10px 15px 0 0;
+    padding: 10px 1px 0 0;
     margin-bottom: 10px;
     line-height: 65px;
     text-align: left;
@@ -78,33 +62,4 @@
     flex-wrap: wrap;
     transform-origin: center center;
     transform: rotateX(-12deg) rotateY(-33deg);
-}
-
-
-@keyframes projectsListSlideIn {
-    0% {
-        transform: perspective(500px) rotateY(-90deg)
-    }
-
-    60% {
-        transform: perspective(500px) rotateY(-60deg)
-    }
-
-    100% {
-        transform: perspective(500px) rotateY(-15deg) rotateZ(-0deg) rotateX(10deg)
-    }
-}
-
-.list-focus {
-    animation: listFocus 1s ease-in-out forwards;
-}
-
-@keyframes listFocus {
-    from {
-        transform: rotateX(-12deg) rotateY(-33deg) !important;
-    }
-
-    to {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
 }

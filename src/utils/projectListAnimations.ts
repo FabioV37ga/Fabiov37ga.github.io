@@ -13,7 +13,7 @@ const slideDownProjectContainer = (container: HTMLElement, duration: number) => 
         translateY: ["-100%", "0%"],
         opacity: [0, 1],
         duration: duration,
-        delay: 1000,
+        delay: 3000,
         ease: cubicBezier(0.155, 0.812, 0.755, 1.01)
     })
 }
@@ -50,7 +50,7 @@ const slideUpProjectContainer = (container: HTMLElement, duration: number) => {
         translateY: ["0%", "-100%"],
         opacity: [1, 0],
         duration: duration,
-        ease: cubicBezier(0.652, 0.263,0.574,0.914)
+        ease: cubicBezier(0.652, 0.263, 0.574, 0.914)
     })
 }
 
@@ -63,10 +63,15 @@ const hideProjectItem = (project: HTMLElement) => {
                 perspective: 500,
                 translateY: '0%',
                 rotateY: 0,
+                opacity: 1,
                 duration: 0
             }, {
+                opacity: 0,
+                duration: 400
+            },
+            {
                 translateY: '-100%',
-                rotateY: -80,
+                rotateY: -90,
                 opacity: 0,
                 duration: 1000
             }
@@ -88,6 +93,16 @@ const highlightProject = (project: HTMLElement, margin: number) => {
     })
 }
 
+// Foca no projeto retirando a animação 3D
+const focusOnProject = (container: HTMLElement) => {
+    animate(container, {
+        rotateX: ["-12deg", "0deg"],
+        rotateY: ["-33deg", "0deg"],
+        ease: "easeInOutCirc",
+        duration: 1000
+    })
+}
+
 // Reseta a posição de scroll do container para o topo
 const resetScrollPosition = (container: HTMLElement) => {
     animate(container, {
@@ -98,8 +113,8 @@ const resetScrollPosition = (container: HTMLElement) => {
     })
 }
 
-export { 
+export {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
-    slideUpProjectContainer,hideProjectItem, // Animação de saída
-    highlightProject, resetScrollPosition // Animações de seleção
- }
+    slideUpProjectContainer, hideProjectItem, // Animação de saída
+    highlightProject, focusOnProject, resetScrollPosition // Animações de seleção
+}

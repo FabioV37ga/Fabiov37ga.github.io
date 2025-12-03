@@ -61,7 +61,7 @@ class ProjectController {
         // Define estilos inline para posicionamento
         el.style = `
         top: ${reference.offsetHeight + 55}px;
-        display: none;`
+        display: flex;`
         // TODO: Revisar lógica de posicionamento
         // el.style = `${projectElement.offsetTop + 2000}px`;
 

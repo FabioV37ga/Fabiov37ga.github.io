@@ -35,9 +35,6 @@ import { Project } from "../data/projects.js";
 // Importa o template de item de projeto
 import { nav_project } from "../templates/projectListTemplate.js";
 
-// Importa Anime.js para animações
-import { animate, cubicBezier } from "animejs"
-
 // Importa configuração de cooldown de animações
 import AnimationCooldown from "../utils/animationCooldown.js";
 
@@ -45,7 +42,7 @@ import AnimationCooldown from "../utils/animationCooldown.js";
 import {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
     slideUpProjectContainer, hideProjectItem, // Animação de saída
-    highlightProject, resetScrollPosition // Animações de seleção
+    highlightProject, focusOnProject, resetScrollPosition // Animações de seleção
 } from "../utils/projectListAnimations.js";
 
 
@@ -161,7 +158,8 @@ class ProjectListView {
         }
 
         // Adiciona classe de foco à lista
-        u(this.elements.projectList).addClass("list-focus")
+        // u(this.elements.projectList).addClass("list-focus")
+        focusOnProject(this.elements.projectList);
 
 
         // Variável para acumular a posição de destino

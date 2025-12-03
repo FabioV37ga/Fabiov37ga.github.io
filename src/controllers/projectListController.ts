@@ -72,10 +72,10 @@ class ProjectListController {
         // Carrega os dados dos projetos
         this.projects = Projects;
 
-        
+
         // Inicia a criação da lista de projetos
         this.createProjectList(delay);
-        
+
         this.view.showProjectContainer()
 
         // Atribui a instância atual para acesso estático
@@ -111,7 +111,7 @@ class ProjectListController {
         // Aguarda 1.75s antes de iniciar a exibição dos projetos
         setTimeout(() => {
             this.showProjects();
-        }, 1750);
+        }, 2000);
     }
 
     // ---------------------------
@@ -140,7 +140,7 @@ class ProjectListController {
             if (projectIndex < limit) {
                 // Para o intervalo quando terminar
                 clearInterval(showInterval);
-                
+
                 // Adiciona os event handlers de clique aos projetos
                 this.addHandlers()
             }
@@ -155,13 +155,13 @@ class ProjectListController {
     setListAnimationTime() {
         // Ativa o cooldown da lista de projetos
         AnimationCooldown.projectListCooldown = true;
-        
+
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
-        AnimationCooldown.projectList = (this.projects.length * 230 + 2800);
+        AnimationCooldown.projectList = (this.projects.length * 230 + 500);
         var time = AnimationCooldown.projectList;
 
         // Aplica a duração calculada na animação do container
-        this.elements.projectContainer.style.animationDuration = time + "ms";
+        // this.elements.projectContainer.style.animationDuration = time + "ms";
 
         // Desativa o cooldown após o tempo da animação
         setTimeout(() => {
@@ -193,11 +193,11 @@ class ProjectListController {
         // Após a animação terminar, muda para altura responsiva (100%)
         setTimeout(() => {
             this.view.setContainerHeight("100%");
-        }, AnimationCooldown.projectList + 1000); // Mesmo tempo da animação
+        }, AnimationCooldown.projectList + 3500); // Mesmo tempo da animação
 
         // Obtém o último item da lista
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;
-        
+
         // Define margem inferior no último item se existir
         if (lastItem) {
             lastItem.style.marginBottom = "55px";
@@ -212,7 +212,7 @@ class ProjectListController {
     static hideProjectList() {
         // Ativa o cooldown da lista de projetos
         AnimationCooldown.projectListCooldown = true;
-        
+
         // Obtém a instância estática do controller
         const self = ProjectListController.instance;
 
@@ -221,7 +221,7 @@ class ProjectListController {
 
         // Índice inicial do primeiro projeto
         var projectIndex: number = 0
-        
+
         // Limite: último projeto do array
         const limit: number = self.projects.length - 1;
 
@@ -251,14 +251,14 @@ class ProjectListController {
             projects.forEach((project) => {
                 // Remove classe de ocultação
                 u(project).removeClass("project-item-hide");
-                
+
                 // Remove o elemento do DOM
                 u(project).remove()
             });
 
             // Remove a classe de ocultação do container
             u(self.elements.projectContainer).removeClass("projects-container-hide");
-            
+
             // Desativa o cooldown
             AnimationCooldown.projectListCooldown = false;
         }, self.projects.length * 230 + 2800);
@@ -308,7 +308,7 @@ class ProjectListController {
         if (AnimationCooldown.projectFocusCooldown == false) {
             // Ativa o cooldown
             AnimationCooldown.projectFocusCooldown = true;
-            
+
             // Destaca o projeto selecionado visualmente
             this.view.highlightSelectedProject(project);
         }

@@ -1,10 +1,93 @@
 .project-display {
-    background: red;
-    width: 518px;
-    right: 190px;
+    width: 400px;
+    right: 50px;
     position: absolute;
     top: 135px;
-    /* display: flex; */
     display: none;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+.technologies {
+    width: fit-content;
+    height: fit-content;
+    max-width: 400px;
+    display: flex;
+    /* justify-content: ; */
+    flex-wrap: wrap;
+}
+
+.technologies li {
+    margin-right: 5px;
+    margin-bottom: 3px;
+    color: white;
+    font-family: "Neue Montreal";
+}
+
+.project-description {
+    width: 400px;
+    margin-top: 15px;
+    color: white;
+}
+
+.description-content {
+    word-spacing: 3px;
+    font-family: "Neue Montreal";
+    font-size: 17px;
+    line-height: 22px;
+    text-align: left;
+}
+
+.spacer {
+    width: 100%;
+    height: 1px;
+    background: white;
+    border-radius: 19px;
+    margin-top: 25px;
+}
+
+.buttons {
+    width: 290px;
+    height: 45px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    /* background: red; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons a{
+    width: 130px;
+    /* background: white; */
+    border: 1px solid white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.project-access img{
+    width: 31px;
+    fill: white
+}
+
+.project-code img{
+    width: 31px;
+}
+
+.back-container{
+    width: 100%;
+    text-align: center;
+    margin-top: 25px
+}
+
+.back-button{
+    font-size: 20px;
+    font-family: "Neue Montreal";
+    text-transform: capitalize;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid white
 }
