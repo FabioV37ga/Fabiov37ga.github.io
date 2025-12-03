@@ -12,22 +12,6 @@
     overflow-x: hidden;
 }
 
-.projects-container-show {
-    animation: projectsContainerSlideIn ease-in-out forwards;
-}
-
-@keyframes projectsContainerSlideIn {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 .projects-container-hide {
     animation: projectsContainerSlideOut ease-in-out forwards;
 }
@@ -82,48 +66,6 @@
         3px 3px 2px rgb(197, 197, 197);
     transition: color 0.3s ease;
     transform: perspective(109px) translate3d(-13px, 1px, 16px) !important;
-}
-
-
-.project-item-active {
-    animation: projectsSlideIn 1s ease-in-out forwards;
-}
-
-
-@keyframes projectsSlideIn {
-    0% {
-        transform: perspective(500px) translate3d(0, -110%, 0) rotateY(-90deg);
-        opacity: 0;
-    }
-
-    35% {
-        opacity: 0
-    }
-
-    100% {
-        transform: perspective(500px) translate3d(0, 0, 0) rotateY(-0deg);
-        opacity: 1;
-    }
-}
-
-.project-item-hide {
-    animation: projectsSlideOut 1s ease-in-out forwards;
-}
-
-@keyframes projectsSlideOut {
-    0% {
-        transform: perspective(500px) translate3d(0, 0, 0) rotateY(0deg);
-        opacity: 1;
-    }
-
-    55% {
-        opacity: 0
-    }
-
-    100% {
-        transform: perspective(500px) translate3d(0, -110%, 0) rotateY(-90deg);
-        opacity: 0;
-    }
 }
 
 .projects-list {

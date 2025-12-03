@@ -38,6 +38,16 @@ import { nav_project } from "../templates/projectListTemplate.js";
 // Importa Anime.js para animações
 import { animate, cubicBezier } from "animejs"
 
+// Importa configuração de cooldown de animações
+import AnimationCooldown from "../utils/animationCooldown.js";
+
+// Importa funções de animação da lista de projetos
+import {
+    slideDownProjectContainer, showProjectItem, // Animações de entrada
+    slideUpProjectContainer, hideProjectItem, // Animação de saída
+    highlightProject, resetScrollPosition // Animações de seleção
+} from "../utils/projectListAnimations.js";
+
 
 // ---------------------------
 // 2. CLASSE PROJECTLISTVIEW
@@ -92,8 +102,11 @@ class ProjectListView {
     // ---------------------------
 
     showProjectContainer() {
-        // Adiciona classe de exibição ao container principal
-        u(this.elements.projectContainer).addClass("projects-container-show");
+        // Anima a exibição do container de projetos
+        slideDownProjectContainer(
+            this.elements.projectContainer,
+            AnimationCooldown.projectList
+        );
     }
 
 
@@ -102,8 +115,8 @@ class ProjectListView {
     // ---------------------------
 
     showProjectItem(project: HTMLElement) {
-        // Adiciona a classe de ativação para exibir o projeto
-        u(project).addClass("project-item-active");
+        // Chama a função de animação para exibir o item de projeto
+        showProjectItem(project)
     }
 
 
@@ -112,8 +125,8 @@ class ProjectListView {
     // ---------------------------
 
     hideProjectItem(project: HTMLElement) {
-        // Adiciona a classe de ocultação para esconder o projeto
-        u(project).addClass("project-item-hide");
+        // Chama a função de animação para ocultar o item de projeto
+        hideProjectItem(project)
     }
 
     // ---------------------------
@@ -121,11 +134,8 @@ class ProjectListView {
     // ---------------------------
 
     hideProjectList() {
-        // Remove a classe de exibição
-        u(this.elements.projectContainer).removeClass("projects-container-show");
-        
         // Adiciona a classe de ocultação
-        u(this.elements.projectContainer).addClass("projects-container-hide");
+        slideUpProjectContainer(this.elements.projectContainer, AnimationCooldown.projectList);
     }
 
 
@@ -143,13 +153,10 @@ class ProjectListView {
 
             // Remove a classe de hover de todos os itens
             u(this.elements.projectItems[i]).removeClass("hoverable");
-            
-            // Remove a classe de ativo de todos os itens
-            u(this.elements.projectItems[i]).removeClass("project-item-active");
 
             // Oculta todos os itens exceto o selecionado
             if (this.elements.projectItems[i] !== project) {
-                u(this.elements.projectItems[i]).addClass("project-item-hide");
+                hideProjectItem(this.elements.projectItems[i]);
             }
         }
 
@@ -170,21 +177,11 @@ class ProjectListView {
             targetTop += this.elements.projectItems[i].clientHeight + 10;
         }
 
-        // Anima o projeto para a posição superior
-        animate(project, {
-            y: -targetTop, // Move para cima
-            duration: 1200, // Duração de 1.2s
-            ease: cubicBezier(0.111, 0.473, 0.444, 0.989), // Curva de aceleração customizada
-            delay: 300 // Aguarda 300ms antes de iniciar
-        })
+        // Chama a função de animação para destacar o projeto
+        highlightProject(project, targetTop);
 
         // Anima o scroll do container para o topo
-        animate(this.elements.projectContainer,{
-            scrollTop: 0, // Volta ao topo
-            duration: 1200, // Duração de 1.2s
-            ease: cubicBezier(0.111, 0.473, 0.444, 0.989), // Mesma curva de aceleração
-            delay: 300 // Aguarda 300ms antes de iniciar
-        })
+        resetScrollPosition(this.elements.projectContainer);
 
         // Após 200ms, desabilita o overflow Y do container
         setTimeout(() => {

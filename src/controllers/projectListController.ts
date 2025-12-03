@@ -72,10 +72,11 @@ class ProjectListController {
         // Carrega os dados dos projetos
         this.projects = Projects;
 
-        this.view.showProjectContainer()
-
+        
         // Inicia a criação da lista de projetos
         this.createProjectList(delay);
+        
+        this.view.showProjectContainer()
 
         // Atribui a instância atual para acesso estático
         ProjectListController.instance = this;
@@ -187,12 +188,12 @@ class ProjectListController {
         });
 
         // Define a altura inicial do container (altura exata dos itens)
-        this.view.setContainerHeight(totalHeight + "px");
+        this.view.setContainerHeight(totalHeight + 55 + "px");
 
         // Após a animação terminar, muda para altura responsiva (100%)
         setTimeout(() => {
             this.view.setContainerHeight("100%");
-        }, AnimationCooldown.projectList); // Mesmo tempo da animação
+        }, AnimationCooldown.projectList + 1000); // Mesmo tempo da animação
 
         // Obtém o último item da lista
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;
@@ -250,9 +251,6 @@ class ProjectListController {
             projects.forEach((project) => {
                 // Remove classe de ocultação
                 u(project).removeClass("project-item-hide");
-                
-                // Remove classe de ativo
-                u(project).removeClass("project-item-active");
                 
                 // Remove o elemento do DOM
                 u(project).remove()
