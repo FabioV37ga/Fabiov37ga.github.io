@@ -50,9 +50,6 @@ class welcomeView {
     // ---------------------------
     
     removeWelcome(){
-        // Log de depuração
-        console.log("removendo welcome")
-        
         // Remove o elemento welcome do DOM
         this.elements.welcome.remove()
     }

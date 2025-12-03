@@ -12,7 +12,10 @@
  *    2.4. showProjects() - Exibição animada dos projetos
  *    2.5. setListAnimationTime() - Cálculo do tempo de animação
  *    2.6. setContainerHeight() - Ajuste da altura do container
- *    2.7. hideProjects() - Ocultação animada dos projetos
+ *    2.7. hideProjectList() - Animação de saída dos projetos
+ *    2.8. addHandlers() - Adiciona os event handlers
+ *    2.9. selectProject() - Seleciona um projeto
+ *    2.10. showProjectContent() - Exibe o conteúdo do projeto selecionado
  * 
  * ============================================================================
  */
@@ -31,7 +34,11 @@ import { ProjectListSelector, Elements } from "../selectors/projectListSelector.
 
 // Importa a view responsável pela renderização
 import ProjectListView from "../views/projectListView.js";
+
+// Importa a classe de controle de cooldown de animações
 import AnimationCooldown from "../utils/animationCooldown.js";
+
+import ProjectController from "./projectController.js";
 
 
 // ---------------------------
@@ -89,10 +96,13 @@ class ProjectListController {
         // Atualiza os elementos DOM após a inserção dos itens
         this.elements = ProjectListSelector.defineElements();
 
+        // Atualiza os elementos na view também
+        this.view.elements = this.elements;
+
 
         // Calcula e aplica o tempo da animação do container
         this.setListAnimationTime();
-        
+
         // Define a altura inicial do container baseada nos itens
         this.setContainerHeight();
 
@@ -129,6 +139,9 @@ class ProjectListController {
             if (projectIndex < limit) {
                 // Para o intervalo quando terminar
                 clearInterval(showInterval);
+                
+                // Adiciona os event handlers de clique aos projetos
+                this.addHandlers()
             }
         }, 230); // 230ms entre cada exibição
     }
@@ -139,7 +152,9 @@ class ProjectListController {
     // ---------------------------
 
     setListAnimationTime() {
-        AnimationCooldown.isOnCooldown = true;
+        // Ativa o cooldown da lista de projetos
+        AnimationCooldown.projectListCooldown = true;
+        
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         AnimationCooldown.projectList = (this.projects.length * 230 + 2800);
         var time = AnimationCooldown.projectList;
@@ -147,8 +162,9 @@ class ProjectListController {
         // Aplica a duração calculada na animação do container
         this.elements.projectContainer.style.animationDuration = time + "ms";
 
+        // Desativa o cooldown após o tempo da animação
         setTimeout(() => {
-            AnimationCooldown.isOnCooldown = false;
+            AnimationCooldown.projectListCooldown = false;
         }, AnimationCooldown.projectList);
     }
 
@@ -177,6 +193,14 @@ class ProjectListController {
         setTimeout(() => {
             this.view.setContainerHeight("100%");
         }, AnimationCooldown.projectList); // Mesmo tempo da animação
+
+        // Obtém o último item da lista
+        const lastItem = u(this.elements.projectItems).last() as HTMLElement;
+        
+        // Define margem inferior no último item se existir
+        if (lastItem) {
+            lastItem.style.marginBottom = "55px";
+        }
     }
 
 
@@ -185,38 +209,146 @@ class ProjectListController {
     // ---------------------------
 
     static hideProjectList() {
-        AnimationCooldown.isOnCooldown = true;
+        // Ativa o cooldown da lista de projetos
+        AnimationCooldown.projectListCooldown = true;
+        
+        // Obtém a instância estática do controller
         const self = ProjectListController.instance;
 
+        // Oculta a lista de projetos visualmente
         self.view.hideProjectList();
 
+        // Índice inicial do primeiro projeto
         var projectIndex: number = 0
+        
+        // Limite: último projeto do array
         const limit: number = self.projects.length - 1;
 
+        // Intervalo que oculta cada projeto a cada 230ms
         const hideInterval = setInterval(() => {
+            // Oculta o projeto atual
             self.view.hideProjectItem(
                 self.elements.projectItems[projectIndex]
             );
 
+            // Incrementa para o próximo projeto
             projectIndex++;
 
+            // Verifica se todos foram ocultados
             if (projectIndex > limit) {
+                // Para o intervalo
                 clearInterval(hideInterval);
             }
         }, 230);
 
+        // Após todas as animações, limpa o DOM
         setTimeout(() => {
+            // Obtém todos os projetos
             var projects = self.elements.projectItems;
 
+            // Remove classes e elementos do DOM
             projects.forEach((project) => {
+                // Remove classe de ocultação
                 u(project).removeClass("project-item-hide");
+                
+                // Remove classe de ativo
                 u(project).removeClass("project-item-active");
+                
+                // Remove o elemento do DOM
                 u(project).remove()
             });
 
+            // Remove a classe de ocultação do container
             u(self.elements.projectContainer).removeClass("projects-container-hide");
-            AnimationCooldown.isOnCooldown = false;
+            
+            // Desativa o cooldown
+            AnimationCooldown.projectListCooldown = false;
         }, self.projects.length * 230 + 2800);
+    }
+
+
+    // ---------------------------
+    // 2.8. addHandlers - Adiciona os event handlers
+    // ---------------------------
+
+    addHandlers() {
+        // Obtém todos os itens de projeto
+        const projectItems = this.elements.projectItems;
+
+        // Itera sobre cada item de projeto
+        projectItems.forEach((project) => {
+
+            // Adiciona evento de clique ao projeto
+            u(project).on("click", (event: Event) => {
+
+                // Obtém o título do projeto clicado
+                const titulo: string = u(event.currentTarget as HTMLElement).text();
+
+                // Busca o projeto correspondente no array de dados
+                for (let i = 0; i < projectItems.length; i++) {
+                    // Verifica se o título corresponde ao projeto atual
+                    if (titulo === this.projects[i].title) {
+                        // Seleciona o projeto clicado
+                        this.selectProject(event.currentTarget as HTMLElement);
+                        // TODO: Exibir conteúdo do projeto
+                        // this.showProjectContent(this.projects[i]);
+                        break;
+                    }
+                }
+            })
+        })
+    }
+
+
+    // ---------------------------
+    // 2.9. selectProject - Seleciona um projeto
+    // ---------------------------
+
+    selectProject(project: HTMLElement) {
+
+        // Verifica se não está em cooldown de foco de projeto
+        if (AnimationCooldown.projectFocusCooldown == false) {
+            // Ativa o cooldown
+            AnimationCooldown.projectFocusCooldown = true;
+            
+            // Destaca o projeto selecionado visualmente
+            this.view.highlightSelectedProject(project);
+        }
+
+        // Aguarda o tempo da animação de foco
+        setTimeout(() => {
+            // Desativa o cooldown
+            AnimationCooldown.projectFocusCooldown = false;
+
+
+            // Busca o projeto selecionado no array de elementos
+            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                // Verifica se é o projeto clicado
+                if (this.elements.projectItems[i] == project) {
+                    // Exibe o conteúdo do projeto
+                    this.showProjectContent(
+                        project,
+                        this.elements.projectItems[i] as HTMLElement
+                    );
+                }
+            }
+
+
+        }, AnimationCooldown.projectFocus);
+    }
+
+
+    // ---------------------------
+    // 2.10. showProjectContent - Exibe o conteúdo do projeto selecionado
+    // ---------------------------
+
+    showProjectContent(project: Project, projectTitleElement: HTMLElement) {
+
+        // Cria uma nova instância do controller de projeto
+        new ProjectController(
+            project, // Dados do projeto
+            projectTitleElement // Elemento HTML do título
+        );
     }
 }
 

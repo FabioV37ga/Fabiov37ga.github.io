@@ -16,6 +16,7 @@
   "author": "FabioV37ga",
   "license": "ISC",
   "dependencies": {
+    "animejs": "^4.2.2",
     "nanohtml": "^1.10.0",
     "umbrellajs": "^3.3.3"
   },

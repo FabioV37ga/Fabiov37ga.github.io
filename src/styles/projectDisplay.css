@@ -1,0 +1,10 @@
+.project-display {
+    background: red;
+    width: 518px;
+    right: 190px;
+    position: absolute;
+    top: 135px;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+}

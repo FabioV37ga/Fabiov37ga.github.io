@@ -99,7 +99,7 @@ class NavigationController {
 
     selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Verifica se não está em cooldown de animação
-        if (AnimationCooldown.isOnCooldown === false) {
+        if (AnimationCooldown.projectListCooldown === false) {
             // Armazena o item previamente selecionado
             const previousSelected = this.selected;
             

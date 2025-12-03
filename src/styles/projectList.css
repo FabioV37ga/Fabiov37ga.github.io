@@ -1,3 +1,7 @@
+.projects-list *>*{
+    user-select: none;
+}
+
 .projects-container {
     /* background: red; */
     position: absolute;
@@ -68,35 +72,16 @@
     width: 400px;
     opacity: 0;
     animation-delay: 2.75s;
-    transition: transform 0.3s ease-in-out;
 }
 
-.project-item:hover {
+.project-item.hoverable:hover {
     cursor: pointer;
-    /* text-shadow: rgb(255, 255, 255) 1px 0px 0px,
-        rgb(255, 255, 255) 1.75517px 0.958851px 0px,
-        rgb(255, 255, 255) 1.0806px 1.68294px 0px,
-        rgb(255, 255, 255) 0.141474px 1.99499px 0px,
-        rgb(255, 255, 255) -0.832294px 1.81859px 0px,
-        rgb(255, 255, 255) -1.60229px 1.19694px 0px,
-        rgb(255, 255, 255) -1.97998px 0.28224px 0px,
-        rgb(255, 255, 255) -1.87291px -0.701566px 0px,
-        rgb(255, 255, 255) -1.30729px -1.5136px 0px,
-        rgb(255, 255, 255) -0.421591px -1.95506px 0px,
-        rgb(255, 255, 255) 0.567324px -1.91785px 0px,
-        rgb(255, 255, 255) 1.41734px -1.41108px 0px,
-        rgb(255, 255, 255) 1.92034px -0.558831px 0px !important; */
-    /* color: var(--background); */
-    transition: color 0.3s ease;
-    transform: perspective(109px) translate3d(-13px, 1px, 16px) !important;
-}
-
-.project-item a:hover {
-    /* text-shadow: 2px 2px 2px rgba(255,255,255,1); */
     text-shadow: 0px 0px 0 rgb(255 255 255),
         1px 1px 0 rgb(255 255 255),
         2px 2px 0 rgb(212, 212, 212),
-        3px 3px 2px rgb(197, 197, 197)
+        3px 3px 2px rgb(197, 197, 197);
+    transition: color 0.3s ease;
+    transform: perspective(109px) translate3d(-13px, 1px, 16px) !important;
 }
 
 
@@ -150,9 +135,7 @@
     justify-content: flex-end;
     flex-wrap: wrap;
     transform-origin: center center;
-    /* transform: rotate3d(0.5, -1, 0.1, -71deg) rotate(97.5deg) rotateY(252deg) rotateX(-85deg) !important; */
-    /* transform: rotate3d(0.5, -1, 0.21, -72deg) rotate(127.5deg) rotateY(262deg) rotateX(-126deg) !important; */
-    transform: rotateX(-12deg) rotateY(-33deg) !important;
+    transform: rotateX(-12deg) rotateY(-33deg);
 }
 
 
@@ -167,5 +150,19 @@
 
     100% {
         transform: perspective(500px) rotateY(-15deg) rotateZ(-0deg) rotateX(10deg)
+    }
+}
+
+.list-focus {
+    animation: listFocus 1s ease-in-out forwards;
+}
+
+@keyframes listFocus {
+    from {
+        transform: rotateX(-12deg) rotateY(-33deg) !important;
+    }
+
+    to {
+        transform: rotateX(0deg) rotateY(0deg);
     }
 }
