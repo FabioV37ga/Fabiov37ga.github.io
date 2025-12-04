@@ -3,7 +3,7 @@ import u from "umbrellajs";
 import { Project } from "../data/projects.js";
 import { Elements } from "../selectors/projectSelector.js";
 
-import { techFadeIn, typeDescription, expandSpacer } from "../utils/projectDisplayAnimations.js";
+import { techFadeIn, typeDescription, expandSpacer, showButtons } from "../utils/projectDisplayAnimations.js";
 
 class ProjectView {
     elements: Elements
@@ -39,6 +39,11 @@ class ProjectView {
             this.elements.spacer,
             totalCharacters * 5 + (200 * totalTechnologies) + 500
         );
+
+        showButtons(
+            [this.elements.projectAccess, this.elements.projectCode, this.elements.returnButton],
+            totalCharacters * 5 + (200 * totalTechnologies) + 1000
+        )
     }
 }
 

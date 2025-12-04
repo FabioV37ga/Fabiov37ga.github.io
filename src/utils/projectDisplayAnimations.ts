@@ -58,9 +58,21 @@ const expandSpacer = (element: HTMLElement, delay: number) => {
         opacity: [0, 1],
         width: ['0%', '100%'],
         easing: cubicBezier(.5, .05, .1, .3),
-        duration: 1000,
+        duration: 800,
         delay: delay
     })
 }
 
-export { techFadeIn, typeDescription, expandSpacer };
+const showButtons = (buttons: HTMLElement[], delay: number) =>{
+    buttons.forEach((button, index) => {
+        animate(button, {
+            opacity: [0, 1],
+            translateY: ['10px', '0px'],
+            easing: "easeOutCirc",
+            duration: 300,
+            delay: delay + index * 200
+        })
+    })
+}
+
+export { techFadeIn, typeDescription, expandSpacer, showButtons };
