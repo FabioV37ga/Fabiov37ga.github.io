@@ -8,7 +8,7 @@
     left: -1000px;
     top: -100px;
     transform: scaleX(-1) scale(1.5);
-    mask-image: url(../images/background/blur.webp);
+    mask-image: url("/images/background/blur.webp");
     mask-size: 115%;
     mask-position: center;
     z-index: -1;
@@ -40,13 +40,13 @@
 .particles.b::before,
 .particles.d::before,
 .particles.e::before {
-    background: url("../images/background/grain.webp");
-    mask-image: url("../images/background/blur.webp");
+    background: url("/images/background/grain.webp");
+    mask-image: url("/images/background/blur.webp");
 }
 
 .particles.c::before {
-    background: url("../images/background/shadow.avif");
-    mask-image: url("../images/background/blur.webp");
+    background: url("/images/background/shadow.avif");
+    mask-image: url("/images/background/blur.webp");
 }
 
 .particles.z::before {
