@@ -7,6 +7,10 @@ export interface Technologies {
     typescript: HTMLElement;
     react: HTMLElement;
     nodejs: HTMLElement;
+    python: HTMLElement;
+    java: HTMLElement;
+    cpp: HTMLElement;
+    mysql: HTMLElement;
     mongodb: HTMLElement;
     json: HTMLElement;
     googleSheets: HTMLElement;
@@ -15,61 +19,86 @@ export interface Technologies {
 
 const html5 = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/b108dc2388739d4cea2bef5cf6909c24a38398e393601fe6be0d7f63327431ea/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48544d4c352d4533344632363f7374796c653d666f722d7468652d6261646765266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+    </li>
 `
 
 const css3 = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/8034744803c27c8aaab4d20b74379109552d328526f309b09269da959b49fe0a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f435353332d3135373242363f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+    </li>
 `
+
 const javascript = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/88b8bdce872268b3d0d7ec69e16716a0adf8fa0165eb6069bcb49e23bd5550ef/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176615363726970742d4637444631453f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d626c61636b">
-    </li
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+    </li>
 `
 
 const typescript = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/b308ff9a6de632b94c933c0f27975188080f8cf88a115ae10338540f8d9ab8ab/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d3030374143433f7374796c653d666f722d7468652d6261646765266c6f676f3d74797065736372697074266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+    </li>
 `
 
 const react = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/18f8a526265952d1a4ed04eff457c936721e64e5bf4e3f35cca938efe3f30de5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3230323332413f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d363144414642">
-    </li
+        <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+    </li>
 `
 
 const nodejs = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/ffef819c9d8ea5cfc4322d860c4d64154585767ffb51bf03e80a61e88e787c3e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f64652e6a732d3433383533443f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f64652e6a73266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+    </li>
+`
+
+const python = () => html`
+    <li>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    </li>
+`
+
+const java = () => html`
+    <li>
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+    </li>
+`
+
+const cpp = () => html`
+    <li>
+        <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
+    </li>
+`
+
+const mysql = () => html`
+    <li>
+        <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+    </li>
 `
 
 const mongodb = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/4fa6254f7d7266db902652f588f31985c2c55579795b4186278c9c252fccb053/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d6f6e676f44422d3445413934423f7374796c653d666f722d7468652d6261646765266c6f676f3d6d6f6e676f6462266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+    </li>
 `
 
 const json = () => html`
     <li>
-        <img src="https://camo.githubusercontent.com/701dbf631fbb029c5c73622f66c2e62297f9773659bb62fdfe3f3004f974f25b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a534f4e2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d6a736f6e266c6f676f436f6c6f723d7768697465">
-    </li
+        <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
+    </li>
 `
 
 const googleSheets = () => html`
     <li>
-        <img src="https://img.shields.io/badge/Google%20Sheets-34A8537?style=for-the-badge&logo=google&logoColor=fff">
-    </li
+        <img src="https://img.shields.io/badge/Google%20Sheets-34A8537?style=for-the-badge&logo=google&logoColor=fff" alt="Google Sheets">
+    </li>
 `
 
 const jquery = () => html`
     <li>
-        <img src="https://img.shields.io/badge/JQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=fff">
-    </li
+        <img src="https://img.shields.io/badge/JQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=fff" alt="jQuery">
+    </li>
 `
 
 export const Technologies = {
@@ -79,6 +108,10 @@ export const Technologies = {
     typescript: typescript(),
     react: react(),
     nodejs: nodejs(),
+    python: python(),
+    java: java(),
+    cpp: cpp(),
+    mysql: mysql(),
     mongodb: mongodb(),
     json: json(),
     googleSheets: googleSheets(),
