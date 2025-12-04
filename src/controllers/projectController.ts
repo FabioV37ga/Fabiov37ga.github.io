@@ -22,6 +22,7 @@ import { Projects, Project } from "../data/projects.js";
 
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
+import { projectTemplate } from "../templates/projectTemplate.js";
 
 
 // ---------------------------
@@ -44,6 +45,8 @@ class ProjectController {
     constructor(project: Project, projectTitleElement: HTMLElement) {
         // Define a posição do display baseado no elemento de título
         this.setPosition(projectTitleElement);
+
+        this.setProjectData(project)
     }
 
 
@@ -62,9 +65,17 @@ class ProjectController {
         el.style = `
         top: ${reference.offsetHeight + 55}px;
         display: flex;`
-        // TODO: Revisar lógica de posicionamento
-        // el.style = `${projectElement.offsetTop + 2000}px`;
 
+    }
+
+    setProjectData(project: Project) {
+        var el = document.querySelector(".project-display") as HTMLElement;
+
+        el.append(projectTemplate(project))
+    }
+
+    showProject(){
+        
     }
 }
 

@@ -9,7 +9,7 @@
 }
 
 .technologies {
-    width: fit-content;
+    width: 400px;
     height: fit-content;
     max-width: 400px;
     display: flex;
@@ -31,7 +31,7 @@
 }
 
 .description-content {
-    word-spacing: 3px;
+    letter-spacing: 1px;
     font-family: "Neue Montreal";
     font-size: 17px;
     line-height: 22px;
@@ -57,7 +57,7 @@
     justify-content: space-between;
 }
 
-.buttons a{
+.buttons a {
     width: 130px;
     /* background: white; */
     border: 1px solid white;
@@ -68,22 +68,23 @@
     color: white;
 }
 
-.project-access img{
+.project-access img {
     width: 31px;
     fill: white
 }
 
-.project-code img{
+.project-code img {
     width: 31px;
 }
 
-.back-container{
+.back-container {
     width: 100%;
     text-align: center;
     margin-top: 25px
 }
 
-.back-button{
+.back-button {
+    letter-spacing: 3px;
     font-size: 20px;
     font-family: "Neue Montreal";
     text-transform: capitalize;

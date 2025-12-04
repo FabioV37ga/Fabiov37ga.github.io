@@ -111,7 +111,7 @@ class ProjectListController {
         // Aguarda 1.75s antes de iniciar a exibição dos projetos
         setTimeout(() => {
             this.showProjects();
-        }, 2000);
+        }, 2200);
     }
 
     // ---------------------------
@@ -315,24 +315,48 @@ class ProjectListController {
 
         // Aguarda o tempo da animação de foco
         setTimeout(() => {
-            // Desativa o cooldown
+            // Desativa o cooldown*
             AnimationCooldown.projectFocusCooldown = false;
 
+            // Variável para armazenar o elemento do projeto selecionado
+            let selectedProjectElement: HTMLElement | undefined;
 
             // Busca o projeto selecionado no array de elementos
             for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
                 // Verifica se é o projeto clicado
                 if (this.elements.projectItems[i] == project) {
-                    // Exibe o conteúdo do projeto
-                    this.showProjectContent(
-                        project,
-                        this.elements.projectItems[i] as HTMLElement
-                    );
+                    // Armazena o elemento do projeto
+                    selectedProjectElement = this.elements.projectItems[i];
+                    break;
                 }
             }
 
+            // Variável para armazenar os dados do projeto
+            let selectedProject: Project | undefined;
+
+            // Busca os dados do projeto correspondente
+            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                if (project.textContent?.trim() ===
+                    Projects[i].title
+                ) {
+                    selectedProject = Projects[i];
+                    break;
+                }
+            }
+
+            console.log(selectedProject)
+
+            // Exibe o conteúdo se ambos foram encontrados
+            if (selectedProject && selectedProjectElement) {
+                this.showProjectContent(
+                    selectedProject,
+                    selectedProjectElement
+                );
+            }
 
         }, AnimationCooldown.projectFocus);
+
+
     }
 
 
