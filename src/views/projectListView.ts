@@ -127,17 +127,20 @@ class ProjectListView {
     }
 
     // ---------------------------
-    // 2.7. hideProjectList - Oculta a lista de projetos
+    // 2.8. hideProjectList - Oculta a lista de projetos
     // ---------------------------
 
     hideProjectList() {
         // Adiciona a classe de ocultação
-        slideUpProjectContainer(this.elements.projectContainer, AnimationCooldown.projectList);
+        slideUpProjectContainer(this.elements.projectContainer,
+             AnimationCooldown.projectList,
+             600
+            );
     }
 
 
     // ---------------------------
-    // 2.8. highlightSelectedProject - Destaca projeto selecionado
+    // 2.9. highlightSelectedProject - Destaca projeto selecionado
     // ---------------------------
 
     highlightSelectedProject(project: HTMLElement) {
@@ -185,7 +188,6 @@ class ProjectListView {
         setTimeout(() => {
             this.elements.projectContainer.style.overflowY = "hidden";
         }, 200);
-
     }
 }
 

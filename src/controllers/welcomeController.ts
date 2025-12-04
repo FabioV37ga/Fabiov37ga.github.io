@@ -24,7 +24,7 @@ import u from "umbrellajs";
 import { WelcomeSelector, Elements } from "../selectors/welcomeSelector.js";
 
 // Importa a view responsável pela renderização
-import welcomeView from "../views/welcomeView.js";
+import WelcomeView from "../views/welcomeView.js";
 
 
 // ---------------------------
@@ -41,7 +41,7 @@ class WelcomeController{
     elements: Elements = WelcomeSelector.defineElements();
     
     // Instância da view para manipulação visual
-    view: welcomeView = new welcomeView(this.elements);
+    view: WelcomeView = new WelcomeView(this.elements);
 
     
     // ---------------------------

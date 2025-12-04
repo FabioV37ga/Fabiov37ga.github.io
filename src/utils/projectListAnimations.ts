@@ -1,14 +1,50 @@
+/**
+ * ============================================================================
+ * PROJECT LIST ANIMATIONS
+ * ============================================================================
+ * 
+ * SUMÁRIO:
+ * 1. Imports e Dependências
+ * 2. Animações de Entrada
+ *    2.1. slideDownProjectContainer() - Anima descida do container
+ *    2.2. showProjectItem() - Anima entrada de item de projeto
+ * 3. Animações de Saída
+ *    3.1. slideUpProjectContainer() - Anima subida do container
+ *    3.2. hideProjectItem() - Anima saída de item de projeto
+ * 4. Animações de Seleção
+ *    4.1. highlightProject() - Realça projeto selecionado
+ *    4.2. focusOnProject() - Remove perspectiva 3D
+ *    4.3. resetScrollPosition() - Reseta scroll para o topo
+ * 
+ * DESCRIÇÃO:
+ * Funções utilitárias para animar a lista de projetos, incluindo
+ * entrada, saída e interações de seleção.
+ * 
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. IMPORTS E DEPENDÊNCIAS
+// ---------------------------
+
+// Importa Anime.js para animações
 import { animate, cubicBezier } from "animejs"
 
 
 // ---------------------------
-// Animações da lista de projetos (PROJECT LIST)
+// 2. ANIMAÇÕES DE ENTRADA
 // ---------------------------
 
 
-// #Entrada ------------------
-// Anima a descida do container de projetos
+// ---------------------------
+// 2.1. slideDownProjectContainer - Anima descida do container
+// ---------------------------
+// ---------------------------
+// 2.1. slideDownProjectContainer - Anima descida do container
+// ---------------------------
+
 const slideDownProjectContainer = (container: HTMLElement, duration: number) => {
+    // Anima a entrada do container de cima para baixo
     animate(container, {
         translateY: ["-100%", "0%"],
         opacity: [0, 1],
@@ -18,8 +54,13 @@ const slideDownProjectContainer = (container: HTMLElement, duration: number) => 
     })
 }
 
-// Anima a exibição do item de projeto
+
+// ---------------------------
+// 2.2. showProjectItem - Anima entrada de item de projeto
+// ---------------------------
+
 const showProjectItem = (project: HTMLElement) => {
+    // Anima item com rotação 3D e fade-in
     animate(project, {
         keyframes: [
             {
@@ -29,7 +70,7 @@ const showProjectItem = (project: HTMLElement) => {
                 opacity: 0,
                 duration: 0
             }, {
-                opacity: 0,
+                opacity: 0.5,
                 duration: 400
             }, {
                 translateY: '0%',
@@ -43,20 +84,35 @@ const showProjectItem = (project: HTMLElement) => {
 }
 
 
-// #Saída ------------------
-// Anima a subida do container de projetos
-const slideUpProjectContainer = (container: HTMLElement, duration: number) => {
+// ---------------------------
+// 3. ANIMAÇÕES DE SAÍDA
+// ---------------------------
+
+
+// ---------------------------
+// 3.1. slideUpProjectContainer - Anima subida do container
+// ---------------------------
+
+const slideUpProjectContainer = (container: HTMLElement, duration: number, delay?: number) => {
+    delay = delay || 0;
+    // Anima a saída do container de baixo para cima
     animate(container, {
         translateY: ["0%", "-100%"],
         opacity: [1, 0],
         duration: duration,
-        ease: cubicBezier(0.652, 0.263, 0.574, 0.914)
+        ease: cubicBezier(0.652, 0.263, 0.574, 0.614),
+        delay: delay
     })
 }
 
-// Anima a ocultação do item de projeto
+
+// ---------------------------
+// 3.2. hideProjectItem - Anima saída de item de projeto
+// ---------------------------
+
 const hideProjectItem = (project: HTMLElement) => {
     console.log("Hide Project Item Animation Triggered")
+    // Anima item com rotação 3D reversa e fade-out
     animate(project, {
         keyframes: [
             {
@@ -66,7 +122,7 @@ const hideProjectItem = (project: HTMLElement) => {
                 opacity: 1,
                 duration: 0
             }, {
-                opacity: 0,
+                opacity: 0.3,
                 duration: 400
             },
             {
@@ -81,20 +137,32 @@ const hideProjectItem = (project: HTMLElement) => {
 }
 
 
+// ---------------------------
+// 4. ANIMAÇÕES DE SELEÇÃO
+// ---------------------------
 
-// #Seleção ------------------
-// Realça o projeto com uma animação de subida
+
+// ---------------------------
+// 4.1. highlightProject - Realça projeto selecionado
+// ---------------------------
+
 const highlightProject = (project: HTMLElement, margin: number) => {
+    // Move o projeto para cima baseado na margem calculada
     animate(project, {
-        y: `-${margin}px`, // Move para cima
-        duration: 1200, // Duração de 1.2s
-        ease: cubicBezier(0.111, 0.473, 0.444, 0.989), // Curva de aceleração customizada
-        delay: 300 // Aguarda 300ms antes de iniciar
+        y: `-${margin}px`,
+        duration: 1200,
+        ease: cubicBezier(0.111, 0.473, 0.444, 0.989),
+        delay: 300
     })
 }
 
-// Foca no projeto retirando a animação 3D
+
+// ---------------------------
+// 4.2. focusOnProject - Remove perspectiva 3D
+// ---------------------------
+
 const focusOnProject = (container: HTMLElement) => {
+    // Remove a rotação 3D do container para foco direto
     animate(container, {
         rotateX: ["-12deg", "0deg"],
         rotateY: ["-33deg", "0deg"],
@@ -103,13 +171,18 @@ const focusOnProject = (container: HTMLElement) => {
     })
 }
 
-// Reseta a posição de scroll do container para o topo
+
+// ---------------------------
+// 4.3. resetScrollPosition - Reseta scroll para o topo
+// ---------------------------
+
 const resetScrollPosition = (container: HTMLElement) => {
+    // Anima o scroll do container de volta ao topo
     animate(container, {
-        scrollTop: 0, // Volta ao topo
-        duration: 1200, // Duração de 1.2s
-        ease: cubicBezier(0.111, 0.473, 0.444, 0.989), // Mesma curva de aceleração
-        delay: 300 // Aguarda 300ms antes de iniciar
+        scrollTop: 0,
+        duration: 1200,
+        ease: cubicBezier(0.111, 0.473, 0.444, 0.989),
+        delay: 300
     })
 }
 

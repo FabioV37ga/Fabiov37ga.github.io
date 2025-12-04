@@ -227,6 +227,7 @@ class ProjectListController {
 
         // Intervalo que oculta cada projeto a cada 230ms
         const hideInterval = setInterval(() => {
+            console.log("Hiding project:", self.elements.projectItems[projectIndex]);
             // Oculta o projeto atual
             self.view.hideProjectItem(
                 self.elements.projectItems[projectIndex]
@@ -240,7 +241,7 @@ class ProjectListController {
                 // Para o intervalo
                 clearInterval(hideInterval);
             }
-        }, 230);
+        }, 200);
 
         // Após todas as animações, limpa o DOM
         setTimeout(() => {
@@ -249,15 +250,11 @@ class ProjectListController {
 
             // Remove classes e elementos do DOM
             projects.forEach((project) => {
-                // Remove classe de ocultação
-                u(project).removeClass("project-item-hide");
 
                 // Remove o elemento do DOM
                 u(project).remove()
             });
 
-            // Remove a classe de ocultação do container
-            u(self.elements.projectContainer).removeClass("projects-container-hide");
 
             // Desativa o cooldown
             AnimationCooldown.projectListCooldown = false;

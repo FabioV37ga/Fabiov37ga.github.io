@@ -25,7 +25,7 @@ import { Elements } from "../selectors/welcomeSelector.js";
 // 2. CLASSE WELCOMEVIEW
 // ---------------------------
 
-class welcomeView {
+class WelcomeView {
     
     // ---------------------------
     // 2.1. PROPRIEDADES
@@ -55,4 +55,4 @@ class welcomeView {
     }
 }
 
-export default welcomeView
+export default WelcomeView

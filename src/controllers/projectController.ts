@@ -8,7 +8,11 @@
  * 2. Classe ProjectController
  *    2.1. Propriedades
  *    2.2. Constructor
- *    2.3. setPosition() - Define a posição do display do projeto
+ *    2.3. addHandlers() - Adiciona eventos aos botões
+ *    2.4. setPosition() - Define a posição do display do projeto
+ *    2.5. setProjectData() - Insere o template do projeto no DOM
+ *    2.6. showProject() - Exibe o projeto com animações
+ *    2.7. hideProject() - Oculta o projeto
  * 
  * ============================================================================
  */
@@ -22,8 +26,14 @@ import { Projects, Project } from "../data/projects.js";
 
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
+
+// Importa o template de exibição de projeto
 import { projectTemplate } from "../templates/projectTemplate.js";
+
+// Importa o seletor de elementos e a interface Elements
 import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
+
+// Importa a view responsável pela renderização
 import ProjectView from "../views/projectView.js";
 
 
@@ -37,7 +47,10 @@ class ProjectController {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
+    // Elementos DOM do display de projeto
     elements: Elements = ProjectSelector.defineElements();
+    
+    // Instância da view para manipulação visual
     view: ProjectView = new ProjectView(this.elements);
 
 
@@ -49,14 +62,30 @@ class ProjectController {
         // Define a posição do display baseado no elemento de título
         this.setPosition(projectTitleElement);
 
+        // Insere o template do projeto no DOM
         this.setProjectData(project)
 
+        // Exibe o projeto com animações
         this.showProject(project)
     }
 
 
     // ---------------------------
-    // 2.3. setPosition - Define a posição do display do projeto
+    // 2.3. addHandlers - Adiciona eventos aos botões
+    // ---------------------------
+    
+    addHandlers(){
+        // Adiciona evento de clique ao botão de retorno
+        u(this.elements.returnButton).on('click', ()=>{
+            console.log("Return button clicked");
+            // Oculta o projeto e retorna à lista
+            this.hideProject();
+        })
+    }
+
+
+    // ---------------------------
+    // 2.4. setPosition - Define a posição do display do projeto
     // ---------------------------
 
     setPosition(projectElement: HTMLElement) {
@@ -70,14 +99,44 @@ class ProjectController {
 
     }
 
+    // ---------------------------
+    // 2.5. setProjectData - Insere o template do projeto no DOM
+    // ---------------------------
+    
     setProjectData(project: Project) {
+        // Renderiza e adiciona o template do projeto ao container
         this.elements.projectContainer.append(projectTemplate(project))
     }
 
+    
+    // ---------------------------
+    // 2.6. showProject - Exibe o projeto com animações
+    // ---------------------------
+    
     showProject(project: Project) {
+        // Atualiza os elementos DOM após inserção do template
         this.elements = ProjectSelector.defineElements();
 
+        // Exibe o projeto através da view com animações
         this.view.showProject(this.elements, project);
+        
+        // Adiciona os event handlers aos botões
+        this.addHandlers();
+    }
+
+    
+    // ---------------------------
+    // 2.7. hideProject - Oculta o projeto
+    // ---------------------------
+    
+    hideProject(){
+        // Oculta o projeto através da view
+        this.view.hideProject(this.elements.projectContainer);
+
+        // TODO: Limpar container após animação
+        setTimeout(() => {
+            
+        }, 200 * 5);
     }
 }
 
