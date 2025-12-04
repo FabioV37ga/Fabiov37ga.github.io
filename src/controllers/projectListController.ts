@@ -344,14 +344,16 @@ class ProjectListController {
                 }
             }
 
-            console.log(selectedProject)
+            // console.log(selectedProject)
 
             // Exibe o conteúdo se ambos foram encontrados
             if (selectedProject && selectedProjectElement) {
-                this.showProjectContent(
-                    selectedProject,
-                    selectedProjectElement
-                );
+                setTimeout(() => {
+                    this.showProjectContent(
+                        selectedProject,
+                        selectedProjectElement
+                    );
+                }, 500);
             }
 
         }, AnimationCooldown.projectFocus);

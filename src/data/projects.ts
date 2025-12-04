@@ -20,11 +20,16 @@ const nutryo: Project = {
         Technologies.mongodb
     ],
     description: html`
-        Calendário nutricional desenvolvido para auxiliar usuários na organização de suas refeições
-        diárias, promovendo hábitos alimentares saudáveis e facilitando o planejamento nutricional.
-        <br>
-        Feito como projeto acadêmico na faculdade, para conclusão dos cursos "Usabilidade, desenvolvimento
-        web, mobile e jogos" & "Sistemas Distribuídos e Mobile".
+    
+        <span>
+            Calendário nutricional desenvolvido para auxiliar usuários na organização de suas refeições
+            diárias, promovendo hábitos alimentares saudáveis e facilitando o planejamento nutricional.
+        </span>
+
+        <span>
+            Feito como projeto acadêmico na faculdade, para conclusão dos cursos "Usabilidade, desenvolvimento
+            web, mobile e jogos" & "Sistemas Distribuídos e Mobile".
+        </span>
     `,
     link: "https://FabioV37ga.github.io/nuTryo2",
     github: "https://github.com/FabioV37ga/nuTryo2"
@@ -39,15 +44,24 @@ const typeTap: Project = {
         Technologies.jquery
     ],
     description: html`
-        Jogo de digitação onde o usuário deve digitar letras que aparecem na tela
-        antes que elas atinjam o fundo. A cada letra digitada corretamente, o jogador ganha pontos.
-        <br>
-        O jogador começa com 3 vidas e perde uma vida a cada letra digitada incorretamente.
-        <br>
-        O jogo acaba quando o jogador perde todas as vidas, ou quando uma letra atinge o fundo da tela.
-        <br>
-        Desenvolvido para estudo de manipulação do DOM e eventos de teclado.
-        `,
+    
+        <span>
+            Jogo de digitação onde o usuário deve digitar letras que aparecem na tela
+            antes que elas atinjam o fundo. A cada letra digitada corretamente, o jogador ganha pontos.
+        </span>
+
+        <span>
+            O jogador começa com 3 vidas e perde uma vida a cada letra digitada incorretamente.
+        </span>
+
+        <span>
+            O jogo acaba quando o jogador perde todas as vidas, ou quando uma letra atinge o fundo da tela.
+        </span>
+
+        <span>
+            Desenvolvido para estudo de manipulação do DOM e eventos de teclado.
+        </span>
+    `,
     link: "https://FabioV37ga.github.io/TypeTap",
     github: "https://github.com/FabioV37ga/TypeTap"
 }
@@ -61,8 +75,11 @@ const sistemaSolar: Project = {
         Technologies.jquery
     ],
     description: html`
-        Jogo educativo sobre o sistema solar, onde o usuário pode explorar os planetas e aprender
-        curiosidades sobre cada um deles. Desenvolvido para estudo de programação orientada a objetos.
+    
+        <span>
+            Jogo educativo sobre o sistema solar, onde o usuário pode explorar os planetas e aprender
+            curiosidades sobre cada um deles. Desenvolvido para estudo de programação orientada a objetos.
+        </span>
     `,
     link: "https://FabioV37ga.github.io/Sistema-Solar",
     github: "https://github.com/FabioV37ga/Sistema-Solar"
@@ -76,9 +93,12 @@ const jsBridge: Project = {
         Technologies.javascript,
     ],
     description: html`
-        Compilador funcional de uma linguagem de programação própria, usando JavaScript como
-        linguagem alvo. Possui recursos como variáveis, funções, estruturas condicionais e loops.
-        Desenvolvido como projeto acadêmico para a disciplina de Compiladores.
+    
+        <span>
+            Compilador funcional de uma linguagem de programação própria, usando JavaScript como
+            linguagem alvo. Possui recursos como variáveis, funções, estruturas condicionais e loops.
+            Desenvolvido como projeto acadêmico para a disciplina de Compiladores.
+        </span>
     `,
     link: "https://FabioV37ga.github.io/JSBridge",
     github: "http://github.com/FabioV37ga/JSBridge"
@@ -94,12 +114,19 @@ const conviteAugusto: Project = {
         Technologies.jquery
     ],
     description: html`
-        Convite de aniversário digital interativo, desenvolvido para facilitar o envio e
-        gerenciamento dos convidados. Utiliza Google Sheets para armazenar as respostas.
-        <br>
-        Temático de Rei Leão, com informações de local, data, horário e recomendações de presentes.
-        <br>
-        Mobile-first e completamente responsivo.
+    
+        <span>
+            Convite de aniversário digital interativo, desenvolvido para facilitar o envio e
+            gerenciamento dos convidados. Utiliza Google Sheets para armazenar as respostas.
+        </span>
+
+        <span>
+            Temático de Rei Leão, com informações de local, data, horário e recomendações de presentes.
+        </span>
+
+        <span>
+            Mobile-first e completamente responsivo.
+        </span>
     `,
     link: "https://fabiov37ga.github.io/conviteAugusto",
     github: "https://github.com/FabioV37ga/conviteAugusto"
@@ -116,12 +143,19 @@ const conviteAlessandra: Project = {
         Technologies.jquery
     ],
     description: html`
-        Convite de aniversário digital interativo, desenvolvido para facilitar o envio e
-        gerenciamento dos convidados. Utiliza Google Sheets para armazenar as respostas.
-        <br>
-        Temático de Anos 70, com informações de local, data, horário, e dress code.
-        <br>
-        Mobile-first e completamente responsivo.
+
+        <span>
+            Convite de aniversário digital interativo, desenvolvido para facilitar o envio e
+            gerenciamento dos convidados. Utiliza Google Sheets para armazenar as respostas.
+        </span>
+
+        <span>
+            Temático de Anos 70, com informações de local, data, horário, e dress code.
+        </span>
+
+        <span>
+            Mobile-first e completamente responsivo.
+        </span>
     `,
     link: "https://fabiov37ga.github.io/conviteAlessandra",
     github: "https://github.com/FabioV37ga/conviteAlessandra"
@@ -136,10 +170,15 @@ const birdGame: Project = {
         Technologies.jquery
     ],
     description: html`
-        Remake completo de Flappy Bird.
-        <br>
-        Jogo simples onde o jogador controla um pássaro que deve desviar de obstáculos.
-        Desenvolvido para estudo de manipulação do DOM e eventos de teclado.
+    
+        <span>
+            Remake completo de Flappy Bird.
+        </span>
+
+        <span>
+            Jogo simples onde o jogador controla um pássaro que deve desviar de obstáculos.
+            Desenvolvido para estudo de manipulação do DOM e eventos de teclado.
+        </span>
     `,
     link: "https://FabioV37ga.github.io/birdGame",
     github: "https://github.com/FabioV37ga/birdGame"
@@ -153,9 +192,14 @@ const bounce: Project = {
         Technologies.javascript,
     ],
     description: html`
-        Estudo de lógica e física.
-        <br>
-        Tela interativa onde o usuário joga uma bola que quica nas paredes.
+    
+        <span>
+            Estudo de lógica e física.
+        </span>
+
+        <span>
+            Tela interativa onde o usuário joga uma bola que quica nas paredes.
+        </span>
     `,
     link: "https://FabioV37ga.github.io/bounce",
     github: "https://github.com/FabioV37ga/bounce"
@@ -169,10 +213,15 @@ const wearSell: Project = {
         Technologies.css3,
     ],
     description: html`
-        Protótipo de site estático para venda de roupas.
-        <br>
-        Desenvolvido para estudo de design responsivo, layouts com CSS e consistência de campo.
-        `,
+    
+        <span>
+            Protótipo de site estático para venda de roupas.
+        </span>
+
+        <span>
+            Desenvolvido para estudo de design responsivo, layouts com CSS e consistência de campo.
+        </span>
+    `,
     link: "https://FabioV37ga.github.io/wearSellA3",
     github: "https://github.com/FabioV37ga/wearSellA3"
 }
@@ -185,7 +234,10 @@ const driveGuide: Project = {
         Technologies.javascript
     ],
     description: html`
-        Protótipo de site estático para locadora de veículos.
+    
+        <span>
+            Protótipo de site estático para locadora de veículos.
+        </span>
     `,
     link: "https://FabioV37ga.github.io/DriveGuide",
     github: "https://github.com/FabioV37ga/DriveGuide"

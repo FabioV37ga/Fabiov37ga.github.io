@@ -23,6 +23,8 @@ import { Projects, Project } from "../data/projects.js";
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
 import { projectTemplate } from "../templates/projectTemplate.js";
+import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
+import ProjectView from "../views/projectView.js";
 
 
 // ---------------------------
@@ -35,7 +37,8 @@ class ProjectController {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
-    // TODO: Adicionar propriedades conforme necessário
+    elements: Elements = ProjectSelector.defineElements();
+    view: ProjectView = new ProjectView(this.elements);
 
 
     // ---------------------------
@@ -47,6 +50,8 @@ class ProjectController {
         this.setPosition(projectTitleElement);
 
         this.setProjectData(project)
+
+        this.showProject(project)
     }
 
 
@@ -57,25 +62,22 @@ class ProjectController {
     setPosition(projectElement: HTMLElement) {
         // Obtém o primeiro elemento filho como referência
         var reference = u(projectElement).children().first() as HTMLElement;
-        
-        // Seleciona o elemento de display do projeto
-        var el = document.querySelector(".project-display") as HTMLElement;
 
         // Define estilos inline para posicionamento
-        el.style = `
+        this.elements.projectContainer.style = `
         top: ${reference.offsetHeight + 55}px;
         display: flex;`
 
     }
 
     setProjectData(project: Project) {
-        var el = document.querySelector(".project-display") as HTMLElement;
-
-        el.append(projectTemplate(project))
+        this.elements.projectContainer.append(projectTemplate(project))
     }
 
-    showProject(){
-        
+    showProject(project: Project) {
+        this.elements = ProjectSelector.defineElements();
+
+        this.view.showProject(this.elements, project);
     }
 }
 
