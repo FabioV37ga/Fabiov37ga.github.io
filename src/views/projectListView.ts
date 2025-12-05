@@ -42,7 +42,8 @@ import AnimationCooldown from "../utils/animationCooldown.js";
 import {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
     slideUpProjectContainer, hideProjectItem, // Animação de saída
-    highlightProject, focusOnProject, resetScrollPosition // Animações de seleção
+    highlightProject, focusOnProject, resetScrollPosition, // Animações de seleção
+    blurProject // Animação de desfoque
 } from "../utils/projectListAnimations.js";
 
 
@@ -98,11 +99,13 @@ class ProjectListView {
     // 2.5. showProjectContainer - Exibe container de projetos
     // ---------------------------
 
-    showProjectContainer() {
+    showProjectContainer(delay: number) {
         // Anima a exibição do container de projetos
+        console.log("Delay: " + delay)
         slideDownProjectContainer(
             this.elements.projectContainer,
-            AnimationCooldown.projectList
+            AnimationCooldown.projectList,
+            delay
         );
     }
 
@@ -133,9 +136,9 @@ class ProjectListView {
     hideProjectList() {
         // Adiciona a classe de ocultação
         slideUpProjectContainer(this.elements.projectContainer,
-             AnimationCooldown.projectList,
-             600
-            );
+            AnimationCooldown.projectList,
+            600
+        );
     }
 
 
@@ -144,6 +147,9 @@ class ProjectListView {
     // ---------------------------
 
     highlightSelectedProject(project: HTMLElement) {
+
+        // Adiciona a classe de projeto selecionado ao item
+        u(project).addClass("selected-project");
 
         // Define opacidade total para o projeto selecionado
         project.style.opacity = '1'
@@ -188,6 +194,11 @@ class ProjectListView {
         setTimeout(() => {
             this.elements.projectContainer.style.overflowY = "hidden";
         }, 200);
+    }
+
+    blurSelectedProject(project: HTMLElement) {
+        blurProject(project);
+        // u(this.elements.projectItems).remove()
     }
 }
 

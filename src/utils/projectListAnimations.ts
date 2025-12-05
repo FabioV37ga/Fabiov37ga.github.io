@@ -30,6 +30,8 @@
 // Importa Anime.js para animações
 import { animate, cubicBezier } from "animejs"
 
+import u from "umbrellajs";
+
 
 // ---------------------------
 // 2. ANIMAÇÕES DE ENTRADA
@@ -43,13 +45,14 @@ import { animate, cubicBezier } from "animejs"
 // 2.1. slideDownProjectContainer - Anima descida do container
 // ---------------------------
 
-const slideDownProjectContainer = (container: HTMLElement, duration: number) => {
+const slideDownProjectContainer = (container: HTMLElement, duration: number, delay:number) => {
+    console.log(delay)
     // Anima a entrada do container de cima para baixo
     animate(container, {
         translateY: ["-100%", "0%"],
         opacity: [0, 1],
         duration: duration,
-        delay: 3000,
+        delay: delay,
         ease: cubicBezier(0.155, 0.812, 0.755, 1.01)
     })
 }
@@ -186,8 +189,21 @@ const resetScrollPosition = (container: HTMLElement) => {
     })
 }
 
+const blurProject = (project: HTMLElement) => {
+    // Remove a classe de projeto selecionado do item
+    animate(project, {
+        opacity: [1, 0],
+        duration: 200,
+        onComplete: () => {
+            var project_list = project.parentElement as HTMLElement;
+            project_list.style.transform = "rotateX(-12deg) rotateY(-33deg)";
+        }
+    })
+}
+
 export {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
     slideUpProjectContainer, hideProjectItem, // Animação de saída
-    highlightProject, focusOnProject, resetScrollPosition // Animações de seleção
+    highlightProject, focusOnProject, resetScrollPosition, // Animações de seleção
+    blurProject // Animação de desfoque
 }

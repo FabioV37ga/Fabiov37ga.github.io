@@ -35,6 +35,7 @@ import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
 
 // Importa a view responsável pela renderização
 import ProjectView from "../views/projectView.js";
+import ProjectListController from "./projectListController.js";
 
 
 // ---------------------------
@@ -105,7 +106,10 @@ class ProjectController {
     
     setProjectData(project: Project) {
         // Renderiza e adiciona o template do projeto ao container
-        this.elements.projectContainer.append(projectTemplate(project))
+        console.log(project)
+        this.elements.projectContainer.append(
+            projectTemplate(project)
+        )
     }
 
     
@@ -135,7 +139,7 @@ class ProjectController {
 
         // TODO: Limpar container após animação
         setTimeout(() => {
-            
+            ProjectListController.blurSelectedProject();
         }, 200 * 5);
     }
 }

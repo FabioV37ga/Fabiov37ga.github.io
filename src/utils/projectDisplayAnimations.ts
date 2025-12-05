@@ -59,6 +59,7 @@ const techFadeIn = (element: HTMLElement, delay: number) => {
 // ---------------------------
 
 const typeDescription = (element: HTMLElement, project: Project, delay: number) => {
+    console.log([project.description])
 
     // Seleciona todos os parágrafos (spans) dentro do elemento
     const paragraphs = u('.description-content span', element);
@@ -159,10 +160,8 @@ const hideProject = (project: HTMLElement) => {
             duration: 200,
             delay: reverseIndex * 200, // Delay reverso para efeito cascata
             onComplete: () =>{
-                // Remove o container quando a primeira animação completar
-                if(index === 0){
-                    u(project).remove();
-                }
+                // Remove o elemento filho do DOM após a animação
+                u(child).remove();
             }
         })
     })

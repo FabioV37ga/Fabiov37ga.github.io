@@ -68,15 +68,14 @@ class ProjectListController {
     // 2.2. CONSTRUCTOR
     // ---------------------------
 
-    constructor(delay: number) {
+    constructor(delay?: number) {
         // Carrega os dados dos projetos
         this.projects = Projects;
 
-
         // Inicia a criação da lista de projetos
-        this.createProjectList(delay);
+        this.createProjectList(delay || 0);
 
-        this.view.showProjectContainer()
+        this.view.showProjectContainer(delay!)
 
         // Atribui a instância atual para acesso estático
         ProjectListController.instance = this;
@@ -100,18 +99,16 @@ class ProjectListController {
         // Atualiza os elementos na view também
         this.view.elements = this.elements;
 
-
         // Calcula e aplica o tempo da animação do container
         this.setListAnimationTime();
 
         // Define a altura inicial do container baseada nos itens
         this.setContainerHeight();
 
-
         // Aguarda 1.75s antes de iniciar a exibição dos projetos
         setTimeout(() => {
             this.showProjects();
-        }, 2200);
+        }, delay);
     }
 
     // ---------------------------
@@ -300,61 +297,60 @@ class ProjectListController {
     // ---------------------------
 
     selectProject(project: HTMLElement) {
+        if (!u(project).hasClass("selected-project")) {
 
-        // Verifica se não está em cooldown de foco de projeto
-        if (AnimationCooldown.projectFocusCooldown == false) {
-            // Ativa o cooldown
-            AnimationCooldown.projectFocusCooldown = true;
+            // Verifica se não está em cooldown de foco de projeto
+            if (AnimationCooldown.projectFocusCooldown == false) {
+                // Ativa o cooldown
+                AnimationCooldown.projectFocusCooldown = true;
 
-            // Destaca o projeto selecionado visualmente
-            this.view.highlightSelectedProject(project);
+                // Destaca o projeto selecionado visualmente
+                this.view.highlightSelectedProject(project);
+            }
+
+            // Aguarda o tempo da animação de foco
+            setTimeout(() => {
+                // Desativa o cooldown*
+                AnimationCooldown.projectFocusCooldown = false;
+
+                // Variável para armazenar o elemento do projeto selecionado
+                let selectedProjectElement: HTMLElement | undefined;
+
+                // Busca o projeto selecionado no array de elementos
+                for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                    // Verifica se é o projeto clicado
+                    if (this.elements.projectItems[i] == project) {
+                        // Armazena o elemento do projeto
+                        selectedProjectElement = this.elements.projectItems[i];
+                        break;
+                    }
+                }
+
+                // Variável para armazenar os dados do projeto
+                let selectedProject: Project | undefined;
+
+                // Busca os dados do projeto correspondente
+                for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                    if (project.textContent?.trim() ===
+                        Projects[i].title
+                    ) {
+                        selectedProject = Projects[i];
+                        break;
+                    }
+                }
+
+                // Exibe o conteúdo se ambos foram encontrados
+                if (selectedProject && selectedProjectElement) {
+                    setTimeout(() => {
+                        this.showProjectContent(
+                            selectedProject,
+                            selectedProjectElement
+                        );
+                    }, 500);
+                }
+
+            }, AnimationCooldown.projectFocus);
         }
-
-        // Aguarda o tempo da animação de foco
-        setTimeout(() => {
-            // Desativa o cooldown*
-            AnimationCooldown.projectFocusCooldown = false;
-
-            // Variável para armazenar o elemento do projeto selecionado
-            let selectedProjectElement: HTMLElement | undefined;
-
-            // Busca o projeto selecionado no array de elementos
-            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-                // Verifica se é o projeto clicado
-                if (this.elements.projectItems[i] == project) {
-                    // Armazena o elemento do projeto
-                    selectedProjectElement = this.elements.projectItems[i];
-                    break;
-                }
-            }
-
-            // Variável para armazenar os dados do projeto
-            let selectedProject: Project | undefined;
-
-            // Busca os dados do projeto correspondente
-            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-                if (project.textContent?.trim() ===
-                    Projects[i].title
-                ) {
-                    selectedProject = Projects[i];
-                    break;
-                }
-            }
-
-            // console.log(selectedProject)
-
-            // Exibe o conteúdo se ambos foram encontrados
-            if (selectedProject && selectedProjectElement) {
-                setTimeout(() => {
-                    this.showProjectContent(
-                        selectedProject,
-                        selectedProjectElement
-                    );
-                }, 500);
-            }
-
-        }, AnimationCooldown.projectFocus);
-
 
     }
 
@@ -370,6 +366,31 @@ class ProjectListController {
             project, // Dados do projeto
             projectTitleElement // Elemento HTML do título
         );
+    }
+
+    static blurSelectedProject(project?: HTMLElement) {
+        const self = ProjectListController.instance;
+
+        var selectedProject: HTMLElement;
+
+        self.elements.projectItems.forEach(element => {
+            if (u(element).hasClass("selected-project")) {
+                selectedProject = element;
+            }
+        });
+
+        self.view.blurSelectedProject(selectedProject!);
+
+
+
+        setTimeout(() => {
+            self.elements.projectItems.forEach(element => {
+                u(element).remove()
+            })
+
+            new ProjectListController(0)
+        }, 200);
+
     }
 }
 
