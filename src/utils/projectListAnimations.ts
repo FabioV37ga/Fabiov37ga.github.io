@@ -29,7 +29,9 @@
 // ---------------------------
 
 // Importa Anime.js para animações
-import { animate, cubicBezier } from "animejs"
+import { engine, animate, cubicBezier } from "animejs"
+
+engine.pauseOnDocumentHidden = true;
 
 // ---------------------------
 // 2. ANIMAÇÕES DE ENTRADA
@@ -42,7 +44,7 @@ import { animate, cubicBezier } from "animejs"
 
 const slideDownProjectContainer = (container: HTMLElement, duration: number, delay:number) => {
     // Anima a entrada do container de cima para baixo
-    animate(container, {
+    return animate(container, {
         translateY: ["-100%", "0%"],
         opacity: [0, 1],
         duration: duration,
@@ -56,7 +58,7 @@ const slideDownProjectContainer = (container: HTMLElement, duration: number, del
 // 2.2. showProjectItem - Anima entrada de item de projeto
 // ---------------------------
 
-const showProjectItem = (project: HTMLElement) => {
+const showProjectItem = (project: HTMLElement, delay: number) => {
     // Anima item com rotação 3D e fade-in
     animate(project, {
         keyframes: [
@@ -65,7 +67,8 @@ const showProjectItem = (project: HTMLElement) => {
                 translateY: '-50%',
                 rotateY: -90,
                 opacity: 0,
-                duration: 0
+                duration: 0, 
+                delay: delay
             }, {
                 opacity: 0.5,
                 duration: 400

@@ -92,6 +92,7 @@ class ProjectListView {
     setContainerHeight(height: string) {
         // Define a altura do container de projetos via CSS inline
         this.elements.projectContainer.style.height = `${height}`;
+
     }
 
 
@@ -113,9 +114,9 @@ class ProjectListView {
     // 2.6. showProjectItem - Exibe projeto com animação
     // ---------------------------
 
-    showProjectItem(project: HTMLElement) {
+    showProjectItem(project: HTMLElement, delay: number) {
         // Chama a função de animação para exibir o item de projeto
-        showProjectItem(project)
+        showProjectItem(project, delay)
     }
 
 

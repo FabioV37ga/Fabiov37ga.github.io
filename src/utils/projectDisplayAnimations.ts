@@ -24,7 +24,9 @@
 // ---------------------------
 
 // Importa Anime.js para animações
-import { animate, cubicBezier } from "animejs"
+import { engine, animate, cubicBezier } from "animejs"
+
+engine.pauseOnDocumentHidden = true;
 
 // Importa o tipo Project dos dados
 import { Project } from "../data/projects.js"

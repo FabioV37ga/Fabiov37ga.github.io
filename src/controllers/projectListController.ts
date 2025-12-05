@@ -120,28 +120,20 @@ class ProjectListController {
         // Índice inicial: último projeto (animação de baixo para cima)
         var projectIndex: number = this.elements.projectItems.length - 1;
 
-        // Limite: para quando chegar ao primeiro item (índice 0)
-        const limit: number = 0;
+        var delay: number = 0
 
-        // Intervalo que executa a cada 230ms
-        const showInterval = setInterval(() => {
-            // Mostra o projeto atual através da view
+        for (let i = 0; i < this.elements.projectItems.length; i++) {
             this.view.showProjectItem(
-                this.elements.projectItems[projectIndex]
+                this.elements.projectItems[projectIndex],
+                delay
             );
-
-            // Decrementa o índice para o próximo projeto
             projectIndex--;
+            delay += 230
+        }
 
-            // Verifica se todos os projetos foram exibidos
-            if (projectIndex < limit) {
-                // Para o intervalo quando terminar
-                clearInterval(showInterval);
-
-                // Adiciona os event handlers de clique aos projetos
-                this.addHandlers()
-            }
-        }, 230); // 230ms entre cada exibição
+        setTimeout(() => {
+            this.addHandlers()
+        }, delay);
     }
 
 
@@ -258,8 +250,7 @@ class ProjectListController {
             AnimationCooldown.projectListCooldown = false;
         }, self.projects.length * 230 + 2800);
     }
-
-
+    
     // ---------------------------
     // 2.8. addHandlers - Adiciona os event handlers
     // ---------------------------
