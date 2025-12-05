@@ -125,11 +125,11 @@ class NavigationController {
                 this.showSelectedItemContent(item, 1750);
             }else{
                 // Log quando o item já está selecionado
-                console.log("Item already selected. No action taken.");
+                // console.log("Item already selected. No action taken.");
             }
         }else{
             // Log quando a animação está em cooldown
-            console.log("Animation is on cooldown. Selection ignored.");
+            // console.log("Animation is on cooldown. Selection ignored.");
         }
     }
 

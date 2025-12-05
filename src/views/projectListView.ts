@@ -41,7 +41,7 @@ import AnimationCooldown from "../utils/animationCooldown.js";
 // Importa funções de animação da lista de projetos
 import {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
-    slideUpProjectContainer, hideProjectItem, // Animação de saída
+    slideUpProjectContainer, hideProjectItem, fadeOutProjectItem, // Animação de saída
     highlightProject, focusOnProject, resetScrollPosition, // Animações de seleção
     blurProject // Animação de desfoque
 } from "../utils/projectListAnimations.js";
@@ -101,7 +101,6 @@ class ProjectListView {
 
     showProjectContainer(delay: number) {
         // Anima a exibição do container de projetos
-        console.log("Delay: " + delay)
         slideDownProjectContainer(
             this.elements.projectContainer,
             AnimationCooldown.projectList,
@@ -124,9 +123,11 @@ class ProjectListView {
     // 2.7. hideProjectItem - Oculta projeto com animação
     // ---------------------------
 
-    hideProjectItem(project: HTMLElement) {
+    hideProjectItem(project: HTMLElement, type: string) {
         // Chama a função de animação para ocultar o item de projeto
-        hideProjectItem(project)
+
+        hideProjectItem(project);
+
     }
 
     // ---------------------------
@@ -162,7 +163,7 @@ class ProjectListView {
 
             // Oculta todos os itens exceto o selecionado
             if (this.elements.projectItems[i] !== project) {
-                hideProjectItem(this.elements.projectItems[i]);
+                fadeOutProjectItem(this.elements.projectItems[i],);
             }
         }
 

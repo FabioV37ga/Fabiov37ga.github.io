@@ -83,8 +83,6 @@ class ProjectView {
             200 * totalTechnologies
         );
 
-        console.log(totalCharacters)
-
         // Anima expansão do espaçador após a descrição
         expandSpacer(
             this.elements.spacer,

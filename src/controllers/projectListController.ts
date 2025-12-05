@@ -224,10 +224,11 @@ class ProjectListController {
 
         // Intervalo que oculta cada projeto a cada 230ms
         const hideInterval = setInterval(() => {
-            console.log("Hiding project:", self.elements.projectItems[projectIndex]);
+
             // Oculta o projeto atual
             self.view.hideProjectItem(
-                self.elements.projectItems[projectIndex]
+                self.elements.projectItems[projectIndex],
+                "pop"
             );
 
             // Incrementa para o próximo projeto

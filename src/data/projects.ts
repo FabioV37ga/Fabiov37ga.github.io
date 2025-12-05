@@ -1,14 +1,64 @@
-import { Technologies } from "../templates/technologiesTemplate.js";
-import { paragraph } from "../templates/paragraphTemplate.js";
-import html from "nanohtml";
+/**
+ * ============================================================================
+ * PROJECTS DATA
+ * ============================================================================
+ * 
+ * SUMÁRIO:
+ * 1. Imports e Dependências
+ * 2. Interface Project
+ * 3. Definição dos Projetos
+ *    3.1. nutryo - Calendário nutricional
+ *    3.2. typeTap - Jogo de digitação
+ *    3.3. sistemaSolar - Jogo educativo
+ *    3.4. jsBridge - Compilador de linguagem própria
+ *    3.5. conviteAugusto - Convite digital temático Rei Leão
+ *    3.6. conviteAlessandra - Convite digital temático Anos 70
+ *    3.7. birdGame - Remake de Flappy Bird
+ *    3.8. bounce - Estudo de física
+ *    3.9. wearSell - Protótipo de e-commerce
+ *    3.10. driveGuide - Protótipo de locadora
+ * 4. Array de Projetos e Exports
+ * 
+ * DESCRIÇÃO:
+ * Define todos os dados dos projetos do portfólio, incluindo título,
+ * tecnologias utilizadas, descrição em parágrafos e links.
+ * 
+ * ============================================================================
+ */
 
+// ---------------------------
+// 1. IMPORTS E DEPENDÊNCIAS
+// ---------------------------
+
+// Importa os templates de tecnologias (badges)
+import { Technologies } from "../templates/technologiesTemplate.js";
+
+// Importa o template de parágrafo
+import { paragraph } from "../templates/paragraphTemplate.js";
+
+
+// ---------------------------
+// 2. INTERFACE PROJECT
+// ---------------------------
+
+// Define a estrutura de dados de um projeto
 interface Project {
-    title: string;
-    technologies?: HTMLElement[];
-    description?: HTMLElement[];
-    link?: string;
-    github?: string;
+    title: string;                  // Título do projeto
+    technologies?: HTMLElement[];   // Array de badges de tecnologias
+    description?: HTMLElement[];    // Array de parágrafos de descrição
+    link?: string;                  // URL para acessar o projeto
+    github?: string;                // URL do repositório GitHub
 }
+
+
+// ---------------------------
+// 3. DEFINIÇÃO DOS PROJETOS
+// ---------------------------
+
+
+// ---------------------------
+// 3.1. nutryo - Calendário nutricional
+// ---------------------------
 
 const nutryo: Project = {
     title: "Nutryo",
@@ -30,6 +80,11 @@ const nutryo: Project = {
     github: "https://github.com/FabioV37ga/nuTryo2"
 }
 
+
+// ---------------------------
+// 3.2. typeTap - Jogo de digitação
+// ---------------------------
+
 const typeTap: Project = {
     title: "TypeTap",
     technologies: [
@@ -49,6 +104,11 @@ const typeTap: Project = {
     github: "https://github.com/FabioV37ga/TypeTap"
 }
 
+
+// ---------------------------
+// 3.3. sistemaSolar - Jogo educativo
+// ---------------------------
+
 const sistemaSolar: Project = {
     title: "Sistema Solar",
     technologies: [
@@ -65,6 +125,11 @@ const sistemaSolar: Project = {
     github: "https://github.com/FabioV37ga/Sistema-Solar"
 }
 
+
+// ---------------------------
+// 3.4. jsBridge - Compilador de linguagem própria
+// ---------------------------
+
 const jsBridge: Project = {
     title: "JSBridge",
     technologies: [
@@ -80,6 +145,11 @@ const jsBridge: Project = {
     link: "https://FabioV37ga.github.io/JSBridge",
     github: "http://github.com/FabioV37ga/JSBridge"
 }
+
+
+// ---------------------------
+// 3.5. conviteAugusto - Convite digital temático Rei Leão
+// ---------------------------
 
 const conviteAugusto: Project = {
     title: "Convite Augusto",
@@ -101,6 +171,11 @@ const conviteAugusto: Project = {
 
 }
 
+
+// ---------------------------
+// 3.6. conviteAlessandra - Convite digital temático Anos 70
+// ---------------------------
+
 const conviteAlessandra: Project = {
     title: "Convite Alessandra",
     technologies: [
@@ -120,6 +195,11 @@ const conviteAlessandra: Project = {
     github: "https://github.com/FabioV37ga/conviteAlessandra"
 }
 
+
+// ---------------------------
+// 3.7. birdGame - Remake de Flappy Bird
+// ---------------------------
+
 const birdGame: Project = {
     title: "BirdGame",
     technologies: [
@@ -137,6 +217,11 @@ const birdGame: Project = {
     github: "https://github.com/FabioV37ga/birdGame"
 }
 
+
+// ---------------------------
+// 3.8. bounce - Estudo de física
+// ---------------------------
+
 const bounce: Project = {
     title: "Bounce",
     technologies: [
@@ -153,6 +238,11 @@ const bounce: Project = {
 
 }
 
+
+// ---------------------------
+// 3.9. wearSell - Protótipo de e-commerce
+// ---------------------------
+
 const wearSell: Project = {
     title: "WearSell",
     technologies: [
@@ -166,6 +256,11 @@ const wearSell: Project = {
     link: "https://FabioV37ga.github.io/wearSellA3",
     github: "https://github.com/FabioV37ga/wearSellA3"
 }
+
+
+// ---------------------------
+// 3.10. driveGuide - Protótipo de locadora
+// ---------------------------
 
 const driveGuide: Project = {
     title: "DriveGuide",
@@ -181,6 +276,12 @@ const driveGuide: Project = {
     github: "https://github.com/FabioV37ga/DriveGuide"
 }
 
+
+// ---------------------------
+// 4. ARRAY DE PROJETOS E EXPORTS
+// ---------------------------
+
+// Array contendo todos os projetos do portfólio
 const Projects: Project[] = [
     nutryo,
     typeTap,

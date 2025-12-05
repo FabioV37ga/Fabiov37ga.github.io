@@ -22,7 +22,7 @@
 // ---------------------------
 
 // Importa os dados dos projetos e a interface Project
-import { Projects, Project } from "../data/projects.js";
+import { Project } from "../data/projects.js";
 
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
@@ -78,7 +78,6 @@ class ProjectController {
     addHandlers(){
         // Adiciona evento de clique ao botão de retorno
         u(this.elements.returnButton).on('click', ()=>{
-            console.log("Return button clicked");
             // Oculta o projeto e retorna à lista
             this.hideProject();
         })
@@ -106,7 +105,6 @@ class ProjectController {
     
     setProjectData(project: Project) {
         // Renderiza e adiciona o template do projeto ao container
-        console.log(project)
         this.elements.projectContainer.append(
             projectTemplate(project)
         )

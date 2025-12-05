@@ -15,6 +15,7 @@
  *    4.1. highlightProject() - Realça projeto selecionado
  *    4.2. focusOnProject() - Remove perspectiva 3D
  *    4.3. resetScrollPosition() - Reseta scroll para o topo
+ *    4.4. blurProject() - Desfoca projeto após fechamento
  * 
  * DESCRIÇÃO:
  * Funções utilitárias para animar a lista de projetos, incluindo
@@ -30,9 +31,6 @@
 // Importa Anime.js para animações
 import { animate, cubicBezier } from "animejs"
 
-import u from "umbrellajs";
-
-
 // ---------------------------
 // 2. ANIMAÇÕES DE ENTRADA
 // ---------------------------
@@ -41,12 +39,8 @@ import u from "umbrellajs";
 // ---------------------------
 // 2.1. slideDownProjectContainer - Anima descida do container
 // ---------------------------
-// ---------------------------
-// 2.1. slideDownProjectContainer - Anima descida do container
-// ---------------------------
 
 const slideDownProjectContainer = (container: HTMLElement, duration: number, delay:number) => {
-    console.log(delay)
     // Anima a entrada do container de cima para baixo
     animate(container, {
         translateY: ["-100%", "0%"],
@@ -114,7 +108,6 @@ const slideUpProjectContainer = (container: HTMLElement, duration: number, delay
 // ---------------------------
 
 const hideProjectItem = (project: HTMLElement) => {
-    console.log("Hide Project Item Animation Triggered")
     // Anima item com rotação 3D reversa e fade-out
     animate(project, {
         keyframes: [
@@ -138,6 +131,15 @@ const hideProjectItem = (project: HTMLElement) => {
         ease: "easeInCirc"
     })
 }
+
+const fadeOutProjectItem = (project: HTMLElement) => {
+    // Anima o fade-out do item de projeto
+    animate(project, {
+        opacity: [1, 0],
+        duration: 500,
+        ease: "easeInCirc"
+        }
+    )}
 
 
 // ---------------------------
@@ -189,13 +191,20 @@ const resetScrollPosition = (container: HTMLElement) => {
     })
 }
 
+
+// ---------------------------
+// 4.4. blurProject - Desfoca projeto após fechamento
+// ---------------------------
+
 const blurProject = (project: HTMLElement) => {
-    // Remove a classe de projeto selecionado do item
+    // Anima o fade-out do projeto e restaura a perspectiva 3D da lista
     animate(project, {
         opacity: [1, 0],
         duration: 200,
         onComplete: () => {
+            // Obtém a lista de projetos (elemento pai)
             var project_list = project.parentElement as HTMLElement;
+            // Restaura a transformação 3D original da lista
             project_list.style.transform = "rotateX(-12deg) rotateY(-33deg)";
         }
     })
@@ -203,7 +212,7 @@ const blurProject = (project: HTMLElement) => {
 
 export {
     slideDownProjectContainer, showProjectItem, // Animações de entrada
-    slideUpProjectContainer, hideProjectItem, // Animação de saída
+    slideUpProjectContainer, hideProjectItem, fadeOutProjectItem, // Animação de saída
     highlightProject, focusOnProject, resetScrollPosition, // Animações de seleção
     blurProject // Animação de desfoque
 }

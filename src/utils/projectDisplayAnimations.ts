@@ -59,7 +59,6 @@ const techFadeIn = (element: HTMLElement, delay: number) => {
 // ---------------------------
 
 const typeDescription = (element: HTMLElement, project: Project, delay: number) => {
-    console.log([project.description])
 
     // Seleciona todos os parágrafos (spans) dentro do elemento
     const paragraphs = u('.description-content span', element);
