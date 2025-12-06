@@ -36,7 +36,7 @@ import { Project } from "../data/projects.js";
 import { nav_project } from "../templates/projectListTemplate.js";
 
 // Importa configuração de cooldown de animações
-import AnimationCooldown from "../utils/animationCooldown.js";
+import Animation from "../utils/animation.js";
 
 // Importa funções de animação da lista de projetos
 import {
@@ -93,6 +93,10 @@ class ProjectListView {
         // Define a altura do container de projetos via CSS inline
         this.elements.projectContainer.style.height = `${height}`;
 
+        if (height === "100%") {
+            // this.elements.projectContainer.style.overflowY = "scroll";
+        }
+
     }
 
 
@@ -104,7 +108,7 @@ class ProjectListView {
         // Anima a exibição do container de projetos
         slideDownProjectContainer(
             this.elements.projectContainer,
-            AnimationCooldown.projectList,
+            Animation.projectList,
             delay
         );
     }
@@ -138,7 +142,7 @@ class ProjectListView {
     hideProjectList() {
         // Adiciona a classe de ocultação
         slideUpProjectContainer(this.elements.projectContainer,
-            AnimationCooldown.projectList,
+             Animation.projectList,
             600
         );
     }
@@ -192,10 +196,10 @@ class ProjectListView {
         // Anima o scroll do container para o topo
         resetScrollPosition(this.elements.projectContainer);
 
-        // Após 200ms, desabilita o overflow Y do container
-        setTimeout(() => {
-            this.elements.projectContainer.style.overflowY = "hidden";
-        }, 200);
+        // // Após 200ms, desabilita o overflow Y do container
+        // setTimeout(() => {
+        //     this.elements.projectContainer.style.overflowY = "hidden";
+        // }, 200);
     }
 
     blurSelectedProject(project: HTMLElement) {

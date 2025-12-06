@@ -33,7 +33,7 @@ import NavigationView from "../views/navigationView.js";
 import ProjectListController from "./projectListController.js";
 
 // Importa o utilitário de controle de cooldown de animações
-import AnimationCooldown from "../utils/animationCooldown.js";
+import Animation from "../utils/animation.js";
 
 
 // ---------------------------
@@ -99,7 +99,7 @@ class NavigationController {
 
     selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Verifica se não está em cooldown de animação
-        if (AnimationCooldown.projectListCooldown === false) {
+        if (Animation.projectListCooldown === false) {
             // Armazena o item previamente selecionado
             const previousSelected = this.selected;
             

@@ -36,7 +36,7 @@ import { ProjectListSelector, Elements } from "../selectors/projectListSelector.
 import ProjectListView from "../views/projectListView.js";
 
 // Importa a classe de controle de cooldown de animações
-import AnimationCooldown from "../utils/animationCooldown.js";
+import Animation from "../utils/animation.js";
 
 import ProjectController from "./projectController.js";
 
@@ -103,7 +103,7 @@ class ProjectListController {
         this.setListAnimationTime();
 
         // Define a altura inicial do container baseada nos itens
-        this.setContainerHeight();
+        this.setContainerHeight(delay);
 
         // Aguarda 1.75s antes de iniciar a exibição dos projetos
         setTimeout(() => {
@@ -143,19 +143,15 @@ class ProjectListController {
 
     setListAnimationTime() {
         // Ativa o cooldown da lista de projetos
-        AnimationCooldown.projectListCooldown = true;
+        Animation.projectListCooldown = true;
 
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
-        AnimationCooldown.projectList = (this.projects.length * 230 + 500);
-        var time = AnimationCooldown.projectList;
-
-        // Aplica a duração calculada na animação do container
-        // this.elements.projectContainer.style.animationDuration = time + "ms";
+        Animation.projectList = (this.projects.length * 230 + 500);
 
         // Desativa o cooldown após o tempo da animação
         setTimeout(() => {
-            AnimationCooldown.projectListCooldown = false;
-        }, AnimationCooldown.projectList);
+            Animation.projectListCooldown = false;
+        }, Animation.projectList);
     }
 
 
@@ -163,7 +159,7 @@ class ProjectListController {
     // 2.6. setContainerHeight - Ajuste da altura do container
     // ---------------------------
 
-    setContainerHeight() {
+    setContainerHeight(delay: number) {
         // Obtém todos os elementos filhos (itens de projeto)
         const childrenElements: HTMLElement[] = this.elements.projectItems;
 
@@ -182,15 +178,14 @@ class ProjectListController {
         // Após a animação terminar, muda para altura responsiva (100%)
         setTimeout(() => {
             this.view.setContainerHeight("100%");
-        }, AnimationCooldown.projectList + 3500); // Mesmo tempo da animação
+        }, Animation.projectList + delay); // Mesmo tempo da animação
 
         // Obtém o último item da lista
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;
 
         // Define margem inferior no último item se existir
-        if (lastItem) {
-            lastItem.style.marginBottom = "55px";
-        }
+        lastItem.style.marginBottom = "55px";
+
     }
 
 
@@ -200,7 +195,7 @@ class ProjectListController {
 
     static hideProjectList() {
         // Ativa o cooldown da lista de projetos
-        AnimationCooldown.projectListCooldown = true;
+        Animation.projectListCooldown = true;
 
         // Obtém a instância estática do controller
         const self = ProjectListController.instance;
@@ -247,10 +242,10 @@ class ProjectListController {
 
 
             // Desativa o cooldown
-            AnimationCooldown.projectListCooldown = false;
+            Animation.projectListCooldown = false;
         }, self.projects.length * 230 + 2800);
     }
-    
+
     // ---------------------------
     // 2.8. addHandlers - Adiciona os event handlers
     // ---------------------------
@@ -292,9 +287,9 @@ class ProjectListController {
         if (!u(project).hasClass("selected-project")) {
 
             // Verifica se não está em cooldown de foco de projeto
-            if (AnimationCooldown.projectFocusCooldown == false) {
+            if (Animation.projectFocusCooldown == false) {
                 // Ativa o cooldown
-                AnimationCooldown.projectFocusCooldown = true;
+                Animation.projectFocusCooldown = true;
 
                 // Destaca o projeto selecionado visualmente
                 this.view.highlightSelectedProject(project);
@@ -303,10 +298,10 @@ class ProjectListController {
             // Aguarda o tempo da animação de foco
             setTimeout(() => {
                 // Desativa o cooldown*
-                AnimationCooldown.projectFocusCooldown = false;
+                Animation.projectFocusCooldown = false;
 
                 // Variável para armazenar o elemento do projeto selecionado
-                let selectedProjectElement: HTMLElement | undefined;
+                let selectedProjectElement: HTMLElement;
 
                 // Busca o projeto selecionado no array de elementos
                 for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
@@ -319,7 +314,7 @@ class ProjectListController {
                 }
 
                 // Variável para armazenar os dados do projeto
-                let selectedProject: Project | undefined;
+                let selectedProject: Project;
 
                 // Busca os dados do projeto correspondente
                 for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
@@ -332,7 +327,7 @@ class ProjectListController {
                 }
 
                 // Exibe o conteúdo se ambos foram encontrados
-                if (selectedProject && selectedProjectElement) {
+                if (selectedProject! && selectedProjectElement!) {
                     setTimeout(() => {
                         this.showProjectContent(
                             selectedProject,
@@ -341,7 +336,7 @@ class ProjectListController {
                     }, 500);
                 }
 
-            }, AnimationCooldown.projectFocus);
+            }, Animation.projectFocus);
         }
 
     }
@@ -360,7 +355,7 @@ class ProjectListController {
         );
     }
 
-    static blurSelectedProject(project?: HTMLElement) {
+    static blurSelectedProject() {
         const self = ProjectListController.instance;
 
         var selectedProject: HTMLElement;
@@ -372,8 +367,6 @@ class ProjectListController {
         });
 
         self.view.blurSelectedProject(selectedProject!);
-
-
 
         setTimeout(() => {
             self.elements.projectItems.forEach(element => {

@@ -1,10 +1,10 @@
 /**
  * ============================================================================
- * ANIMATION COOLDOWN
+ * ANIMATION
  * ============================================================================
  * 
  * SUMÁRIO:
- * 1. Classe AnimationCooldown
+ * 1. Classe Animation
  *    1.1. Propriedades Estáticas - Controle de animações da lista de projetos
  *    1.2. Propriedades Estáticas - Controle de animações de foco
  * 
@@ -16,10 +16,10 @@
  */
 
 // ---------------------------
-// 1. CLASSE ANIMATIONCOOLDOWN
+// 1. CLASSE ANIMATION
 // ---------------------------
 
-class AnimationCooldown{
+class Animation{
     
     // ---------------------------
     // 1.1. PROPRIEDADES ESTÁTICAS - Controle de animações da lista de projetos
@@ -43,4 +43,4 @@ class AnimationCooldown{
     static projectFocusCooldown: boolean = false;
 }
 
-export default AnimationCooldown;
+export default Animation;

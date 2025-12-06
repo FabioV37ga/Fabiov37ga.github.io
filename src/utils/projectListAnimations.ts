@@ -48,8 +48,9 @@ const slideDownProjectContainer = (container: HTMLElement, duration: number, del
         translateY: ["-100%", "0%"],
         opacity: [0, 1],
         duration: duration,
+        overflowY: 'scroll',
         delay: delay,
-        ease: cubicBezier(0.155, 0.812, 0.755, 1.01)
+        ease: cubicBezier(0.155, 0.812, 0.755, 1.01),
     })
 }
 
@@ -82,6 +83,7 @@ const showProjectItem = (project: HTMLElement, delay: number) => {
         ease: "easeInCirc"
     })
 }
+
 
 
 // ---------------------------
@@ -190,6 +192,7 @@ const resetScrollPosition = (container: HTMLElement) => {
         scrollTop: 0,
         duration: 1200,
         ease: cubicBezier(0.111, 0.473, 0.444, 0.989),
+        overflowY: 'hidden',
         delay: 300
     })
 }
