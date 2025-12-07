@@ -30,32 +30,32 @@ import { Elements } from "../selectors/containerSelector.js";
 // ---------------------------
 
 class ContainerView {
-    
+
     // ---------------------------
     // 2.1. PROPRIEDADES
     // ---------------------------
-    
+
     // Elementos DOM do container principal
     elements: Elements;
 
-    
+
     // ---------------------------
     // 2.2. CONSTRUCTOR
     // ---------------------------
-    
+
     constructor(elements: Elements) {
         // Armazena os elementos DOM passados como parâmetro
         this.elements = elements;
-        
+
         // Define o tamanho inicial baseado nas dimensões da janela
         this.setSize(window.innerWidth, window.innerHeight);
     }
 
-    
+
     // ---------------------------
     // 2.3. setSize - Define tamanho do container e posição do background
     // ---------------------------
-    
+
     setSize(width: number, height: number) {
 
         // ------------------------------------------------------------------------------
@@ -80,10 +80,10 @@ class ContainerView {
 
         // ------------------------------------------------------------------------------
         // # Background do Contêiner Principal
-        
+
         // Largura base do background em pixels
         var baseWidth = 2600
-        
+
         // Calcula o deslocamento à esquerda do background
         var leftOffset = width - baseWidth - 500; // Deslocamento à esquerda em pixels
 
@@ -100,11 +100,11 @@ class ContainerView {
         });
     }
 
-    
+
     // ---------------------------
     // 2.4. updateContainerSize - Atualiza tamanho do container
     // ---------------------------
-    
+
     updateContainerSize() {
         // Recalcula o tamanho usando as dimensões atuais da janela
         this.setSize(window.innerWidth, window.innerHeight);

@@ -29,6 +29,7 @@ import ContainerView from "../views/containerView.js";
 // ---------------------------
 
 class ContainerController {
+    originalZoom: number;
     
     // ---------------------------
     // 2.1. PROPRIEDADES
@@ -48,6 +49,8 @@ class ContainerController {
     constructor() {
         // Adiciona o evento de redimensionamento da janela
         this.addResizeEvent();
+        // Armazena o zoom original da página
+        this.originalZoom = window.devicePixelRatio;
     }
 
     
