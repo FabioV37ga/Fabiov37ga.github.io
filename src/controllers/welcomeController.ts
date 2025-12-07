@@ -40,7 +40,7 @@ class WelcomeController{
     // Elementos DOM da tela de boas-vindas
     elements: Elements = WelcomeSelector.defineElements();
     
-    // Instância da view para manipulação visual
+    // Instância da view para renderização e manipulação visual
     view: WelcomeView = new WelcomeView(this.elements);
 
     

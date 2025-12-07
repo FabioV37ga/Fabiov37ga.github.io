@@ -49,8 +49,8 @@ class NavigationController {
     // Elementos DOM da navegação
     elements: Elements = NavigationSelector.defineElements();
 
-    // Instância da view para manipulação visual
-    view = new NavigationView(this.elements);
+    // Instância da view para renderização e manipulação visual
+    view: NavigationView = new NavigationView(this.elements);
 
     // Item atualmente selecionado (padrão: projects)
     selected: HTMLElement = this.elements.projects;
@@ -146,12 +146,10 @@ class NavigationController {
                 ProjectListController.hideProjectList();
                 break;
             case this.elements.about:
-                // TODO: Implementar ocultação da seção "Sobre"
-                // WelcomeController.instance.hideAboutSection();
+                // Implementação futura: Ocultar seção "Sobre"
                 break;
             case this.elements.contact:
-                // TODO: Implementar ocultação da seção "Contato"
-                // WelcomeController.instance.hideContactSection();
+                // Implementação futura: Ocultar seção "Contato"
                 break;
         }
     }
@@ -169,12 +167,10 @@ class NavigationController {
                 new ProjectListController(delay);
                 break;
             case this.elements.about:
-                // TODO: Implementar exibição da seção "Sobre"
-                // WelcomeController.instance.showAboutSection();
+                // Implementação futura: Exibir seção "Sobre"
                 break;
             case this.elements.contact:
-                // TODO: Implementar exibição da seção "Contato"
-                // WelcomeController.instance.showContactSection();
+                // Implementação futura: Exibir seção "Contato"
                 break;
         }
     }

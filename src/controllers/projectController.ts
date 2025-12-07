@@ -37,6 +37,7 @@ import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
 import ProjectView from "../views/projectView.js";
 import ProjectListController from "./projectListController.js";
 
+import Animation from "../utils/animation.js";
 
 // ---------------------------
 // 2. CLASSE PROJECTCONTROLLER
@@ -50,8 +51,8 @@ class ProjectController {
 
     // Elementos DOM do display de projeto
     elements: Elements = ProjectSelector.defineElements();
-    
-    // Instância da view para manipulação visual
+
+    // Instância da view para renderização e manipulação visual
     view: ProjectView = new ProjectView(this.elements);
 
 
@@ -74,13 +75,19 @@ class ProjectController {
     // ---------------------------
     // 2.3. addHandlers - Adiciona eventos aos botões
     // ---------------------------
-    
-    addHandlers(){
+
+    addHandlers() {
+        // Obtém referência ao botão de retorno
+        var returnBtn = this.elements.returnButton;
+
         // Adiciona evento de clique ao botão de retorno
-        u(this.elements.returnButton).on('click', ()=>{
+        u(returnBtn).on('click', () => {
+            // Remove o listener para evitar múltiplos disparos
+            u(returnBtn).off('click');
             // Oculta o projeto e retorna à lista
             this.hideProject();
         })
+
     }
 
 
@@ -102,7 +109,7 @@ class ProjectController {
     // ---------------------------
     // 2.5. setProjectData - Insere o template do projeto no DOM
     // ---------------------------
-    
+
     setProjectData(project: Project) {
         // Renderiza e adiciona o template do projeto ao container
         this.elements.projectContainer.append(
@@ -110,35 +117,36 @@ class ProjectController {
         )
     }
 
-    
+
     // ---------------------------
     // 2.6. showProject - Exibe o projeto com animações
     // ---------------------------
-    
+
     showProject(project: Project) {
         // Atualiza os elementos DOM após inserção do template
         this.elements = ProjectSelector.defineElements();
 
         // Exibe o projeto através da view com animações
         this.view.showProject(this.elements, project);
-        
+
         // Adiciona os event handlers aos botões
         this.addHandlers();
     }
 
-    
+
     // ---------------------------
     // 2.7. hideProject - Oculta o projeto
     // ---------------------------
-    
-    hideProject(){
-        // Oculta o projeto através da view
+
+    async hideProject() {
+        // Executa animação de ocultação do projeto através da view
         this.view.hideProject(this.elements.projectContainer);
 
-        // TODO: Limpar container após animação
-        setTimeout(() => {
-            ProjectListController.blurSelectedProject();
-        }, 200 * 5);
+        // Aguarda o término das animações (1000ms)
+        await Animation.wait(200 * 5);
+        
+        // Remove foco do projeto selecionado na lista
+        ProjectListController.blurSelectedProject();
     }
 }
 

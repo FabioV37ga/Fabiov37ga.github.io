@@ -35,6 +35,8 @@ import { Project } from "../data/projects.js"
 import u from "umbrellajs";
 
 
+import Animation from "./animation.js";
+
 // ---------------------------
 // 2. FUNÇÕES DE ANIMAÇÃO
 // ---------------------------
@@ -60,7 +62,7 @@ const techFadeIn = (element: HTMLElement, delay: number) => {
 // 2.2. typeDescription - Anima digitação da descrição
 // ---------------------------
 
-const typeDescription = (element: HTMLElement, project: Project, delay: number) => {
+const typeDescription = async (element: HTMLElement, project: Project, delay: number) => {
 
     // Seleciona todos os parágrafos (spans) dentro do elemento
     const paragraphs = u('.description-content span', element);
@@ -78,31 +80,33 @@ const typeDescription = (element: HTMLElement, project: Project, delay: number) 
     })
 
     // Aguarda o delay antes de iniciar a digitação
-    setTimeout(() => {
-        var currentParagraph: number = 0
-        var currentChar: number = 0;
-        var currentText: string = '';
+    await Animation.wait(delay)
 
-        // Intervalo que "digita" cada caractere
-        var typeInterval = setInterval(() => {
 
-            // Extrai substring até o caractere atual
-            currentText = paragraphsArray[currentParagraph].substring(0, currentChar);
-            paragraphsNodes[currentParagraph].textContent = currentText;
-            currentChar++;
+    var currentParagraph: number = 0
+    var currentChar: number = 0;
+    var currentText: string = '';
 
-            // Verifica se terminou o parágrafo atual
-            if (currentChar > paragraphsArray[currentParagraph].length) {
-                currentParagraph++;
-                currentChar = 0;
-            }
+    // Intervalo que "digita" cada caractere
+    var typeInterval = setInterval(() => {
 
-            // Verifica se terminou todos os parágrafos
-            if (currentParagraph >= paragraphsArray.length) {
-                clearInterval(typeInterval);
-            }
-        }, 5); // 5ms entre cada caractere
-    }, delay);
+        // Extrai substring até o caractere atual
+        currentText = paragraphsArray[currentParagraph].substring(0, currentChar);
+        paragraphsNodes[currentParagraph].textContent = currentText;
+        currentChar++;
+
+        // Verifica se terminou o parágrafo atual
+        if (currentChar > paragraphsArray[currentParagraph].length) {
+            currentParagraph++;
+            currentChar = 0;
+        }
+
+        // Verifica se terminou todos os parágrafos
+        if (currentParagraph >= paragraphsArray.length) {
+            clearInterval(typeInterval);
+        }
+    }, 5); // 5ms entre cada caractere
+
 
     // Retorna total de caracteres para cálculo de timing
     return totalCharacters;
@@ -112,7 +116,7 @@ const typeDescription = (element: HTMLElement, project: Project, delay: number) 
 // ---------------------------
 // 2.3. expandSpacer - Anima expansão do espaçador
 // ---------------------------
-    // Anima a largura e opacidade do espaçador horizontal
+// Anima a largura e opacidade do espaçador horizontal
 const expandSpacer = (element: HTMLElement, delay: number) => {
     animate(element, {
         opacity: [0, 1],
@@ -160,7 +164,7 @@ const hideProject = (project: HTMLElement) => {
             easing: "easeInCirc",
             duration: 200,
             delay: reverseIndex * 200, // Delay reverso para efeito cascata
-            onComplete: () =>{
+            onComplete: () => {
                 // Remove o elemento filho do DOM após a animação
                 u(child).remove();
             }

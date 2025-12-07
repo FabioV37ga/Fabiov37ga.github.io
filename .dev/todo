@@ -1,9 +1,4 @@
-0. arrumar ausencia do overflowY ao selecionar um projeto depois de ter fechado outro
-
 1. Desenvolver animação dos botões dos projetos (caixa na parte de dentro?)
-
-2. revisar lógica de cooldown (aplicar no onComplete das animações?)
-    2.1 criar util wait(cooldown?)
 
 3. aplicar lógica de cooldown de animações nos botões de navegação
     3.1 animar bolinha de seleção enquanto houver animação rolando (significa que está travada)

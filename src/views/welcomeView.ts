@@ -39,9 +39,9 @@ class WelcomeView {
     // 2.2. CONSTRUCTOR
     // ---------------------------
     
-    constructor(Elementos: any) {
+    constructor(elements: Elements) {
         // Armazena os elementos DOM passados como parâmetro
-        this.elements = Elementos;
+        this.elements = elements;
     }
 
     

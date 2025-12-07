@@ -59,7 +59,7 @@ class ProjectView {
     // 2.3. showProject - Exibe projeto com animações sequenciais
     // ---------------------------
     
-    showProject(elements: Elements, project: Project) {
+    async showProject(elements: Elements, project: Project) {
 
         // Atualiza os elementos DOM
         this.elements = elements;
@@ -77,7 +77,7 @@ class ProjectView {
         }
 
         // Anima digitação da descrição do projeto
-        var totalCharacters = typeDescription(
+        var totalCharacters = await typeDescription(
             this.elements.projectDescription,
             project,
             200 * totalTechnologies
@@ -86,13 +86,13 @@ class ProjectView {
         // Anima expansão do espaçador após a descrição
         expandSpacer(
             this.elements.spacer,
-            totalCharacters * 5 + (200 * totalTechnologies) + 500
+            totalCharacters * 5 + 100
         );
 
         // Anima entrada dos botões de ação
         showButtons(
             [this.elements.projectAccess, this.elements.projectCode, this.elements.returnButton],
-            totalCharacters * 5 + (200 * totalTechnologies) + 1000
+            totalCharacters * 5 + 500
         )
     }
 

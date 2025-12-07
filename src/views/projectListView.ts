@@ -92,11 +92,6 @@ class ProjectListView {
     setContainerHeight(height: string) {
         // Define a altura do container de projetos via CSS inline
         this.elements.projectContainer.style.height = `${height}`;
-
-        if (height === "100%") {
-            // this.elements.projectContainer.style.overflowY = "scroll";
-        }
-
     }
 
 
@@ -128,7 +123,7 @@ class ProjectListView {
     // 2.7. hideProjectItem - Oculta projeto com animação
     // ---------------------------
 
-    hideProjectItem(project: HTMLElement, type: string) {
+    hideProjectItem(project: HTMLElement) {
         // Chama a função de animação para ocultar o item de projeto
 
         hideProjectItem(project);
@@ -168,12 +163,11 @@ class ProjectListView {
 
             // Oculta todos os itens exceto o selecionado
             if (this.elements.projectItems[i] !== project) {
-                fadeOutProjectItem(this.elements.projectItems[i],);
+                fadeOutProjectItem(this.elements.projectItems[i]);
             }
         }
 
-        // Adiciona classe de foco à lista
-        // u(this.elements.projectList).addClass("list-focus")
+        // Centraliza o projeto selecionado na visão
         focusOnProject(this.elements.projectList);
 
 
@@ -195,16 +189,10 @@ class ProjectListView {
 
         // Anima o scroll do container para o topo
         resetScrollPosition(this.elements.projectContainer);
-
-        // // Após 200ms, desabilita o overflow Y do container
-        // setTimeout(() => {
-        //     this.elements.projectContainer.style.overflowY = "hidden";
-        // }, 200);
     }
 
     blurSelectedProject(project: HTMLElement) {
         blurProject(project);
-        // u(this.elements.projectItems).remove()
     }
 }
 

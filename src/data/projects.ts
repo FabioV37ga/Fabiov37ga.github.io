@@ -344,9 +344,9 @@ const Projects: Project[] = [
     bounce,
     wearSell,
     driveGuide,
-    driveGuide2,
-    driveGuide3,
-    driveGuide4
+    // driveGuide2,
+    // driveGuide3,
+    // driveGuide4
 ];
 
 export { Projects, Project };

@@ -51,15 +51,16 @@ class ProjectListController {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
+    // Instância estática para acesso global ao controller
     static instance: ProjectListController;
 
-    // Array contendo todos os projetos
+    // Array contendo todos os dados dos projetos
     projects: Project[]
 
     // Elementos DOM selecionados (container, lista, itens)
     elements: Elements = ProjectListSelector.defineElements();
 
-    // Instância da view para manipulação visual
+    // Instância da view para renderização e manipulação visual
     view: ProjectListView = new ProjectListView(this.elements);
 
 
@@ -86,42 +87,43 @@ class ProjectListController {
     // 2.3. createProjectList - Criação da lista de projetos
     // ---------------------------
 
-    createProjectList(delay: number) {
-        // Itera sobre cada projeto no array
+    async createProjectList(delay: number) {
+        // Itera sobre cada projeto e adiciona ao DOM
         this.projects.forEach((project) => {
-            // Adiciona o item do projeto no DOM através da view
             this.view.appendProjectItem(project);
         });
 
-        // Atualiza os elementos DOM após a inserção dos itens
+        // Atualiza elementos DOM após inserção dos itens
         this.elements = ProjectListSelector.defineElements();
 
-        // Atualiza os elementos na view também
+        // Sincroniza elementos na view
         this.view.elements = this.elements;
 
-        // Calcula e aplica o tempo da animação do container
+        // Calcula e define tempo total da animação
         this.setListAnimationTime();
 
-        // Define a altura inicial do container baseada nos itens
+        // Define altura inicial do container
         this.setContainerHeight(delay);
 
-        // Aguarda 1.75s antes de iniciar a exibição dos projetos
-        setTimeout(() => {
-            this.showProjects();
-        }, delay);
+        // Aguarda delay antes de iniciar exibição
+        await Animation.wait(delay);
+        this.showProjects();
+
     }
 
     // ---------------------------
     // 2.4. showProjects - Exibição animada dos projetos
     // ---------------------------
 
-    showProjects() {
+    async showProjects() {
 
         // Índice inicial: último projeto (animação de baixo para cima)
         var projectIndex: number = this.elements.projectItems.length - 1;
 
+        // Delay acumulado entre animações
         var delay: number = 0
 
+        // Exibe cada projeto com delay incremental (230ms entre cada)
         for (let i = 0; i < this.elements.projectItems.length; i++) {
             this.view.showProjectItem(
                 this.elements.projectItems[projectIndex],
@@ -131,9 +133,11 @@ class ProjectListController {
             delay += 230
         }
 
-        setTimeout(() => {
-            this.addHandlers()
-        }, delay);
+        // Aguarda todas as animações finalizarem
+        await Animation.wait(delay);
+        
+        // Adiciona event handlers aos projetos
+        this.addHandlers()
     }
 
 
@@ -141,17 +145,15 @@ class ProjectListController {
     // 2.5. setListAnimationTime - Cálculo do tempo de animação
     // ---------------------------
 
-    setListAnimationTime() {
+    async setListAnimationTime() {
         // Ativa o cooldown da lista de projetos
         Animation.projectListCooldown = true;
 
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         Animation.projectList = (this.projects.length * 230 + 500);
 
-        // Desativa o cooldown após o tempo da animação
-        setTimeout(() => {
-            Animation.projectListCooldown = false;
-        }, Animation.projectList);
+        await Animation.wait(Animation.projectList);
+        Animation.projectListCooldown = false;
     }
 
 
@@ -159,7 +161,7 @@ class ProjectListController {
     // 2.6. setContainerHeight - Ajuste da altura do container
     // ---------------------------
 
-    setContainerHeight(delay: number) {
+    async setContainerHeight(delay: number) {
         // Obtém todos os elementos filhos (itens de projeto)
         const childrenElements: HTMLElement[] = this.elements.projectItems;
 
@@ -176,9 +178,9 @@ class ProjectListController {
         this.view.setContainerHeight(totalHeight + 55 + "px");
 
         // Após a animação terminar, muda para altura responsiva (100%)
-        setTimeout(() => {
-            this.view.setContainerHeight("100%");
-        }, Animation.projectList + delay); // Mesmo tempo da animação
+
+        await Animation.wait(Animation.projectList + delay);
+        this.view.setContainerHeight("100%");
 
         // Obtém o último item da lista
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;
@@ -193,12 +195,14 @@ class ProjectListController {
     // 2.7. hideProjectList - Animação de saída dos projetos
     // ---------------------------
 
-    static hideProjectList() {
+    static async hideProjectList() {
         // Ativa o cooldown da lista de projetos
         Animation.projectListCooldown = true;
 
         // Obtém a instância estática do controller
         const self = ProjectListController.instance;
+
+        self.setContainerHeight(0)
 
         // Oculta a lista de projetos visualmente
         self.view.hideProjectList();
@@ -215,7 +219,6 @@ class ProjectListController {
             // Oculta o projeto atual
             self.view.hideProjectItem(
                 self.elements.projectItems[projectIndex],
-                "pop"
             );
 
             // Incrementa para o próximo projeto
@@ -228,22 +231,20 @@ class ProjectListController {
             }
         }, 200);
 
-        // Após todas as animações, limpa o DOM
-        setTimeout(() => {
-            // Obtém todos os projetos
-            var projects = self.elements.projectItems;
+        // Aguarda o término das animações antes de prosseguir
+        await Animation.wait(self.projects.length * 230 + 2800);
 
-            // Remove classes e elementos do DOM
-            projects.forEach((project) => {
+        // Obtém todos os projetos
+        var projects = self.elements.projectItems;
 
-                // Remove o elemento do DOM
-                u(project).remove()
-            });
+        // Remove classes e elementos do DOM
+        projects.forEach((project) => {
+            // Remove o elemento do DOM
+            u(project).remove()
+        });
 
-
-            // Desativa o cooldown
-            Animation.projectListCooldown = false;
-        }, self.projects.length * 230 + 2800);
+        // Desativa o cooldown
+        Animation.projectListCooldown = false;
     }
 
     // ---------------------------
@@ -269,8 +270,6 @@ class ProjectListController {
                     if (titulo === this.projects[i].title) {
                         // Seleciona o projeto clicado
                         this.selectProject(event.currentTarget as HTMLElement);
-                        // TODO: Exibir conteúdo do projeto
-                        // this.showProjectContent(this.projects[i]);
                         break;
                     }
                 }
@@ -283,7 +282,7 @@ class ProjectListController {
     // 2.9. selectProject - Seleciona um projeto
     // ---------------------------
 
-    selectProject(project: HTMLElement) {
+    async selectProject(project: HTMLElement) {
         if (!u(project).hasClass("selected-project")) {
 
             // Verifica se não está em cooldown de foco de projeto
@@ -295,48 +294,47 @@ class ProjectListController {
                 this.view.highlightSelectedProject(project);
             }
 
-            // Aguarda o tempo da animação de foco
-            setTimeout(() => {
-                // Desativa o cooldown*
-                Animation.projectFocusCooldown = false;
 
-                // Variável para armazenar o elemento do projeto selecionado
-                let selectedProjectElement: HTMLElement;
+            // Aguarda o tempo da animação de ocultação
+            await Animation.wait(Animation.projectFocus + 500);
 
-                // Busca o projeto selecionado no array de elementos
-                for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-                    // Verifica se é o projeto clicado
-                    if (this.elements.projectItems[i] == project) {
-                        // Armazena o elemento do projeto
-                        selectedProjectElement = this.elements.projectItems[i];
-                        break;
-                    }
+            // Desativa o cooldown de foco
+            Animation.projectFocusCooldown = false;
+
+            // Variável para armazenar o elemento HTML do projeto selecionado
+            let selectedProjectElement: HTMLElement;
+
+            // Busca o projeto selecionado no array de elementos
+            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                // Verifica se é o projeto clicado
+                if (this.elements.projectItems[i] == project) {
+                    // Armazena o elemento do projeto
+                    selectedProjectElement = this.elements.projectItems[i];
+                    break;
                 }
+            }
 
-                // Variável para armazenar os dados do projeto
-                let selectedProject: Project;
+            // Variável para armazenar os dados completos do projeto
+            let selectedProject: Project;
 
-                // Busca os dados do projeto correspondente
-                for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-                    if (project.textContent?.trim() ===
-                        Projects[i].title
-                    ) {
-                        selectedProject = Projects[i];
-                        break;
-                    }
+            // Busca os dados do projeto pelo título
+            for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
+                if (project.textContent?.trim() === Projects[i].title) {
+                    selectedProject = Projects[i];
+                    break;
                 }
+            }
 
-                // Exibe o conteúdo se ambos foram encontrados
-                if (selectedProject! && selectedProjectElement!) {
-                    setTimeout(() => {
-                        this.showProjectContent(
-                            selectedProject,
-                            selectedProjectElement
-                        );
-                    }, 500);
-                }
-
-            }, Animation.projectFocus);
+            // Aguarda delay antes de exibir conteúdo
+            await Animation.wait(500);
+            
+            // Exibe conteúdo se ambos os elementos foram encontrados
+            if (selectedProject! && selectedProjectElement!) {
+                this.showProjectContent(
+                    selectedProject,
+                    selectedProjectElement
+                );
+            }
         }
 
     }
@@ -355,26 +353,33 @@ class ProjectListController {
         );
     }
 
-    static blurSelectedProject() {
+    static async blurSelectedProject() {
+        // Obtém instância do controller
         const self = ProjectListController.instance;
 
+        // Variável para armazenar projeto selecionado
         var selectedProject: HTMLElement;
 
+        // Busca o projeto com classe de seleção
         self.elements.projectItems.forEach(element => {
             if (u(element).hasClass("selected-project")) {
                 selectedProject = element;
             }
         });
 
+        // Executa animação de desfoque no projeto
         self.view.blurSelectedProject(selectedProject!);
 
-        setTimeout(() => {
-            self.elements.projectItems.forEach(element => {
-                u(element).remove()
-            })
+        // Aguarda animação de desfoque
+        await Animation.wait(200);
 
-            new ProjectListController(0)
-        }, 200);
+        // Remove todos os itens do DOM
+        self.elements.projectItems.forEach(element => {
+            u(element).remove()
+        })
+
+        // Recria lista de projetos sem delay
+        new ProjectListController(0)
 
     }
 }

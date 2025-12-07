@@ -37,7 +37,7 @@ class ContainerController {
     // Elementos DOM do container principal
     elements: Elements = ContainerSelector.defineElements();
     
-    // Instância da view para manipulação visual
+    // Instância da view para renderização e manipulação visual
     view: ContainerView = new ContainerView(this.elements);
 
     

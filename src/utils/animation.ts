@@ -41,6 +41,14 @@ class Animation{
     
     // Flag de cooldown para prevenir múltiplos focos simultâneos
     static projectFocusCooldown: boolean = false;
+
+    static wait(cooldown: number): Promise<void> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, cooldown);
+        });
+    }
 }
 
 export default Animation;
