@@ -88,11 +88,11 @@ class ProjectController {
             // Remove o listener para evitar múltiplos disparos
             u(returnBtn).off('click');
             // Oculta o projeto e retorna à lista
-            this.hideProject();
+            this.hideProject("projectController");
 
-            await Animation.wait(200 * 5);
+            // await Animation.wait(200 * 5);
 
-            new ProjectListController(0);
+            // new ProjectListController(0);
         })
 
     }
@@ -129,7 +129,7 @@ class ProjectController {
     // 2.6. showProject - Exibe o projeto com animações
     // ---------------------------
 
-    showProject(project: Project) {
+    async showProject(project: Project) {
         // Atualiza os elementos DOM após inserção do template
         this.elements = ProjectSelector.defineElements();
 
@@ -145,15 +145,16 @@ class ProjectController {
     // 2.7. hideProject - Oculta o projeto
     // ---------------------------
 
-    async hideProject() {
+    async hideProject(origin: string) {
         // Executa animação de ocultação do projeto através da view
         this.view.hideProject(this.elements.projectContainer);
 
         // Aguarda o término das animações (1000ms)
         await Animation.wait(200 * 5);
-        
+
         // Remove foco do projeto selecionado na lista
-        ProjectListController.blurSelectedProject();
+        ProjectListController.blurSelectedProject(origin);
+
     }
 }
 

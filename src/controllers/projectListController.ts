@@ -332,7 +332,7 @@ class ProjectListController {
         );
     }
 
-    static async blurSelectedProject() {
+    static async blurSelectedProject(origin: string) {
         // Obtém instância do controller
         const self = ProjectListController.instance;
 
@@ -359,7 +359,8 @@ class ProjectListController {
 
         ProjectListController.hasHighlightedProject = false;
         // Recria lista de projetos sem delay
-        // new ProjectListController(0)
+        if (origin == "projectController")
+            new ProjectListController(0)
 
     }
 }

@@ -148,7 +148,7 @@ class NavigationController {
                     ProjectListController.hideProjectList();
                 }else{
                     // ProjectListController.blurSelectedProject();
-                    ProjectController.instance.hideProject();
+                    ProjectController.instance.hideProject("navigation");
                 }
 
                 break;
