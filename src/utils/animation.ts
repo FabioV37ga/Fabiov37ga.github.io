@@ -19,34 +19,61 @@
 // 1. CLASSE ANIMATION
 // ---------------------------
 
-class Animation{
-    
+class Animation {
+
     // ---------------------------
     // 1.1. PROPRIEDADES ESTÁTICAS - Controle de animações da lista de projetos
     // ---------------------------
-    
+
     // Duração da animação de abertura/fechamento da lista (em ms)
     static projectList: number;
-    
+
     // Flag de cooldown para prevenir múltiplas animações da lista
     static projectListCooldown: boolean = false;
 
-    
+
     // ---------------------------
     // 1.2. PROPRIEDADES ESTÁTICAS - Controle de animações de foco
     // ---------------------------
-    
+
     // Duração da animação de foco no projeto (em ms)
     static projectFocus: number = 1000;
-    
+
     // Flag de cooldown para prevenir múltiplos focos simultâneos
     static projectFocusCooldown: boolean = false;
 
     static wait(cooldown: number): Promise<void> {
         return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, cooldown);
+            const startTime: number = performance.now();
+
+            const checkFrame = (currentTime: number): void => {
+                const elapsed: number = currentTime - startTime;
+
+                if (elapsed >= cooldown) {
+                    resolve();
+                } else {
+                    requestAnimationFrame(checkFrame);
+                }
+            };
+
+            requestAnimationFrame(checkFrame);
+        });
+    }
+
+    static check(condition: () => boolean): Promise<void> {
+        return new Promise((resolve) => {
+            const checkFrame = (): void => {
+                // Verifica a condição dinamicamente
+                if (!condition()) {
+
+                    resolve();
+                } else {
+
+                    requestAnimationFrame(checkFrame);
+                }
+            };
+
+            requestAnimationFrame(checkFrame);
         });
     }
 }

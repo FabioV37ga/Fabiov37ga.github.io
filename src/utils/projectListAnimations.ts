@@ -31,6 +31,8 @@
 // Importa Anime.js para animações
 import { engine, animate, cubicBezier } from "animejs"
 
+import Animation from "./animation.js";
+
 engine.pauseOnDocumentHidden = true;
 
 // ---------------------------
@@ -42,7 +44,7 @@ engine.pauseOnDocumentHidden = true;
 // 2.1. slideDownProjectContainer - Anima descida do container
 // ---------------------------
 
-const slideDownProjectContainer = (container: HTMLElement, duration: number, delay:number) => {
+const slideDownProjectContainer = (container: HTMLElement, duration: number, delay: number) => {
     // Anima a entrada do container de cima para baixo
     return animate(container, {
         translateY: ["-100%", "0%"],
@@ -51,6 +53,9 @@ const slideDownProjectContainer = (container: HTMLElement, duration: number, del
         overflowY: 'scroll',
         delay: delay,
         ease: cubicBezier(0.155, 0.812, 0.755, 1.01),
+        onComplete: () => {
+            Animation.projectListCooldown = false;
+        }
     })
 }
 
@@ -68,7 +73,7 @@ const showProjectItem = (project: HTMLElement, delay: number) => {
                 translateY: '-50%',
                 rotateY: -90,
                 opacity: 0,
-                duration: 0, 
+                duration: 0,
                 delay: delay
             }, {
                 opacity: 0.5,
@@ -143,8 +148,9 @@ const fadeOutProjectItem = (project: HTMLElement) => {
         opacity: [1, 0],
         duration: 500,
         ease: "easeInCirc"
-        }
-    )}
+    }
+    )
+}
 
 
 // ---------------------------

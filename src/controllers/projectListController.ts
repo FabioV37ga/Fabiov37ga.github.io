@@ -105,9 +105,8 @@ class ProjectListController {
         // Define altura inicial do container
         this.setContainerHeight(delay);
 
-        // Aguarda delay antes de iniciar exibição
-        await Animation.wait(delay);
-        this.showProjects();
+        // Exibe os projetos com animação sequencial
+        this.showProjects(delay);
 
     }
 
@@ -115,13 +114,13 @@ class ProjectListController {
     // 2.4. showProjects - Exibição animada dos projetos
     // ---------------------------
 
-    async showProjects() {
+    async showProjects(animationDelay: number) {
 
         // Índice inicial: último projeto (animação de baixo para cima)
         var projectIndex: number = this.elements.projectItems.length - 1;
 
         // Delay acumulado entre animações
-        var delay: number = 0
+        var delay: number = animationDelay
 
         // Exibe cada projeto com delay incremental (230ms entre cada)
         for (let i = 0; i < this.elements.projectItems.length; i++) {
@@ -130,12 +129,12 @@ class ProjectListController {
                 delay
             );
             projectIndex--;
-            delay += 230
+            delay += 230;
         }
 
         // Aguarda todas as animações finalizarem
         await Animation.wait(delay);
-        
+
         // Adiciona event handlers aos projetos
         this.addHandlers()
     }
@@ -151,9 +150,6 @@ class ProjectListController {
 
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         Animation.projectList = (this.projects.length * 230 + 500);
-
-        await Animation.wait(Animation.projectList);
-        Animation.projectListCooldown = false;
     }
 
 
@@ -179,7 +175,7 @@ class ProjectListController {
 
         // Após a animação terminar, muda para altura responsiva (100%)
 
-        await Animation.wait(Animation.projectList + delay);
+        await Animation.check(() => Animation.projectListCooldown);
         this.view.setContainerHeight("100%");
 
         // Obtém o último item da lista
@@ -327,7 +323,7 @@ class ProjectListController {
 
             // Aguarda delay antes de exibir conteúdo
             await Animation.wait(500);
-            
+
             // Exibe conteúdo se ambos os elementos foram encontrados
             if (selectedProject! && selectedProjectElement!) {
                 this.showProjectContent(
