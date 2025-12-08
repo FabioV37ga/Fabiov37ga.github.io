@@ -28,7 +28,7 @@ import { Project } from "../data/projects.js";
 import { Elements } from "../selectors/projectSelector.js";
 
 // Importa funções de animação do display de projetos
-import { techFadeIn, typeDescription, expandSpacer, showButtons, hideProject } from "../utils/projectDisplayAnimations.js";
+import { techFadeIn, typeDescription, expandSpacer, showButtons, styleButtons, hideProject } from "../utils/projectDisplayAnimations.js";
 
 
 // ---------------------------
@@ -36,29 +36,29 @@ import { techFadeIn, typeDescription, expandSpacer, showButtons, hideProject } f
 // ---------------------------
 
 class ProjectView {
-    
+
     // ---------------------------
     // 2.1. PROPRIEDADES
     // ---------------------------
-    
+
     // Elementos DOM do display de projeto
     elements: Elements
 
-    
+
     // ---------------------------
     // 2.2. CONSTRUCTOR
     // ---------------------------
-    
+
     constructor(elements: Elements) {
         // Armazena os elementos DOM recebidos
         this.elements = elements;
     }
 
-    
+
     // ---------------------------
     // 2.3. showProject - Exibe projeto com animações sequenciais
     // ---------------------------
-    
+
     async showProject(elements: Elements, project: Project) {
 
         // Atualiza os elementos DOM
@@ -94,13 +94,18 @@ class ProjectView {
             [this.elements.projectAccess, this.elements.projectCode, this.elements.returnButton],
             totalCharacters * 5 + 500
         )
+
+        styleButtons([
+            this.elements.projectAccess,
+            this.elements.projectCode
+        ], totalCharacters * 5 + 550);
     }
 
-    
+
     // ---------------------------
     // 2.4. hideProject - Oculta projeto com animação
     // ---------------------------
-    
+
     hideProject(element: HTMLElement) {
         // Chama função de animação de saída do projeto
         hideProject(element);

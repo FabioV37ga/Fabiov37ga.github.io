@@ -70,8 +70,11 @@
     justify-content: center;
     align-items: center;
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
+/* 
 .project-access img {
     width: 31px;
     fill: white
@@ -79,13 +82,78 @@
 
 .project-code img {
     width: 31px;
+} */
+
+.access,
+.code {
+    width: 31px;
+    height: 31px;
+    z-index: 1;
+    position: relative;
+}
+
+.access::before {
+    mask-image: url("/images/icons/play.svg");
+    content: "";
+    position: absolute;
+    width: inherit;
+    mask-size: 31px;
+    height: inherit;
+    background: white;
+}
+
+.code::before {
+    mask-image: url("/images/icons/github-mark-white.svg");
+    content: "";
+    position: absolute;
+    width: inherit;
+    mask-size: 31px;
+    height: inherit;
+    background: white;
+}
+
+.button-animation-block {
+    overflow: hidden;
+    mask-size: 31px;
+    position: absolute;
+    width: 31px;
+    height: 31px;
+}
+
+.access .button-animation-block {
+    mask-image: url("/images/icons/play.svg");
+}
+
+.code .button-animation-block {
+    mask-image: url("/images/icons/github-mark-white.svg");
+}
+
+
+
+.button-animation-block::before {
+    content: '';
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: black;
+    transform: rotate(-45deg);
+    left: var(--btn-animation-block);
+    top: 8px
+}
+
+
+.button-background {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    bottom: revert-layer;
+    background: white
 }
 
 .back-container {
     width: 100%;
     text-align: center;
     margin-top: 25px;
-    /* display: flex; */
 }
 
 .back-button {

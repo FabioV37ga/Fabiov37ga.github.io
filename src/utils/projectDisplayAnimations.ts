@@ -145,6 +145,32 @@ const showButtons = (buttons: HTMLElement[], delay: number) => {
     })
 }
 
+const styleButtons = (buttons: HTMLElement[], delay: number) => {
+
+    
+    // Itera sobre cada botão e anima com delay escalonado
+    buttons.forEach((button, index) => {
+        var background = button.children[1]
+        animate(background, {
+            rotate: ['45eg', "45deg"],
+            translateX: ["0%", "100%"],
+            // translateY: ["-0%", "-50%"],
+            easing : "easeInCirc",
+            duration: 500,
+            delay: delay + index * 200 // 200ms entre cada botão
+        })
+
+        var animationBlock = button.children[0]
+        animate(animationBlock, {
+            "--btn-animation-block": ['-30%', '170%'],
+            // translateY: ["-0%", "-50%"],
+            easing : cubicBezier(0.155, 0.812, 0.755, 1.01),
+            duration: 100,
+            delay: delay + index * 200 + 100 // 200ms entre cada botão
+        })
+    })
+}
+
 
 // ---------------------------
 // 2.5. hideProject - Anima saída do projeto
@@ -172,4 +198,4 @@ const hideProject = (project: HTMLElement) => {
     })
 }
 
-export { techFadeIn, typeDescription, expandSpacer, showButtons, hideProject };
+export { techFadeIn, typeDescription, expandSpacer, showButtons, styleButtons, hideProject };
