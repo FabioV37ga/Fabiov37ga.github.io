@@ -63,7 +63,7 @@ class ProjectListController {
     // Instância da view para renderização e manipulação visual
     view: ProjectListView = new ProjectListView(this.elements);
 
-
+    static hasHighlightedProject: boolean = false;
 
     // ---------------------------
     // 2.2. CONSTRUCTOR
@@ -203,29 +203,11 @@ class ProjectListController {
         // Oculta a lista de projetos visualmente
         self.view.hideProjectList();
 
-        // Índice inicial do primeiro projeto
-        var projectIndex: number = 0
-
-        // Limite: último projeto do array
-        const limit: number = self.projects.length - 1;
-
-        // Intervalo que oculta cada projeto a cada 230ms
-        const hideInterval = setInterval(() => {
-
-            // Oculta o projeto atual
-            self.view.hideProjectItem(
-                self.elements.projectItems[projectIndex],
-            );
-
-            // Incrementa para o próximo projeto
-            projectIndex++;
-
-            // Verifica se todos foram ocultados
-            if (projectIndex > limit) {
-                // Para o intervalo
-                clearInterval(hideInterval);
-            }
-        }, 200);
+        var delay: number = 0;
+        self.elements.projectItems.forEach((project) => {
+            self.view.hideProjectItem(project, delay);
+            delay += 200;
+        })
 
         // Aguarda o término das animações antes de prosseguir
         await Animation.wait(self.projects.length * 230 + 2800);
@@ -279,7 +261,7 @@ class ProjectListController {
     // ---------------------------
 
     async selectProject(project: HTMLElement) {
-        if (!u(project).hasClass("selected-project")) {
+        if (!u(project).hasClass("selected-project") && ProjectListController.hasHighlightedProject == false) {
 
             // Verifica se não está em cooldown de foco de projeto
             if (Animation.projectFocusCooldown == false) {
@@ -288,6 +270,7 @@ class ProjectListController {
 
                 // Destaca o projeto selecionado visualmente
                 this.view.highlightSelectedProject(project);
+                ProjectListController.hasHighlightedProject = true;
             }
 
 
@@ -374,8 +357,9 @@ class ProjectListController {
             u(element).remove()
         })
 
+        ProjectListController.hasHighlightedProject = false;
         // Recria lista de projetos sem delay
-        new ProjectListController(0)
+        // new ProjectListController(0)
 
     }
 }

@@ -55,12 +55,15 @@ class ProjectController {
     // Instância da view para renderização e manipulação visual
     view: ProjectView = new ProjectView(this.elements);
 
+    static instance: ProjectController;
+
 
     // ---------------------------
     // 2.2. CONSTRUCTOR
     // ---------------------------
 
     constructor(project: Project, projectTitleElement: HTMLElement) {
+        ProjectController.instance = this;
         // Define a posição do display baseado no elemento de título
         this.setPosition(projectTitleElement);
 
@@ -81,11 +84,15 @@ class ProjectController {
         var returnBtn = this.elements.returnButton;
 
         // Adiciona evento de clique ao botão de retorno
-        u(returnBtn).on('click', () => {
+        u(returnBtn).on('click', async () => {
             // Remove o listener para evitar múltiplos disparos
             u(returnBtn).off('click');
             // Oculta o projeto e retorna à lista
             this.hideProject();
+
+            await Animation.wait(200 * 5);
+
+            new ProjectListController(0);
         })
 
     }

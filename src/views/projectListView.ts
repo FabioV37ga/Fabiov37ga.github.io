@@ -123,10 +123,10 @@ class ProjectListView {
     // 2.7. hideProjectItem - Oculta projeto com animação
     // ---------------------------
 
-    hideProjectItem(project: HTMLElement) {
+    hideProjectItem(project: HTMLElement, delay: number) {
         // Chama a função de animação para ocultar o item de projeto
 
-        hideProjectItem(project);
+        hideProjectItem(project, delay);
 
     }
 

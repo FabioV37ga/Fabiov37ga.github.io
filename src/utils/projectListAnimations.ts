@@ -108,7 +108,7 @@ const slideUpProjectContainer = (container: HTMLElement, duration: number, delay
         opacity: [1, 0],
         duration: duration,
         ease: cubicBezier(0.652, 0.263, 0.574, 0.614),
-        delay: delay
+        delay: delay,
     })
 }
 
@@ -117,7 +117,7 @@ const slideUpProjectContainer = (container: HTMLElement, duration: number, delay
 // 3.2. hideProjectItem - Anima saída de item de projeto
 // ---------------------------
 
-const hideProjectItem = (project: HTMLElement) => {
+const hideProjectItem = (project: HTMLElement, delay: number) => {
     // Anima item com rotação 3D reversa e fade-out
     animate(project, {
         keyframes: [
@@ -138,6 +138,7 @@ const hideProjectItem = (project: HTMLElement) => {
                 duration: 1000
             }
         ],
+        delay: delay, 
         ease: "easeInCirc"
     })
 }

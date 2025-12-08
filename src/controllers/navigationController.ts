@@ -31,6 +31,7 @@ import NavigationView from "../views/navigationView.js";
 
 // Importa o controller da lista de projetos
 import ProjectListController from "./projectListController.js";
+import ProjectController from "./projectController.js";
 
 // Importa o utilitário de controle de cooldown de animações
 import Animation from "../utils/animation.js";
@@ -102,7 +103,7 @@ class NavigationController {
         if (Animation.projectListCooldown === false) {
             // Armazena o item previamente selecionado
             const previousSelected = this.selected;
-            
+
             // Verifica se é um item diferente ou é a inicialização
             if (previousSelected !== item || state === "init") {
                 // Itera sobre todos os itens
@@ -123,11 +124,11 @@ class NavigationController {
 
                 // Exibe o conteúdo do item com delay de 1750ms
                 this.showSelectedItemContent(item, 1750);
-            }else{
+            } else {
                 // Log quando o item já está selecionado
                 // console.log("Item already selected. No action taken.");
             }
-        }else{
+        } else {
             // Log quando a animação está em cooldown
             // console.log("Animation is on cooldown. Selection ignored.");
         }
@@ -143,7 +144,13 @@ class NavigationController {
         switch (item) {
             case this.elements.projects:
                 // Oculta a lista de projetos
-                ProjectListController.hideProjectList();
+                if (!ProjectListController.hasHighlightedProject){
+                    ProjectListController.hideProjectList();
+                }else{
+                    // ProjectListController.blurSelectedProject();
+                    ProjectController.instance.hideProject();
+                }
+
                 break;
             case this.elements.about:
                 // Implementação futura: Ocultar seção "Sobre"
