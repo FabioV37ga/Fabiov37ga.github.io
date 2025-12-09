@@ -34,7 +34,6 @@ import ProjectListController from "./projectListController.js";
 import ProjectController from "./projectController.js";
 
 // Importa o utilitário de controle de cooldown de animações
-import Animation from "../utils/animation.js";
 import ProjectListAnimations from "../utils/projectListAnimations.js";
 
 // ---------------------------

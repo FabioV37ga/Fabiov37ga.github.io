@@ -33,6 +33,8 @@
 import { animate, JSAnimation, engine, cubicBezier } from "animejs"
 import Animation from "./animation.js";
 
+import ProjectListController from "../controllers/projectListController.js";
+
 engine.pauseOnDocumentHidden = true;
 
 // ---------------------------
@@ -55,7 +57,8 @@ class projectListAnimations extends Animation {
     // ---------------------------
     static slideDownProjectContainer: AnimationObject = {
         isPlaying: false,
-        animation: (container: HTMLElement, duration: number, delay: number) => {
+        animation: (container: HTMLElement, delay: number) => {
+            const duration = ProjectListController.getListAnimationTime(); 
             projectListAnimations.slideDownProjectContainer.isPlaying = true;
             return animate(container, {
                 translateY: ["-100%", "0%"],
@@ -114,7 +117,8 @@ class projectListAnimations extends Animation {
     // ---------------------------
     static slideUpProjectContainer: AnimationObject = {
         isPlaying: false,
-        animation: (container: HTMLElement, duration: number, delay?: number) => {
+        animation: (container: HTMLElement, delay?: number) => {
+            var duration = ProjectListController.getListAnimationTime();
             delay = delay || 0;
             projectListAnimations.slideUpProjectContainer.isPlaying = true;
             return animate(container, {

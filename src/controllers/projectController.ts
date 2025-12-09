@@ -89,10 +89,6 @@ class ProjectController {
             u(returnBtn).off('click');
             // Oculta o projeto e retorna à lista
             this.hideProject("projectController");
-
-            // await Animation.wait(200 * 5);
-
-            // new ProjectListController(0);
         })
 
     }
@@ -151,7 +147,7 @@ class ProjectController {
 
         // Aguarda o término das animações (1000ms)
         await Animation.wait(200 * 5);
-
+        
         // Remove foco do projeto selecionado na lista
         ProjectListController.blurSelectedProject(origin);
 

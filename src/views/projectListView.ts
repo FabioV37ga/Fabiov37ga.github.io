@@ -35,9 +35,6 @@ import { Project } from "../data/projects.js";
 // Importa o template de item de projeto
 import { nav_project } from "../templates/projectListTemplate.js";
 
-// Importa configuração de cooldown de animações
-import Animation from "../utils/animation.js";
-
 // Importa animações da lista de projetos
 import projectListAnimations from "../utils/projectListAnimations.js";
 
@@ -98,7 +95,7 @@ class ProjectListView {
         // Anima a exibição do container de projetos
         projectListAnimations.slideDownProjectContainer.animation(
             this.elements.projectContainer,
-            Animation.projectList,
+            // ProjectListController.setListAnimationTime(),
             delay
         );
     }
@@ -131,8 +128,8 @@ class ProjectListView {
 
     hideProjectList() {
         // Adiciona a classe de ocultação
-        projectListAnimations.slideUpProjectContainer.animation(this.elements.projectContainer,
-             Animation.projectList,
+        projectListAnimations.slideUpProjectContainer.animation(
+            this.elements.projectContainer,
             600
         );
     }

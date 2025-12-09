@@ -35,9 +35,6 @@ import { ProjectListSelector, Elements } from "../selectors/projectListSelector.
 // Importa a view responsável pela renderização
 import ProjectListView from "../views/projectListView.js";
 
-// Importa a classe de controle de cooldown de animações
-import Animation from "../utils/animation.js";
-
 import ProjectController from "./projectController.js";
 import projectListAnimations from "../utils/projectListAnimations.js";
 
@@ -97,15 +94,13 @@ class ProjectListController {
         // Atualiza elementos DOM após inserção dos itens
         this.elements = ProjectListSelector.defineElements();
 
-        // Sincroniza elementos na view
+        // Sincroniza elementos na view 
         this.view.elements = this.elements;
-
-        // Calcula e define tempo total da animação
-        this.setListAnimationTime();
 
         // Define altura inicial do container
         this.setContainerHeight(delay);
 
+        ProjectListController.instance = this
         // Exibe os projetos com animação sequencial
         this.showProjects(delay);
 
@@ -134,7 +129,7 @@ class ProjectListController {
         }
 
         // Aguarda todas as animações finalizarem
-        // await Animation.wait(delay);
+        
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying
         )
@@ -145,15 +140,14 @@ class ProjectListController {
 
 
     // ---------------------------
-    // 2.5. setListAnimationTime - Cálculo do tempo de animação
+    // 2.5. getListAnimationTime - Cálculo do tempo de animação
     // ---------------------------
 
-    async setListAnimationTime() {
-        // Ativa o cooldown da lista de projetos
-        // ProjectListAnimations.slideDownProjectContainer.isPlaying = true;
-
+    static getListAnimationTime(): number {
+    
+        var self = ProjectListController.instance;
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
-        Animation.projectList = (this.projects.length * 230 + 500);
+        return self.projects.length * 230 + 500;
     }
 
 
@@ -178,8 +172,6 @@ class ProjectListController {
         this.view.setContainerHeight(totalHeight + 55 + "px");
 
         // Após a animação terminar, muda para altura responsiva (100%)
-
-        // await Animation.check(() => ProjectListAnimations.slideDownProjectContainer.isPlaying);
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying)
 
@@ -217,7 +209,6 @@ class ProjectListController {
         })
 
         // Aguarda o término das animações antes de prosseguir
-        // await Animation.wait(self.projects.length * 230 + 2800);
         await projectListAnimations.check(
             () => projectListAnimations.slideUpProjectContainer.isPlaying)
 
@@ -273,10 +264,7 @@ class ProjectListController {
         if (!u(project).hasClass("selected-project") && ProjectListController.hasHighlightedProject == false) {
 
             // Verifica se não está em cooldown de foco de projeto
-            if (Animation.projectFocusCooldown == false) {
-                // Ativa o cooldown
-                Animation.projectFocusCooldown = true;
-
+            if (projectListAnimations.focusOnProject.isPlaying === false) {
                 // Destaca o projeto selecionado visualmente
                 this.view.highlightSelectedProject(project);
                 ProjectListController.hasHighlightedProject = true;
@@ -284,13 +272,9 @@ class ProjectListController {
 
 
             // Aguarda o tempo da animação de ocultação
-            // await Animation.wait(Animation.projectFocus + 500);
             await projectListAnimations.check(
                 () => projectListAnimations.focusOnProject.isPlaying
             )
-
-            // Desativa o cooldown de foco
-            Animation.projectFocusCooldown = false;
 
             // Variável para armazenar o elemento HTML do projeto selecionado
             let selectedProjectElement: HTMLElement;
@@ -317,7 +301,6 @@ class ProjectListController {
             }
 
             // Aguarda delay antes de exibir conteúdo
-            // await Animation.wait(500);
             await projectListAnimations.check(
                 () => projectListAnimations.highlightProject.isPlaying
             )
