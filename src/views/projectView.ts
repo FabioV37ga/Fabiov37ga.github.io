@@ -27,8 +27,8 @@ import { Project } from "../data/projects.js";
 // Importa a interface Elements do seletor
 import { Elements } from "../selectors/projectSelector.js";
 
-// Importa funções de animação do display de projetos
-import { techFadeIn, typeDescription, expandSpacer, showButtons, styleButtons, hideProject } from "../utils/projectDisplayAnimations.js";
+// Importa animações do display de projetos
+import projectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 
 
 // ---------------------------
@@ -70,32 +70,31 @@ class ProjectView {
 
         // Anima entrada de cada badge de tecnologia
         for (let tech = 0; tech < totalTechnologies; tech++) {
-            techFadeIn(
+            projectDisplayAnimations.techFadeIn.animation(
                 this.elements.projectTechnologies[tech],
                 tech * techDelay
             );
         }
 
         // Anima digitação da descrição do projeto
-        var totalCharacters = await typeDescription(
+        var totalCharacters: number = await projectDisplayAnimations.typeDescription.animation(
             this.elements.projectDescription,
-            project,
             200 * totalTechnologies
-        );
+        ) as number;
 
         // Anima expansão do espaçador após a descrição
-        expandSpacer(
+        projectDisplayAnimations.expandSpacer.animation(
             this.elements.spacer,
             totalCharacters * 5 + 100
         );
 
         // Anima entrada dos botões de ação
-        showButtons(
+        projectDisplayAnimations.showButtons.animation(
             [this.elements.projectAccess, this.elements.projectCode, this.elements.returnButton],
             totalCharacters * 5 + 500
         )
 
-        styleButtons([
+        projectDisplayAnimations.styleButtons.animation([
             this.elements.projectAccess,
             this.elements.projectCode
         ], totalCharacters * 5 + 550);
@@ -108,7 +107,7 @@ class ProjectView {
 
     hideProject(element: HTMLElement) {
         // Chama função de animação de saída do projeto
-        hideProject(element);
+        projectDisplayAnimations.hideProject.animation(element);
     }
 }
 

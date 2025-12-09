@@ -37,7 +37,8 @@ import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
 import ProjectView from "../views/projectView.js";
 import ProjectListController from "./projectListController.js";
 
-import Animation from "../utils/animation.js";
+import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
+
 
 // ---------------------------
 // 2. CLASSE PROJECTCONTROLLER
@@ -146,7 +147,12 @@ class ProjectController {
         this.view.hideProject(this.elements.projectContainer);
 
         // Aguarda o término das animações (1000ms)
-        await Animation.wait(200 * 5);
+
+        ProjectDisplayAnimations.hideDelay.animation(this.elements.projectContainer)
+
+        await ProjectDisplayAnimations.check(
+            () => ProjectDisplayAnimations.hideDelay.isPlaying
+        );
         
         // Remove foco do projeto selecionado na lista
         ProjectListController.blurSelectedProject(origin);
