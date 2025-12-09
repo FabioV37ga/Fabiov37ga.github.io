@@ -38,13 +38,8 @@ import { nav_project } from "../templates/projectListTemplate.js";
 // Importa configuração de cooldown de animações
 import Animation from "../utils/animation.js";
 
-// Importa funções de animação da lista de projetos
-import {
-    slideDownProjectContainer, showProjectItem, // Animações de entrada
-    slideUpProjectContainer, hideProjectItem, fadeOutProjectItem, // Animação de saída
-    highlightProject, focusOnProject, resetScrollPosition, // Animações de seleção
-    blurProject // Animação de desfoque
-} from "../utils/projectListAnimations.js";
+// Importa animações da lista de projetos
+import projectListAnimations from "../utils/projectListAnimations.js";
 
 
 // ---------------------------
@@ -101,7 +96,7 @@ class ProjectListView {
 
     showProjectContainer(delay: number) {
         // Anima a exibição do container de projetos
-        slideDownProjectContainer(
+        projectListAnimations.slideDownProjectContainer.animation(
             this.elements.projectContainer,
             Animation.projectList,
             delay
@@ -115,7 +110,7 @@ class ProjectListView {
 
     showProjectItem(project: HTMLElement, delay: number) {
         // Chama a função de animação para exibir o item de projeto
-        showProjectItem(project, delay)
+        projectListAnimations.showProjectItem.animation(project, delay)
     }
 
 
@@ -126,7 +121,7 @@ class ProjectListView {
     hideProjectItem(project: HTMLElement, delay: number) {
         // Chama a função de animação para ocultar o item de projeto
 
-        hideProjectItem(project, delay);
+        projectListAnimations.hideProjectItem.animation(project, delay);
 
     }
 
@@ -136,7 +131,7 @@ class ProjectListView {
 
     hideProjectList() {
         // Adiciona a classe de ocultação
-        slideUpProjectContainer(this.elements.projectContainer,
+        projectListAnimations.slideUpProjectContainer.animation(this.elements.projectContainer,
              Animation.projectList,
             600
         );
@@ -163,12 +158,12 @@ class ProjectListView {
 
             // Oculta todos os itens exceto o selecionado
             if (this.elements.projectItems[i] !== project) {
-                fadeOutProjectItem(this.elements.projectItems[i]);
+                projectListAnimations.fadeOutProjectItem.animation(this.elements.projectItems[i]);
             }
         }
 
         // Centraliza o projeto selecionado na visão
-        focusOnProject(this.elements.projectList);
+        projectListAnimations.focusOnProject.animation(this.elements.projectList);
 
 
         // Variável para acumular a posição de destino
@@ -185,14 +180,14 @@ class ProjectListView {
         }
 
         // Chama a função de animação para destacar o projeto
-        highlightProject(project, targetTop);
+        projectListAnimations.highlightProject.animation(project, targetTop);
 
         // Anima o scroll do container para o topo
-        resetScrollPosition(this.elements.projectContainer);
+        projectListAnimations.resetScrollPosition.animation(this.elements.projectContainer);
     }
 
     blurSelectedProject(project: HTMLElement) {
-        blurProject(project);
+        projectListAnimations.blurProject.animation(project);
     }
 }
 

@@ -1,6 +1,1 @@
 1. animar bolinha de seleção enquanto houver animação rolando (significa que está travada)
-
-2. Clicar em um item de navegação com um projeto em highlight deve fechar o projeto em highlight ao inves de remover lista
-    (atribuir isHighlighted?)
-
-

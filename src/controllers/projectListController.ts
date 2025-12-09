@@ -39,6 +39,7 @@ import ProjectListView from "../views/projectListView.js";
 import Animation from "../utils/animation.js";
 
 import ProjectController from "./projectController.js";
+import projectListAnimations from "../utils/projectListAnimations.js";
 
 
 // ---------------------------
@@ -133,7 +134,10 @@ class ProjectListController {
         }
 
         // Aguarda todas as animações finalizarem
-        await Animation.wait(delay);
+        // await Animation.wait(delay);
+        await projectListAnimations.check(
+            () => projectListAnimations.slideDownProjectContainer.isPlaying
+        )
 
         // Adiciona event handlers aos projetos
         this.addHandlers()
@@ -146,7 +150,7 @@ class ProjectListController {
 
     async setListAnimationTime() {
         // Ativa o cooldown da lista de projetos
-        Animation.projectListCooldown = true;
+        // ProjectListAnimations.slideDownProjectContainer.isPlaying = true;
 
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         Animation.projectList = (this.projects.length * 230 + 500);
@@ -175,7 +179,10 @@ class ProjectListController {
 
         // Após a animação terminar, muda para altura responsiva (100%)
 
-        await Animation.check(() => Animation.projectListCooldown);
+        // await Animation.check(() => ProjectListAnimations.slideDownProjectContainer.isPlaying);
+        await projectListAnimations.check(
+            () => projectListAnimations.slideDownProjectContainer.isPlaying)
+
         this.view.setContainerHeight("100%");
 
         // Obtém o último item da lista
@@ -193,7 +200,7 @@ class ProjectListController {
 
     static async hideProjectList() {
         // Ativa o cooldown da lista de projetos
-        Animation.projectListCooldown = true;
+        projectListAnimations.slideDownProjectContainer.isPlaying = true;
 
         // Obtém a instância estática do controller
         const self = ProjectListController.instance;
@@ -210,7 +217,9 @@ class ProjectListController {
         })
 
         // Aguarda o término das animações antes de prosseguir
-        await Animation.wait(self.projects.length * 230 + 2800);
+        // await Animation.wait(self.projects.length * 230 + 2800);
+        await projectListAnimations.check(
+            () => projectListAnimations.slideUpProjectContainer.isPlaying)
 
         // Obtém todos os projetos
         var projects = self.elements.projectItems;
@@ -222,7 +231,7 @@ class ProjectListController {
         });
 
         // Desativa o cooldown
-        Animation.projectListCooldown = false;
+        projectListAnimations.slideDownProjectContainer.isPlaying = false;
     }
 
     // ---------------------------
@@ -275,7 +284,10 @@ class ProjectListController {
 
 
             // Aguarda o tempo da animação de ocultação
-            await Animation.wait(Animation.projectFocus + 500);
+            // await Animation.wait(Animation.projectFocus + 500);
+            await projectListAnimations.check(
+                () => projectListAnimations.focusOnProject.isPlaying
+            )
 
             // Desativa o cooldown de foco
             Animation.projectFocusCooldown = false;
@@ -305,7 +317,10 @@ class ProjectListController {
             }
 
             // Aguarda delay antes de exibir conteúdo
-            await Animation.wait(500);
+            // await Animation.wait(500);
+            await projectListAnimations.check(
+                () => projectListAnimations.highlightProject.isPlaying
+            )
 
             // Exibe conteúdo se ambos os elementos foram encontrados
             if (selectedProject! && selectedProjectElement!) {
@@ -350,7 +365,9 @@ class ProjectListController {
         self.view.blurSelectedProject(selectedProject!);
 
         // Aguarda animação de desfoque
-        await Animation.wait(200);
+        await projectListAnimations.check(
+            () => projectListAnimations.blurProject.isPlaying
+        )
 
         // Remove todos os itens do DOM
         self.elements.projectItems.forEach(element => {
