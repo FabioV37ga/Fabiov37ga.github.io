@@ -60,10 +60,8 @@ class NavigationView {
         // Seleciona o primeiro filho (label do item)
         const itemLabel = u(item).children().first() as HTMLElement;
 
-        // Remove o marcador " •" do texto do label
-        u(itemLabel).text(
-            u(itemLabel).text().replace(" •", "")
-        );
+        // Remove o marcador " •" do texto do label 
+        u(itemLabel).find(".marker").remove();
     }
 
 
@@ -79,10 +77,9 @@ class NavigationView {
         const itemLabel = u(item).children().first() as HTMLElement;
 
         // Adiciona o marcador " •" ao final do texto
-        u(itemLabel).text(`
-            ${u(itemLabel).text()} •
-            `
-        )
+        u(itemLabel).append(`
+            <span class="marker"> •</span>
+        `)
     }
 }
 
