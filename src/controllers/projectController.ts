@@ -100,13 +100,20 @@ class ProjectController {
         btns.forEach((btn) => {
 
         u(btn).on('mouseenter', (e) => {
-            // e.stopPropagation()
+            // Chamar método de animação da view aqui
             console.log(e.currentTarget)
         })
 
         u(btn).on('mouseleave', (e) => {
+            // Chamar método de animação da view aqui
             console.log(e.currentTarget)
         })
+
+        // Todo:
+        /*
+            Lógica de animação com sistema de pausa e getters de posição
+            Em resumo, serve para iniciar uma animação a partir de onde a outra animação parou
+        */
     })
 
     }
