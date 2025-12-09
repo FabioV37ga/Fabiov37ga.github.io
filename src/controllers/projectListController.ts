@@ -16,6 +16,7 @@
  *    2.8. addHandlers() - Adiciona os event handlers
  *    2.9. selectProject() - Seleciona um projeto
  *    2.10. showProjectContent() - Exibe o conteúdo do projeto selecionado
+ *    2.11. blurSelectedProject() - Desfoca e remove projeto selecionado
  * 
  * ============================================================================
  */
@@ -330,6 +331,10 @@ class ProjectListController {
         );
     }
 
+    // ---------------------------
+    // 2.11. blurSelectedProject - Desfoca e remove projeto selecionado
+    // ---------------------------
+
     static async blurSelectedProject(origin: string) {
         // Obtém instância do controller
         const self = ProjectListController.instance;
@@ -357,8 +362,10 @@ class ProjectListController {
             u(element).remove()
         })
 
+        // Reseta a flag de projeto destacado
         ProjectListController.hasHighlightedProject = false;
-        // Recria lista de projetos sem delay
+
+        // Recria lista de projetos sem delay se a origem for projectController
         if (origin == "projectController")
             new ProjectListController(0)
 

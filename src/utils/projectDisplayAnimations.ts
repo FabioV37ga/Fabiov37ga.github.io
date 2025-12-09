@@ -14,6 +14,8 @@
  *    3.5. styleButtons - Anima estilização dos botões
  * 4. Animações de Ocultação
  *    4.1. hideProject - Anima saída do projeto
+ * 5. Utilitários
+ *    5.1. delay - Aguarda tempo específico com animação placeholder
  * 
  * DESCRIÇÃO:
  * Funções utilitárias para animar a exibição e ocultação de projetos
@@ -257,6 +259,13 @@ class ProjectDisplayAnimations extends Animation {
         }
     }
 
+    // ---------------------------
+    // 5. UTILITÁRIOS
+    // ---------------------------
+
+    // ---------------------------
+    // 5.1. delay - Aguarda tempo específico com animação placeholder
+    // ---------------------------
     static delay: AnimationObject = {
         isPlaying: false,
         animation: (placeholder: HTMLElement, duration: number) => {
@@ -270,7 +279,6 @@ class ProjectDisplayAnimations extends Animation {
             })
         }
     }
-
 }
 
 export default ProjectDisplayAnimations;

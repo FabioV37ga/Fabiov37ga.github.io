@@ -1,7 +1,31 @@
+/**
+ * ============================================================================
+ * PROJECT TEMPLATE
+ * ============================================================================
+ * 
+ * SUMÁRIO:
+ * 1. Imports e Dependências
+ * 2. Função projectTemplate
+ * 
+ * DESCRIÇÃO:
+ * Template para exibição completa de um projeto, incluindo tecnologias,
+ * descrição, botões de ação e botão de retorno.
+ * 
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. IMPORTS E DEPENDÊNCIAS
+// ---------------------------
+
 import html from "nanohtml"
 
 import { Projects, Project } from "../data/projects.js"
 
+
+// ---------------------------
+// 2. FUNÇÃO PROJECTTEMPLATE
+// ---------------------------
 
 export const projectTemplate = (project: Project) => html`
     <ul class="technologies">

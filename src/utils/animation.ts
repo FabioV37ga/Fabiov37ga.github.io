@@ -5,12 +5,12 @@
  * 
  * SUMÁRIO:
  * 1. Classe Animation
- *    1.1. Propriedades Estáticas - Controle de animações da lista de projetos
- *    1.2. Propriedades Estáticas - Controle de animações de foco
+ *    1.1. wait() - Aguarda um período de tempo usando requestAnimationFrame
+ *    1.2. check() - Verifica condição dinamicamente até ser falsa
  * 
  * DESCRIÇÃO:
- * Classe utilitária para gerenciar cooldowns de animações, evitando que
- * múltiplas animações sejam disparadas simultaneamente.
+ * Classe utilitária para gerenciar delays e verificações de estado em animações,
+ * utilizando requestAnimationFrame para precisão e performance otimizada.
  * 
  * ============================================================================
  */
@@ -22,25 +22,8 @@
 class Animation {
 
     // ---------------------------
-    // 1.1. PROPRIEDADES ESTÁTICAS - Controle de animações da lista de projetos
+    // 1.1. wait - Aguarda um período de tempo usando requestAnimationFrame
     // ---------------------------
-
-    // Duração da animação de abertura/fechamento da lista (em ms)
-    static projectList: number;
-
-    // Flag de cooldown para prevenir múltiplas animações da lista
-    static projectListCooldown: boolean = false;
-
-
-    // ---------------------------
-    // 1.2. PROPRIEDADES ESTÁTICAS - Controle de animações de foco
-    // ---------------------------
-
-    // Duração da animação de foco no projeto (em ms)
-    static projectFocus: number = 1000;
-
-    // Flag de cooldown para prevenir múltiplos focos simultâneos
-    static projectFocusCooldown: boolean = false;
 
     static wait(cooldown: number): Promise<void> {
         return new Promise((resolve) => {
@@ -59,6 +42,10 @@ class Animation {
             requestAnimationFrame(checkFrame);
         });
     }
+
+    // ---------------------------
+    // 1.2. check - Verifica condição dinamicamente até ser falsa
+    // ---------------------------
 
     static check(condition: () => boolean): Promise<void> {
         return new Promise((resolve) => {
