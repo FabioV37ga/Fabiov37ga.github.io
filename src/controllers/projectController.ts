@@ -92,6 +92,23 @@ class ProjectController {
             this.hideProject("projectController");
         })
 
+        var accessBtn = this.elements.projectAccess;
+        var codeBtn = this.elements.projectCode;
+
+        var btns = [accessBtn, codeBtn];
+
+        btns.forEach((btn) => {
+
+        u(btn).on('mouseenter', (e) => {
+            // e.stopPropagation()
+            console.log(e.currentTarget)
+        })
+
+        u(btn).on('mouseleave', (e) => {
+            console.log(e.currentTarget)
+        })
+    })
+
     }
 
 
