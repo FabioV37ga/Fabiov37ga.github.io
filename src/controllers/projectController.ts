@@ -148,12 +148,15 @@ class ProjectController {
 
         // Aguarda o término das animações (1000ms)
 
-        ProjectDisplayAnimations.hideDelay.animation(this.elements.projectContainer)
+        ProjectDisplayAnimations.delay.animation(
+            this.elements.projectContainer,
+            200 * 5
+        );
 
         await ProjectDisplayAnimations.check(
-            () => ProjectDisplayAnimations.hideDelay.isPlaying
+            () => ProjectDisplayAnimations.delay.isPlaying
         );
-        
+
         // Remove foco do projeto selecionado na lista
         ProjectListController.blurSelectedProject(origin);
 

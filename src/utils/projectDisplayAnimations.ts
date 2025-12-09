@@ -98,7 +98,10 @@ class ProjectDisplayAnimations extends Animation {
             })
 
             // Aguarda o delay antes de iniciar a digitação
-            await Animation.wait(delay)
+            await ProjectDisplayAnimations.delay.animation(
+                element,
+                delay
+            );
 
             var currentParagraph: number = 0
             var currentChar: number = 0;
@@ -254,18 +257,15 @@ class ProjectDisplayAnimations extends Animation {
         }
     }
 
-    static hideDelay: AnimationObject = {
+    static delay: AnimationObject = {
         isPlaying: false,
-        animation: (placeholder: HTMLElement) => {
-            console.log("Iniciando hideDelay");
-            ProjectDisplayAnimations.hideDelay.isPlaying = true;
-            const duration = 200 * 5; // Duração total baseada no número de elementos animados
+        animation: (placeholder: HTMLElement, duration: number) => {
+            ProjectDisplayAnimations.delay.isPlaying = true;
             return animate(placeholder,{
                 opacity: [1, 1],
                 duration: duration,
                 onComplete: () => {
-                    console.log("hideDelay completo");
-                    ProjectDisplayAnimations.hideDelay.isPlaying = false;
+                    ProjectDisplayAnimations.delay.isPlaying = false;
                 }
             })
         }
