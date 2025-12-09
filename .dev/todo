@@ -1,2 +1,8 @@
-1. animar bolinha de seleção enquanto houver animação rolando (significa que está travada)
+1. Desenvolver animação de hover dos botões
+2. Desenvolver página 'about'
+3. Desenvolver página 'contact'
+4. Desenvolver lógica de calculo de duration total das animações de transição
+   (Tempo de saída + tempo de entrada entre conteúdo das páginas)
+99. animar bolinha de seleção enquanto houver animação rolando (significa que está travada)
+    * Precisa ser feito depois de desenvolver as animações de entrada e saída das 3 páginas.
 
