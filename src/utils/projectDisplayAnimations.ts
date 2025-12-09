@@ -33,9 +33,6 @@ import { engine, animate, cubicBezier, JSAnimation } from "animejs"
 
 engine.pauseOnDocumentHidden = true;
 
-// Importa o tipo Project dos dados
-import { Project } from "../data/projects.js"
-
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
 
@@ -269,11 +266,13 @@ class ProjectDisplayAnimations extends Animation {
     static delay: AnimationObject = {
         isPlaying: false,
         animation: (placeholder: HTMLElement, duration: number) => {
+            console.log(ProjectDisplayAnimations.delay.isPlaying);
             ProjectDisplayAnimations.delay.isPlaying = true;
             return animate(placeholder,{
                 opacity: [1, 1],
                 duration: duration,
                 onComplete: () => {
+                    console.log(ProjectDisplayAnimations.delay.isPlaying);
                     ProjectDisplayAnimations.delay.isPlaying = false;
                 }
             })

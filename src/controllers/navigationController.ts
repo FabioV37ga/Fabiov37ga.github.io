@@ -35,6 +35,8 @@ import ProjectController from "./projectController.js";
 
 // Importa o utilitário de controle de cooldown de animações
 import ProjectListAnimations from "../utils/projectListAnimations.js";
+import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
+import projectListAnimations from "../utils/projectListAnimations.js";
 
 // ---------------------------
 // 2. CLASSE NAVIGATIONCONTROLLER
@@ -99,7 +101,9 @@ class NavigationController {
 
     selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Verifica se não está em cooldown de animação
-        if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false) {
+        if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false 
+            && ProjectDisplayAnimations.delay.isPlaying === false
+        ) {
             // Armazena o item previamente selecionado
             const previousSelected = this.selected;
 
@@ -143,10 +147,12 @@ class NavigationController {
         switch (item) {
             case this.elements.projects:
                 // Oculta a lista de projetos
+                // Se não houver projeto destacado, oculta a lista inteira
                 if (!ProjectListController.hasHighlightedProject){
                     ProjectListController.hideProjectList();
-                }else{
-                    // ProjectListController.blurSelectedProject();
+                }
+                // Se houver projeto destacado, oculta apenas o conteúdo do projeto
+                else{
                     ProjectController.instance.hideProject("navigation");
                 }
 
