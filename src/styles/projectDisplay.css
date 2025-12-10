@@ -99,7 +99,7 @@
     width: inherit;
     mask-size: 31px;
     height: inherit;
-    background: white;
+    background: var(--btn-background-color);
 }
 
 .code::before {
@@ -109,7 +109,7 @@
     width: inherit;
     mask-size: 31px;
     height: inherit;
-    background: white;
+    background: var(--btn-background-color);
 }
 
 .button-animation-block {

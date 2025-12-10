@@ -8,27 +8,29 @@
     src: url("../assets/NeueMontreal-Medium.otf");
 }
 
-:root{
+:root {
     --page-padding: 20px;
     --background: #0C0C0C;
     --gray: #808080;
     --padding-main: 50px;
     --scrollbar-opacity: 0.39;
     --btn-animation-block: 0px;
+    --btn-background-color: rgb(255, 255, 255)
 }
 
-body{
+body {
     height: 100vh;
     background: var(--background);
     overflow: hidden;
 }
 
-main{
+main {
     width: 100%;
     height: 100%;
 }
 
-body, main{
+body,
+main {
     display: flex;
     justify-content: center;
     align-items: center;

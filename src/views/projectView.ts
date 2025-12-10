@@ -29,6 +29,7 @@ import { Elements } from "../selectors/projectSelector.js";
 
 // Importa animações do display de projetos
 import projectDisplayAnimations from "../utils/projectDisplayAnimations.js";
+import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 
 
 // ---------------------------
@@ -108,6 +109,29 @@ class ProjectView {
     hideProject(element: HTMLElement) {
         // Chama função de animação de saída do projeto
         projectDisplayAnimations.hideProject.animation(element);
+    }
+
+    buttonInteractions(btn: HTMLElement, interaction: "enter" | "leave") {
+        switch (interaction) {
+            case "enter":
+                var previous = ProjectDisplayAnimations.previousHoveredButton;
+
+                if (btn !== previous) {
+                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                    previous = btn as HTMLElement;
+                }
+                ProjectDisplayAnimations.buttonMouseLeave(btn).pause();
+                ProjectDisplayAnimations.buttonMouseEnter(btn).play();
+                ProjectDisplayAnimations.showOnHover(btn).play()
+
+                break;
+            case "leave":
+
+                ProjectDisplayAnimations.buttonMouseEnter(btn).pause();
+                ProjectDisplayAnimations.buttonMouseLeave(btn).play();
+                ProjectDisplayAnimations.hideOnBlur(btn).play()
+                break;
+        }
     }
 }
 

@@ -217,54 +217,73 @@ class ProjectDisplayAnimations extends Animation {
             })
         }
     }
-    
+
     static previousHoveredButton: HTMLElement
     static currentBackgroundPosition: string = "100%";
 
     static buttonMouseEnter: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
-            return animate(btn.children[1], {
-                autoplay: false,
-                rotate: ['45deg', "45deg"],
-                translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "0%"],
-                easeing: "easeOutCirc",
-                duration: 500,
-                onBegin: () => {
-                    // console.log("Enter Begin", ProjectDisplayAnimations.currentBackgroundPosition)
-                },
-                onPause: () => {
-                    ProjectDisplayAnimations.currentBackgroundPosition =
-                        utils.get(
-                            btn.children[1], 'translateX'
-                        ) as string;
-                },
-                onComplete: () => {
-                    ProjectDisplayAnimations.currentBackgroundPosition = "0%";
-                    // console.log("Enter", ProjectDisplayAnimations.currentBackgroundPosition)
-                }
-            })
+        return animate(btn.children[1], {
+            autoplay: false,
+            rotate: ['45deg', "45deg"],
+            translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "0%"],
+            easeing: "easeOutCirc",
+            duration: 500,
+            onBegin: () => {
+                // console.log("Enter Begin", ProjectDisplayAnimations.currentBackgroundPosition)
+            },
+            onPause: () => {
+                ProjectDisplayAnimations.currentBackgroundPosition =
+                    utils.get(
+                        btn.children[1], 'translateX'
+                    ) as string;
+            },
+            onComplete: () => {
+                ProjectDisplayAnimations.currentBackgroundPosition = "0%";
+                // console.log("Enter", ProjectDisplayAnimations.currentBackgroundPosition)
+            }
+        })
     }
 
     static buttonMouseLeave: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
-            return animate(btn.children[1], {
-                autoplay: false,
-                rotate: ['45deg', "45deg"],
-                translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "100%"],
-                easeing: "easeOutCirc",
-                duration: 500,
-                onBegin: () => {
-                    // console.log("leave Begin", ProjectDisplayAnimations.currentBackgroundPosition)
-                },
-                onPause: () => {
-                    ProjectDisplayAnimations.currentBackgroundPosition =
-                        utils.get(
-                            btn.children[1], 'translateX'
-                        ) as string;
-                },
-                onComplete: () => {
-                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
-                    // console.log("leave", ProjectDisplayAnimations.currentBackgroundPosition)
-                }
-            })
+        return animate(btn.children[1], {
+            autoplay: false,
+            rotate: ['45deg', "45deg"],
+            translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "100%"],
+            easeing: "easeOutCirc",
+            duration: 500,
+            onBegin: () => {
+                // console.log("leave Begin", ProjectDisplayAnimations.currentBackgroundPosition)
+            },
+            onPause: () => {
+                ProjectDisplayAnimations.currentBackgroundPosition =
+                    utils.get(
+                        btn.children[1], 'translateX'
+                    ) as string;
+            },
+            onComplete: () => {
+                ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                // console.log("leave", ProjectDisplayAnimations.currentBackgroundPosition)
+            }
+        })
+    }
+
+    static showOnHover: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
+        return animate(btn.children[0], {
+            autoplay: false,
+            "--btn-background-color": ["rgb(255,255,255)", "rgb(0,0,0)"],
+            opacity: [0, 1],
+            duration: 300,
+            easeing: "easeOutCirc",
+        })
+    }
+
+    static hideOnBlur: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
+        return animate(btn.children[0], {
+            autoplay: false,
+            "--btn-background-color": ["rgb(0,0,0)", "rgb(255,255,255)"],
+            duration: 300,
+            easeing: "easeOutCirc",
+        })
     }
 
     // ---------------------------

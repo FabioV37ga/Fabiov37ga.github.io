@@ -99,34 +99,14 @@ class ProjectController {
 
         btns.forEach((btn) => {
 
-            // TODO: Refatorar animações para a view
-            // TEST: declarar previousHovered internamente, não no animations
-
             u(btn).on('mouseenter', (e) => {
-                // Chamar método de animação da view aqui
-                var previous = ProjectDisplayAnimations.previousHoveredButton;
-                
-                if (e.currentTarget !== previous) {
-                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
-                    previous = e.currentTarget as HTMLElement;
-                }
-                ProjectDisplayAnimations.buttonMouseLeave(btn).pause();
-                ProjectDisplayAnimations.buttonMouseEnter(btn).play();
-
+                this.view.buttonInteractions(btn, "enter");
             })
-
+            
             u(btn).on('mouseleave', (e) => {
-                ProjectDisplayAnimations.buttonMouseEnter(btn).pause();
-                ProjectDisplayAnimations.buttonMouseLeave(btn).play();
+                this.view.buttonInteractions(btn, "leave");
             })
-
-            // Todo:
-            /*
-                Aplicar lógica de armazenamento da posição atual do background
-                para o icone do botão (access e code icons)
-            */
         })
-
     }
 
 
