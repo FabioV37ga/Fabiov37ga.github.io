@@ -100,13 +100,30 @@ class ProjectController {
         btns.forEach((btn) => {
 
             u(btn).on('mouseenter', (e) => {
+                if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
+                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                    ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
+                }
                 // Chamar método de animação da view aqui
                 console.log(e.currentTarget)
+                // ProjectDisplayAnimations.currentButton = u(btn).first() as HTMLElement;
+                ProjectDisplayAnimations.defineMouseLeave(btn);
+                ProjectDisplayAnimations.buttonMouseLeaveInstance.pause()
+                ProjectDisplayAnimations.defineMouseEnter(btn);
+                ProjectDisplayAnimations.buttonMouseEnterInstance.play()
             })
 
             u(btn).on('mouseleave', (e) => {
+                if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
+                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                    ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
+                }
                 // Chamar método de animação da view aqui
                 console.log(e.currentTarget)
+                ProjectDisplayAnimations.defineMouseEnter(btn);
+                ProjectDisplayAnimations.buttonMouseEnterInstance.pause()
+                ProjectDisplayAnimations.defineMouseLeave(btn);
+                ProjectDisplayAnimations.buttonMouseLeaveInstance.play()
             })
 
             // Todo:

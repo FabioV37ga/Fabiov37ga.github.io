@@ -78,7 +78,10 @@ class NavigationView {
 
         // Adiciona o marcador " •" ao final do texto
         u(itemLabel).append(`
-            <span class="marker"> •</span>
+            <span class="marker">
+                <span class="visible-marker"> •</span>
+                <span class="hidden-marker" style="display:none"> •</span>
+            </span>
         `)
     }
 }

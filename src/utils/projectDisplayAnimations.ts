@@ -29,7 +29,7 @@
 // ---------------------------
 
 // Importa Anime.js para animações
-import { engine, animate, cubicBezier, JSAnimation } from "animejs"
+import { engine, animate, cubicBezier, JSAnimation, utils } from "animejs"
 
 engine.pauseOnDocumentHidden = true;
 
@@ -37,6 +37,7 @@ engine.pauseOnDocumentHidden = true;
 import u from "umbrellajs";
 
 import Animation from "./animation.js";
+import projectListAnimations from "./projectListAnimations.js";
 
 // ---------------------------
 // 2. INTERFACE DE ANIMAÇÃO
@@ -216,6 +217,59 @@ class ProjectDisplayAnimations extends Animation {
             })
         }
     }
+    
+    static buttonMouseEnterInstance: JSAnimation;
+    static previousHoveredButton: HTMLElement
+    static currentBackgroundPosition: string = "100%";
+
+    static defineMouseEnter: (...args: any) => void = (btn: HTMLElement) => {
+        ProjectDisplayAnimations.buttonMouseEnterInstance =
+            animate(btn.children[1], {
+                autoplay: false,
+                rotate: ['45deg', "45deg"],
+                translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "0%"],
+                easeing: "easeOutCirc",
+                duration: 500,
+                onBegin: () => {
+                    console.log('begin')
+                    console.log(btn.children[1])
+                },
+                onPause: () => {
+                    ProjectDisplayAnimations.currentBackgroundPosition =
+                        utils.get(
+                            btn.children[1], 'translateX'
+                        ) as string;
+                },
+                onComplete: () => {
+                    ProjectDisplayAnimations.currentBackgroundPosition = "0%";
+                }
+            })
+    }
+    static buttonMouseLeaveInstance: JSAnimation
+
+    static defineMouseLeave: (...args: any) => void = (btn: HTMLElement) => {
+        ProjectDisplayAnimations.buttonMouseLeaveInstance =
+            animate(btn.children[1], {
+                autoplay: false,
+                rotate: ['45deg', "45deg"],
+                translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "100%"],
+                easeing: "easeOutCirc",
+                duration: 500,
+                onBegin: () => {
+                    console.log('begin')
+                    console.log(btn.children[1])
+                },
+                onPause: () => {
+                    ProjectDisplayAnimations.currentBackgroundPosition =
+                        utils.get(
+                            btn.children[1], 'translateX'
+                        ) as string;
+                },
+                onComplete: () => {
+                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                }
+            })
+    }
 
     // ---------------------------
     // 4. ANIMAÇÕES DE OCULTAÇÃO
@@ -268,7 +322,7 @@ class ProjectDisplayAnimations extends Animation {
         animation: (placeholder: HTMLElement, duration: number) => {
             console.log(ProjectDisplayAnimations.delay.isPlaying);
             ProjectDisplayAnimations.delay.isPlaying = true;
-            return animate(placeholder,{
+            return animate(placeholder, {
                 opacity: [1, 1],
                 duration: duration,
                 onComplete: () => {
