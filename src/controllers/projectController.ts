@@ -99,37 +99,35 @@ class ProjectController {
 
         btns.forEach((btn) => {
 
+            // TODO: Refatorar animações para a view
+            // TEST: declarar previousHovered internamente, não no animations
+
             u(btn).on('mouseenter', (e) => {
+                // Chamar método de animação da view aqui
+                
                 if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
                     ProjectDisplayAnimations.currentBackgroundPosition = "100%";
                     ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
                 }
-                // Chamar método de animação da view aqui
-                console.log(e.currentTarget)
-                // ProjectDisplayAnimations.currentButton = u(btn).first() as HTMLElement;
-                ProjectDisplayAnimations.defineMouseLeave(btn);
-                ProjectDisplayAnimations.buttonMouseLeaveInstance.pause()
-                ProjectDisplayAnimations.defineMouseEnter(btn);
-                ProjectDisplayAnimations.buttonMouseEnterInstance.play()
+                ProjectDisplayAnimations.defineMouseLeave(btn).pause();
+                ProjectDisplayAnimations.defineMouseEnter(btn).play();
+
             })
 
             u(btn).on('mouseleave', (e) => {
+                // Chamar método de animação da view aqui
                 if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
                     ProjectDisplayAnimations.currentBackgroundPosition = "100%";
                     ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
                 }
-                // Chamar método de animação da view aqui
-                console.log(e.currentTarget)
-                ProjectDisplayAnimations.defineMouseEnter(btn);
-                ProjectDisplayAnimations.buttonMouseEnterInstance.pause()
-                ProjectDisplayAnimations.defineMouseLeave(btn);
-                ProjectDisplayAnimations.buttonMouseLeaveInstance.play()
+                ProjectDisplayAnimations.defineMouseEnter(btn).pause();
+                ProjectDisplayAnimations.defineMouseLeave(btn).play();
             })
 
             // Todo:
             /*
-                Lógica de animação com sistema de pausa e getters de posição
-                Em resumo, serve para iniciar uma animação a partir de onde a outra animação parou
+                Aplicar lógica de armazenamento da posição atual do background
+                para o icone do botão (access e code icons)
             */
         })
 

@@ -222,9 +222,8 @@ class ProjectDisplayAnimations extends Animation {
     static previousHoveredButton: HTMLElement
     static currentBackgroundPosition: string = "100%";
 
-    static defineMouseEnter: (...args: any) => void = (btn: HTMLElement) => {
-        ProjectDisplayAnimations.buttonMouseEnterInstance =
-            animate(btn.children[1], {
+    static defineMouseEnter: (...args: any) => JSAnimation = (btn: HTMLElement) => {
+            return animate(btn.children[1], {
                 autoplay: false,
                 rotate: ['45deg', "45deg"],
                 translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "0%"],
@@ -247,9 +246,8 @@ class ProjectDisplayAnimations extends Animation {
     }
     static buttonMouseLeaveInstance: JSAnimation
 
-    static defineMouseLeave: (...args: any) => void = (btn: HTMLElement) => {
-        ProjectDisplayAnimations.buttonMouseLeaveInstance =
-            animate(btn.children[1], {
+    static defineMouseLeave: (...args: any) => JSAnimation = (btn: HTMLElement) => {
+            return animate(btn.children[1], {
                 autoplay: false,
                 rotate: ['45deg', "45deg"],
                 translateX: [ProjectDisplayAnimations.currentBackgroundPosition, "100%"],
