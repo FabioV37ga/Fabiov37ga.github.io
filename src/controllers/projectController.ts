@@ -104,24 +104,20 @@ class ProjectController {
 
             u(btn).on('mouseenter', (e) => {
                 // Chamar método de animação da view aqui
+                var previous = ProjectDisplayAnimations.previousHoveredButton;
                 
-                if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
+                if (e.currentTarget !== previous) {
                     ProjectDisplayAnimations.currentBackgroundPosition = "100%";
-                    ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
+                    previous = e.currentTarget as HTMLElement;
                 }
-                ProjectDisplayAnimations.defineMouseLeave(btn).pause();
-                ProjectDisplayAnimations.defineMouseEnter(btn).play();
+                ProjectDisplayAnimations.buttonMouseLeave(btn).pause();
+                ProjectDisplayAnimations.buttonMouseEnter(btn).play();
 
             })
 
             u(btn).on('mouseleave', (e) => {
-                // Chamar método de animação da view aqui
-                if (e.currentTarget !== ProjectDisplayAnimations.previousHoveredButton) {
-                    ProjectDisplayAnimations.currentBackgroundPosition = "100%";
-                    ProjectDisplayAnimations.previousHoveredButton = e.currentTarget as HTMLElement;
-                }
-                ProjectDisplayAnimations.defineMouseEnter(btn).pause();
-                ProjectDisplayAnimations.defineMouseLeave(btn).play();
+                ProjectDisplayAnimations.buttonMouseEnter(btn).pause();
+                ProjectDisplayAnimations.buttonMouseLeave(btn).play();
             })
 
             // Todo:

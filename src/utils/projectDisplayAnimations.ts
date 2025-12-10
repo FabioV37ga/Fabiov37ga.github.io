@@ -218,11 +218,10 @@ class ProjectDisplayAnimations extends Animation {
         }
     }
     
-    static buttonMouseEnterInstance: JSAnimation;
     static previousHoveredButton: HTMLElement
     static currentBackgroundPosition: string = "100%";
 
-    static defineMouseEnter: (...args: any) => JSAnimation = (btn: HTMLElement) => {
+    static buttonMouseEnter: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
             return animate(btn.children[1], {
                 autoplay: false,
                 rotate: ['45deg', "45deg"],
@@ -230,8 +229,7 @@ class ProjectDisplayAnimations extends Animation {
                 easeing: "easeOutCirc",
                 duration: 500,
                 onBegin: () => {
-                    console.log('begin')
-                    console.log(btn.children[1])
+                    // console.log("Enter Begin", ProjectDisplayAnimations.currentBackgroundPosition)
                 },
                 onPause: () => {
                     ProjectDisplayAnimations.currentBackgroundPosition =
@@ -241,12 +239,12 @@ class ProjectDisplayAnimations extends Animation {
                 },
                 onComplete: () => {
                     ProjectDisplayAnimations.currentBackgroundPosition = "0%";
+                    // console.log("Enter", ProjectDisplayAnimations.currentBackgroundPosition)
                 }
             })
     }
-    static buttonMouseLeaveInstance: JSAnimation
 
-    static defineMouseLeave: (...args: any) => JSAnimation = (btn: HTMLElement) => {
+    static buttonMouseLeave: (arg: HTMLElement) => JSAnimation = (btn: HTMLElement) => {
             return animate(btn.children[1], {
                 autoplay: false,
                 rotate: ['45deg', "45deg"],
@@ -254,8 +252,7 @@ class ProjectDisplayAnimations extends Animation {
                 easeing: "easeOutCirc",
                 duration: 500,
                 onBegin: () => {
-                    console.log('begin')
-                    console.log(btn.children[1])
+                    // console.log("leave Begin", ProjectDisplayAnimations.currentBackgroundPosition)
                 },
                 onPause: () => {
                     ProjectDisplayAnimations.currentBackgroundPosition =
@@ -265,6 +262,7 @@ class ProjectDisplayAnimations extends Animation {
                 },
                 onComplete: () => {
                     ProjectDisplayAnimations.currentBackgroundPosition = "100%";
+                    // console.log("leave", ProjectDisplayAnimations.currentBackgroundPosition)
                 }
             })
     }
@@ -318,13 +316,13 @@ class ProjectDisplayAnimations extends Animation {
     static delay: AnimationObject = {
         isPlaying: false,
         animation: (placeholder: HTMLElement, duration: number) => {
-            console.log(ProjectDisplayAnimations.delay.isPlaying);
+            // console.log(ProjectDisplayAnimations.delay.isPlaying);
             ProjectDisplayAnimations.delay.isPlaying = true;
             return animate(placeholder, {
                 opacity: [1, 1],
                 duration: duration,
                 onComplete: () => {
-                    console.log(ProjectDisplayAnimations.delay.isPlaying);
+                    // console.log(ProjectDisplayAnimations.delay.isPlaying);
                     ProjectDisplayAnimations.delay.isPlaying = false;
                 }
             })
