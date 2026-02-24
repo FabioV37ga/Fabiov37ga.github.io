@@ -1,0 +1,34 @@
+.about {
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    color: white;
+    font-family: "Neue Montreal";
+    font-size: 25px;
+}
+
+.about-content p{
+    display: none;
+    margin-bottom: 5px
+}
+
+.about-git{
+    display: none;
+    text-decoration: none;
+    color: white
+}
+
+.about-git span{
+    border-bottom: 1px solid white
+}
+
+.about-content p i{
+    /* margin-right: 14px; */
+    width: 33px;
+    /* background: blue */
+}
+
+.fa.fa-graduation-cap{
+    font-size: 20px;
+    text-decoration: none !important;
+}

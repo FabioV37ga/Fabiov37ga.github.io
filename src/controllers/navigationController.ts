@@ -32,11 +32,13 @@ import NavigationView from "../views/navigationView.js";
 // Importa o controller da lista de projetos
 import ProjectListController from "./projectListController.js";
 import ProjectController from "./projectController.js";
+import AboutController from "./aboutController.js";
 
 // Importa o utilitário de controle de cooldown de animações
 import ProjectListAnimations from "../utils/projectListAnimations.js";
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 import projectListAnimations from "../utils/projectListAnimations.js";
+import AboutAnimations from "../utils/aboutAnimations.js";
 
 // ---------------------------
 // 2. CLASSE NAVIGATIONCONTROLLER
@@ -158,6 +160,7 @@ class NavigationController {
 
                 break;
             case this.elements.about:
+                AboutController.instance.hideAboutContent()
                 // Implementação futura: Ocultar seção "Sobre"
                 break;
             case this.elements.contact:
@@ -171,15 +174,26 @@ class NavigationController {
     // 2.6. showSelectedItemContent - Exibe conteúdo do item selecionado
     // ---------------------------
 
-    showSelectedItemContent(item: HTMLElement, delay: number) {
+    async showSelectedItemContent(item: HTMLElement, delay: number) {
         // Switch baseado no item selecionado
         switch (item) {
             case this.elements.projects:
                 // Cria novo controller de lista de projetos com delay
+                // await 
                 new ProjectListController(delay);
                 break;
             case this.elements.about:
-                // Implementação futura: Exibir seção "Sobre"
+
+                await projectListAnimations.check(
+                    () => projectListAnimations.slideUpProjectContainer.isPlaying
+                )
+
+                await ProjectListAnimations.check(
+                    () => ProjectDisplayAnimations.delay.isPlaying
+                )
+
+                new AboutController()
+                
                 break;
             case this.elements.contact:
                 // Implementação futura: Exibir seção "Contato"
