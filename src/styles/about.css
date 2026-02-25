@@ -7,28 +7,37 @@
     font-size: 25px;
 }
 
-.about-content p{
+.about-content p {
     display: none;
     margin-bottom: 5px
 }
 
-.about-git{
+.about-git {
     display: none;
     text-decoration: none;
     color: white
 }
 
-.about-git span{
+.about-git span {
     border-bottom: 1px solid white
 }
 
-.about-content p i{
+.about-content p i {
     /* margin-right: 14px; */
-    width: 33px;
+    width: 36px;
     /* background: blue */
 }
 
-.fa.fa-graduation-cap{
+.fa.fa-graduation-cap {
     font-size: 20px;
     text-decoration: none !important;
+}
+
+.about-sidebar {
+    background: white;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    right: -33px;
+    border-radius: 5px;
 }

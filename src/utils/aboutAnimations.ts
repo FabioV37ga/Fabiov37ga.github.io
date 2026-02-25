@@ -25,6 +25,20 @@ class AboutAnimations extends Animation{
         }
     }
 
+    static showSidebar: AnimationObject = {
+        isPlaying: false,
+        animation: (element: HTMLElement) => {
+            AboutAnimations.showSidebar.isPlaying = true;
+            return animate(element, {
+                height: ['0%', '100%'],
+                duration: 200,
+                onComplete: ()=>{
+                    AboutAnimations.showSidebar.isPlaying = false;
+                }
+            })
+        }
+    }
+
     static slideInAboutItem: AnimationObject = {
         isPlaying: false,
         animation: (element: HTMLElement, delay: number) => {

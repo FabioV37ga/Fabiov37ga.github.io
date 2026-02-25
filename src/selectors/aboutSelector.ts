@@ -4,6 +4,7 @@ interface Elements{
     about: HTMLElement;
     paragraphs: HTMLElement[]
     git: HTMLElement;
+    sidebar: HTMLElement;
 }
 
 class AboutSelector{
@@ -16,10 +17,13 @@ class AboutSelector{
 
         const git: HTMLElement = u(".about-git").nodes[0] as HTMLElement
 
+        const sidebar: HTMLElement = u(".about-sidebar").nodes[0] as HTMLElement
+
         AboutSelector.elements = {
             about: about,
             paragraphs: paragraphs,
-            git: git
+            git: git,
+            sidebar: sidebar
         }
 
         return AboutSelector.elements

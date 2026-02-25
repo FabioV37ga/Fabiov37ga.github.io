@@ -24,6 +24,12 @@ class AboutView{
         )
     }
 
+    showSidebar(){
+        AboutAnimations.showSidebar.animation(
+            this.elements.sidebar
+        )
+    }
+
     hideContent(){
         AboutAnimations.hideAboutItems.animation(
             this.elements.about
