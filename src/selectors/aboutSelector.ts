@@ -1,3 +1,21 @@
+/**
+ * ============================================================================
+ * ABOUT SELECTOR
+ * ============================================================================
+ *
+ * SUMÁRIO:
+ * 1. Interface Elements
+ * 2. Classe AboutSelector
+ *    2.1. Propriedades
+ *    2.2. defineElements() - Seleciona e retorna elementos da seção About
+ *
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. INTERFACE ELEMENTS
+// ---------------------------
+
 import u from "umbrellajs"
 
 interface Elements{
@@ -6,6 +24,10 @@ interface Elements{
     git: HTMLElement;
     sidebar: HTMLElement;
 }
+
+// ---------------------------
+// 2. CLASSE ABOUTSELECTOR
+// ---------------------------
 
 class AboutSelector{
     static elements: Elements

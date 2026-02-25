@@ -1,3 +1,22 @@
+/**
+ * ============================================================================
+ * ABOUT ANIMATIONS
+ * ============================================================================
+ *
+ * SUMÁRIO:
+ * 1. Interface AnimationObject
+ * 2. Classe AboutAnimations
+ *    2.1. showAbout - Animação de exibição da seção About
+ *    2.2. slideInAboutItem - Animação de entrada dos itens
+ *    2.3. hideAboutItems - Animação de ocultação dos itens
+ *
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. IMPORTS E INTERFACE
+// ---------------------------
+
 import {animate, JSAnimation, engine, cubicBezier} from "animejs"
 
 import Animation from "./animation.js";
@@ -8,6 +27,10 @@ interface AnimationObject{
     isPlaying: boolean;
     animation: (...args: any[]) => JSAnimation;
 }
+
+// ---------------------------
+// 2. CLASSE ABOUTANIMATIONS
+// ---------------------------
 
 class AboutAnimations extends Animation{
 
