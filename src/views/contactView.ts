@@ -12,10 +12,6 @@ class ContactView {
         contactAnimations.displayContact.animation(this.elements.container)
     }
 
-    hideContact(){
-        // contactAnimations.hideContact.animation(this.elements.container)
-    }
-
     showTitle(title: HTMLElement, delay: number) {
         contactAnimations.showTitles.animation(title, delay)
     }

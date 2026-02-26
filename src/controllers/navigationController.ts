@@ -107,6 +107,7 @@ class NavigationController {
         // Verifica se não está em cooldown de animação
         if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
             && ProjectDisplayAnimations.delay.isPlaying === false
+            && ContactController.isPlaying === false
         ) {
             // Armazena o item previamente selecionado
             const previousSelected = this.selected;
@@ -187,7 +188,7 @@ class NavigationController {
 
                 if (ContactController.instance)
                     await ContactAnimations.check(
-                        () => ContactController.instance.isPlaying
+                        () => ContactController.isPlaying
                     )
 
                 if (AboutController.instance)
@@ -209,10 +210,11 @@ class NavigationController {
                     () => ProjectDisplayAnimations.delay.isPlaying
                 )
 
-                if (ContactController.instance)
-                    await ContactAnimations.check(
-                        () => ContactController.instance.isPlaying
-                    )
+
+                await ContactAnimations.check(
+                    () => ContactController.isPlaying
+                )
+                console.log("Liberar mostrar")
 
                 new AboutController()
 

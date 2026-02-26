@@ -1,29 +1,9 @@
 1. Desenvolver página 'contact'
+* Elementos: Adicionar referencias href aos cards de contato
 
 99. animar bolinha de seleção enquanto houver animação rolando (significa que está travada)
     * Precisa ser feito depois de desenvolver as animações de entrada e saída das 3 páginas.
 
 
-
-implementação do contato
-0. criar elementos 🟨
-1. criar controller
-2. criar view
-3. criar selector
-4. criar utils/animations
-
-* Elementos: Adicionar referencias href aos cards
-
-
-!!! - Desenvolver "ponto final" das animações no último elemento animado 
-
-pós
-1. adicionar await das animações no controlador de navegação, em cada um dos itens
-
-
-
+atribuir corretamente lógicas de view no controller de contact (redirecionar para classe view)
 --------------------------------
-
-1. o último elemento é animado
-2. passar parametro especial para definir ponto final
-3. ponto final é usado para liberar o disparo de outra animação de navegação.

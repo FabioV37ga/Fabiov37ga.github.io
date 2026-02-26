@@ -51,6 +51,9 @@
     justify-content: flex-start;
     align-items: center;
     font-family: "Neue Montreal";
+    cursor: pointer;
+    text-decoration: none;
+    position: relative
 }
 
 .contact-card--image {
@@ -76,4 +79,10 @@
 .contact-card--info small {
     color: rgb(153, 153, 153);
     font-size: 15px;
+}
+
+.contact-clipboard{
+    color: white;
+    position: absolute;
+    right: 15px;
 }

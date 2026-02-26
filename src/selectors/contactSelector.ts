@@ -5,6 +5,7 @@ interface Elements {
     titles: HTMLElement[];
     divisor: HTMLElement;
     cards: HTMLElement[];
+    clipboard: HTMLElement;
 }
 
 class ContactSelector {
@@ -15,12 +16,14 @@ class ContactSelector {
         const titles: HTMLElement[] = u('.contact-title').nodes as HTMLElement[];
         const divisor: HTMLElement = u('.contact-divisor').first() as HTMLElement;
         const cards: HTMLElement[] = u('.contact-card').nodes as HTMLElement[];
+        const clipboard: HTMLElement = u('.contact-clipboard').first() as HTMLElement;
 
         this.elements = {
             container,
             titles,
             divisor,
-            cards
+            cards,
+            clipboard
         };
         return ContactSelector.elements;
     }
