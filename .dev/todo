@@ -14,5 +14,16 @@ implementação do contato
 
 * Elementos: Adicionar referencias href aos cards
 
+
+!!! - Desenvolver "ponto final" das animações no último elemento animado 
+
 pós
 1. adicionar await das animações no controlador de navegação, em cada um dos itens
+
+
+
+--------------------------------
+
+1. o último elemento é animado
+2. passar parametro especial para definir ponto final
+3. ponto final é usado para liberar o disparo de outra animação de navegação.

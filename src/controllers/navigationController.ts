@@ -33,6 +33,7 @@ import NavigationView from "../views/navigationView.js";
 import ProjectListController from "./projectListController.js";
 import ProjectController from "./projectController.js";
 import AboutController from "./aboutController.js";
+import ContactController from "./contactController.js";
 
 // Importa o utilitário de controle de cooldown de animações
 import ProjectListAnimations from "../utils/projectListAnimations.js";
@@ -196,9 +197,21 @@ class NavigationController {
 
                 new AboutController()
                 
+                
+
                 break;
             case this.elements.contact:
                 // Implementação futura: Exibir seção "Contato"
+
+                await projectListAnimations.check(
+                    () => projectListAnimations.slideUpProjectContainer.isPlaying
+                )
+
+                await ProjectListAnimations.check(
+                    () => ProjectDisplayAnimations.delay.isPlaying
+                )
+
+                new ContactController();
                 break;
         }
     }
