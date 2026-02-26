@@ -6,10 +6,13 @@
 
 
 implementação do contato
+0. criar elementos 🟨
 1. criar controller
 2. criar view
 3. criar selector
 4. criar utils/animations
+
+* Elementos: Adicionar referencias href aos cards
 
 pós
 1. adicionar await das animações no controlador de navegação, em cada um dos itens
