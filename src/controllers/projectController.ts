@@ -38,6 +38,7 @@ import ProjectView from "../views/projectView.js";
 import ProjectListController from "./projectListController.js";
 
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
+import projectListAnimations from "../utils/projectListAnimations.js";
 
 
 // ---------------------------
@@ -102,7 +103,7 @@ class ProjectController {
             u(btn).on('mouseenter', (e) => {
                 this.view.buttonInteractions(btn, "enter");
             })
-            
+
             u(btn).on('mouseleave', (e) => {
                 this.view.buttonInteractions(btn, "leave");
             })
@@ -142,10 +143,14 @@ class ProjectController {
     // ---------------------------
 
     async showProject(project: Project) {
+
+
+        console.log("Iniciando animação de exibição do projeto...")
+
         // Atualiza os elementos DOM após inserção do template
         this.elements = ProjectSelector.defineElements();
 
-        // Exibe o projeto através da view com animações
+        // Exibe o projeto através da view com animações)
         this.view.showProject(this.elements, project);
 
         // Adiciona os event handlers aos botões

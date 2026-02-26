@@ -130,7 +130,7 @@ class ProjectListController {
         }
 
         // Aguarda todas as animações finalizarem
-        
+
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying
         )
@@ -145,7 +145,7 @@ class ProjectListController {
     // ---------------------------
 
     static getListAnimationTime(): number {
-    
+
         var self = ProjectListController.instance;
         // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         return self.projects.length * 230 + 500;
@@ -239,17 +239,19 @@ class ProjectListController {
 
             // Adiciona evento de clique ao projeto
             u(project).on("click", (event: Event) => {
+                if (!projectListAnimations.slideUpProjectContainer.isPlaying) {
 
-                // Obtém o título do projeto clicado
-                const titulo: string = u(event.currentTarget as HTMLElement).text();
+                    // Obtém o título do projeto clicado
+                    const titulo: string = u(event.currentTarget as HTMLElement).text();
 
-                // Busca o projeto correspondente no array de dados
-                for (let i = 0; i < projectItems.length; i++) {
-                    // Verifica se o título corresponde ao projeto atual
-                    if (titulo === this.projects[i].title) {
-                        // Seleciona o projeto clicado
-                        this.selectProject(event.currentTarget as HTMLElement);
-                        break;
+                    // Busca o projeto correspondente no array de dados
+                    for (let i = 0; i < projectItems.length; i++) {
+                        // Verifica se o título corresponde ao projeto atual
+                        if (titulo === this.projects[i].title) {
+                            // Seleciona o projeto clicado
+                            this.selectProject(event.currentTarget as HTMLElement);
+                            break;
+                        }
                     }
                 }
             })
