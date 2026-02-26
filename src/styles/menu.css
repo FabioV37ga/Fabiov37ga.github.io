@@ -49,9 +49,17 @@
 }
 
 .marker * {
-    display: flex;
+    /* display: none; */
     justify-content: center;
     align-items: center;
     height: 5px;
     width: 9px;
+}
+
+.visible-marker {
+    display: flex;
+}
+
+.hidden-marker{
+    display: none
 }

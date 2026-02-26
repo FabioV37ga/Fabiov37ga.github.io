@@ -41,6 +41,7 @@ import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 import projectListAnimations from "../utils/projectListAnimations.js";
 import AboutAnimations from "../utils/aboutAnimations.js";
 import ContactAnimations from "../utils/contactAnimations.js";
+import NavigationAnimations from "../utils/navigationAnimations.js";
 
 // ---------------------------
 // 2. CLASSE NAVIGATIONCONTROLLER
@@ -103,7 +104,7 @@ class NavigationController {
     // 2.4. selectItem - Seleciona um item e desmarca os outros
     // ---------------------------
 
-    selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
+    async selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Verifica se não está em cooldown de animação
         if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
             && ProjectDisplayAnimations.delay.isPlaying === false
@@ -134,6 +135,9 @@ class NavigationController {
                 var delay: number = state == "init" ? 1750 : 0;
                 // Exibe o conteúdo do item selecionado com o delay definido
                 this.showSelectedItemContent(item, delay);
+
+                await this.animateMarkers(delay);
+
             } else {
                 // Log quando o item já está selecionado
                 // console.log("Item already selected. No action taken.");
@@ -142,6 +146,57 @@ class NavigationController {
             // Log quando a animação está em cooldown
             // console.log("Animation is on cooldown. Selection ignored.");
         }
+    }
+
+    async animateMarkers(delay: number) {
+        console.log("got here")
+
+        var elements = NavigationSelector.defineElements()
+        console.log(elements.markers[1])
+
+        NavigationAnimations.shiftMarker.animation(elements.markers[1])
+
+        await NavigationAnimations.check(
+            () => NavigationAnimations.shiftMarker.isPlaying
+        )
+
+        NavigationAnimations.spinMarkers.animation(elements.markerContainer)
+
+        await ProjectListAnimations.check(
+            () => ProjectDisplayAnimations.delay.isPlaying
+        )
+
+        await AboutAnimations.check(
+            () => AboutAnimations.hideAboutItems.isPlaying
+        )
+
+        await projectListAnimations.check(
+            () => projectListAnimations.slideDownProjectContainer.isPlaying
+        )
+
+        await projectListAnimations.check(
+            () => projectListAnimations.slideUpProjectContainer.isPlaying
+        )
+
+        await ContactAnimations.check(
+            () => ContactController.isPlaying
+        )
+
+        console.log("Tudo terminou, parar de girar")
+        // elements.markers[1].style.display = 'flex'
+
+        NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
+
+        await NavigationAnimations.check(
+            () => NavigationAnimations.stopSpinMarkers.isPlaying
+        )
+
+        NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
+
+        await NavigationAnimations.check(
+            () => NavigationAnimations.shiftMarkerBack.isPlaying
+        )
+        return true
     }
 
 

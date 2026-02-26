@@ -30,6 +30,8 @@ interface Elements {
     projects: HTMLElement;  // Item de navegação "Projetos"
     about: HTMLElement;     // Item de navegação "Sobre"
     contact: HTMLElement;   // Item de navegação "Contato"
+    markerContainer: HTMLElement; // Container dos marcadores de navegação
+    markers: HTMLElement[]
 }
 
 
@@ -61,11 +63,20 @@ class NavigationSelector {
         // Seleciona o terceiro item de navegação (Contato)
         const contact: HTMLElement = u('.navigation-item').nodes[2] as HTMLElement;
 
+        const markerContainer: HTMLElement = u('.marker').nodes[0] as HTMLElement;
+
+        // Seleciona os marcadores de navegação
+        const markers: HTMLElement[] = u('.marker-dot').nodes as HTMLElement[];
+
+        // console.log(markers)
+
         // Armazena os elementos selecionados no objeto estático
         NavigationSelector.elements = {
             projects: projects,
             about: about,
-            contact: contact
+            contact: contact,
+            markerContainer: markerContainer,
+            markers: markers
         }
 
         // Retorna o objeto com os elementos selecionados

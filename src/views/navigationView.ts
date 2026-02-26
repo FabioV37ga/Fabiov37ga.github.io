@@ -22,7 +22,7 @@
 import u from 'umbrellajs';
 
 // Importa a interface Elements do seletor de navegação
-import { Elements } from '../selectors/navigationSelector.js';
+import { Elements, NavigationSelector } from '../selectors/navigationSelector.js';
 
 
 // ---------------------------
@@ -79,10 +79,16 @@ class NavigationView {
         // Adiciona o marcador " •" ao final do texto
         u(itemLabel).append(`
             <span class="marker">
-                <span class="visible-marker"> •</span>
-                <span class="hidden-marker" style="display:none"> •</span>
+                <span class="visible-marker marker-dot"> •</span>
+                <span class="hidden-marker marker-dot" style="display:none"> •</span>
             </span>
         `)
+
+        NavigationSelector.defineElements()
+    }
+
+    animateMarker(){
+        
     }
 }
 
