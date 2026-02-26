@@ -128,7 +128,9 @@ class NavigationController {
                 this.view.selectItem(item);
 
                 // Exibe o conteúdo do item com delay de 1750ms
-                this.showSelectedItemContent(item, 1750);
+
+                var delay: number = state == "init" ? 1750 : 0;
+                this.showSelectedItemContent(item, delay);
             } else {
                 // Log quando o item já está selecionado
                 // console.log("Item already selected. No action taken.");

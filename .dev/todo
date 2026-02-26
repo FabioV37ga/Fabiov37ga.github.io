@@ -1,8 +1,15 @@
-1. Desenvolver animação de hover dos botões
-2. Desenvolver página 'about'
-3. Desenvolver página 'contact'
-4. Desenvolver lógica de calculo de duration total das animações de transição
-   (Tempo de saída + tempo de entrada entre conteúdo das páginas)
+1. Desenvolver página 'contact'
+
 99. animar bolinha de seleção enquanto houver animação rolando (significa que está travada)
     * Precisa ser feito depois de desenvolver as animações de entrada e saída das 3 páginas.
 
+
+
+implementação do contato
+1. criar controller
+2. criar view
+3. criar selector
+4. criar utils/animations
+
+pós
+1. adicionar await das animações no controlador de navegação, em cada um dos itens

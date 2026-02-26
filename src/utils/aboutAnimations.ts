@@ -39,6 +39,7 @@ class AboutAnimations extends Animation{
         animation: (element:HTMLElement) =>{
             AboutAnimations.showAbout.isPlaying = true;
             return animate(element, {
+                display: 'flex',
                 opacity: [0,1],
                 duration: 200 * 4,
                 onComplete: ()=>{
@@ -88,6 +89,7 @@ class AboutAnimations extends Animation{
                 translateX: ["0px", "20px"],
                 duration: 250,
                 onComplete: ()=>{
+                    element.style.display = 'none';
                     AboutAnimations.hideAboutItems.isPlaying = false
                 }
             })
