@@ -134,9 +134,9 @@ class NavigationController {
                 // Define o delay para a exibição do conteúdo baseado no estado (inicialização ou clique)
                 var delay: number = state == "init" ? 1750 : 0;
                 // Exibe o conteúdo do item selecionado com o delay definido
-                this.showSelectedItemContent(item, delay);
+                await this.showSelectedItemContent(item, delay);
 
-                await this.animateMarkers(delay);
+                // await 
 
             } else {
                 // Log quando o item já está selecionado
@@ -148,8 +148,7 @@ class NavigationController {
         }
     }
 
-    async animateMarkers(delay: number) {
-        console.log("got here")
+    async animateMarkers(item: HTMLElement, delay: number) {
 
         var elements = NavigationSelector.defineElements()
         console.log(elements.markers[1])
@@ -161,44 +160,19 @@ class NavigationController {
         )
 
         NavigationAnimations.spinMarkers.animation(elements.markerContainer)
+    }
 
-        await ProjectListAnimations.check(
-            () => ProjectDisplayAnimations.delay.isPlaying
-        )
-
-        await AboutAnimations.check(
-            () => AboutAnimations.hideAboutItems.isPlaying
-        )
-
-        await projectListAnimations.check(
-            () => projectListAnimations.slideDownProjectContainer.isPlaying
-        )
-
-        await projectListAnimations.check(
-            () => projectListAnimations.slideUpProjectContainer.isPlaying
-        )
-
-        await ContactAnimations.check(
-            () => ContactController.isPlaying
-        )
-
-        console.log("Tudo terminou, parar de girar")
-        // elements.markers[1].style.display = 'flex'
-
-        NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
-
-        await NavigationAnimations.check(
-            () => NavigationAnimations.stopSpinMarkers.isPlaying
-        )
-
+    async breakMarkerSpin() {
+        var elements = NavigationSelector.defineElements()
+        console.log("Marker should stop spinning now")
         NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
 
         await NavigationAnimations.check(
             () => NavigationAnimations.shiftMarkerBack.isPlaying
         )
-        return true
+        
+        NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
     }
-
 
     // ---------------------------
     // 2.5. hideSelectedItemContent - Oculta conteúdo do item selecionado
@@ -236,6 +210,7 @@ class NavigationController {
     // ---------------------------
 
     async showSelectedItemContent(item: HTMLElement, delay: number) {
+        this.animateMarkers(item, delay);
         // Switch baseado no item selecionado
         switch (item) {
             case this.elements.projects:
@@ -252,6 +227,11 @@ class NavigationController {
                     )
 
                 new ProjectListController(delay);
+
+                await ProjectListAnimations.check(
+                    () => ProjectListAnimations.slideDownProjectContainer.isPlaying
+                )
+
                 break;
             case this.elements.about:
 
@@ -269,9 +249,13 @@ class NavigationController {
                 await ContactAnimations.check(
                     () => ContactController.isPlaying
                 )
-                console.log("Liberar mostrar")
+                // console.log("Liberar mostrar")
 
                 new AboutController()
+
+                await AboutAnimations.check(
+                    () => AboutController.isPlaying
+                )
 
 
 
@@ -292,8 +276,14 @@ class NavigationController {
                 )
 
                 new ContactController();
+
+                await ContactAnimations.check(
+                    () => ContactController.isPlaying
+                )
+
                 break;
         }
+        this.breakMarkerSpin()
     }
 }
 

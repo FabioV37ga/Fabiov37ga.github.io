@@ -21,12 +21,13 @@
 import u from "umbrellajs"
 import { AboutSelector, Elements } from "../selectors/aboutSelector.js"
 import AboutView from "../views/aboutView.js"
+import AboutAnimations from "../utils/aboutAnimations.js";
 
 // ---------------------------
 // 2. CLASSE ABOUTCONTROLLER
 // ---------------------------
 
-class AboutController{
+class AboutController {
     // Elementos DOM da seção About
     elements: Elements = AboutSelector.defineElements();
 
@@ -36,10 +37,12 @@ class AboutController{
     // Instância estática para acesso global
     static instance: AboutController
 
+    static isPlaying: boolean = false;
+
     // ---------------------------
     // 2.2. CONSTRUCTOR
     // ---------------------------
-    constructor(){
+    constructor() {
         this.showAboutContent()
         AboutController.instance = this;
     }
@@ -47,22 +50,37 @@ class AboutController{
     // ---------------------------
     // 2.3. showAboutContent() - Exibe conteúdo da seção About
     // ---------------------------
-    showAboutContent(){
+    async showAboutContent() {
+        console.log("Show About Content starting ")
+        AboutController.isPlaying = true;
         const elements = this.elements.paragraphs.concat(this.elements.git)
         var delay: number = 0;
         this.view.showSidebar()
         this.view.showContent()
-        for (let element = 0; element <= elements.length - 1; element++){
+
+        elements.forEach((element) => {
+            element.style.display = "flex"
+            element.style.opacity = "0"
+        })
+
+        for (let element = 0; element <= elements.length - 1; element++) {
             this.view.showParagraph(elements[element], delay)
-            delay += 200
+
+            await AboutAnimations.check(
+                () => AboutAnimations.slideInAboutItem.isPlaying
+            )
+
+            if (element == elements.length - 1) {
+                AboutController.isPlaying = false
+            }
         }
     }
 
     // ---------------------------
     // 2.4. hideAboutContent() - Oculta conteúdo da seção About
     // ---------------------------
-    hideAboutContent(){
-        this.view.hideContent() 
+    hideAboutContent() {
+        this.view.hideContent()
     }
 }
 
