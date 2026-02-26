@@ -31,8 +31,27 @@
     font-family: "neue montreal medium", sans-serif;
     cursor: pointer;
     transition: color .3s ease-in-out;
+    display: flex;
+}
+
+.navigation-item a p {
+    margin-right: 5px;
 }
 
 .navigation-item a:hover {
     color: var(--gray);
+}
+
+.marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marker * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5px;
+    width: 9px;
 }

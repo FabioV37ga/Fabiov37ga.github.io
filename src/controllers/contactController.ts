@@ -143,7 +143,7 @@ class ContactController {
         const cards = this.elements.cards
 
         // Exibe cartões em sequência, aguardando checagens entre grupos
-        showcard(cards[0], 100)
+        showcard(cards[0], 10)
         await ContactAnimations.check(
             () => ContactAnimations.showCards.isPlaying
         )
