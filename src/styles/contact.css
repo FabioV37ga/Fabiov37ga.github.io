@@ -53,7 +53,8 @@
     font-family: "Neue Montreal";
     cursor: pointer;
     text-decoration: none;
-    position: relative
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .contact-card--image {
@@ -81,7 +82,7 @@
     font-size: 15px;
 }
 
-.contact-clipboard{
+.contact-clipboard {
     color: white;
     position: absolute;
     right: 15px;
