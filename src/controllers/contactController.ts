@@ -10,25 +10,20 @@ class ContactController {
 
     view: ContactView = new ContactView(this.elements);
 
+    isPlaying: boolean = false;
+
     static instance: ContactController;
 
     constructor() {
         this.showContent()
+
+        ContactController.instance = this;
     }
 
     async showContent() {
-
         this.displayContent();
-
         await this.showTitles()
-
-
-
         this.showCards()
-
-
-
-
     }
 
     displayContent() {
@@ -71,6 +66,7 @@ class ContactController {
         }
     }
 
+
     async expandDivisor() {
         ContactAnimations.expandDivisor.animation(this.elements.divisor)
 
@@ -79,6 +75,73 @@ class ContactController {
             () => ContactAnimations.expandDivisor.isPlaying
         )
         return true
+    }
+
+    async hideContactContent() {
+        this.isPlaying = true;
+
+        await this.hideCards()
+
+        await this.hideTitles()
+
+        this.isPlaying = false
+    }
+
+    async hideCards() {
+
+        function hideCard(card: HTMLElement, delay: number) {
+            ContactAnimations.hideCards.animation(card, delay)
+        }
+
+        const cards = this.elements.cards
+
+        hideCard(cards[3], 100)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideCards.isPlaying
+        )
+
+        hideCard(cards[1], 0)
+        hideCard(cards[2], 0)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideCards.isPlaying
+        )
+
+        hideCard(cards[0], 0)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideCards.isPlaying
+        )
+
+        this.elements.cards.forEach(card => card.style.display = "none")
+
+        return true
+    }
+
+    async hideTitles() {
+        const titles = this.elements.titles
+
+        ContactAnimations.hideTitle.animation(titles[1], 0)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideTitle.isPlaying
+        )   
+
+        ContactAnimations.retractDivisor.animation(this.elements.divisor)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.retractDivisor.isPlaying
+        )
+
+        ContactAnimations.hideTitle.animation(titles[0], 0)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideTitle.isPlaying
+        )
+
+        return true
+
     }
 }
 

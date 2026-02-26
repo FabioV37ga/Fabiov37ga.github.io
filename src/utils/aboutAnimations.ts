@@ -86,7 +86,7 @@ class AboutAnimations extends Animation{
             AboutAnimations.hideAboutItems.isPlaying = true;
             return animate(element, {
                 opacity: [1, 0],
-                translateX: ["0px", "20px"],
+                // translateX: ["0px", "20px"],
                 duration: 250,
                 onComplete: ()=>{
                     element.style.display = 'none';

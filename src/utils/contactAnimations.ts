@@ -72,6 +72,51 @@ class ContactAnimations extends Animation {
             })
         }
     }
+
+    static hideCards: AnimationObject = {
+        isPlaying: false,
+        animation: (element: HTMLElement, delay: number) => {
+            ContactAnimations.hideCards.isPlaying = true;
+            return animate(element, {
+                opacity: [1, 0],
+                duration: 350,
+                delay: delay,
+                onComplete: () => {
+                    ContactAnimations.hideCards.isPlaying = false;
+                }
+            })
+        }
+    }
+
+    static hideTitle: AnimationObject = {
+        isPlaying: false,
+        animation: (element: HTMLElement, delay: number) => {
+            ContactAnimations.hideTitle.isPlaying = true;
+            return animate(element, {
+                opacity: [1, 0],
+                duration: 400,
+                delay: delay,
+                onComplete: () => {
+                    ContactAnimations.hideTitle.isPlaying = false;
+                }
+            })
+        }
+    }
+
+    static retractDivisor: AnimationObject = {
+        isPlaying: false,
+        animation: (element: HTMLElement) => {
+            ContactAnimations.retractDivisor.isPlaying = true;
+            return animate(element, {
+                height: ['100%', '0%'],
+                margin: ['0px 0 0 0', '112px 0 0 0'],
+                duration: 500,
+                onComplete: () => {
+                    ContactAnimations.retractDivisor.isPlaying = false;
+                }
+            })
+        }
+    }
 }
 
 export default ContactAnimations;

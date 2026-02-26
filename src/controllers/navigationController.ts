@@ -40,6 +40,7 @@ import ProjectListAnimations from "../utils/projectListAnimations.js";
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 import projectListAnimations from "../utils/projectListAnimations.js";
 import AboutAnimations from "../utils/aboutAnimations.js";
+import ContactAnimations from "../utils/contactAnimations.js";
 
 // ---------------------------
 // 2. CLASSE NAVIGATIONCONTROLLER
@@ -104,7 +105,7 @@ class NavigationController {
 
     selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Verifica se não está em cooldown de animação
-        if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false 
+        if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
             && ProjectDisplayAnimations.delay.isPlaying === false
         ) {
             // Armazena o item previamente selecionado
@@ -153,11 +154,11 @@ class NavigationController {
             case this.elements.projects:
                 // Oculta a lista de projetos
                 // Se não houver projeto destacado, oculta a lista inteira
-                if (!ProjectListController.hasHighlightedProject){
+                if (!ProjectListController.hasHighlightedProject) {
                     ProjectListController.hideProjectList();
                 }
                 // Se houver projeto destacado, oculta apenas o conteúdo do projeto
-                else{
+                else {
                     ProjectController.instance.hideProject("navigation");
                 }
 
@@ -167,6 +168,7 @@ class NavigationController {
                 // Implementação futura: Ocultar seção "Sobre"
                 break;
             case this.elements.contact:
+                ContactController.instance.hideContactContent()
                 // Implementação futura: Ocultar seção "Contato"
                 break;
         }
@@ -182,22 +184,39 @@ class NavigationController {
         switch (item) {
             case this.elements.projects:
                 // Cria novo controller de lista de projetos com delay
-                // await 
+
+                if (ContactController.instance)
+                    await ContactAnimations.check(
+                        () => ContactController.instance.isPlaying
+                    )
+
+                if (AboutController.instance)
+                    await AboutAnimations.check(
+                        () => AboutAnimations.hideAboutItems.isPlaying
+                    )
+
                 new ProjectListController(delay);
                 break;
             case this.elements.about:
 
+                // animação lista projetos
                 await projectListAnimations.check(
                     () => projectListAnimations.slideUpProjectContainer.isPlaying
                 )
 
+                // animação display projeto
                 await ProjectListAnimations.check(
                     () => ProjectDisplayAnimations.delay.isPlaying
                 )
 
+                if (ContactController.instance)
+                    await ContactAnimations.check(
+                        () => ContactController.instance.isPlaying
+                    )
+
                 new AboutController()
-                
-                
+
+
 
                 break;
             case this.elements.contact:
@@ -209,6 +228,10 @@ class NavigationController {
 
                 await ProjectListAnimations.check(
                     () => ProjectDisplayAnimations.delay.isPlaying
+                )
+
+                await AboutAnimations.check(
+                    () => AboutAnimations.hideAboutItems.isPlaying
                 )
 
                 new ContactController();
