@@ -127,9 +127,9 @@ class NavigationController {
                 // Adiciona a seleção visual ao item clicado
                 this.view.selectItem(item);
 
-                // Exibe o conteúdo do item com delay de 1750ms
-
+                // Define o delay para a exibição do conteúdo baseado no estado (inicialização ou clique)
                 var delay: number = state == "init" ? 1750 : 0;
+                // Exibe o conteúdo do item selecionado com o delay definido
                 this.showSelectedItemContent(item, delay);
             } else {
                 // Log quando o item já está selecionado
