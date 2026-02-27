@@ -25,6 +25,7 @@ import { WelcomeSelector, Elements } from "../selectors/welcomeSelector.js";
 
 // Importa a view responsável pela renderização
 import WelcomeView from "../views/welcomeView.js";
+import WelcomeAnimations from "../utils/welcomeAnimations.js";
 
 
 // ---------------------------
@@ -58,12 +59,21 @@ class WelcomeController{
     // 2.3. handleWelcome - Gerencia a animação de boas-vindas
     // ---------------------------
     
-    handleWelcome(){
+    async handleWelcome(){
         // Escuta o fim da animação do elemento portfolio
-        u(this.elements.portfolio).on("animationend", ()=>{
-            // Remove a tela de boas-vindas através da view
-            this.view.removeWelcome();
-        })
+        WelcomeAnimations.fadeOutWelcome.animation(this.elements.name, 1000);
+
+        await WelcomeAnimations.check(
+            () => WelcomeAnimations.fadeOutWelcome.isPlaying
+        )
+
+        WelcomeAnimations.fadeOutWelcome.animation(this.elements.portfolio, 0);
+
+        await WelcomeAnimations.check(
+            () => WelcomeAnimations.fadeOutWelcome.isPlaying
+        )
+
+        this.view.removeWelcome();
     }
 }
 

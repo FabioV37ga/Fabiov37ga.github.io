@@ -1,14 +1,43 @@
+/**
+ * ============================================================================
+ * CONTACT ANIMATIONS
+ * ============================================================================
+ *
+ * SUMÁRIO:
+ * 1. Imports e Dependências
+ * 2. Interface AnimationObject
+ * 3. Classe ContactAnimations
+ *    3.1. displayContact - Exibe container de contato sem animação
+ *    3.2. showTitles - Animação de exibição de títulos
+ *    3.3. showCards - Animação de exibição de cartões
+ *    3.4. expandDivisor - Animação de expansão do divisor
+ *    3.5. hideCards - Animação de ocultação dos cartões
+ *    3.6. hideTitle - Animação de ocultação dos títulos
+ *    3.7. retractDivisor - Animação de retração do divisor
+ *
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. IMPORTS E DEPENDÊNCIAS
+// ---------------------------
 import { animate, JSAnimation, engine, cubicBezier } from "animejs"
 
 import Animation from "./animation.js";
 
 engine.pauseOnDocumentHidden = true;
 
+// ---------------------------
+// 2. INTERFACE ANIMATIONOBJECT
+// ---------------------------
 interface AnimationObject {
     isPlaying: boolean;
     animation: (...args: any[]) => JSAnimation;
 }
 
+// ---------------------------
+// 3. CLASSE CONTACTANIMATIONS
+// ---------------------------
 class ContactAnimations extends Animation {
 
     static displayContact: AnimationObject = {

@@ -1,3 +1,23 @@
+/**
+ * ============================================================================
+ * NAVIGATION ANIMATIONS
+ * ============================================================================
+ *
+ * SUMÁRIO:
+ * 1. Imports e Dependências
+ * 2. Interface AnimationObject
+ * 3. Classe NavigationAnimations
+ *    3.1. shiftMarker - Move marcador para posição ativa
+ *    3.2. spinMarkers - Gira marcadores continuamente
+ *    3.3. stopSpinMarkers - Interrompe rotação dos marcadores
+ *    3.4. shiftMarkerBack - Retorna marcador à posição inicial
+ *
+ * ============================================================================
+ */
+
+// ---------------------------
+// 1. IMPORTS E DEPENDÊNCIAS
+// ---------------------------
 import { engine, animate, JSAnimation } from "animejs";
 
 import Animation from "./animation.js";
@@ -7,11 +27,17 @@ engine.pauseOnDocumentHidden = true;
 import u from 'umbrellajs';
 
 
+// ---------------------------
+// 2. INTERFACE ANIMATIONOBJECT
+// ---------------------------
 interface AnimationObject {
     isPlaying: boolean;
     animation: (...args: any[]) => JSAnimation;
 }
 
+// ---------------------------
+// 3. CLASSE NAVIGATIONANIMATIONS
+// ---------------------------
 class NavigationAnimations extends Animation {
 
     static shiftMarker: AnimationObject = {
@@ -42,8 +68,6 @@ class NavigationAnimations extends Animation {
                 duration: 1000,
                 loop: true,
                 ease: 'linear',
-                // onBegin we already flagged isPlaying; to stop rotation
-                // you'll need to call animation.pause()/restart externally
             });
         }
     }

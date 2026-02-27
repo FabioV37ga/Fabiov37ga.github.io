@@ -20,23 +20,7 @@
 }
 
 .welcome-text .name {
-    animation: fadeOut .5s ease-in-out forwards;
-    animation-delay: 1s;
+    /* animation: fadeOut .5s ease-in-out forwards;
+    animation-delay: 1s; */
     font-weight: 600;
-}
-
-.welcome-text .title {
-    animation: fadeOut .5s ease-in-out forwards;
-    animation-delay: 1.25s;
-}
-
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
 }

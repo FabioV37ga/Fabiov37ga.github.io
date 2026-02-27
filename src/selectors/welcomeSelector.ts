@@ -28,6 +28,7 @@ import u from 'umbrellajs';
 // Define a estrutura dos elementos da tela de boas-vindas
 interface Elements {
     welcome: HTMLElement;      // Container principal de boas-vindas
+    name: HTMLElement;         // Título "name" com animação
     portfolio: HTMLElement;    // Título "portfolio" com animação
 }
 
@@ -56,6 +57,8 @@ class WelcomeSelector {
         WelcomeSelector.elements = {
             // Seleciona o container principal de boas-vindas
             welcome: u('.welcome').first() as HTMLElement,
+
+            name: u('.welcome-text .name').first() as HTMLElement,
             
             // Seleciona o título "portfolio" dentro do texto de boas-vindas
             portfolio: u('.welcome-text .title').first() as HTMLElement

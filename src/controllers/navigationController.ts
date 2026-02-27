@@ -10,8 +10,10 @@
  *    2.2. Constructor
  *    2.3. addHandlers() - Adiciona eventos de clique aos itens
  *    2.4. selectItem() - Seleciona um item e desmarca os outros
- *    2.5. hideSelectedItemContent() - Oculta conteúdo do item selecionado
- *    2.6. showSelectedItemContent() - Exibe conteúdo do item selecionado
+ *    2.5. animateMarkers() - Inicia animações dos marcadores
+ *    2.6. breakMarkerSpin() - Finaliza rotação dos marcadores
+ *    2.7. hideSelectedItemContent() - Oculta conteúdo do item selecionado
+ *    2.8. showSelectedItemContent() - Exibe conteúdo do item selecionado
  * 
  * ============================================================================
  */
@@ -148,6 +150,9 @@ class NavigationController {
         }
     }
 
+    // ---------------------------
+    // 2.5. animateMarkers - Inicia animações dos marcadores
+    // ---------------------------
     async animateMarkers(item: HTMLElement, delay: number) {
 
         var elements = NavigationSelector.defineElements()
@@ -162,6 +167,9 @@ class NavigationController {
         NavigationAnimations.spinMarkers.animation(elements.markerContainer)
     }
 
+    // ---------------------------
+    // 2.6. breakMarkerSpin - Finaliza rotação dos marcadores
+    // ---------------------------
     async breakMarkerSpin() {
         var elements = NavigationSelector.defineElements()
         console.log("Marker should stop spinning now")
