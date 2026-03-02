@@ -41,3 +41,58 @@
     right: -33px;
     border-radius: 5px;
 }
+
+@media (max-width: 700px) {
+    .about {
+        right: 25px;
+        font-size: 20px;
+    }
+
+    .about-sidebar {
+        right: -15px;
+    }
+
+    .fa.fa-graduation-cap {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 360px) {
+    .about {
+        right: 20px;
+        font-size: 16px;
+        top: 300px
+    }
+
+    .about-sidebar {
+        right: -10px;
+    }
+
+    .fa.fa-graduation-cap {
+        font-size: 13px;
+    }
+
+    .about-content p i {
+        width: 25px;
+    }
+}
+
+@media (max-width: 330px) {
+    .about {
+        right: 20px;
+        font-size: 14px;
+        top: 250px
+    }
+
+    .about-sidebar {
+        right: -8px;
+    }
+
+    .fa.fa-graduation-cap {
+        font-size: 11px;
+    }
+
+    .about-content p i {
+        width: 20px
+    }
+}

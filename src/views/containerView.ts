@@ -66,8 +66,13 @@ class ContainerView {
         const defaultPadding = width > 900 && height > 900 ? 55 : 20; // in pixels
 
         // Ajusta as dimensões subtraindo o padding de ambos os lados
-        const adjustedWidth = width - (defaultPadding * 2);
-        const adjustedHeight = height - (defaultPadding * 2);
+        var adjustedWidth = width - (defaultPadding * 2);
+        var adjustedHeight = height - (defaultPadding * 2);
+
+        // Responsividade mobile:
+        if (adjustedWidth <= 700){
+            adjustedHeight -= 50
+        }
 
         // Define o tamanho do container principal com base nas dimensões ajustadas
         u(this.elements.mainContainer).attr({
@@ -90,6 +95,11 @@ class ContainerView {
         // Ajuste adicional para telas menores que 900px
         if (width < 900) {
             leftOffset += 250
+        }
+
+        // Responsividade mobile: Ajusta o deslocamento para telas menores que 700px
+        if (width <= 700) {
+            leftOffset /= 2
         }
 
         // Define o deslocamento do background via CSS inline

@@ -85,9 +85,11 @@ class ContactController {
     async showContent() {
         ContactController.isPlaying = true
 
+        const windowWidth = window.innerWidth;
+
         this.displayContent();
-        await this.showTitles()
-        await this.showCards()
+        await this.showTitles(windowWidth)
+        await this.showCards(windowWidth)
 
         ContactController.isPlaying = false;
     }
@@ -102,7 +104,7 @@ class ContactController {
     // ---------------------------
     // 2.6. showTitles() - Anima títulos e divisor
     // ---------------------------
-    async showTitles() {
+    async showTitles(width: number) {
         var titles = this.elements.titles
         // Mostra primeiro título com pequeno delay
         this.view.showTitle(titles[0], 10)
@@ -129,7 +131,7 @@ class ContactController {
     // ---------------------------
     // 2.7. showCards() - Anima cartões de contato
     // ---------------------------
-    async showCards() {
+    async showCards(width: number) {
 
         // Prepara estado inicial dos cartões
         this.elements.cards.forEach(card => card.style.opacity = "0%")
@@ -142,24 +144,43 @@ class ContactController {
 
         const cards = this.elements.cards
 
-        // Exibe cartões em sequência, aguardando checagens entre grupos
-        showcard(cards[0], 10)
-        await ContactAnimations.check(
-            () => ContactAnimations.showCards.isPlaying
-        )
 
-        showcard(cards[1], 0)
-        showcard(cards[2], 0)
+        if (width > 450) {
+            // Exibe cartões em sequência, aguardando checagens entre grupos
+            showcard(cards[0], 10)
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
 
-        await ContactAnimations.check(
-            () => ContactAnimations.showCards.isPlaying
-        )
+            showcard(cards[1], 0)
+            showcard(cards[2], 0)
 
-        showcard(cards[3], 0)
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
 
-        await ContactAnimations.check(
-            () => ContactAnimations.showCards.isPlaying
-        )
+            showcard(cards[3], 0)
+
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
+        } else {
+            showcard(cards[0], 10)
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
+            showcard(cards[1], 0)
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
+
+            showcard(cards[2], 0)
+            await ContactAnimations.check(
+                () => ContactAnimations.showCards.isPlaying
+            )
+            showcard(cards[3], 0)
+        }
+
 
         return true
     }

@@ -2,7 +2,7 @@
     color: white;
     font-family: "Neue Montreal", sans-serif;
     width: fit-content;
-    z-index: 2;
+    /* z-index: 2; */
     position: relative;
 }
 
@@ -28,7 +28,8 @@
 }
 
 .navigation-item {
-    width: fit-content
+    width: fit-content;
+    z-index: 5;
 }
 
 .navigation-item a {
@@ -75,7 +76,7 @@
         zoom: 85%;
     }
 
-    .project-display{
+    .project-display {
         zoom: 85%;
     }
 }
@@ -99,18 +100,22 @@
         z-index: 4
     }
 
-    .description-content span{
+    .description-content span {
         font-size: 23px;
         line-height: 25px;
+    }
+
+    .technologies {
+        zoom: 150%;
     }
 }
 
 @media (max-width: 460px) {
-    .presentation h1{
+    .presentation h1 {
         font-size: 40px;
     }
 
-    .projects-container{
+    .projects-container {
         zoom: 50%;
         top: 330px !important;
         right: 0px !important;
@@ -127,7 +132,67 @@
         z-index: 4;
     }
 
-    .description-content span{
+    .description-content span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 370px) {
+    .presentation h1 {
+        font-size: 30px;
+    }
+
+    .projects-container {
+        zoom: 40%;
+        top: 400px !important;
+        right: 0px !important;
+        z-index: 3
+    }
+
+    .projects-list {
+        width: 745px;
+    }
+
+    .project-display {
+        zoom: 35%;
+        transform: translateY(430px);
+        z-index: 4;
+    }
+
+    .description-content span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 330px) {
+    .menu{
+        zoom: 80%;
+    }
+
+    .presentation h1 {
+        font-size: 25px;
+    }
+
+    .projects-container {
+        zoom: 30%;
+        top: 450px !important;
+        right: 0px !important;
+        z-index: 3
+    }
+
+    .projects-list {
+        width: 745px;
+    }
+
+    .project-display {
+        zoom: 26%;
+        transform: translateY(490px);
+        z-index: 4;
+    }
+
+    .description-content span {
         font-size: 30px;
         line-height: 30px;
     }
