@@ -51,6 +51,7 @@ class WelcomeView {
     
     removeWelcome(){
         // Remove o elemento welcome do DOM
+        console.log("apagar")
         this.elements.welcome.remove()
     }
 }

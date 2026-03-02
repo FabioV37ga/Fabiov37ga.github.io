@@ -259,76 +259,6 @@ const wearSell: Project = {
 
 
 // ---------------------------
-// 3.10. driveGuide - Protótipo de locadora
-// ---------------------------
-
-const driveGuide: Project = {
-    title: "DriveGuide",
-    technologies: [
-        Technologies.html5,
-        Technologies.css3,
-        Technologies.javascript
-    ],
-    description: [
-        paragraph(`Protótipo de site estático para locadora de veículos.`)
-    ],
-    link: "https://FabioV37ga.github.io/DriveGuide",
-    github: "https://github.com/FabioV37ga/DriveGuide"
-}
-// ---------------------------
-// 3.10. driveGuide - Protótipo de locadora
-// ---------------------------
-
-const driveGuide2: Project = {
-    title: "DriveGuide",
-    technologies: [
-        Technologies.html5,
-        Technologies.css3,
-        Technologies.javascript
-    ],
-    description: [
-        paragraph(`Protótipo de site estático para locadora de veículos.`)
-    ],
-    link: "https://FabioV37ga.github.io/DriveGuide",
-    github: "https://github.com/FabioV37ga/DriveGuide"
-}
-// ---------------------------
-// 3.10. driveGuide - Protótipo de locadora
-// ---------------------------
-
-const driveGuide3: Project = {
-    title: "DriveGuide",
-    technologies: [
-        Technologies.html5,
-        Technologies.css3,
-        Technologies.javascript
-    ],
-    description: [
-        paragraph(`Protótipo de site estático para locadora de veículos.`)
-    ],
-    link: "https://FabioV37ga.github.io/DriveGuide",
-    github: "https://github.com/FabioV37ga/DriveGuide"
-}
-// ---------------------------
-// 3.10. driveGuide - Protótipo de locadora
-// ---------------------------
-
-const driveGuide4: Project = {
-    title: "DriveGuide",
-    technologies: [
-        Technologies.html5,
-        Technologies.css3,
-        Technologies.javascript
-    ],
-    description: [
-        paragraph(`Protótipo de site estático para locadora de veículos.`)
-    ],
-    link: "https://FabioV37ga.github.io/DriveGuide",
-    github: "https://github.com/FabioV37ga/DriveGuide"
-}
-
-
-// ---------------------------
 // 4. ARRAY DE PROJETOS E EXPORTS
 // ---------------------------
 
@@ -343,7 +273,7 @@ const Projects: Project[] = [
     birdGame,
     bounce,
     wearSell,
-    driveGuide,
+    // driveGuide,
     // driveGuide2,
     // driveGuide3,
     // driveGuide4
