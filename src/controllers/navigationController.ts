@@ -206,7 +206,8 @@ class NavigationController {
                 // Implementação futura: Ocultar seção "Sobre"
                 break;
             case this.elements.contact:
-                ContactController.instance.hideContactContent()
+                var windowWidth = window.innerWidth;
+                ContactController.instance.hideContactContent(windowWidth)
                 // Implementação futura: Ocultar seção "Contato"
                 break;
         }
