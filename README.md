@@ -137,63 +137,6 @@ Fabiov37ga.github.io/
 
 ---
 
-## 🚀 Primeiros Passos
-
-### Pré-requisitos
-
-- **Node.js** >= 18.0.0
-- **npm** ou **yarn** ou **pnpm**
-
-### Instalação
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/FabioV37ga/Fabiov37ga.github.io.git
-   cd Fabiov37ga.github.io
-   ```
-
-2. **Instale as dependências**
-   ```bash
-   npm install
-   ```
-
-3. **Inicie o servidor de desenvolvimento**
-   ```bash
-   npm start
-   ```
-
-4. **Abra o navegador**
-   
-   Navegue até `http://localhost:3000`
-
----
-
-## 🏗️ Build & Deploy
-
-### Desenvolvimento
-
-```bash
-npm start          # Inicia dev server com HMR
-```
-
-### Build de Produção
-
-```bash
-npm run build      # Build para produção → dist/
-npm run preview    # Preview do build de produção localmente
-```
-
-### Deploy
-
-O projeto está configurado para deploy em:
-- **GitHub Pages** (via pasta `dist/`)
-- **Render** (configurado com `allowedHosts`)
-- Qualquer serviço de hospedagem estática
-
-**Output do build:** diretório `dist/`
-
----
-
 ## 🏛️ Arquitetura
 
 ### Padrão Inspirado em MVC
@@ -226,16 +169,6 @@ O projeto está configurado para deploy em:
 - **Template Literals:** nanohtml para geração de HTML type-safe
 - **CSS Modular:** Stylesheets com escopo de componente
 - **Assets Públicos:** Arquivos estáticos em `src/public/` copiados para `dist/`
-
----
-
-## 📝 Scripts Disponíveis
-
-| Script | Descrição |
-|--------|-----------|
-| `npm start` | Inicia servidor de desenvolvimento Vite na porta 3000 |
-| `npm run build` | Build para produção (output: `dist/`) |
-| `npm run preview` | Preview do build de produção localmente |
 
 ---
 
@@ -284,18 +217,6 @@ export const Technologies = {
     novaTech: novaTech()
 }
 ```
-
----
-
-## 🤝 Contribuindo
-
-Contribuições, issues e solicitações de recursos são bem-vindos!
-
-1. Faça um Fork do repositório
-2. Crie sua branch de feature (`git checkout -b feature/RecursoIncrivel`)
-3. Commit suas mudanças (`git commit -m 'Adiciona RecursoIncrivel'`)
-4. Push para a branch (`git push origin feature/RecursoIncrivel`)
-5. Abra um Pull Request
 
 ---
 
