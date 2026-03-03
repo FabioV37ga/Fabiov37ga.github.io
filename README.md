@@ -60,6 +60,7 @@ Terceira iteração do meu portfólio pessoal construído com foco em performanc
 | **Anime.js** | Biblioteca de animação | ^4.2.2 |
 | **Umbrella.js** | Manipulação DOM leve | ^3.3.3 |
 | **nanohtml** | Tagged template literals para HTML | ^1.10.0 |
+| **Node.js** | Runtime JavaScript | >=18.0.0 |
 | **Vite** | Build tool e dev server | ^7.2.4 |
 
 ---
@@ -68,48 +69,64 @@ Terceira iteração do meu portfólio pessoal construído com foco em performanc
 
 ```
 Fabiov37ga.github.io/
+├── index.html                # Página de carregamento para GitHub Pages
 ├── src/
-│   ├── index.html              # Ponto de entrada
+│   ├── index.html              # Ponto de entrada (Vite)
 │   ├── app.ts                  # Bootstrap da aplicação
 │   ├── public/                 # Assets estáticos (copiados para dist)
 │   │   └── images/
 │   │       ├── icons/          # Ícones da UI
 │   │       └── background/     # Imagens de fundo
 │   ├── controllers/            # Lógica de negócio & tratamento de eventos
+│   │   ├── aboutController.ts
+│   │   ├── contactController.ts
 │   │   ├── containerController.ts
 │   │   ├── navigationController.ts
 │   │   ├── projectController.ts
 │   │   ├── projectListController.ts
 │   │   └── welcomeController.ts
 │   ├── views/                  # Manipulação DOM & renderização
+│   │   ├── aboutView.ts
+│   │   ├── contactView.ts
 │   │   ├── containerView.ts
 │   │   ├── navigationView.ts
 │   │   ├── projectListView.ts
+│   │   ├── projectView.ts
 │   │   └── welcomeView.ts
 │   ├── selectors/              # Seleção de elementos DOM
+│   │   ├── aboutSelector.ts
+│   │   ├── contactSelector.ts
 │   │   ├── containerSelector.ts
 │   │   ├── navigationSelector.ts
 │   │   ├── projectListSelector.ts
+│   │   ├── projectSelector.ts
 │   │   └── welcomeSelector.ts
 │   ├── templates/              # Templates HTML reutilizáveis
+│   │   ├── paragraphTemplate.ts
 │   │   ├── projectListTemplate.ts
 │   │   ├── projectTemplate.ts
 │   │   └── technologiesTemplate.ts
 │   ├── data/                   # Dados estáticos & tipos
 │   │   └── projects.ts         # Informações dos projetos
 │   ├── utils/                  # Funções auxiliares
-│   │   ├── animationCooldown.ts
+│   │   ├── aboutAnimations.ts
+│   │   ├── animation.ts
+│   │   ├── contactAnimations.ts
+│   │   ├── navigationAnimations.ts
 │   │   ├── projectDisplayAnimations.ts
-│   │   └── projectListAnimations.ts
+│   │   ├── projectListAnimations.ts
+│   │   └── welcomeAnimations.ts
 │   └── styles/                 # Módulos CSS
 │       ├── reset.css
 │       ├── document.css
 │       ├── background.css
-│       ├── container.css
 │       ├── menu.css
+│       ├── container.css
+│       ├── welcome.css
+│       ├── about.css
+│       ├── contact.css
 │       ├── projectList.css
-│       ├── projectDisplay.css
-│       └── welcome.css
+│       └── projectDisplay.css
 ├── dist/                       # Output do build de produção
 ├── vite.config.ts             # Configuração do Vite
 ├── tsconfig.json              # Configuração do TypeScript
