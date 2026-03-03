@@ -80,6 +80,7 @@ class ContainerView {
             style: `
             width: ${adjustedWidth}px; 
             height: ${adjustedHeight}px;
+            opacity: 1
             `
         });
 
@@ -127,6 +128,8 @@ class ContainerView {
         await ContainerAnimations.check(
             () => ContainerAnimations.fadeInContainer.isPlaying
         )
+
+        this.elements.mainContainer.style.opacity = `1`
     }
 }
 

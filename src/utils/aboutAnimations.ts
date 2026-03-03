@@ -29,12 +29,50 @@ engine.pauseOnDocumentHidden = true;
 
 class AboutAnimations extends Animation{
 
+    static expandContainer: AnimationObject = {
+        isPlaying:false,
+        animation: (element: HTMLElement) =>{
+            AboutAnimations.expandContainer.isPlaying = true;
+            return animate(element, {
+                display: 'flex',
+                translateX: ['-228px', '0px'],
+                translateY: ['136px', '0px'],
+                width: ['0px', '456px'],
+                height: ['0px', '272px'],
+                opacity: 1,
+                duration: 500,
+                ease: cubicBezier(0.015, 0.065,0.189,0.971),
+                onComplete: ()=>{
+                    AboutAnimations.expandContainer.isPlaying = false
+                }
+            })
+        }
+    }
+
+
+
+    static showTitle: AnimationObject = {
+        isPlaying: false,
+        animation: (element:HTMLElement) =>{
+            AboutAnimations.showTitle.isPlaying = true;
+            return animate(element, {
+                // display: 'flex',
+                delay: 200,
+                opacity: [0,1],
+                duration: 200,
+                onComplete: ()=>{
+                    AboutAnimations.showTitle.isPlaying = false
+                }
+            })
+        }
+    }
+
     static showAbout: AnimationObject = {
         isPlaying: false,
         animation: (element:HTMLElement) =>{
             AboutAnimations.showAbout.isPlaying = true;
             return animate(element, {
-                display: 'flex',
+                // display: 'flex',
                 opacity: [0,1],
                 duration: 200 * 4,
                 onComplete: ()=>{
@@ -68,7 +106,6 @@ class AboutAnimations extends Animation{
                 translateX: ["20px", "0px"], 
                 ease: 'easeOutCirc',
                 duration: 250,
-                delay: delay,
                 onComplete: ()=>{
                     AboutAnimations.slideInAboutItem.isPlaying = false;
                 }
@@ -84,6 +121,7 @@ class AboutAnimations extends Animation{
                 // translateX: ["0px", "20px"],
                 duration: 250,
                 onComplete: ()=>{
+                    element.style.opacity = '0';
                     element.style.display = 'none';
                     AboutAnimations.hideAboutItems.isPlaying = false
                 }

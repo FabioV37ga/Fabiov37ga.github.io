@@ -1,8 +1,4 @@
 *atribuir corretamente lógicas de view no controller de contact (redirecionar para classe view)
 
-
-1. Reestilizar 'about' para o mesmo padrão de 'contact'
-    1.1. Refazer animações de 'about'
-2. Usar animejs para animação de aparecimento do container, usando o await para liberar as animações posteriores
-3. Horizontalizar menu na versão mobile?
+1. Horizontalizar menu na versão mobile?
 --------------------------------

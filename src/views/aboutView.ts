@@ -28,36 +28,59 @@ import AboutAnimations from "../utils/aboutAnimations.js";
 // 2. CLASSE ABOUTVIEW
 // ---------------------------
 
-class AboutView{
+class AboutView {
     elements: Elements;
 
-    constructor(elements: Elements){
+    constructor(elements: Elements) {
         this.elements = elements
     }
 
-    showContent(){
-        AboutAnimations.showAbout.animation(
+    async showContainer() {
+        AboutAnimations.expandContainer.animation(
             this.elements.about
+        )
+        await AboutAnimations.check(
+            () => AboutAnimations.expandContainer.isPlaying
         )
     }
 
-    showParagraph(paragraph: HTMLElement, delay: number){
+    async showTitle() {
+        AboutAnimations.showTitle.animation(
+            this.elements.title
+        )
+
+        await AboutAnimations.check(
+            () => AboutAnimations.showTitle.isPlaying
+        )
+    }
+
+    showParagraph(paragraph: HTMLElement, delay: number) {
         AboutAnimations.slideInAboutItem.animation(
             paragraph,
             delay
         )
     }
 
-    showSidebar(){
+    showSidebar() {
         AboutAnimations.showSidebar.animation(
             this.elements.sidebar
         )
     }
 
-    hideContent(){
+    async hideContent() {
         AboutAnimations.hideAboutItems.animation(
             this.elements.about
         )
+
+        await AboutAnimations.check(
+            () => AboutAnimations.hideAboutItems.isPlaying
+        )
+
+        const elements = this.elements.paragraphs.concat(this.elements.git).concat(this.elements.title)
+
+        elements.forEach(element => {
+            element.style.opacity = '0'
+        });
     }
 
 }

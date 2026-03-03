@@ -20,7 +20,8 @@ import u from "umbrellajs"
 
 interface Elements{
     about: HTMLElement;
-    paragraphs: HTMLElement[]
+    title: HTMLElement;
+    paragraphs: HTMLElement[];
     git: HTMLElement;
     sidebar: HTMLElement;
 }
@@ -35,6 +36,8 @@ class AboutSelector{
     static defineElements(): Elements{
         const about: HTMLElement = u(".about").nodes[0] as HTMLElement;
 
+        const title: HTMLElement = u(".about h2").nodes[0] as HTMLElement;
+
         const paragraphs: HTMLElement[] = u(".about-content p").nodes as HTMLElement[]
 
         const git: HTMLElement = u(".about-git").nodes[0] as HTMLElement
@@ -43,6 +46,7 @@ class AboutSelector{
 
         AboutSelector.elements = {
             about: about,
+            title: title,
             paragraphs: paragraphs,
             git: git,
             sidebar: sidebar

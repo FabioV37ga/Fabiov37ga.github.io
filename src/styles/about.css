@@ -1,25 +1,50 @@
 .about {
+    display: none;
     position: absolute;
     right: 90px;
     top: 50%;
     color: white;
     font-family: "Neue Montreal";
     font-size: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(121, 121, 121, 0.5);
+    border-radius: 5px;
+    padding: 25px 35px 25px 35px
+}
+
+.about h2 {
+    /* display: none; */
+    opacity: 0;
+    margin-bottom: 20px;
+    font-size: 35px;
+    border-bottom: 1px solid rgba(121, 121, 121, 0.5);
+    padding-bottom: 20px;
+}
+
+.about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .about-content p {
-    display: none;
-    margin-bottom: 5px
+    display: flex;
+    opacity: 0;
+    margin-bottom: 5px;
+    font-size: 23px;
+    letter-spacing: 2px;
 }
 
 .about-git {
-    display: none;
+    display: flex;
     text-decoration: none;
     color: white
 }
 
 .about-git span {
-    border-bottom: 1px solid white
+    padding-bottom: 3px;
+    border-bottom: 0.5px dashed rgb(185, 185, 185);
 }
 
 .about-content p i {
@@ -33,66 +58,54 @@
     text-decoration: none !important;
 }
 
-.about-sidebar {
+/* .about-sidebar {
     background: white;
     position: absolute;
     height: 100%;
     width: 2px;
     right: -33px;
     border-radius: 5px;
-}
+} */
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .about {
-        right: 25px;
+        top: unset;
+        right: unset;
+        position: relative;
+        margin: 70px auto;
         font-size: 20px;
     }
 
-    .about-sidebar {
+    /* .about-sidebar {
         right: -15px;
-    }
+    } */
 
     .fa.fa-graduation-cap {
         font-size: 17px;
     }
 }
 
-@media (max-width: 360px) {
-    .about {
-        right: 20px;
-        font-size: 16px;
-        top: 300px
-    }
-
-    .about-sidebar {
-        right: -10px;
-    }
-
-    .fa.fa-graduation-cap {
-        font-size: 13px;
-    }
-
-    .about-content p i {
-        width: 25px;
+@media (max-width: 650px) {
+    .about{
+        zoom: 75%
     }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 550px) {
     .about {
-        right: 20px;
-        font-size: 14px;
-        top: 250px
-    }
-
-    .about-sidebar {
-        right: -8px;
-    }
-
-    .fa.fa-graduation-cap {
-        font-size: 11px;
-    }
-
-    .about-content p i {
-        width: 20px
+        zoom: 65%
     }
 }
+
+@media (max-width: 480px) {
+    .about {
+        zoom: 55%
+    }
+}
+
+@media (max-width: 430px) {
+    .about {
+        zoom: 47%
+    }
+}
+

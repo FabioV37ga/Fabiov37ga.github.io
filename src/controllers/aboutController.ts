@@ -55,8 +55,12 @@ class AboutController {
         AboutController.isPlaying = true;
         const elements = this.elements.paragraphs.concat(this.elements.git)
         var delay: number = 0;
-        this.view.showSidebar()
-        this.view.showContent()
+
+        await this.view.showContainer()
+        
+        await this.view.showTitle()
+
+        // this.view.showContent()
 
         elements.forEach((element) => {
             element.style.display = "flex"
