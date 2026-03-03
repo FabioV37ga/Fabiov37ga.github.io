@@ -100,3 +100,9 @@
         transform: rotate(360deg) translate(0, 0);
     }
 }
+
+@media (max-width: 700px) {
+    .background {
+        zoom: 50%
+    }
+}

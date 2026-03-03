@@ -4,6 +4,7 @@
     width: fit-content;
     /* z-index: 2; */
     position: relative;
+    user-select: none;
 }
 
 .menu h1 {
