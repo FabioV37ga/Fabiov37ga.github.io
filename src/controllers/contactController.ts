@@ -172,7 +172,7 @@ class ContactController {
         if (card != undefined) {
             cards[card].style.opacity = "0%"
 
-            showcard(cards[card], 10)
+            showcard(cards[card], 0)
             await ContactAnimations.check(
                 () => ContactAnimations.showCards.isPlaying
             )
