@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +36,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -121,9 +123,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0.5;
             }
+
             50% {
                 opacity: 1;
             }
@@ -149,14 +154,15 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Fábio Veiga - Portfólio</h1>
         <p class="description">
-            O portfólio está hospedado em um servidor com carregamento inicial.
+            O portfólio está hospedado em um servidor com carregamento inicial. Ao acessar, aguarde alguns segundos para a vizualiação.
         </p>
         <a href="https://fabioveiga.onrender.com" class="cta-button">Acessar Portfólio</a>
-        
+
         <div class="technologies">
             <span class="tech-badge">
                 <span class="badge-icon">◆</span>TypeScript
@@ -181,4 +187,5 @@
         <p class="loading-text">Aguardando redirecionamento...</p>
     </div>
 </body>
+
 </html>
