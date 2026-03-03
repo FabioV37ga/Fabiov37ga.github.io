@@ -111,6 +111,12 @@
     }
 }
 
+@media (max-width: 600px){
+    .navigation-item a:hover{
+        color: white
+    }
+}
+
 @media (max-width: 460px) {
     .presentation h1 {
         font-size: 40px;

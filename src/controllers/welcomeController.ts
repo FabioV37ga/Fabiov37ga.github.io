@@ -26,6 +26,7 @@ import { WelcomeSelector, Elements } from "../selectors/welcomeSelector.js";
 // Importa a view responsável pela renderização
 import WelcomeView from "../views/welcomeView.js";
 import WelcomeAnimations from "../utils/welcomeAnimations.js";
+import ContainerController from "./containerController.js";
 
 
 // ---------------------------
@@ -61,17 +62,19 @@ class WelcomeController{
     
     async handleWelcome(){
         // Escuta o fim da animação do elemento portfolio
-        WelcomeAnimations.fadeOutWelcome.animation(this.elements.name, 1000);
+        WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.name, 1000);
 
         await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcome.isPlaying
+            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
         )
 
-        WelcomeAnimations.fadeOutWelcome.animation(this.elements.portfolio, 0);
+        WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.portfolio, 0);
 
         await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcome.isPlaying
+            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
         )
+
+        new ContainerController();
 
         this.view.removeWelcome();
     }

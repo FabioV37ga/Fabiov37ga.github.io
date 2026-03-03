@@ -5,6 +5,4 @@
     1.1. Refazer animações de 'about'
 2. Usar animejs para animação de aparecimento do container, usando o await para liberar as animações posteriores
 3. Horizontalizar menu na versão mobile?
-4. Arrumar onclick do card de copiar email na versão mobile (não copia, provavelmente não está disparando click)
-5. Aumentar tamanho do "Return" nas versões mobile
 --------------------------------

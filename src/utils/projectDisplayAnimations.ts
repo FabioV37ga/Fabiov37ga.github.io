@@ -36,7 +36,8 @@ engine.pauseOnDocumentHidden = true;
 // Importa Umbrella JS para manipulação DOM
 import u from "umbrellajs";
 
-import Animation from "./animation.js";
+// import {Animation, AnimationObject} from "./animation.js";
+import { Animation } from "./animation.js";
 import projectListAnimations from "./projectListAnimations.js";
 
 // ---------------------------

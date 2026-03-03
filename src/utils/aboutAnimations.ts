@@ -19,14 +19,9 @@
 
 import {animate, JSAnimation, engine, cubicBezier} from "animejs"
 
-import Animation from "./animation.js";
+import {Animation, AnimationObject} from "./animation.js";
 
 engine.pauseOnDocumentHidden = true;
-
-interface AnimationObject{
-    isPlaying: boolean;
-    animation: (...args: any[]) => JSAnimation;
-}
 
 // ---------------------------
 // 2. CLASSE ABOUTANIMATIONS

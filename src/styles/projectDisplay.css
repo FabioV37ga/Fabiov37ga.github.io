@@ -166,3 +166,9 @@
     color: white;
     border-bottom: 1px solid white
 }
+
+@media (max-width: 600px) {
+    .back-button {
+        font-size: 40px;
+    }
+}

@@ -51,6 +51,8 @@ class ContainerController {
         this.addResizeEvent();
         // Armazena o zoom original da página
         this.originalZoom = window.devicePixelRatio;
+
+        this.showContainer();
     }
 
     
@@ -64,6 +66,10 @@ class ContainerController {
             // Atualiza o tamanho do container através da view
             this.view.updateContainerSize();
         });
+    }
+
+    async showContainer() {
+        await this.view.showContainer();
     }
 }
 

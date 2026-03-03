@@ -3,33 +3,25 @@
 // ---------------------------
 import { animate, JSAnimation, engine, cubicBezier } from "animejs"
 
-import Animation from "./animation.js";
+import {Animation, AnimationObject} from "./animation.js";
 
 engine.pauseOnDocumentHidden = true;
-
-// ---------------------------
-// 2. INTERFACE ANIMATIONOBJECT
-// ---------------------------
-interface AnimationObject {
-    isPlaying: boolean;
-    animation: (...args: any[]) => JSAnimation;
-}
 
 // ---------------------------
 // 3. CLASSE WELCOMEANIMATIONS
 // ---------------------------
 class WelcomeAnimations extends Animation {
-    static fadeOutWelcome: AnimationObject = {
+    static fadeOutWelcomeText: AnimationObject = {
         isPlaying: false,
         animation: (element: HTMLElement, delay: number) => {
-            this.fadeOutWelcome.isPlaying = true;
+            this.fadeOutWelcomeText.isPlaying = true;
             return animate(element, {
                 opacity: [1, 0],
                 duration: 500,
                 easing: 'easeInOutQuad',
                 delay: delay,
                 onComplete: () => {
-                    this.fadeOutWelcome.isPlaying = false;
+                    this.fadeOutWelcomeText.isPlaying = false;
                     // element.style.display = 'none';
                 }
             })

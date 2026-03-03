@@ -20,20 +20,12 @@
 // ---------------------------
 import { engine, animate, JSAnimation } from "animejs";
 
-import Animation from "./animation.js";
+import {Animation, AnimationObject} from "./animation.js";
 
 engine.pauseOnDocumentHidden = true;
 
 import u from 'umbrellajs';
 
-
-// ---------------------------
-// 2. INTERFACE ANIMATIONOBJECT
-// ---------------------------
-interface AnimationObject {
-    isPlaying: boolean;
-    animation: (...args: any[]) => JSAnimation;
-}
 
 // ---------------------------
 // 3. CLASSE NAVIGATIONANIMATIONS

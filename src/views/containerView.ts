@@ -23,6 +23,7 @@ import u from "umbrellajs"
 
 // Importa a interface Elements do seletor
 import { Elements } from "../selectors/containerSelector.js";
+import ContainerAnimations from "../utils/containerAnimations.js";
 
 
 // ---------------------------
@@ -70,7 +71,7 @@ class ContainerView {
         var adjustedHeight = height - (defaultPadding * 2);
 
         // Responsividade mobile:
-        if (adjustedWidth <= 700){
+        if (adjustedWidth <= 700) {
             adjustedHeight -= 50
         }
 
@@ -118,6 +119,14 @@ class ContainerView {
     updateContainerSize() {
         // Recalcula o tamanho usando as dimensões atuais da janela
         this.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    async showContainer() {
+        ContainerAnimations.fadeInContainer.animation(this.elements.mainContainer);
+
+        await ContainerAnimations.check(
+            () => ContainerAnimations.fadeInContainer.isPlaying
+        )
     }
 }
 

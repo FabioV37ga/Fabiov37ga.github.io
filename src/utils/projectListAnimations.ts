@@ -31,20 +31,11 @@
 // ---------------------------
 
 import { animate, JSAnimation, engine, cubicBezier } from "animejs"
-import Animation from "./animation.js";
+import {Animation, AnimationObject} from "./animation.js";
 
 import ProjectListController from "../controllers/projectListController.js";
 
 engine.pauseOnDocumentHidden = true;
-
-// ---------------------------
-// 2. INTERFACE DE ANIMAÇÃO
-// ---------------------------
-
-interface AnimationObject {
-    isPlaying: boolean;
-    animation: (...args: any[]) => JSAnimation;
-}
 
 // ---------------------------
 // 3. ANIMAÇÕES DE ENTRADA

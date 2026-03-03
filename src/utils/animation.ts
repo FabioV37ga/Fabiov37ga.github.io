@@ -15,6 +15,17 @@
  * ============================================================================
  */
 
+import {animate, JSAnimation, engine, cubicBezier} from "animejs"
+
+// ---------------------------
+// 2. INTERFACE ANIMATIONOBJECT
+// ---------------------------
+interface AnimationObject {
+    isPlaying: boolean;
+    animation: (...args: any[]) => JSAnimation;
+}
+
+
 // ---------------------------
 // 1. CLASSE ANIMATION
 // ---------------------------
@@ -65,4 +76,4 @@ class Animation {
     }
 }
 
-export default Animation;
+export {Animation, AnimationObject};
