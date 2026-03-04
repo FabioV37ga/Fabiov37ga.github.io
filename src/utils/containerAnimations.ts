@@ -1,5 +1,18 @@
+/**
+ * ============================================================================
+ * CONTAINER ANIMATIONS
+ * ============================================================================
+ *
+ * SUMÁRIO:
+ * 1. Imports e configuração do engine
+ * 2. Classe ContainerAnimations
+ *    2.1. fadeInContainer - animação de entrada do container
+ *
+ * ============================================================================
+ */
+
 // ---------------------------
-// 1. IMPORTS E INTERFACE
+// 1. IMPORTS E CONFIGURAÇÃO
 // ---------------------------
 
 import {animate, JSAnimation, engine, cubicBezier} from "animejs"
@@ -8,8 +21,16 @@ import {Animation, AnimationObject} from "./animation.js";
 
 engine.pauseOnDocumentHidden = true;
 
+
+// ---------------------------
+// 2. CLASSE CONTAINERANIMATIONS
+// ---------------------------
+
 class ContainerAnimations extends Animation {
 
+    // ---------------------------
+    // 2.1. fadeInContainer - animação de entrada do container
+    // ---------------------------
     static fadeInContainer: AnimationObject = {
         isPlaying: false,
         animation: (element: HTMLElement) => {
