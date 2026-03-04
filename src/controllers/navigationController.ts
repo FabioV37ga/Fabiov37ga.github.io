@@ -107,7 +107,7 @@ class NavigationController {
     async selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Bloqueia seleção se houver animações em cooldown em outras partes
         if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
-            && ProjectDisplayAnimations.delay.isPlaying === false
+            && AboutController.isPlaying == false
             && ContactController.isPlaying === false
         ) {
             // Guarda o item que estava selecionado anteriormente
