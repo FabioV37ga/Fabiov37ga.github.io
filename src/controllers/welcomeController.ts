@@ -62,21 +62,10 @@ class WelcomeController{
     
     async handleWelcome(){
         // Escuta o fim da animação do elemento portfolio
-        WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.name, 1000);
-
-        await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
-        )
-
-        WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.portfolio, 0);
-
-        await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
-        )
+        await this.view.removeWelcome(this.elements);
 
         new ContainerController();
 
-        this.view.removeWelcome();
     }
 }
 

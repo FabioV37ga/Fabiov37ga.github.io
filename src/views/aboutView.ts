@@ -54,10 +54,14 @@ class AboutView {
         )
     }
 
-    showParagraph(paragraph: HTMLElement, delay: number) {
+    async showParagraph(paragraph: HTMLElement, delay: number) {
         AboutAnimations.slideInAboutItem.animation(
             paragraph,
             delay
+        )
+
+        await AboutAnimations.check(
+            () => AboutAnimations.slideInAboutItem.isPlaying
         )
     }
 

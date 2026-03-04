@@ -23,6 +23,7 @@ import u from 'umbrellajs';
 
 // Importa a interface Elements do seletor de navegação
 import { Elements, NavigationSelector } from '../selectors/navigationSelector.js';
+import NavigationAnimations from '../utils/navigationAnimations.js';
 
 
 // ---------------------------
@@ -87,8 +88,24 @@ class NavigationView {
         NavigationSelector.defineElements()
     }
 
-    animateMarker(){
+    async animateMarker(elements: Elements) {
+        NavigationAnimations.shiftMarker.animation(elements.markers[1])
+
+        await NavigationAnimations.check(
+            () => NavigationAnimations.shiftMarker.isPlaying
+        )
+
+        NavigationAnimations.spinMarkers.animation(elements.markerContainer)
+    }
+
+    async breakMarkerAnimation(elements: Elements){
+        NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
+
+        await NavigationAnimations.check(
+            () => NavigationAnimations.shiftMarkerBack.isPlaying
+        )
         
+        NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
     }
 }
 

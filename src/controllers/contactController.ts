@@ -124,30 +124,17 @@ class ContactController {
     async showTitles(title?: number) {
         var titles = this.elements.titles
 
-        console.log(title)
-
         if (title == 0 || title == 1) {
             console.log("has fallen here")
-            this.view.showTitle(titles[title], 0)
+            await this.view.showTitle(titles[title], 0)
 
-            await ContactAnimations.check(
-                () => ContactAnimations.showTitles.isPlaying
-            )
         } else {
-            this.view.showTitle(titles[0], 0)
-            await ContactAnimations.check(
-                () => ContactAnimations.showTitles.isPlaying
-            )
+            await this.view.showTitle(titles[0], 0)
 
-            this.expandDivisor()
+            await this.view.expandDivisor(this.elements.divisor)
 
-            this.view.showTitle(titles[1], 0)
-            await ContactAnimations.check(
-                () => ContactAnimations.showTitles.isPlaying
-            )
+            await this.view.showTitle(titles[1], 0)
         }
-
-
 
         return true
     }
@@ -163,53 +150,25 @@ class ContactController {
             card.style.display = "flex"
         })
 
-
-        // Helper para disparar animação de um cartão
-        function showcard(card: HTMLElement, delay: number) {
-            ContactAnimations.showCards.animation(card, delay)
-        }
-
         if (card != undefined) {
             cards[card].style.opacity = "0%"
 
-            showcard(cards[card], 0)
-            await ContactAnimations.check(
-                () => ContactAnimations.showCards.isPlaying
-            )
+            await this.view.showCard(cards[card], 0)
+
         }
         else {
             // Prepara estado inicial dos cartões
             cards.forEach(card => card.style.opacity = "0%")
             cards.forEach(card => card.style.display = "flex")
 
+            this.view.showCard(cards[0], 0)
+            await this.view.showCard(cards[2], 100)
 
-            showcard(cards[0], 0)
-            showcard(cards[2], 100)
-            await ContactAnimations.check(
-                () => ContactAnimations.showCards.isPlaying
-            )
-            showcard(cards[1], 0)
-            showcard(cards[3], 100)
-            await ContactAnimations.check(
-                () => ContactAnimations.showCards.isPlaying
-            )
+            this.view.showCard(cards[1], 0)
+            await this.view.showCard(cards[3], 100)
         }
 
 
-        return true
-    }
-
-
-    // ---------------------------
-    // 2.8. expandDivisor() - Anima expansão do divisor
-    // ---------------------------
-    async expandDivisor() {
-        ContactAnimations.expandDivisor.animation(this.elements.divisor)
-
-
-        await ContactAnimations.check(
-            () => ContactAnimations.expandDivisor.isPlaying
-        )
         return true
     }
 
@@ -242,42 +201,21 @@ class ContactController {
     // ---------------------------
     async hideCards(card?: number) {
 
-        // Helper para disparar animação de ocultação de um cartão
-        function hideCard(card: HTMLElement, delay: number) {
-            ContactAnimations.hideCards.animation(card, delay)
-        }
-
         const cards = this.elements.cards
 
-
         if (card != undefined) {
-            hideCard(cards[card], 10)
-            await ContactAnimations.check(
-                () => ContactAnimations.hideCards.isPlaying
-            )
+            await this.view.hideCard(cards[card], 10)
 
             // cards[card].style.display = "none"
 
         } else {
             // Executa animações de saída em ordem específica
-            hideCard(cards[3], 100)
+            await this.view.hideCard(cards[3], 100)
 
-            await ContactAnimations.check(
-                () => ContactAnimations.hideCards.isPlaying
-            )
+            await this.view.hideCard(cards[1], 0)
+            await this.view.hideCard(cards[2], 0)
 
-            hideCard(cards[1], 0)
-            hideCard(cards[2], 0)
-
-            await ContactAnimations.check(
-                () => ContactAnimations.hideCards.isPlaying
-            )
-
-            hideCard(cards[0], 0)
-
-            await ContactAnimations.check(
-                () => ContactAnimations.hideCards.isPlaying
-            )
+            await this.view.hideCard(cards[0], 0)
 
             // Esconde os cartões ao final
             cards.forEach(card => card.style.display = "none")
@@ -298,37 +236,24 @@ class ContactController {
     // ---------------------------
     // 2.11. hideTitles() - Anima ocultação dos títulos e divisor
     // ---------------------------
+
+    // FIXME
     async hideTitles(title?: number) {
         const titles = this.elements.titles
 
+        if (title != undefined) {
+            await ContactAnimations.hideTitle.animation(titles[title], 0)
 
-        if (title != undefined){
-            ContactAnimations.hideTitle.animation(titles[title], 0)
-    
-            await ContactAnimations.check(
-                () => ContactAnimations.hideTitle.isPlaying
-            )
-        }else{
+        } else {
             // Oculta o segundo título
-            ContactAnimations.hideTitle.animation(titles[1], 0)
-    
-            await ContactAnimations.check(
-                () => ContactAnimations.hideTitle.isPlaying
-            )
-    
+            await ContactAnimations.hideTitle.animation(titles[1], 0)
+
             // Retrai o divisor
-            ContactAnimations.retractDivisor.animation(this.elements.divisor)
-    
-            await ContactAnimations.check(
-                () => ContactAnimations.retractDivisor.isPlaying
-            )
-    
+            await ContactAnimations.retractDivisor.animation(this.elements.divisor)
+
             // Oculta o primeiro título
-            ContactAnimations.hideTitle.animation(titles[0], 0)
-    
-            await ContactAnimations.check(
-                () => ContactAnimations.hideTitle.isPlaying
-            )
+            await ContactAnimations.hideTitle.animation(titles[0], 0)
+
         }
 
         return true

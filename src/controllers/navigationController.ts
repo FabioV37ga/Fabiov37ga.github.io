@@ -154,17 +154,9 @@ class NavigationController {
     // 2.5. animateMarkers - Inicia animações dos marcadores
     // ---------------------------
     async animateMarkers(item: HTMLElement, delay: number) {
-
         var elements = NavigationSelector.defineElements()
-        console.log(elements.markers[1])
+        this.view.animateMarker(elements)
 
-        NavigationAnimations.shiftMarker.animation(elements.markers[1])
-
-        await NavigationAnimations.check(
-            () => NavigationAnimations.shiftMarker.isPlaying
-        )
-
-        NavigationAnimations.spinMarkers.animation(elements.markerContainer)
     }
 
     // ---------------------------
@@ -172,14 +164,7 @@ class NavigationController {
     // ---------------------------
     async breakMarkerSpin() {
         var elements = NavigationSelector.defineElements()
-        console.log("Marker should stop spinning now")
-        NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
-
-        await NavigationAnimations.check(
-            () => NavigationAnimations.shiftMarkerBack.isPlaying
-        )
-        
-        NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
+        this.view.breakMarkerAnimation(elements)
     }
 
     // ---------------------------

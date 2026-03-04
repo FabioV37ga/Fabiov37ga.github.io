@@ -19,8 +19,7 @@
 // ---------------------------
 
 import { Elements } from "../selectors/contactSelector.js";
-
-import contactAnimations from "../utils/contactAnimations.js";
+import ContactAnimations from "../utils/contactAnimations.js";
 
 // ---------------------------
 // 2. CLASSE CONTACTVIEW
@@ -43,15 +42,62 @@ class ContactView {
     // ---------------------------
     // 2.3. displayContact - Exibe o container de contato
     // ---------------------------
-    displayContact(){
-        contactAnimations.displayContact.animation(this.elements.container)
+    displayContact() {
+        ContactAnimations.displayContact.animation(this.elements.container)
     }
 
     // ---------------------------
     // 2.4. showTitle - Animação de títulos individuais
     // ---------------------------
-    showTitle(title: HTMLElement, delay: number) {
-        contactAnimations.showTitles.animation(title, delay)
+    async showTitle(title: HTMLElement, delay: number) {
+        ContactAnimations.showTitles.animation(title, delay)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.showTitles.isPlaying
+        )
+
+        return true
+    }
+
+    async hideTitle(title: HTMLElement, delay: number) {
+        ContactAnimations.hideTitle.animation(title, delay)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideTitle.isPlaying
+        )
+
+        return true
+    }
+
+    async showCard(card: HTMLElement, delay: number) {
+        ContactAnimations.showCards.animation(card, delay)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.showCards.isPlaying
+        )
+
+        return true
+    }
+
+    async hideCard(card: HTMLElement, delay: number) {
+        ContactAnimations.hideCards.animation(card, delay)
+
+        await ContactAnimations.check(
+            () => ContactAnimations.hideCards.isPlaying
+        )
+
+        return true
+    }
+
+    async expandDivisor(element: HTMLElement) {
+        // FIXME
+        ContactAnimations.expandDivisor.animation(this.elements.divisor)
+
+
+        await ContactAnimations.check(
+            () => ContactAnimations.expandDivisor.isPlaying
+        )
+        return true
     }
 }
 

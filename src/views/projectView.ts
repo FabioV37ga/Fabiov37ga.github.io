@@ -106,9 +106,15 @@ class ProjectView {
     // 2.4. hideProject - Oculta projeto com animação
     // ---------------------------
 
-    hideProject(element: HTMLElement) {
+    async hideProject(element: HTMLElement) {
         // Chama função de animação de saída do projeto
         projectDisplayAnimations.hideProject.animation(element);
+
+        await projectDisplayAnimations.check(
+            () => projectDisplayAnimations.hideProject.isPlaying
+        )
+
+        return true
     }
 
     buttonInteractions(btn: HTMLElement, interaction: "enter" | "leave") {

@@ -1,4 +1,7 @@
 *atribuir corretamente lógicas de view no controller de contact (redirecionar para classe view)
+(Em outras palavras, Toda ocorrencia de .check - de animations, deve estar dentro de uma view, e não num controller)
+
+
 
 1. Horizontalizar menu na versão mobile?
 --------------------------------

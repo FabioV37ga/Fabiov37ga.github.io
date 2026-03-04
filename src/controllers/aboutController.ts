@@ -18,10 +18,8 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-import u from "umbrellajs"
 import { AboutSelector, Elements } from "../selectors/aboutSelector.js"
 import AboutView from "../views/aboutView.js"
-import AboutAnimations from "../utils/aboutAnimations.js";
 
 // ---------------------------
 // 2. CLASSE ABOUTCONTROLLER
@@ -51,16 +49,15 @@ class AboutController {
     // 2.3. showAboutContent() - Exibe conteúdo da seção About
     // ---------------------------
     async showAboutContent() {
-        console.log("Show About Content starting ")
+
+
         AboutController.isPlaying = true;
+
         const elements = this.elements.paragraphs.concat(this.elements.git)
-        var delay: number = 0;
 
         await this.view.showContainer()
-        
-        await this.view.showTitle()
 
-        // this.view.showContent()
+        await this.view.showTitle()
 
         elements.forEach((element) => {
             element.style.display = "flex"
@@ -68,11 +65,7 @@ class AboutController {
         })
 
         for (let element = 0; element <= elements.length - 1; element++) {
-            this.view.showParagraph(elements[element], delay)
-
-            await AboutAnimations.check(
-                () => AboutAnimations.slideInAboutItem.isPlaying
-            )
+            await this.view.showParagraph(elements[element], 0)
 
             if (element == elements.length - 1) {
                 AboutController.isPlaying = false

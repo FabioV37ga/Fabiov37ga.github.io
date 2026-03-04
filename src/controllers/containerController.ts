@@ -54,8 +54,7 @@ class ContainerController {
 
         this.showContainer();
     }
-
-    
+   
     // ---------------------------
     // 2.3. addResizeEvent - Adiciona evento de redimensionamento
     // ---------------------------

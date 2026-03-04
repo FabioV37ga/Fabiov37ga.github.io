@@ -164,22 +164,9 @@ class ProjectController {
 
     async hideProject(origin: string) {
         // Executa animação de ocultação do projeto através da view
-        this.view.hideProject(this.elements.projectContainer);
+        await this.view.hideProject(this.elements.projectContainer);
 
-        // Aguarda o término das animações (1000ms)
-
-        ProjectDisplayAnimations.delay.animation(
-            this.elements.projectContainer,
-            200 * 5
-        );
-
-        await ProjectDisplayAnimations.check(
-            () => ProjectDisplayAnimations.delay.isPlaying
-        );
-
-        // Remove foco do projeto selecionado na lista
         ProjectListController.blurSelectedProject(origin);
-
     }
 }
 
