@@ -6,6 +6,7 @@
     display: none;
     justify-content: center;
     flex-wrap: wrap;
+    transform: translateY(55px);
 }
 
 .technologies {
@@ -170,5 +171,19 @@
 @media (max-width: 600px) {
     .back-button {
         font-size: 40px;
+    }
+}
+
+@media (max-width:460px) {
+    .project-item {
+        width: 100%;
+    }
+
+    .project-display * {
+        max-width: 100%;
+    }
+
+    .project-description {
+        width: 100%;
     }
 }

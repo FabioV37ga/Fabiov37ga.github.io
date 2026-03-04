@@ -175,7 +175,13 @@ class ProjectListController {
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying)
 
-        this.view.setContainerHeight("100%");
+        // Ajuste para responsividade mobile
+        var windowWidth = window.innerWidth
+
+        if (windowWidth > 460)
+            this.view.setContainerHeight("100%");
+        else
+            this.view.setContainerHeight("calc(100% - 300px)")
 
         // Ajusta margem inferior do último item para espaçamento final
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;

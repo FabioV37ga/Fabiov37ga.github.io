@@ -86,7 +86,7 @@
 }
 
 @media (max-width: 650px) {
-    .about{
+    .about {
         zoom: 75%
     }
 }
@@ -103,9 +103,16 @@
     }
 }
 
+@media(max-width: 460px) {
+    .about{
+        position: absolute;
+        top: 300px;
+    }
+}
+
+
 @media (max-width: 430px) {
     .about {
         zoom: 47%
     }
 }
-

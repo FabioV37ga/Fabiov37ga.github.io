@@ -30,6 +30,7 @@
 
 .navigation-item {
     width: fit-content;
+    height: fit-content;
     z-index: 5;
 }
 
@@ -86,7 +87,7 @@
 @media (max-width: 800px) {
     .projects-container {
         zoom: 70%;
-        top: 255px !important;
+        top: 230px !important;
         right: 0px !important;
         z-index: 3;
     }
@@ -97,7 +98,7 @@
 
     .project-display {
         zoom: 62%;
-        transform: translateY(275px);
+        transform: translateY(290px) !important;
         z-index: 4
     }
 
@@ -111,96 +112,82 @@
     }
 }
 
-@media (max-width: 600px){
-    .navigation-item a:hover{
+@media (max-width: 600px) {
+    .navigation-item a:hover {
         color: white
     }
 }
 
 @media (max-width: 460px) {
+    .main-container .content {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .menu nav ul {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%
+    }
+
+    .presentation {
+        margin-bottom: 30px
+    }
+
     .presentation h1 {
         font-size: 40px;
     }
 
     .projects-container {
+        position: relative !important;
         zoom: 50%;
-        top: 330px !important;
-        right: 0px !important;
-        z-index: 3
+        top: 0px !important;
+        z-index: 3;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
     .projects-list {
-        width: 745px;
+        width: 100% !important;
+        flex-direction: column;
+        padding: 30px 0 0 0;
     }
 
     .project-display {
+        display: flex !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
         zoom: 44%;
-        transform: translateY(355px);
+        transform: translateY(515px) !important;
         z-index: 4;
+        position: absolute !important;
+        right: 0 !important;
+        height: fit-content;
     }
 
     .description-content span {
         font-size: 30px;
         line-height: 30px;
+        /* text-align: center; */
     }
 }
 
-@media (max-width: 370px) {
-    .presentation h1 {
-        font-size: 30px;
-    }
-
-    .projects-container {
-        zoom: 40%;
-        top: 400px !important;
-        right: 0px !important;
-        z-index: 3
-    }
-
-    .projects-list {
-        width: 745px;
-    }
-
-    .project-display {
-        zoom: 35%;
-        transform: translateY(430px);
-        z-index: 4;
-    }
-
-    .description-content span {
-        font-size: 30px;
-        line-height: 30px;
+@media (max-width: 340px){
+    .navigation-item a p{
+        font-size: 12px;
     }
 }
 
-@media (max-width: 330px) {
-    .menu{
-        zoom: 80%;
-    }
-
-    .presentation h1 {
-        font-size: 25px;
-    }
-
-    .projects-container {
-        zoom: 30%;
-        top: 450px !important;
-        right: 0px !important;
-        z-index: 3
-    }
-
-    .projects-list {
-        width: 745px;
-    }
-
-    .project-display {
-        zoom: 26%;
-        transform: translateY(490px);
-        z-index: 4;
-    }
-
-    .description-content span {
-        font-size: 30px;
-        line-height: 30px;
+@media (max-width: 325px){
+    .presentation h1{
+        font-size: 31px
     }
 }
