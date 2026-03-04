@@ -72,7 +72,7 @@
         display: block;
     }
 
-    .projects-container {
-        /* height: calc(100% - 283px) !important; */
+    .project-item.project-item.hoverable:hover{
+        transform: perspective(109px) translate3d(24px, 1px, 16px) !important
     }
 }
