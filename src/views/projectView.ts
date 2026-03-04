@@ -18,16 +18,13 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-// Importa Umbrella JS para manipulação DOM
-import u from "umbrellajs";
-
-// Importa o tipo Project dos dados
+// Tipo de dados que representa um projeto
 import { Project } from "../data/projects.js";
 
-// Importa a interface Elements do seletor
+// Interface Elements definida pelo selector do display de projeto
 import { Elements } from "../selectors/projectSelector.js";
 
-// Importa animações do display de projetos
+// Utilitário com as animações usadas pelo display de projeto
 import projectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 
@@ -51,7 +48,7 @@ class ProjectView {
     // ---------------------------
 
     constructor(elements: Elements) {
-        // Armazena os elementos DOM recebidos
+        // Salva referência aos elementos utilizados por este view
         this.elements = elements;
     }
 
@@ -62,14 +59,14 @@ class ProjectView {
 
     async showProject(elements: Elements, project: Project) {
 
-        // Atualiza os elementos DOM
+        // Atualiza referências DOM (caso sejam reobtidas externamente)
         this.elements = elements;
 
-        // Calcula quantidade de tecnologias e delay entre animações
+        // Calcula número de badges de tecnologia e atraso base entre elas
         var totalTechnologies = this.elements.projectTechnologies.length;
         var techDelay = 200;
 
-        // Anima entrada de cada badge de tecnologia
+        // Dispara animação de entrada para cada tecnologia em sequência
         for (let tech = 0; tech < totalTechnologies; tech++) {
             projectDisplayAnimations.techFadeIn.animation(
                 this.elements.projectTechnologies[tech],
@@ -77,24 +74,25 @@ class ProjectView {
             );
         }
 
-        // Anima digitação da descrição do projeto
+        // Executa animação de 'typing' na descrição e obtém contagem de caracteres animados
         var totalCharacters: number = await projectDisplayAnimations.typeDescription.animation(
             this.elements.projectDescription,
             200 * totalTechnologies
         ) as number;
 
-        // Anima expansão do espaçador após a descrição
+        // Após a digitação, expande um espaçador com base no tamanho da descrição
         projectDisplayAnimations.expandSpacer.animation(
             this.elements.spacer,
             totalCharacters * 5 + 100
         );
 
-        // Anima entrada dos botões de ação
+        // Exibe os botões de ação (acessar, código, voltar) de maneira sincronizada
         projectDisplayAnimations.showButtons.animation(
             [this.elements.projectAccess, this.elements.projectCode, this.elements.returnButton],
             totalCharacters * 5 + 500
         )
 
+        // Aplica estilos/efeitos finais nos botões após entrarem
         projectDisplayAnimations.styleButtons.animation([
             this.elements.projectAccess,
             this.elements.projectCode
@@ -107,9 +105,10 @@ class ProjectView {
     // ---------------------------
 
     async hideProject(element: HTMLElement) {
-        // Chama função de animação de saída do projeto
+        // Inicia animação de saída do display do projeto
         projectDisplayAnimations.hideProject.animation(element);
 
+        // Aguarda término da animação de ocultação
         await projectDisplayAnimations.check(
             () => projectDisplayAnimations.hideProject.isPlaying
         )
@@ -117,9 +116,15 @@ class ProjectView {
         return true
     }
 
+    // ---------------------------
+    // 2.5. ButtonInteractions - Animações de hover dos botões
+    // ---------------------------
+
+
     buttonInteractions(btn: HTMLElement, interaction: "enter" | "leave") {
         switch (interaction) {
             case "enter":
+                // Controla animações de hover entre botões para suavizar transições
                 var previous = ProjectDisplayAnimations.previousHoveredButton;
 
                 if (btn !== previous) {
@@ -132,7 +137,7 @@ class ProjectView {
 
                 break;
             case "leave":
-
+                // Reverte animações de hover ao sair do botão
                 ProjectDisplayAnimations.buttonMouseEnter(btn).pause();
                 ProjectDisplayAnimations.buttonMouseLeave(btn).play();
                 ProjectDisplayAnimations.hideOnBlur(btn).play()

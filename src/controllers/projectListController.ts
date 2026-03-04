@@ -31,6 +31,7 @@ import u from "umbrellajs";
 import { Projects, Project } from "../data/projects.js";
 
 // Importa o seletor de elementos e a interface Elements
+// Importa o seletor que localiza elementos da lista de projetos e a interface Elements
 import { ProjectListSelector, Elements } from "../selectors/projectListSelector.js";
 
 // Importa a view responsável pela renderização
@@ -50,18 +51,19 @@ class ProjectListController {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
-    // Instância estática para acesso global ao controller
+    // Instância estática (singleton) para acesso global ao controller
     static instance: ProjectListController;
 
-    // Array contendo todos os dados dos projetos
+    // Array contendo todos os dados dos projetos (carregado a partir de Projects)
     projects: Project[]
 
     // Elementos DOM selecionados (container, lista, itens)
     elements: Elements = ProjectListSelector.defineElements();
 
-    // Instância da view para renderização e manipulação visual
+    // Instância da view que manipula a renderização e animações da lista
     view: ProjectListView = new ProjectListView(this.elements);
 
+    // Flag que indica se existe um projeto atualmente destacado
     static hasHighlightedProject: boolean = false;
 
     // ---------------------------
@@ -69,15 +71,16 @@ class ProjectListController {
     // ---------------------------
 
     constructor(delay?: number) {
-        // Carrega os dados dos projetos
+        // Carrega os dados dos projetos na instância
         this.projects = Projects;
 
-        // Inicia a criação da lista de projetos
+        // Cria os elementos da lista no DOM com um delay inicial opcional
         this.createProjectList(delay || 0);
 
+        // Mostra o container que envolve a lista (pode ter animação)
         this.view.showProjectContainer(delay!)
 
-        // Atribui a instância atual para acesso estático
+        // Registra a instância atual para acesso global
         ProjectListController.instance = this;
     }
 
@@ -87,22 +90,22 @@ class ProjectListController {
     // ---------------------------
 
     async createProjectList(delay: number) {
-        // Itera sobre cada projeto e adiciona ao DOM
+        // Itera sobre os dados e injeta cada item de projeto no DOM via view
         this.projects.forEach((project) => {
             this.view.appendProjectItem(project);
         });
 
-        // Atualiza elementos DOM após inserção dos itens
+        // Recalcula referências aos elementos recém-inseridos
         this.elements = ProjectListSelector.defineElements();
 
-        // Sincroniza elementos na view 
+        // Atualiza a referência de elementos usada pela view
         this.view.elements = this.elements;
 
-        // Define altura inicial do container
+        // Calcula e aplica a altura inicial do container para a animação
         this.setContainerHeight(delay);
 
+        // Garante acesso à instância atual e inicia a sequência de exibição
         ProjectListController.instance = this
-        // Exibe os projetos com animação sequencial
         this.showProjects(delay);
 
     }
@@ -113,13 +116,13 @@ class ProjectListController {
 
     async showProjects(animationDelay: number) {
 
-        // Índice inicial: último projeto (animação de baixo para cima)
+        // Começa exibindo do último ao primeiro para um efeito de subida
         var projectIndex: number = this.elements.projectItems.length - 1;
 
-        // Delay acumulado entre animações
+        // Delay acumulado entre cada item para sequência visual
         var delay: number = animationDelay
 
-        // Exibe cada projeto com delay incremental (230ms entre cada)
+        // Loop que dispara a animação de cada item com atraso crescente
         for (let i = 0; i < this.elements.projectItems.length; i++) {
             this.view.showProjectItem(
                 this.elements.projectItems[projectIndex],
@@ -129,13 +132,12 @@ class ProjectListController {
             delay += 230;
         }
 
-        // Aguarda todas as animações finalizarem
-
+        // Aguarda até que a animação principal do container termine
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying
         )
 
-        // Adiciona event handlers aos projetos
+        // Após animações, anexa os handlers de interação aos itens
         this.addHandlers()
     }
 
@@ -146,8 +148,8 @@ class ProjectListController {
 
     static getListAnimationTime(): number {
 
+        // Retorna uma estimativa do tempo total da animação da lista
         var self = ProjectListController.instance;
-        // Calcula: (quantidade de projetos × 230ms) + 2800ms de buffer
         return self.projects.length * 230 + 500;
     }
 
@@ -157,31 +159,26 @@ class ProjectListController {
     // ---------------------------
 
     async setContainerHeight(delay: number) {
-        // Obtém todos os elementos filhos (itens de projeto)
+        // Recolhe todos os itens para calcular altura total necessária
         const childrenElements: HTMLElement[] = this.elements.projectItems;
 
-        // Variável para acumular a altura total
+        // Acumula altura dos itens (inclui margem/padding extra)
         let totalHeight: number = 0;
-
-        // Itera sobre cada elemento filho
         childrenElements.forEach((element) => {
-            // Soma a altura do elemento + 100px de margem
             totalHeight += element.offsetHeight + 20;
         });
 
-        // Define a altura inicial do container (altura exata dos itens)
+        // Aplica altura fixa inicial para permitir animação de slide
         this.view.setContainerHeight(totalHeight + 55 + "px");
 
-        // Após a animação terminar, muda para altura responsiva (100%)
+        // Aguarda a animação do container para então tornar a altura responsiva
         await projectListAnimations.check(
             () => projectListAnimations.slideDownProjectContainer.isPlaying)
 
         this.view.setContainerHeight("100%");
 
-        // Obtém o último item da lista
+        // Ajusta margem inferior do último item para espaçamento final
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;
-
-        // Define margem inferior no último item se existir
         lastItem.style.marginBottom = "55px";
 
     }
@@ -192,37 +189,36 @@ class ProjectListController {
     // ---------------------------
 
     static async hideProjectList() {
-        // Ativa o cooldown da lista de projetos
+        // Coloca a lista em modo de cooldown para evitar reentrância
         projectListAnimations.slideDownProjectContainer.isPlaying = true;
 
-        // Obtém a instância estática do controller
+        // Referência à instância atual
         const self = ProjectListController.instance;
 
+        // Ajusta a altura do container para colapsar
         self.setContainerHeight(0)
 
-        // Oculta a lista de projetos visualmente
+        // Inicia animação de ocultação do container
         self.view.hideProjectList();
 
+        // Anima cada item em sequência para saída visual
         var delay: number = 0;
         self.elements.projectItems.forEach((project) => {
             self.view.hideProjectItem(project, delay);
             delay += 200;
         })
 
-        // Aguarda o término das animações antes de prosseguir
+        // Aguarda até que a animação de subida termine
         await projectListAnimations.check(
             () => projectListAnimations.slideUpProjectContainer.isPlaying)
 
-        // Obtém todos os projetos
+        // Remove elementos do DOM após animação
         var projects = self.elements.projectItems;
-
-        // Remove classes e elementos do DOM
         projects.forEach((project) => {
-            // Remove o elemento do DOM
             u(project).remove()
         });
 
-        // Desativa o cooldown
+        // Libera o cooldown
         projectListAnimations.slideDownProjectContainer.isPlaying = false;
     }
 
@@ -231,24 +227,22 @@ class ProjectListController {
     // ---------------------------
 
     addHandlers() {
-        // Obtém todos os itens de projeto
+        // Obtém referência aos elementos dos itens de projeto
         const projectItems = this.elements.projectItems;
 
-        // Itera sobre cada item de projeto
+        // Associa handler de clique a cada item para seleção
         projectItems.forEach((project) => {
-
-            // Adiciona evento de clique ao projeto
             u(project).on("click", (event: Event) => {
+                // Ignora clicks enquanto a animação de subida estiver ativa
                 if (!projectListAnimations.slideUpProjectContainer.isPlaying) {
 
-                    // Obtém o título do projeto clicado
+                    // Recupera o texto do título clicado para mapear ao dado
                     const titulo: string = u(event.currentTarget as HTMLElement).text();
 
-                    // Busca o projeto correspondente no array de dados
+                    // Procura o índice do projeto com título correspondente
                     for (let i = 0; i < projectItems.length; i++) {
-                        // Verifica se o título corresponde ao projeto atual
                         if (titulo === this.projects[i].title) {
-                            // Seleciona o projeto clicado
+                            // Dispara seleção do projeto encontrado
                             this.selectProject(event.currentTarget as HTMLElement);
                             break;
                         }
@@ -264,38 +258,31 @@ class ProjectListController {
     // ---------------------------
 
     async selectProject(project: HTMLElement) {
+        // Só procede se o projeto não estiver já selecionado e não houver destaque ativo
         if (!u(project).hasClass("selected-project") && ProjectListController.hasHighlightedProject == false) {
 
-            // Verifica se não está em cooldown de foco de projeto
+            // Se não houver cooldown em foco, destaca o projeto visualmente
             if (projectListAnimations.focusOnProject.isPlaying === false) {
-                // Destaca o projeto selecionado visualmente
                 this.view.highlightSelectedProject(project);
                 ProjectListController.hasHighlightedProject = true;
             }
 
-
-            // Aguarda o tempo da animação de ocultação
+            // Aguarda término da animação que cria o foco no projeto
             await projectListAnimations.check(
                 () => projectListAnimations.focusOnProject.isPlaying
             )
 
-            // Variável para armazenar o elemento HTML do projeto selecionado
+            // Encontra o elemento HTML correspondente ao projeto clicado
             let selectedProjectElement: HTMLElement;
-
-            // Busca o projeto selecionado no array de elementos
             for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-                // Verifica se é o projeto clicado
                 if (this.elements.projectItems[i] == project) {
-                    // Armazena o elemento do projeto
                     selectedProjectElement = this.elements.projectItems[i];
                     break;
                 }
             }
 
-            // Variável para armazenar os dados completos do projeto
+            // Localiza os dados completos do projeto a partir do título
             let selectedProject: Project;
-
-            // Busca os dados do projeto pelo título
             for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
                 if (project.textContent?.trim() === Projects[i].title) {
                     selectedProject = Projects[i];
@@ -303,12 +290,12 @@ class ProjectListController {
                 }
             }
 
-            // Aguarda delay antes de exibir conteúdo
+            // Aguarda a animação de destaque terminar antes de abrir o conteúdo
             await projectListAnimations.check(
                 () => projectListAnimations.highlightProject.isPlaying
             )
 
-            // Exibe conteúdo se ambos os elementos foram encontrados
+            // Se ambos elemento e dado foram encontrados, abre o display do projeto
             if (selectedProject! && selectedProjectElement!) {
                 this.showProjectContent(
                     selectedProject,

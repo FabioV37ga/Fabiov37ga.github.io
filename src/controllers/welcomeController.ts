@@ -17,15 +17,11 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-// Importa Umbrella JS para manipulação DOM e eventos
-import u from "umbrellajs";
-
-// Importa o seletor de elementos e a interface Elements
+// Seletor e types da tela de boas-vindas
 import { WelcomeSelector, Elements } from "../selectors/welcomeSelector.js";
 
-// Importa a view responsável pela renderização
+// View e animações da tela de boas-vindas
 import WelcomeView from "../views/welcomeView.js";
-import WelcomeAnimations from "../utils/welcomeAnimations.js";
 import ContainerController from "./containerController.js";
 
 
@@ -39,10 +35,10 @@ class WelcomeController{
     // 2.1. PROPRIEDADES
     // ---------------------------
     
-    // Elementos DOM da tela de boas-vindas
+    // Elementos DOM da tela de boas-vindas (container, títulos, etc.)
     elements: Elements = WelcomeSelector.defineElements();
     
-    // Instância da view para renderização e manipulação visual
+    // View que encapsula render e animações da tela inicial
     view: WelcomeView = new WelcomeView(this.elements);
 
     
@@ -51,7 +47,7 @@ class WelcomeController{
     // ---------------------------
     
     constructor(){
-        // Inicia o gerenciamento da animação de boas-vindas
+        // Inicia a sequência de boas-vindas ao criar o controller
         this.handleWelcome();
     }
 
@@ -61,9 +57,10 @@ class WelcomeController{
     // ---------------------------
     
     async handleWelcome(){
-        // Escuta o fim da animação do elemento portfolio
+        // Aguarda a remoção/termino da animação de boas-vindas na view
         await this.view.removeWelcome(this.elements);
 
+        // Após a tela de welcome, instancia o controller do container principal
         new ContainerController();
 
     }

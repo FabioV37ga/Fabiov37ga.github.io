@@ -122,6 +122,12 @@ class ContainerView {
         this.setSize(window.innerWidth, window.innerHeight);
     }
 
+    // ---------------------------
+    // 2.5. showContainer - Exibe o container principal com animação
+    // ---------------------------
+    // Inicia a animação de fade-in do container principal, aguarda a
+    // conclusão parcial da animação usando o helper `check` e garante
+    // que a opacidade do elemento esteja definida para 1 no final.
     async showContainer() {
         ContainerAnimations.fadeInContainer.animation(this.elements.mainContainer);
 
@@ -129,6 +135,7 @@ class ContainerView {
             () => ContainerAnimations.fadeInContainer.isPlaying
         )
 
+        // Assegura que o container fique totalmente visível ao final
         this.elements.mainContainer.style.opacity = `1`
     }
 }

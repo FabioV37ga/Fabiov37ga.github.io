@@ -18,8 +18,6 @@
 // 1. IMPORTS
 // ---------------------------
 
-import u from "umbrellajs"
-
 import { Elements } from "../selectors/aboutSelector.js"
 
 import AboutAnimations from "../utils/aboutAnimations.js";

@@ -24,18 +24,23 @@
 // ---------------------------
 
 // Importa Umbrella JS para manipulação DOM
+// Umbrella JS para seleção/manipulação DOM
 import u from "umbrellajs";
 
 // Importa a interface Elements do seletor
+// Types/elements usados pela view da lista de projetos
 import { Elements } from "../selectors/projectListSelector.js";
 
 // Importa o tipo Project dos dados
+// Tipo de dados Project contendo title, description, etc.
 import { Project } from "../data/projects.js";
 
 // Importa o template de item de projeto
+// Template que renderiza um item de navegação/ projeto
 import { nav_project } from "../templates/projectListTemplate.js";
 
 // Importa animações da lista de projetos
+// Animações específicas para a lista de projetos
 import projectListAnimations from "../utils/projectListAnimations.js";
 
 
@@ -69,8 +74,8 @@ class ProjectListView {
     // ---------------------------
 
     appendProjectItem(project: Project) {
-        // Adiciona o item de projeto renderizado à lista
-        // nav_project() retorna um HTMLElement criado pelo template
+        // Insere no DOM um novo item de projeto usando o template nav_project
+        // nav_project() devolve um HTMLElement pronto para append
         this.elements.projectList.append(
             nav_project(project.title)
         )
@@ -82,7 +87,7 @@ class ProjectListView {
     // ---------------------------
 
     setContainerHeight(height: string) {
-        // Define a altura do container de projetos via CSS inline
+        // Ajusta a altura do container para permitir animações de slide
         this.elements.projectContainer.style.height = `${height}`;
     }
 
@@ -92,10 +97,9 @@ class ProjectListView {
     // ---------------------------
 
     showProjectContainer(delay: number) {
-        // Anima a exibição do container de projetos
+        // Dispara a animação que mostra o container de projetos com delay opcional
         projectListAnimations.slideDownProjectContainer.animation(
             this.elements.projectContainer,
-            // ProjectListController.setListAnimationTime(),
             delay
         );
     }
@@ -106,7 +110,7 @@ class ProjectListView {
     // ---------------------------
 
     showProjectItem(project: HTMLElement, delay: number) {
-        // Chama a função de animação para exibir o item de projeto
+        // Anima a entrada de um item específico da lista
         projectListAnimations.showProjectItem.animation(project, delay)
     }
 
@@ -116,8 +120,7 @@ class ProjectListView {
     // ---------------------------
 
     hideProjectItem(project: HTMLElement, delay: number) {
-        // Chama a função de animação para ocultar o item de projeto
-
+        // Anima a saída/ocultação de um item individual
         projectListAnimations.hideProjectItem.animation(project, delay);
 
     }
@@ -127,7 +130,7 @@ class ProjectListView {
     // ---------------------------
 
     hideProjectList() {
-        // Adiciona a classe de ocultação
+        // Aciona animação que recolhe/oculta todo o container de projetos
         projectListAnimations.slideUpProjectContainer.animation(
             this.elements.projectContainer,
             600
@@ -141,45 +144,33 @@ class ProjectListView {
 
     highlightSelectedProject(project: HTMLElement) {
 
-        // Adiciona a classe de projeto selecionado ao item
+        // Marca o item como selecionado e garante visibilidade máxima
         u(project).addClass("selected-project");
-
-        // Define opacidade total para o projeto selecionado
         project.style.opacity = '1'
 
-        // Itera sobre todos os itens de projeto
+        // Remove possibilidade de hover e esconde outros itens
         for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-
-            // Remove a classe de hover de todos os itens
             u(this.elements.projectItems[i]).removeClass("hoverable");
-
-            // Oculta todos os itens exceto o selecionado
             if (this.elements.projectItems[i] !== project) {
                 projectListAnimations.fadeOutProjectItem.animation(this.elements.projectItems[i]);
             }
         }
 
-        // Centraliza o projeto selecionado na visão
+        // Centraliza e foca o projeto selecionado na lista
         projectListAnimations.focusOnProject.animation(this.elements.projectList);
 
-
-        // Variável para acumular a posição de destino
+        // Calcula posição alvo (offset) do projeto selecionado somando alturas anteriores
         var targetTop: number = 0;
-
-        // Calcula a distância até o projeto selecionado
         for (let i = 0; i <= this.elements.projectItems.length - 1; i++) {
-            // Para quando encontrar o projeto selecionado
             if (this.elements.projectItems[i] === project)
                 break
-
-            // Soma a altura do item + margem (10px)
             targetTop += this.elements.projectItems[i].clientHeight + 10;
         }
 
-        // Chama a função de animação para destacar o projeto
+        // Anima o destaque do projeto usando a posição calculada
         projectListAnimations.highlightProject.animation(project, targetTop);
 
-        // Anima o scroll do container para o topo
+        // Rola o container para reposicionar o projeto ao topo da visão
         projectListAnimations.resetScrollPosition.animation(this.elements.projectContainer);
     }
 

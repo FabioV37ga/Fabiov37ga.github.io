@@ -28,22 +28,22 @@ import u from "umbrellajs";
 // Importa o seletor de elementos e a interface Elements
 import { NavigationSelector, Elements } from "../selectors/navigationSelector.js";
 
-// Importa a view responsável pela renderização
+// Importa a view que controla a renderização e estados visuais da navegação
 import NavigationView from "../views/navigationView.js";
 
-// Importa o controller da lista de projetos
+// Importa controllers dependentes que serão instanciados conforme seleção
 import ProjectListController from "./projectListController.js";
 import ProjectController from "./projectController.js";
 import AboutController from "./aboutController.js";
 import ContactController from "./contactController.js";
 
-// Importa o utilitário de controle de cooldown de animações
+
+// Importa utilitários de animação necessários para coordenar transições
 import ProjectListAnimations from "../utils/projectListAnimations.js";
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
 import projectListAnimations from "../utils/projectListAnimations.js";
 import AboutAnimations from "../utils/aboutAnimations.js";
 import ContactAnimations from "../utils/contactAnimations.js";
-import NavigationAnimations from "../utils/navigationAnimations.js";
 
 // ---------------------------
 // 2. CLASSE NAVIGATIONCONTROLLER
@@ -55,13 +55,13 @@ class NavigationController {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
-    // Elementos DOM da navegação
+    // Elementos DOM da navegação (itens, marcadores, containers)
     elements: Elements = NavigationSelector.defineElements();
 
-    // Instância da view para renderização e manipulação visual
+    // View que encapsula a lógica visual da navegação
     view: NavigationView = new NavigationView(this.elements);
 
-    // Item atualmente selecionado (padrão: projects)
+    // Item atualmente selecionado na navegação (padrão: projects)
     selected: HTMLElement = this.elements.projects;
 
 
@@ -70,17 +70,17 @@ class NavigationController {
     // ---------------------------
 
     constructor(state: string) {
-        // Array com todos os itens de navegação
+        // Constrói array de itens que representam cada seção navegável
         const items: HTMLElement[] = [
             this.elements.projects,
             this.elements.about,
             this.elements.contact
         ];
 
-        // Adiciona os event handlers aos itens de navegação
+        // Anexa os handlers de clique aos itens
         this.addHandlers(items);
 
-        // Seleciona o item inicial baseado no estado
+        // Realiza seleção inicial de acordo com o estado (ex.: 'init')
         this.selectItem(items, this.selected, state);
     }
 
@@ -91,11 +91,9 @@ class NavigationController {
 
     addHandlers(items: HTMLElement[]) {
 
-        // Itera sobre cada item de navegação
+        // Para cada item de navegação, associe um clique que chama selectItem
         items.forEach((item: HTMLElement) => {
-            // Adiciona evento de clique ao item usando Umbrella
             u(item).on("click", () => {
-                // Seleciona o item clicado
                 this.selectItem(items, item);
             });
         });
@@ -107,46 +105,38 @@ class NavigationController {
     // ---------------------------
 
     async selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
-        // Verifica se não está em cooldown de animação
+        // Bloqueia seleção se houver animações em cooldown em outras partes
         if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
             && ProjectDisplayAnimations.delay.isPlaying === false
             && ContactController.isPlaying === false
         ) {
-            // Armazena o item previamente selecionado
+            // Guarda o item que estava selecionado anteriormente
             const previousSelected = this.selected;
 
-            // Verifica se é um item diferente ou é a inicialização
+            // Se é uma nova seleção ou inicialização, prossiga
             if (previousSelected !== item || state === "init") {
-                // Itera sobre todos os itens
+                // Remove estado visual de seleção de todos os itens
                 items.forEach((item: HTMLElement) => {
-                    // Remove a seleção visual de cada item
                     this.view.unselectItem(item)
                 });
 
-                // Se não for inicialização, oculta o conteúdo do item anterior
+                // Se não for inicialização, oculta conteúdo do item anterior
                 if (state !== "init")
                     this.hideSelectedItemContent(this.selected);
 
-                // Atualiza a propriedade com o item selecionado
+                // Atualiza item selecionado e aplica estilo visual
                 this.selected = item;
-
-                // Adiciona a seleção visual ao item clicado
                 this.view.selectItem(item);
 
-                // Define o delay para a exibição do conteúdo baseado no estado (inicialização ou clique)
+                // Delay especial para a primeira inicialização, caso necessário
                 var delay: number = state == "init" ? 1750 : 0;
-                // Exibe o conteúdo do item selecionado com o delay definido
                 await this.showSelectedItemContent(item, delay);
 
-                // await 
-
             } else {
-                // Log quando o item já está selecionado
-                // console.log("Item already selected. No action taken.");
+                // Caso o item já estivesse selecionado, não faz nada
             }
         } else {
-            // Log quando a animação está em cooldown
-            // console.log("Animation is on cooldown. Selection ignored.");
+            // Caso haja cooldown, ignora a seleção para evitar conflitos
         }
     }
 
@@ -154,6 +144,7 @@ class NavigationController {
     // 2.5. animateMarkers - Inicia animações dos marcadores
     // ---------------------------
     async animateMarkers(item: HTMLElement, delay: number) {
+        // Re-obtem elementos e dispara animação dos marcadores na view
         var elements = NavigationSelector.defineElements()
         this.view.animateMarker(elements)
 
@@ -163,6 +154,7 @@ class NavigationController {
     // 2.6. breakMarkerSpin - Finaliza rotação dos marcadores
     // ---------------------------
     async breakMarkerSpin() {
+        // Re-obtem elementos e para a animação contínua dos marcadores
         var elements = NavigationSelector.defineElements()
         this.view.breakMarkerAnimation(elements)
     }
@@ -172,28 +164,27 @@ class NavigationController {
     // ---------------------------
 
     hideSelectedItemContent(item: HTMLElement) {
-        // Switch baseado no item selecionado
+        // Decide a ação a tomar com base no item selecionado
         switch (item) {
             case this.elements.projects:
-                // Oculta a lista de projetos
-                // Se não houver projeto destacado, oculta a lista inteira
+                // Se não houver projeto destacado, fecha a lista inteira
                 if (!ProjectListController.hasHighlightedProject) {
                     ProjectListController.hideProjectList();
                 }
-                // Se houver projeto destacado, oculta apenas o conteúdo do projeto
+                // Caso um projeto esteja destacado, fecha apenas o display do projeto
                 else {
                     ProjectController.instance.hideProject("navigation");
                 }
 
                 break;
             case this.elements.about:
+                // Encaminha para o controller About ocultar seu conteúdo
                 AboutController.instance.hideAboutContent()
-                // Implementação futura: Ocultar seção "Sobre"
                 break;
             case this.elements.contact:
+                // Determina largura da janela para avaliar layout responsivo
                 var windowWidth = window.innerWidth;
                 ContactController.instance.hideContactContent(windowWidth)
-                // Implementação futura: Ocultar seção "Contato"
                 break;
         }
     }
@@ -204,12 +195,13 @@ class NavigationController {
     // ---------------------------
 
     async showSelectedItemContent(item: HTMLElement, delay: number) {
+        // Dispara animação/efeito nos marcadores ao iniciar a mudança
         this.animateMarkers(item, delay);
-        // Switch baseado no item selecionado
+
+        // Roteia para a ação apropriada conforme o item selecionado
         switch (item) {
             case this.elements.projects:
-                // Cria novo controller de lista de projetos com delay
-
+                // Garante que animações de outras seções não estejam ativas
                 if (ContactController.instance)
                     await ContactAnimations.check(
                         () => ContactController.isPlaying
@@ -220,55 +212,45 @@ class NavigationController {
                         () => AboutAnimations.hideAboutItems.isPlaying
                     )
 
+                // Cria o controller da lista de projetos com o delay recebido
                 new ProjectListController(delay);
 
+                // Aguarda a animação de abertura da lista terminar
                 await ProjectListAnimations.check(
                     () => ProjectListAnimations.slideDownProjectContainer.isPlaying
                 )
 
                 break;
             case this.elements.about:
-
-                // animação lista projetos
+                // Aguarda animações de saída da lista e do display de projeto
                 await projectListAnimations.check(
                     () => projectListAnimations.slideUpProjectContainer.isPlaying
                 )
 
-                // animação display projeto
-                await ProjectListAnimations.check(
-                    () => ProjectDisplayAnimations.delay.isPlaying
-                )
-
-
+                // Aguarda qualquer animação de contato terminar
                 await ContactAnimations.check(
                     () => ContactController.isPlaying
                 )
-                // console.log("Liberar mostrar")
 
+                // Instancia e mostra a seção About
                 new AboutController()
 
                 await AboutAnimations.check(
                     () => AboutController.isPlaying
                 )
 
-
-
                 break;
             case this.elements.contact:
-                // Implementação futura: Exibir seção "Contato"
-
+                // Aguarda animações pendentes da lista e display
                 await projectListAnimations.check(
                     () => projectListAnimations.slideUpProjectContainer.isPlaying
-                )
-
-                await ProjectListAnimations.check(
-                    () => ProjectDisplayAnimations.delay.isPlaying
                 )
 
                 await AboutAnimations.check(
                     () => AboutAnimations.hideAboutItems.isPlaying
                 )
 
+                // Cria o controller de contato e aguarda sua sequência
                 new ContactController();
 
                 await ContactAnimations.check(
@@ -277,6 +259,8 @@ class NavigationController {
 
                 break;
         }
+
+        // Finaliza a rotação dos marcadores após a exibição
         this.breakMarkerSpin()
     }
 }

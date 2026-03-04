@@ -22,23 +22,21 @@
 // ---------------------------
 
 // Importa os dados dos projetos e a interface Project
+// Dados do tipo Project e lista de projetos
 import { Project } from "../data/projects.js";
 
-// Importa Umbrella JS para manipulação DOM
+// Umbrella para seleções e eventos DOM
 import u from "umbrellajs";
 
-// Importa o template de exibição de projeto
+// Template que gera o HTML do display de um projeto
 import { projectTemplate } from "../templates/projectTemplate.js";
 
-// Importa o seletor de elementos e a interface Elements
+// Seletor e tipos dos elementos do display de projeto
 import { ProjectSelector, Elements } from "../selectors/projectSelector.js";
 
-// Importa a view responsável pela renderização
+// View que controla render e animações do display de projeto
 import ProjectView from "../views/projectView.js";
 import ProjectListController from "./projectListController.js";
-
-import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
-import projectListAnimations from "../utils/projectListAnimations.js";
 
 
 // ---------------------------
@@ -65,14 +63,16 @@ class ProjectController {
     // ---------------------------
 
     constructor(project: Project, projectTitleElement: HTMLElement) {
+        // Registra instância atual para chamadas estáticas
         ProjectController.instance = this;
-        // Define a posição do display baseado no elemento de título
+
+        // Posiciona o display relativo ao elemento de título clicado
         this.setPosition(projectTitleElement);
 
-        // Insere o template do projeto no DOM
+        // Injeta o template com os dados do projeto no container
         this.setProjectData(project)
 
-        // Exibe o projeto com animações
+        // Aciona a exibição com as animações apropriadas
         this.showProject(project)
     }
 
@@ -82,28 +82,24 @@ class ProjectController {
     // ---------------------------
 
     addHandlers() {
-        // Obtém referência ao botão de retorno
+        // Handler do botão de retorno: fecha o display e volta à lista
         var returnBtn = this.elements.returnButton;
-
-        // Adiciona evento de clique ao botão de retorno
         u(returnBtn).on('click', async () => {
-            // Remove o listener para evitar múltiplos disparos
+            // Remove o listener para evitar múltiplos cliques concorrentes
             u(returnBtn).off('click');
-            // Oculta o projeto e retorna à lista
             this.hideProject("projectController");
         })
 
+        // Handlers de interação para botões de acesso e código
         var accessBtn = this.elements.projectAccess;
         var codeBtn = this.elements.projectCode;
-
         var btns = [accessBtn, codeBtn];
 
+        // Adiciona efeitos visuais ao entrar/sair do botão
         btns.forEach((btn) => {
-
             u(btn).on('mouseenter', (e) => {
                 this.view.buttonInteractions(btn, "enter");
             })
-
             u(btn).on('mouseleave', (e) => {
                 this.view.buttonInteractions(btn, "leave");
             })
@@ -116,10 +112,10 @@ class ProjectController {
     // ---------------------------
 
     setPosition(projectElement: HTMLElement) {
-        // Obtém o primeiro elemento filho como referência
+        // Usa o primeiro filho do elemento de título como referência de altura
         var reference = u(projectElement).children().first() as HTMLElement;
 
-        // Define estilos inline para posicionamento
+        // Define posição top do container baseado na altura do título referenciado
         this.elements.projectContainer.style = `
         top: ${reference.offsetHeight + 55}px;
         display: flex;`
@@ -131,7 +127,7 @@ class ProjectController {
     // ---------------------------
 
     setProjectData(project: Project) {
-        // Renderiza e adiciona o template do projeto ao container
+        // Injeta o HTML do projeto no container usando o template
         this.elements.projectContainer.append(
             projectTemplate(project)
         )
@@ -143,17 +139,16 @@ class ProjectController {
     // ---------------------------
 
     async showProject(project: Project) {
-
-
+        // Log auxiliar para desenvolvimento
         console.log("Iniciando animação de exibição do projeto...")
 
-        // Atualiza os elementos DOM após inserção do template
+        // Re-obtem referências DOM após inserir o template
         this.elements = ProjectSelector.defineElements();
 
-        // Exibe o projeto através da view com animações)
+        // Dispara a animação de entrada do projeto via view
         this.view.showProject(this.elements, project);
 
-        // Adiciona os event handlers aos botões
+        // Anexa handlers aos botões do display
         this.addHandlers();
     }
 
@@ -163,9 +158,10 @@ class ProjectController {
     // ---------------------------
 
     async hideProject(origin: string) {
-        // Executa animação de ocultação do projeto através da view
+        // Solicita à view que execute a animação de fechamento do projeto
         await this.view.hideProject(this.elements.projectContainer);
 
+        // Após ocultar, notifica a lista para desfocar o projeto selecionado
         ProjectListController.blurSelectedProject(origin);
     }
 }

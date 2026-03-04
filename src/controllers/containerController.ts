@@ -29,16 +29,17 @@ import ContainerView from "../views/containerView.js";
 // ---------------------------
 
 class ContainerController {
+    // Armazena o valor de zoom original do dispositivo
     originalZoom: number;
-    
+
     // ---------------------------
     // 2.1. PROPRIEDADES
     // ---------------------------
-    
-    // Elementos DOM do container principal
+
+    // Elementos DOM do container principal (wrapper da aplicação)
     elements: Elements = ContainerSelector.defineElements();
-    
-    // Instância da view para renderização e manipulação visual
+
+    // View que controla render e dimensionamento do container
     view: ContainerView = new ContainerView(this.elements);
 
     
@@ -47,11 +48,13 @@ class ContainerController {
     // ---------------------------
     
     constructor() {
-        // Adiciona o evento de redimensionamento da janela
+        // Escuta resize para ajustar layout responsivo
         this.addResizeEvent();
-        // Armazena o zoom original da página
+
+        // Armazena escala do dispositivo para uso em cálculos de layout
         this.originalZoom = window.devicePixelRatio;
 
+        // Exibe o container da aplicação (pode executar animações iniciais)
         this.showContainer();
     }
    
@@ -60,9 +63,8 @@ class ContainerController {
     // ---------------------------
     
     addResizeEvent() {
-        // Escuta o evento resize da janela
+        // Escuta mudanças de tamanho da janela e delega à view o ajuste
         window.addEventListener('resize', () => {
-            // Atualiza o tamanho do container através da view
             this.view.updateContainerSize();
         });
     }

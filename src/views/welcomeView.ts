@@ -17,8 +17,9 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-// Importa a interface Elements do seletor
+// Importa a interface Elements proveniente do seletor da tela de boas-vindas
 import { Elements } from "../selectors/welcomeSelector.js";
+// Importa utilitário de animações específico para a tela de welcome
 import WelcomeAnimations from "../utils/welcomeAnimations.js";
 
 
@@ -32,7 +33,7 @@ class WelcomeView {
     // 2.1. PROPRIEDADES
     // ---------------------------
 
-    // Elementos DOM da tela de boas-vindas
+    // Referência aos elementos DOM (container, títulos, etc.) fornecidos pelo selector
     elements: Elements
 
 
@@ -41,7 +42,7 @@ class WelcomeView {
     // ---------------------------
 
     constructor(elements: Elements) {
-        // Armazena os elementos DOM passados como parâmetro
+        // Salva a referência aos elementos para uso nas animações/metodos
         this.elements = elements;
     }
 
@@ -51,18 +52,23 @@ class WelcomeView {
     // ---------------------------
 
     async removeWelcome(elements: Elements) {
+        // Inicia a animação de fade-out do título 'name' com delay
         WelcomeAnimations.fadeOutWelcomeText.animation(elements.name, 1000)
 
+        // Aguarda término da animação anterior
         await WelcomeAnimations.check(
             () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
         )
 
+        // Em seguida, anima o título 'portfolio' (sem delay)
         WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.portfolio, 0);
 
+        // Aguarda término da segunda animação
         await WelcomeAnimations.check(
             () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
         )
 
+        // Remove o elemento de welcome do DOM após as animações
         this.elements.welcome.remove()
     }
 }

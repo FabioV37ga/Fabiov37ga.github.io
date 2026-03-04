@@ -50,6 +50,7 @@ class ContactView {
     // 2.4. showTitle - Animação de títulos individuais
     // ---------------------------
     async showTitle(title: HTMLElement, delay: number) {
+        // Dispara a animação de exibição do título e aguarda sua execução
         ContactAnimations.showTitles.animation(title, delay)
 
         await ContactAnimations.check(
@@ -60,6 +61,7 @@ class ContactView {
     }
 
     async hideTitle(title: HTMLElement, delay: number) {
+        // Executa animação de ocultação para um título específico
         ContactAnimations.hideTitle.animation(title, delay)
 
         await ContactAnimations.check(
@@ -70,6 +72,7 @@ class ContactView {
     }
 
     async showCard(card: HTMLElement, delay: number) {
+        // Mostra um cartão de contato (ex: email, telefone) com animação
         ContactAnimations.showCards.animation(card, delay)
 
         await ContactAnimations.check(
@@ -80,6 +83,7 @@ class ContactView {
     }
 
     async hideCard(card: HTMLElement, delay: number) {
+        // Oculta um cartão de contato com animação de saída
         ContactAnimations.hideCards.animation(card, delay)
 
         await ContactAnimations.check(
@@ -90,9 +94,9 @@ class ContactView {
     }
 
     async expandDivisor(element: HTMLElement) {
-        // FIXME
+        // Expande o divisor visual na seção de contato (placeholder)
+        // A implementação atual delega a animação ao módulo de animações
         ContactAnimations.expandDivisor.animation(this.elements.divisor)
-
 
         await ContactAnimations.check(
             () => ContactAnimations.expandDivisor.isPlaying

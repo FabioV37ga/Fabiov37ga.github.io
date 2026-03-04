@@ -88,6 +88,13 @@ class NavigationView {
         NavigationSelector.defineElements()
     }
 
+    // ---------------------------
+    // 2.5. animateMarker - Controla animações ao selecionar um item
+    // ---------------------------
+    // Executa a sequência de animação que move o marcador para a posição
+    // do item selecionado, aguarda a conclusão parcial e então inicia
+    // o giro dos marcadores para um efeito visual adicional.
+    
     async animateMarker(elements: Elements) {
         NavigationAnimations.shiftMarker.animation(elements.markers[1])
 
@@ -98,6 +105,12 @@ class NavigationView {
         NavigationAnimations.spinMarkers.animation(elements.markerContainer)
     }
 
+    // ---------------------------
+    // 2.6. breakMarkerAnimation - Interrompe animações de marcador
+    // ---------------------------
+    // Reverte a animação de deslocamento do marcador e para o giro
+    // restaurando o estado visual original dos marcadores.
+    
     async breakMarkerAnimation(elements: Elements){
         NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
 
