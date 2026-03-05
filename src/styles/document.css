@@ -35,3 +35,10 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 700px){
+    body,
+    main{
+        align-items: flex-start !important;
+    }
+}

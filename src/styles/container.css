@@ -13,3 +13,9 @@
     height: calc(100% - var(--padding-main) * 2);
     /* background: pink */
 }
+
+@media (max-width: 700px){
+    .main-container{
+        margin-top: 20px;
+    }
+}
