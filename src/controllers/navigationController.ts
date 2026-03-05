@@ -107,6 +107,7 @@ class NavigationController {
     async selectItem(items: HTMLElement[], item: HTMLElement, state?: string) {
         // Bloqueia seleção se houver animações em cooldown em outras partes
         if (ProjectListAnimations.slideDownProjectContainer.isPlaying === false
+            && ProjectDisplayAnimations.hideProject.isPlaying == false
             && AboutController.isPlaying == false
             && ContactController.isPlaying === false
         ) {
@@ -227,6 +228,10 @@ class NavigationController {
                     () => projectListAnimations.slideUpProjectContainer.isPlaying
                 )
 
+                await ProjectDisplayAnimations.check(
+                    () => ProjectDisplayAnimations.hideProject.isPlaying
+                )
+
                 // Aguarda qualquer animação de contato terminar
                 await ContactAnimations.check(
                     () => ContactController.isPlaying
@@ -245,6 +250,11 @@ class NavigationController {
                 await projectListAnimations.check(
                     () => projectListAnimations.slideUpProjectContainer.isPlaying
                 )
+
+                await ProjectDisplayAnimations.check(
+                    () => ProjectDisplayAnimations.hideProject.isPlaying
+                )
+
 
                 await AboutAnimations.check(
                     () => AboutAnimations.hideAboutItems.isPlaying
