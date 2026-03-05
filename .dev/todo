@@ -1,8 +1,1 @@
-*atribuir corretamente lógicas de view no controller de contact (redirecionar para classe view)
-(Em outras palavras, Toda ocorrencia de .check - de animations, deve estar dentro de uma view, e não num controller)
-↑
-(quase pronto, falta só algumas ocorrencias)
-
-1. Adicionar icones de "Abrir externamente" aos itens de contact (por enquanto só tem o de copiar no email)
-2. Verificar bug que deixa o conteúdo muito para baixo em alguns dispositivos mobile
 --------------------------------
