@@ -1,12 +1,12 @@
 .about {
     display: none;
-    margin: -110px auto;
+    margin: -100px auto;
     width: 615px;
     color: white;
     font-family: "Neue Montreal";
     font-size: 25px;
     border-radius: 5px;
-    padding: 25px 35px 25px 35px
+    /* padding: 25px 35px 25px 35px */
 }
 
 .about h2 {

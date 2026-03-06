@@ -65,6 +65,8 @@ class AboutView {
                 aboutElements[elemento]
             )
         }
+
+        this.elements.about.style.display = "none"
     }
 }
 

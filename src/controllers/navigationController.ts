@@ -272,6 +272,8 @@ class NavigationController {
                     () => ProjectDisplayAnimations.hideProject.isPlaying
                 )
 
+                // Esses 3 awaits podem ser resumidos usando isplaying como atributo nos controllers
+
                 return true
 
             case "about":
