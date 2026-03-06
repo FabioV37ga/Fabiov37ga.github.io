@@ -18,7 +18,6 @@
 // 1. IMPORTS
 // ---------------------------
 
-import AboutController from "../controllers/aboutController.js";
 import { Elements } from "../selectors/aboutSelector.js"
 
 import AboutAnimations from "../utils/aboutAnimations.js";

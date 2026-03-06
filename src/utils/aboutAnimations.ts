@@ -17,7 +17,7 @@
 // 1. IMPORTS E INTERFACE
 // ---------------------------
 
-import {animate, JSAnimation, engine, cubicBezier} from "animejs"
+import {animate, engine, cubicBezier} from "animejs"
 
 import {Animation, AnimationObject} from "./animation.js";
 
@@ -110,7 +110,7 @@ class AboutAnimations extends Animation{
             })    
         }
     }
-    
+
     static hideAboutItems: AnimationObject = {
         isPlaying: false,
         animation: (element:HTMLElement) => {

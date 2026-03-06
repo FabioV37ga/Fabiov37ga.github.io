@@ -93,11 +93,23 @@ class ContactView {
         )
     }
 
-    async retractDivisor(divisor: HTMLElement){
+    async retractDivisor(divisor: HTMLElement) {
         await ContactAnimations.animateAndWait(
             ContactAnimations.retractDivisor,
             divisor
         )
+    }
+
+    showCopySucess(elements: Elements) {
+        // Atualiza ícone para indicar cópia bem-sucedida
+        elements.clipboard.children[0].classList.remove("fa-clone")
+        elements.clipboard.children[0].classList.add("fa-check")
+
+        // Reverte o ícone após 1.5s para o estado original
+        setTimeout(() => {
+            elements.clipboard.children[0].classList.remove("fa-check")
+            this.elements.clipboard.children[0].classList.add("fa-clone")
+        }, 1500);
     }
 }
 

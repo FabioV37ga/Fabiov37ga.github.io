@@ -73,18 +73,10 @@ class ContactController {
     addHandlers() {
         // Handler para copiar email ao clicar no primeiro cartão
         u(this.elements.cards[0]).on("click", () => {
+            // Copia email para o clipboard
             navigator.clipboard.writeText("veigabfabio@hotmail.com")
-
-            // FIXME - isso deveria estar em view
-            // Atualiza ícone para indicar cópia bem-sucedida
-            this.elements.clipboard.children[0].classList.remove("fa-clone")
-            this.elements.clipboard.children[0].classList.add("fa-check")
-
-            // Reverte o ícone após 1.5s para o estado original
-            setTimeout(() => {
-                this.elements.clipboard.children[0].classList.remove("fa-check")
-                this.elements.clipboard.children[0].classList.add("fa-clone")
-            }, 1500);
+            // Retorno visual - copia bem sucedida
+            this.view.showCopySucess(this.elements)
         })
     }
 

@@ -21,7 +21,7 @@
 // ---------------------------
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
-import { animate, JSAnimation, engine, cubicBezier } from "animejs"
+import { animate, engine } from "animejs"
 
 import {Animation, AnimationObject} from "./animation.js";
 

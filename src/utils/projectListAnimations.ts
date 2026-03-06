@@ -30,7 +30,7 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-import { animate, JSAnimation, engine, cubicBezier } from "animejs"
+import { animate, engine, cubicBezier } from "animejs"
 import {Animation, AnimationObject} from "./animation.js";
 
 import ProjectListController from "../controllers/projectListController.js";

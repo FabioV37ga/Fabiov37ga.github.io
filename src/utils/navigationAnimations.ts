@@ -67,9 +67,9 @@ class NavigationAnimations extends Animation {
     static stopSpinMarkers: AnimationObject = {
         isPlaying: false,
         animation: (element: HTMLElement) => {
+            var animation = NavigationAnimations.spinMarkers.animation(element) as JSAnimation
             NavigationAnimations.spinMarkers.isPlaying = false;
-            NavigationAnimations.spinMarkers.animation(element).pause();
-            
+            animation.pause(); 
             NavigationAnimations.stopSpinMarkers.isPlaying = true;
 
             return animate(element, {

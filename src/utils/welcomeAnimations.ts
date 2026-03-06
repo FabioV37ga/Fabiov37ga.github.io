@@ -1,7 +1,7 @@
 // ---------------------------
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
-import { animate, JSAnimation, engine, cubicBezier } from "animejs"
+import { animate, engine } from "animejs"
 
 import {Animation, AnimationObject} from "./animation.js";
 
@@ -22,7 +22,6 @@ class WelcomeAnimations extends Animation {
                 delay: delay,
                 onComplete: () => {
                     this.fadeOutWelcomeText.isPlaying = false;
-                    // element.style.display = 'none';
                 }
             })
         }

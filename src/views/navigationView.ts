@@ -91,9 +91,7 @@ class NavigationView {
     // ---------------------------
     // 2.5. animateMarker - Controla animações ao selecionar um item
     // ---------------------------
-    // Executa a sequência de animação que move o marcador para a posição
-    // do item selecionado, aguarda a conclusão parcial e então inicia
-    // o giro dos marcadores para um efeito visual adicional.
+    // Executa a sequência de animação que anima o marcador da navegação enquanto há uma transição ocorrendo
 
     async animateMarker(elements: Elements) {
         await NavigationAnimations.animateAndWait(

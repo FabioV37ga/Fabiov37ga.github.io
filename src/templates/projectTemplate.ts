@@ -20,7 +20,7 @@
 
 import html from "nanohtml"
 
-import { Projects, Project } from "../data/projects.js"
+import { Project } from "../data/projects.js"
 
 
 // ---------------------------

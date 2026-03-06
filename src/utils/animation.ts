@@ -15,7 +15,7 @@
  * ============================================================================
  */
 
-import { animate, JSAnimation, engine, cubicBezier } from "animejs"
+import { JSAnimation } from "animejs"
 
 // ---------------------------
 // 2. INTERFACE ANIMATIONOBJECT

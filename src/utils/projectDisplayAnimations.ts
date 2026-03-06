@@ -38,7 +38,6 @@ import u from "umbrellajs";
 
 // import {Animation, AnimationObject} from "./animation.js";
 import { Animation } from "./animation.js";
-import projectListAnimations from "./projectListAnimations.js";
 
 // ---------------------------
 // 2. INTERFACE DE ANIMAÇÃO
