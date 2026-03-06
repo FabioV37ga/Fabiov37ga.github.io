@@ -94,12 +94,11 @@ class NavigationView {
     // Executa a sequência de animação que move o marcador para a posição
     // do item selecionado, aguarda a conclusão parcial e então inicia
     // o giro dos marcadores para um efeito visual adicional.
-    
-    async animateMarker(elements: Elements) {
-        NavigationAnimations.shiftMarker.animation(elements.markers[1])
 
-        await NavigationAnimations.check(
-            () => NavigationAnimations.shiftMarker.isPlaying
+    async animateMarker(elements: Elements) {
+        await NavigationAnimations.animateAndWait(
+            NavigationAnimations.shiftMarker,
+            elements.markers[1]
         )
 
         NavigationAnimations.spinMarkers.animation(elements.markerContainer)
@@ -110,14 +109,13 @@ class NavigationView {
     // ---------------------------
     // Reverte a animação de deslocamento do marcador e para o giro
     // restaurando o estado visual original dos marcadores.
-    
-    async breakMarkerAnimation(elements: Elements){
-        NavigationAnimations.shiftMarkerBack.animation(elements.markers[1])
 
-        await NavigationAnimations.check(
-            () => NavigationAnimations.shiftMarkerBack.isPlaying
+    async breakMarkerAnimation(elements: Elements) {
+        await NavigationAnimations.animateAndWait(
+            NavigationAnimations.shiftMarkerBack,
+            elements.markers[1]
         )
-        
+
         NavigationAnimations.stopSpinMarkers.animation(elements.markerContainer)
     }
 }

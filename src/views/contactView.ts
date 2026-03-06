@@ -51,57 +51,53 @@ class ContactView {
     // ---------------------------
     async showTitle(title: HTMLElement, delay: number) {
         // Dispara a animação de exibição do título e aguarda sua execução
-        ContactAnimations.showTitles.animation(title, delay)
-
-        await ContactAnimations.check(
-            () => ContactAnimations.showTitles.isPlaying
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.showTitles,
+            title,
+            delay
         )
-
-        return true
     }
 
     async hideTitle(title: HTMLElement, delay: number) {
         // Executa animação de ocultação para um título específico
-        ContactAnimations.hideTitle.animation(title, delay)
-
-        await ContactAnimations.check(
-            () => ContactAnimations.hideTitle.isPlaying
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.hideTitle,
+            title,
+            delay
         )
-
-        return true
     }
 
     async showCard(card: HTMLElement, delay: number) {
         // Mostra um cartão de contato (ex: email, telefone) com animação
-        ContactAnimations.showCards.animation(card, delay)
-
-        await ContactAnimations.check(
-            () => ContactAnimations.showCards.isPlaying
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.showCards,
+            card,
+            delay
         )
-
-        return true
     }
 
     async hideCard(card: HTMLElement, delay: number) {
         // Oculta um cartão de contato com animação de saída
-        ContactAnimations.hideCards.animation(card, delay)
-
-        await ContactAnimations.check(
-            () => ContactAnimations.hideCards.isPlaying
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.hideCards,
+            card,
+            delay
         )
-
-        return true
     }
 
     async expandDivisor(element: HTMLElement) {
         // Expande o divisor visual na seção de contato (placeholder)
-        // A implementação atual delega a animação ao módulo de animações
-        ContactAnimations.expandDivisor.animation(this.elements.divisor)
-
-        await ContactAnimations.check(
-            () => ContactAnimations.expandDivisor.isPlaying
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.expandDivisor,
+            this.elements.divisor
         )
-        return true
+    }
+
+    async retractDivisor(divisor: HTMLElement){
+        await ContactAnimations.animateAndWait(
+            ContactAnimations.retractDivisor,
+            divisor
+        )
     }
 }
 

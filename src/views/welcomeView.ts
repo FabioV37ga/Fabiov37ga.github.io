@@ -52,20 +52,16 @@ class WelcomeView {
     // ---------------------------
 
     async removeWelcome(elements: Elements) {
-        // Inicia a animação de fade-out do título 'name' com delay
-        WelcomeAnimations.fadeOutWelcomeText.animation(elements.name, 1000)
-
-        // Aguarda término da animação anterior
-        await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
+        await WelcomeAnimations.animateAndWait(
+            WelcomeAnimations.fadeOutWelcomeText,
+            elements.name,
+            1000
         )
 
-        // Em seguida, anima o título 'portfolio' (sem delay)
-        WelcomeAnimations.fadeOutWelcomeText.animation(this.elements.portfolio, 0);
-
-        // Aguarda término da segunda animação
-        await WelcomeAnimations.check(
-            () => WelcomeAnimations.fadeOutWelcomeText.isPlaying
+        await WelcomeAnimations.animateAndWait(
+            WelcomeAnimations.fadeOutWelcomeText,
+            this.elements.portfolio,
+            0
         )
 
         // Remove o elemento de welcome do DOM após as animações

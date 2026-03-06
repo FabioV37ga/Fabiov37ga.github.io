@@ -105,15 +105,10 @@ class ProjectView {
     // ---------------------------
 
     async hideProject(element: HTMLElement) {
-        // Inicia animação de saída do display do projeto
-        projectDisplayAnimations.hideProject.animation(element);
-
-        // Aguarda término da animação de ocultação
-        await projectDisplayAnimations.check(
-            () => projectDisplayAnimations.hideProject.isPlaying
+        await projectDisplayAnimations.animateAndWait(
+            projectDisplayAnimations.hideProject,
+            element
         )
-
-        return true
     }
 
     // ---------------------------

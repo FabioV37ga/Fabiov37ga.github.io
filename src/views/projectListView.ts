@@ -23,23 +23,18 @@
 // 1. IMPORTS E DEPENDÊNCIAS
 // ---------------------------
 
-// Importa Umbrella JS para manipulação DOM
 // Umbrella JS para seleção/manipulação DOM
 import u from "umbrellajs";
 
-// Importa a interface Elements do seletor
 // Types/elements usados pela view da lista de projetos
 import { Elements } from "../selectors/projectListSelector.js";
 
-// Importa o tipo Project dos dados
 // Tipo de dados Project contendo title, description, etc.
 import { Project } from "../data/projects.js";
 
-// Importa o template de item de projeto
 // Template que renderiza um item de navegação/ projeto
 import { nav_project } from "../templates/projectListTemplate.js";
 
-// Importa animações da lista de projetos
 // Animações específicas para a lista de projetos
 import projectListAnimations from "../utils/projectListAnimations.js";
 

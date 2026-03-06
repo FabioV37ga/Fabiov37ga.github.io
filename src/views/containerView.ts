@@ -129,11 +129,10 @@ class ContainerView {
     // conclusão parcial da animação usando o helper `check` e garante
     // que a opacidade do elemento esteja definida para 1 no final.
     async showContainer() {
-        ContainerAnimations.fadeInContainer.animation(this.elements.mainContainer);
-
-        await ContainerAnimations.check(
-            () => ContainerAnimations.fadeInContainer.isPlaying
-        )
+        await ContainerAnimations.animateAndWait(
+            ContainerAnimations.fadeInContainer,
+            this.elements.mainContainer
+        );
 
         // Assegura que o container fique totalmente visível ao final
         this.elements.mainContainer.style.opacity = `1`

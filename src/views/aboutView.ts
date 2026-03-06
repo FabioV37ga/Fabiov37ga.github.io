@@ -18,6 +18,7 @@
 // 1. IMPORTS
 // ---------------------------
 
+import AboutController from "../controllers/aboutController.js";
 import { Elements } from "../selectors/aboutSelector.js"
 
 import AboutAnimations from "../utils/aboutAnimations.js";
@@ -34,32 +35,24 @@ class AboutView {
     }
 
     async showContainer() {
-        AboutAnimations.expandContainer.animation(
+        await AboutAnimations.animateAndWait(
+            AboutAnimations.expandContainer,
             this.elements.about
-        )
-        await AboutAnimations.check(
-            () => AboutAnimations.expandContainer.isPlaying
         )
     }
 
     async showTitle() {
-        AboutAnimations.showTitle.animation(
+        await AboutAnimations.animateAndWait(
+            AboutAnimations.showTitle,
             this.elements.title
-        )
-
-        await AboutAnimations.check(
-            () => AboutAnimations.showTitle.isPlaying
         )
     }
 
     async showParagraph(paragraph: HTMLElement, delay: number) {
-        AboutAnimations.slideInAboutItem.animation(
+        await AboutAnimations.animateAndWait(
+            AboutAnimations.slideInAboutItem,
             paragraph,
             delay
-        )
-
-        await AboutAnimations.check(
-            () => AboutAnimations.slideInAboutItem.isPlaying
         )
     }
 
@@ -70,15 +63,15 @@ class AboutView {
     }
 
     async hideContent() {
-        AboutAnimations.hideAboutItems.animation(
+        await AboutAnimations.animateAndWait(
+            AboutAnimations.hideAboutItems,
             this.elements.about
         )
 
-        await AboutAnimations.check(
-            () => AboutAnimations.hideAboutItems.isPlaying
-        )
-
-        const elements = this.elements.paragraphs.concat(this.elements.git).concat(this.elements.title)
+        const elements =
+            this.elements.paragraphs
+                .concat(this.elements.git)
+                .concat(this.elements.title)
 
         elements.forEach(element => {
             element.style.opacity = '0'
