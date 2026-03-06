@@ -18,6 +18,7 @@
 // 1. IMPORTS
 // ---------------------------
 
+import AboutController from "../controllers/aboutController.js";
 import { Elements } from "../selectors/aboutSelector.js"
 
 import AboutAnimations from "../utils/aboutAnimations.js";
@@ -64,20 +65,7 @@ class AboutView {
                 aboutElements[elemento]
             )
         }
-
-
-        const elements =
-            this.elements.paragraphs
-                // .concat(this.elements.git)
-                .concat(this.elements.title)
-
-        console.log(elements)
-
-        elements.forEach(element => {
-            element.style.opacity = '0'
-        });
     }
-
 }
 
 export default AboutView
