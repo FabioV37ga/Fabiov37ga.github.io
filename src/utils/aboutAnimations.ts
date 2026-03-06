@@ -49,8 +49,6 @@ class AboutAnimations extends Animation{
         }
     }
 
-
-
     static showTitle: AnimationObject = {
         isPlaying: false,
         animation: (element:HTMLElement) =>{
@@ -112,6 +110,7 @@ class AboutAnimations extends Animation{
             })    
         }
     }
+    
     static hideAboutItems: AnimationObject = {
         isPlaying: false,
         animation: (element:HTMLElement) => {

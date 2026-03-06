@@ -31,7 +31,6 @@ import u from "umbrellajs";
 // Importa seletor e tipos para a seção de contato
 import { ContactSelector, Elements } from "../selectors/contactSelector.js";
 // Importa utilitários e view específicos de Contact
-import ContactAnimations from "../utils/contactAnimations.js";
 import ContactView from "../views/contactView.js";
 
 // ---------------------------
@@ -76,6 +75,7 @@ class ContactController {
         u(this.elements.cards[0]).on("click", () => {
             navigator.clipboard.writeText("veigabfabio@hotmail.com")
 
+            // FIXME - isso deveria estar em view
             // Atualiza ícone para indicar cópia bem-sucedida
             this.elements.clipboard.children[0].classList.remove("fa-clone")
             this.elements.clipboard.children[0].classList.add("fa-check")
@@ -151,6 +151,7 @@ class ContactController {
     // ---------------------------
     // 2.7. showCards() - Anima cartões de contato
     // ---------------------------
+    // REVER - Cabe refatoração?
     async showCards(card?: number) {
         // Torna todos os cartões visíveis no layout e prepara opacidade inicial
         const cards = this.elements.cards
@@ -242,18 +243,18 @@ class ContactController {
     // 2.11. hideTitles() - Anima ocultação dos títulos e divisor
     // ---------------------------
 
-    // FIXME
     async hideTitles(title?: number) {
         const titles = this.elements.titles
 
         if (title != undefined) {
-            // Oculta título específico
-            await ContactAnimations.hideTitle.animation(titles[title], 0)
+            // Versão mobile
+            await this.view.hideTitle(titles[title], 0)
         } else {
-            // Oculta segundo título, retraindo depois o divisor e por fim o primeiro título
-            await ContactAnimations.hideTitle.animation(titles[1], 0)
-            await ContactAnimations.retractDivisor.animation(this.elements.divisor)
-            await ContactAnimations.hideTitle.animation(titles[0], 0)
+            // Versão desktop
+
+            await this.view.hideTitle(this.elements.titles[1], 0)
+            await this.view.retractDivisor(this.elements.divisor)
+            await this.view.hideTitle(titles[0], 0)
         }
 
         return true

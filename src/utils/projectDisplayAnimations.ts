@@ -307,7 +307,7 @@ class ProjectDisplayAnimations extends Animation {
             // Anima cada elemento filho em ordem reversa
             projectElementChildren.each((child: HTMLElement, index: number) => {
                 const reverseIndex = projectElementChildLength - 1 - index;
-                animate(child, {
+                return animate(child, {
                     opacity: [1, 0],
                     translateY: ['0px', '10px'],
                     easing: "easeInCirc",

@@ -39,9 +39,9 @@ import ContactController from "./contactController.js";
 
 
 // Importa utilitários de animação necessários para coordenar transições
+// import ProjectListAnimations from "../utils/projectListAnimations.js";
 import ProjectListAnimations from "../utils/projectListAnimations.js";
 import ProjectDisplayAnimations from "../utils/projectDisplayAnimations.js";
-import projectListAnimations from "../utils/projectListAnimations.js";
 import AboutAnimations from "../utils/aboutAnimations.js";
 import ContactAnimations from "../utils/contactAnimations.js";
 
@@ -204,74 +204,94 @@ class NavigationController {
             case this.elements.projects:
                 // Garante que animações de outras seções não estejam ativas
                 if (ContactController.instance)
-                    await ContactAnimations.check(
-                        () => ContactController.isPlaying
-                    )
+                    await this.waitAnimation("contact")
 
                 if (AboutController.instance)
-                    await AboutAnimations.check(
-                        () => AboutAnimations.hideAboutItems.isPlaying
-                    )
+                    await this.waitAnimation("about")
 
                 // Cria o controller da lista de projetos com o delay recebido
                 new ProjectListController(delay);
 
                 // Aguarda a animação de abertura da lista terminar
-                await ProjectListAnimations.check(
-                    () => ProjectListAnimations.slideDownProjectContainer.isPlaying
-                )
+                await this.waitAnimation("projects")
 
                 break;
             case this.elements.about:
                 // Aguarda animações de saída da lista e do display de projeto
-                await projectListAnimations.check(
-                    () => projectListAnimations.slideUpProjectContainer.isPlaying
-                )
-
-                await ProjectDisplayAnimations.check(
-                    () => ProjectDisplayAnimations.hideProject.isPlaying
-                )
+                await this.waitAnimation("projects")
 
                 // Aguarda qualquer animação de contato terminar
-                await ContactAnimations.check(
-                    () => ContactController.isPlaying
-                )
+                await this.waitAnimation("contact")
 
                 // Instancia e mostra a seção About
                 new AboutController()
 
-                await AboutAnimations.check(
-                    () => AboutController.isPlaying
-                )
+                // Aguarda animações de about
+                await this.waitAnimation("about")
 
                 break;
             case this.elements.contact:
                 // Aguarda animações pendentes da lista e display
-                await projectListAnimations.check(
-                    () => projectListAnimations.slideUpProjectContainer.isPlaying
-                )
 
-                await ProjectDisplayAnimations.check(
-                    () => ProjectDisplayAnimations.hideProject.isPlaying
-                )
+                await this.waitAnimation("projects")
 
-
-                await AboutAnimations.check(
-                    () => AboutAnimations.hideAboutItems.isPlaying
-                )
+                // Aguarda animações de about
+                await this.waitAnimation("about")
 
                 // Cria o controller de contato e aguarda sua sequência
                 new ContactController();
 
-                await ContactAnimations.check(
-                    () => ContactController.isPlaying
-                )
+                // Aguarda qualquer animação de contato terminar
+                await this.waitAnimation("contact")
 
                 break;
         }
 
         // Finaliza a rotação dos marcadores após a exibição
         this.breakMarkerSpin()
+    }
+
+    async waitAnimation(animation: "projects" | "about" | "contact") {
+        switch (animation) {
+            // Aguardar animações da aba projetos
+            case "projects":
+
+
+                // Espera animação de entrada estar inativa
+                await ProjectListAnimations.check(
+                    () => ProjectListAnimations.slideDownProjectContainer.isPlaying
+                )
+
+                // Espera animação de saída estar inativa
+                await ProjectListAnimations.check(
+                    () => ProjectListAnimations.slideUpProjectContainer.isPlaying
+                )
+
+                // Espera animação de fechamento de projeto estar inativa
+                await ProjectDisplayAnimations.check(
+                    () => ProjectDisplayAnimations.hideProject.isPlaying
+                )
+
+                return true
+
+            case "about":
+
+                // Espera animação de esconder itens estar inativa
+                await AboutAnimations.check(
+                    () => AboutAnimations.hideAboutItems.isPlaying
+                )
+
+                return true
+
+            case "contact":
+
+                // Espera animações de contato estarem inativas
+                await ContactAnimations.check(
+                    () => ContactController.isPlaying
+                )
+
+                return true
+        }
     }
 }
 

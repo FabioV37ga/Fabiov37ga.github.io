@@ -15,14 +15,14 @@
  * ============================================================================
  */
 
-import {animate, JSAnimation, engine, cubicBezier} from "animejs"
+import { animate, JSAnimation, engine, cubicBezier } from "animejs"
 
 // ---------------------------
 // 2. INTERFACE ANIMATIONOBJECT
 // ---------------------------
 interface AnimationObject {
     isPlaying: boolean;
-    animation: (...args: any[]) => JSAnimation;
+    animation: (...args: any[]) => JSAnimation | Promise<number> | void;
 }
 
 
@@ -74,6 +74,29 @@ class Animation {
             requestAnimationFrame(checkFrame);
         });
     }
+
+    static async animateAndWait(
+        animationObject: AnimationObject,
+        target?: HTMLElement,
+        delay?: number
+    ) {
+
+        animationObject.animation(target, delay)
+
+        await Animation.check(
+            () => animationObject.isPlaying
+        )
+
+        return true
+    }
+
+    static animate(
+        animationObject: AnimationObject,
+        target?: HTMLElement,
+        delay?: number
+    ) {
+        animationObject.animation(target, delay)
+    }
 }
 
-export {Animation, AnimationObject};
+export { Animation, AnimationObject };
