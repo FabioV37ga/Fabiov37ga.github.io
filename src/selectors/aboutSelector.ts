@@ -22,7 +22,7 @@ interface Elements{
     about: HTMLElement;
     title: HTMLElement;
     paragraphs: HTMLElement[];
-    git: HTMLElement;
+    // git: HTMLElement;
     sidebar: HTMLElement;
 }
 
@@ -38,9 +38,9 @@ class AboutSelector{
 
         const title: HTMLElement = u(".about h2").nodes[0] as HTMLElement;
 
-        const paragraphs: HTMLElement[] = u(".about-content p").nodes as HTMLElement[]
+        const paragraphs: HTMLElement[] = u(".about-card-container .about-card").nodes as HTMLElement[]
 
-        const git: HTMLElement = u(".about-git").nodes[0] as HTMLElement
+        // const git: HTMLElement = u(".about-git").nodes[0] as HTMLElement
 
         const sidebar: HTMLElement = u(".about-sidebar").nodes[0] as HTMLElement
 
@@ -48,7 +48,7 @@ class AboutSelector{
             about: about,
             title: title,
             paragraphs: paragraphs,
-            git: git,
+            // git: git,
             sidebar: sidebar
         }
 

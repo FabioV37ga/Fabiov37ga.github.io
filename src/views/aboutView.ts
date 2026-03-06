@@ -34,10 +34,10 @@ class AboutView {
     }
 
     async showContainer() {
-        await AboutAnimations.animateAndWait(
-            AboutAnimations.expandContainer,
-            this.elements.about
-        )
+        this.elements.about.style.display = 'flex'
+        this.elements.about.style.opacity = '1'
+
+        await this.showTitle()
     }
 
     async showTitle() {
@@ -49,28 +49,29 @@ class AboutView {
 
     async showParagraph(paragraph: HTMLElement, delay: number) {
         await AboutAnimations.animateAndWait(
-            AboutAnimations.slideInAboutItem,
+            AboutAnimations.showAboutItem,
             paragraph,
             delay
         )
     }
 
-    showSidebar() {
-        AboutAnimations.showSidebar.animation(
-            this.elements.sidebar
-        )
-    }
-
     async hideContent() {
-        await AboutAnimations.animateAndWait(
-            AboutAnimations.hideAboutItems,
-            this.elements.about
-        )
+        var aboutElements: HTMLElement[] = [this.elements.title].concat(this.elements.paragraphs)
+
+        for (let elemento = aboutElements.length-1 ; elemento >= 0; elemento--){
+            await AboutAnimations.animateAndWait(
+                AboutAnimations.hideAboutItem,
+                aboutElements[elemento]
+            )
+        }
+
 
         const elements =
             this.elements.paragraphs
-                .concat(this.elements.git)
+                // .concat(this.elements.git)
                 .concat(this.elements.title)
+
+        console.log(elements)
 
         elements.forEach(element => {
             element.style.opacity = '0'

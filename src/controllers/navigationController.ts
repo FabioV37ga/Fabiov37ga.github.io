@@ -278,7 +278,7 @@ class NavigationController {
 
                 // Espera animação de esconder itens estar inativa
                 await AboutAnimations.check(
-                    () => AboutAnimations.hideAboutItems.isPlaying
+                    () => AboutController.isPlaying
                 )
 
                 return true

@@ -59,13 +59,10 @@ class AboutController {
         AboutController.isPlaying = true;
 
         // Junta os parágrafos e o elemento de link/git em um único array
-        const elements = this.elements.paragraphs.concat(this.elements.git)
+        const elements = this.elements.paragraphs
 
         // Mostra o container (possíveis animações/estilos iniciais)
         await this.view.showContainer()
-
-        // Mostra o título da seção (animação separada)
-        await this.view.showTitle()
 
         // Inicializa cada elemento: garante que estejam visíveis no layout mas invisíveis visualmente
         elements.forEach((element) => {

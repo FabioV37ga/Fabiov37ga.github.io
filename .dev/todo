@@ -1,3 +1,2 @@
-1. Substituir lógicas de wait das view pelo novo método animateAndWait()
-** Verificar FIXME's comentados
+1.Padronizar isplaying nos controllers para diminuir o número de verificações em navigationcontroller
 --------------------------------

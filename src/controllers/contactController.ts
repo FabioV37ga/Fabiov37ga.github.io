@@ -228,6 +228,8 @@ class ContactController {
             }
         }
 
+        
+
         return true
     }
 

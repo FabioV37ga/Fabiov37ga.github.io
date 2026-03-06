@@ -53,7 +53,7 @@ class ContactAnimations extends Animation {
             return animate(element, {
                 display: 'flex',
                 opacity: [0, 1],
-                duration: 400,
+                duration: 350,
                 delay: delay,
                 onComplete: () => {
                     ContactAnimations.showTitles.isPlaying = false;
@@ -69,7 +69,7 @@ class ContactAnimations extends Animation {
             return animate(element, {
                 opacity: [0, 1],
                 display: 'flex',
-                duration: 350,
+                duration: 280,
                 delay: delay,
                 onComplete: () => {
                     ContactAnimations.showCards.isPlaying = false;
@@ -100,7 +100,7 @@ class ContactAnimations extends Animation {
             ContactAnimations.hideCards.isPlaying = true;
             return animate(element, {
                 opacity: [1, 0],
-                duration: 350,
+                duration: 200,
                 delay: delay,
                 onComplete: () => {
                     ContactAnimations.hideCards.isPlaying = false;
@@ -115,7 +115,7 @@ class ContactAnimations extends Animation {
             ContactAnimations.hideTitle.isPlaying = true;
             return animate(element, {
                 opacity: [1, 0],
-                duration: 400,
+                duration: 300,
                 delay: delay,
                 onComplete: () => {
                     ContactAnimations.hideTitle.isPlaying = false;
@@ -131,7 +131,7 @@ class ContactAnimations extends Animation {
             return animate(element, {
                 height: ['100%', '0%'],
                 margin: ['0px 0 0 0', '112px 0 0 0'],
-                duration: 500,
+                duration: 250,
                 onComplete: () => {
                     ContactAnimations.retractDivisor.isPlaying = false;
                 }
