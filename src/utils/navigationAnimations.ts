@@ -35,7 +35,6 @@ class NavigationAnimations extends Animation {
     static shiftMarker: AnimationObject = {
         isPlaying: false,
         animation: (element: HTMLElement) => {
-            console.log("starting animation")
             NavigationAnimations.shiftMarker.isPlaying = true;
             return animate(element, {
                 display: 'flex',

@@ -147,7 +147,7 @@ class ProjectController {
 
     async showProject(project: Project) {
         // Log auxiliar para desenvolvimento
-        console.log("Iniciando animação de exibição do projeto...")
+        // console.log("Iniciando animação de exibição do projeto...")
 
         // Re-obtem referências DOM após inserir o template
         this.elements = ProjectSelector.defineElements();
