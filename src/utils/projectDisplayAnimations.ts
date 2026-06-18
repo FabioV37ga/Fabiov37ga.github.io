@@ -83,14 +83,14 @@ class ProjectDisplayAnimations extends Animation {
             ProjectDisplayAnimations.typeDescription.isPlaying = true;
 
             // Seleciona todos os parágrafos (spans) dentro do elemento
-            const paragraphs = u('.description-content span', element);
+            const paragraphs = u('.description-content span, .description-content a', element);
             const paragraphsArray: string[] = [];
             const paragraphsNodes: HTMLElement[] = [];
 
             var totalCharacters = 0;
 
             // Extrai o texto de cada parágrafo e limpa o conteúdo
-            paragraphs.each((node: HTMLElement) => {
+            paragraphs.each((node: HTMLElement | any) => {
                 totalCharacters += node.textContent?.length || 0;
                 paragraphsArray.push(node.textContent || '');
                 paragraphsNodes.push(node);
@@ -304,7 +304,7 @@ class ProjectDisplayAnimations extends Animation {
             let completedCount = 0;
 
             // Anima cada elemento filho em ordem reversa
-            projectElementChildren.each((child: HTMLElement, index: number) => {
+            projectElementChildren.each((child: HTMLElement | any, index: number) => {
                 const reverseIndex = projectElementChildLength - 1 - index;
                 return animate(child, {
                     opacity: [1, 0],

@@ -34,7 +34,7 @@
 import { Technologies } from "../templates/technologiesTemplate.js";
 
 // Importa o template de parágrafo
-import { paragraph } from "../templates/paragraphTemplate.js";
+import { linkAttach, paragraph } from "../templates/paragraphTemplate.js";
 
 
 // ---------------------------
@@ -288,7 +288,9 @@ const tascaDoAlfredo: Project = {
     description: [
         paragraph(`Website da Tasca do Alfredo: trabalho de conclusão de curso de Design de Interiores.`),
         paragraph(`Mobile-first e completamente responsivo. Desenvolvido para funcionar no ipad no dia da apresentação.`),
-        paragraph(`Design de Interiores desenvolvido por Marcella Sol → https://marcellasol.com.br`)
+        paragraph(`Design de Interiores desenvolvido por Marcella Sol.`),
+        linkAttach(`https://marcellasol.com.br`, `marcellasol.com.br`)
+
     ],
     link: "https://tascadoalfredo.onrender.com",
     github: "https://github.com/FabioV37ga/Tasca-do-Alfredo"

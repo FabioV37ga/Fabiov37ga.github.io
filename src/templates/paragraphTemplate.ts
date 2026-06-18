@@ -25,3 +25,5 @@ import html from "nanohtml";
 // ---------------------------
 
 export const paragraph = (text: string) => html`<span>${text}</span>`;
+export const linkAttach = (link: string, text: string) =>
+    html`<a href=${link} target="_blank" rel="noopener noreferrer">${text}</a>`;
