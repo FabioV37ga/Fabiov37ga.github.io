@@ -146,6 +146,24 @@ const jsBridge: Project = {
     github: "http://github.com/FabioV37ga/JSBridge"
 }
 
+const shopSystemCustomGui: Project = {
+    title: "ShopSystem CustomGUI",
+    technologies:[
+        Technologies.html5,
+        Technologies.css3,
+        Technologies.javascript,
+        Technologies.jquery,
+        Technologies.googleSheets
+    ],
+    description:[
+        paragraph(`Protótipo de sistema de gerenciamento de loja, com interface personalizável pelo administrador.`),
+        paragraph(`Permite a customização de cores, textos, imagens e itens a venda.`),
+        paragraph(`Versão protótipo. Desenvolvido para estudo de manipulação do DOM, eventos e integração com Google Sheets.`)
+    ],
+    link: "https://fabiov37ga.github.io/shopSystemCustomGui/",
+    github: "https://github.com/FabioV37ga/shopSystemCustomGui"
+}
+
 
 // ---------------------------
 // 3.5. conviteAugusto - Convite digital temático Rei Leão
@@ -286,6 +304,7 @@ const Projects: Project[] = [
     nutryo,
     tascaDoAlfredo,
     typeTap,
+    shopSystemCustomGui,
     sistemaSolar,
     jsBridge,
     conviteAugusto,
