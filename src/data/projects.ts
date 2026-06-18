@@ -301,8 +301,8 @@ const tascaDoAlfredo: Project = {
 
 // Array contendo todos os projetos do portfólio
 const Projects: Project[] = [
-    nutryo,
     tascaDoAlfredo,
+    nutryo,
     typeTap,
     shopSystemCustomGui,
     sistemaSolar,
