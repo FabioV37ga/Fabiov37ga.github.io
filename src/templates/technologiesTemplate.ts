@@ -201,6 +201,24 @@ const jquery = () => html`
     </li>
 `
 
+const animejs = () => html`
+    <li class="project-technology">
+        <img src="https://img.shields.io/badge/animejs-FF4B4B?style=for-the-badge&logo=animedotjs&logoColor=white" alt="Anime.js">
+    </li>
+`
+
+const umbrellajs = () => html`
+    <li class="project-technology">
+        <img src="https://img.shields.io/badge/umbrella.js-7FDBFF?style=for-the-badge&logo=umbrel&logoColor=white" alt="Umbrella.js">
+    </li>
+`
+
+const nanohtml = () => html`
+    <li class="project-technology">
+        <img src="https://img.shields.io/badge/nanohtml-893534?style=for-the-badge&logo=htmx&logoColor=white" alt="nanohtml">
+    </li>
+`
+
 // ---------------------------
 // 4. EXPORT DO OBJETO TECHNOLOGIES
 // ---------------------------
@@ -219,5 +237,8 @@ export const Technologies = {
     mongodb: mongodb(),
     json: json(),
     googleSheets: googleSheets(),
-    jquery: jquery()
+    jquery: jquery(),
+    animejs: animejs(),
+    umbrellajs: umbrellajs(),
+    nanohtml: nanohtml()
 }

@@ -257,6 +257,24 @@ const wearSell: Project = {
     github: "https://github.com/FabioV37ga/wearSellA3"
 }
 
+const tascaDoAlfredo: Project = {
+    title: "Tasca do Alfredo",
+    technologies: [
+        Technologies.html5,
+        Technologies.css3,
+        Technologies.typescript,
+        Technologies.nodejs,
+        Technologies.umbrellajs,
+        Technologies.nanohtml
+    ],
+    description: [
+        paragraph(`Website da Tasca do Alfredo: trabalho de conclusão de curso de Design de Interiores.`),
+        paragraph(`Mobile-first e completamente responsivo. Desenvolvido para funcionar no ipad no dia da apresentação.`)
+    ],
+    link: "https://tascadoalfredo.onrender.com",
+    github: "https://github.com/FabioV37ga/Tasca-do-Alfredo"
+}
+
 
 // ---------------------------
 // 4. ARRAY DE PROJETOS E EXPORTS
@@ -265,6 +283,7 @@ const wearSell: Project = {
 // Array contendo todos os projetos do portfólio
 const Projects: Project[] = [
     nutryo,
+    tascaDoAlfredo,
     typeTap,
     sistemaSolar,
     jsBridge,
