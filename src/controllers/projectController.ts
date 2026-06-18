@@ -117,14 +117,14 @@ class ProjectController {
 
         var responsiveAdditional = 0
 
-        if (window.innerWidth <= 800)
-            responsiveAdditional = 15
-        else
-            responsiveAdditional = 55
+        if (window.innerWidth <= 450){
+            console.log("well, its here!")
+            responsiveAdditional = -110
+        }
 
         // Define posição top do container baseado na altura do título referenciado
         this.elements.projectContainer.style = `
-        top: ${reference.offsetHeight}px;
+        top: ${reference.offsetHeight + responsiveAdditional}px !important;
         display: flex;`
 
     }

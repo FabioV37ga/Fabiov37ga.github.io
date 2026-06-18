@@ -181,7 +181,7 @@ class ProjectListController {
         if (windowWidth > 460)
             this.view.setContainerHeight("100%");
         else
-            this.view.setContainerHeight("calc(100% - 300px)")
+            this.view.setContainerHeight("calc(100% - 190px)")
 
         // Ajusta margem inferior do último item para espaçamento final
         const lastItem = u(this.elements.projectItems).last() as HTMLElement;

@@ -147,7 +147,7 @@
     .projects-container {
         position: relative !important;
         zoom: 50%;
-        top: 0px !important;
+        top: -93px !important;
         z-index: 3;
         display: flex;
         justify-content: flex-start;
@@ -171,6 +171,7 @@
         position: absolute !important;
         right: 0 !important;
         height: fit-content;
+        /* top: -40px !important; */
     }
 
     .description-content span {
